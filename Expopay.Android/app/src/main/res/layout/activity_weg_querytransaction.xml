@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/view_myactionbar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+        </include>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#fefefe"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/weg_company_lable"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="缴费单位" />
+
+            <RelativeLayout
+                android:id="@+id/weg_company_toicon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentRight="true"
+                android:onClick="chooseShopOnclick">
+
+                <ImageView
+                    android:layout_width="13dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:adjustViewBounds="true" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/weg_company_text"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/weg_company_toicon"
+                android:layout_toRightOf="@id/weg_company_lable"
+                android:gravity="center_vertical"
+                android:text="选择缴费单位" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#f6f6f6"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/weg_barcode_lable"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="条形码号" />
+
+            <RelativeLayout
+                android:id="@+id/weg_barcode_image"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentRight="true"
+                android:onClick="barcodeOnclick">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:adjustViewBounds="true" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/weg_barcode_edit"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/weg_barcode_image"
+                android:layout_toRightOf="@id/weg_barcode_lable"
+                android:background="#00000000"
+                android:hint="请输入条形码"
+                android:inputType="number"
+                android:singleLine="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#fefefe"
+            android:gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/weg_mobile_lable"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="手机号码" />
+
+            <RelativeLayout
+                android:id="@+id/weg_mobile_image"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentRight="true"
+                android:onClick="barcodeOnclick" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:adjustViewBounds="true"  />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/weg_mobile_edit"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/weg_mobile_image"
+                android:layout_toRightOf="@id/weg_mobile_lable"
+                android:background="#00000000"
+                android:ems="10"
+                android:hint="请输入手机号码"
+                android:inputType="number"
+                android:singleLine="true" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_alignParentBottom="true"
+        android:text="确   定"
+        android:textColor="#fff"/>
+</RelativeLayout>

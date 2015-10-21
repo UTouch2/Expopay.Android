@@ -1,0 +1,116 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kechong.ui.activity.MainActivity"
+    tools:ignore="MergeRootFrame">
+
+    <include
+        android:id="@+id/main_top"
+        layout="@layout/view_myactionbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"></include>
+
+    <LinearLayout
+        android:id="@+id/main_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:background="#DBDBDB"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="0.5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:onClick="tabOnclick"
+            android:padding="5dp"
+            android:tag="0">
+
+            <ImageView
+                android:id="@+id/main_mainbg"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/main_mainbg" />
+
+            <ImageView
+                android:id="@+id/main_main"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/main_main" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:onClick="tabOnclick"
+            android:padding="5dp"
+            android:tag="1">
+
+            <ImageView
+                android:id="@+id/main_mallbg"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/main_mallbg" />
+
+            <ImageView
+                android:id="@+id/main_mall"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/main_mall" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#fff"
+            android:onClick="tabOnclick"
+            android:padding="5dp"
+            android:tag="2">
+
+            <ImageView
+                android:id="@+id/main_myaccbg"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/main_myaccbg" />
+
+            <ImageView
+                android:id="@+id/main_myacc"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/main_myacc" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/main_tabs"
+        android:layout_below="@id/main_top"
+        android:fadingEdge="none">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/main_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+    </RelativeLayout>
+</RelativeLayout>

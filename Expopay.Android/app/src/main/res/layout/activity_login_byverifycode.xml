@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp">
+
+            <ImageView
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:adjustViewBounds="true"
+                android:src="@mipmap/login_top" />
+        </RelativeLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/login_viewpager"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="50dp">
+
+        </android.support.v4.view.ViewPager>
+
+        <RelativeLayout
+            android:id="@+id/login_phonemun_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/login_phonenum_lable"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="手机号码:" />
+
+            <RelativeLayout
+                android:id="@+id/login_vercode_btn"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/login_vercode_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="发送验证码"
+                    android:textColor="#00CC65" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/login_phonenum"
+
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_toLeftOf="@id/login_vercode_btn"
+                android:layout_toRightOf="@id/login_phonenum_lable"
+                android:background="#00000000"
+                android:hint="请输入手机号"
+                android:inputType="number"
+                android:lines="1"
+                android:maxLength="11"
+                android:singleLine="true"
+                android:text="" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/login_vercode_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_phonemun_group"
+            android:layout_margin="20dp"
+            android:layout_marginBottom="15dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/login_vercode_lable"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:padding="5dp"
+                android:text="验 证  码:" />
+
+            <RelativeLayout
+                android:id="@+id/login_timeout_btn"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/login_timeout_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="60秒" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/login_vercode"
+
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_toLeftOf="@id/login_timeout_btn"
+                android:layout_toRightOf="@id/login_vercode_lable"
+                android:background="#00000000"
+                android:hint="请输入验证码"
+                android:inputType="number"
+                android:lines="1"
+                android:maxLength="6"
+                android:singleLine="true" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:adjustViewBounds="true"
+            android:padding="10dp"
+            android:src="@mipmap/login_back" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:adjustViewBounds="true"
+            android:padding="20dp"
+            android:src="@mipmap/login_forgetpassword" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="确   定"
+        android:textColor="#fff"
+        android:textSize="14sp" />
+</RelativeLayout>
