@@ -9,7 +9,7 @@
         android:id="@+id/main_top"
         layout="@layout/view_myactionbar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"></include>
+        android:layout_height="wrap_content"></include>
 
     <LinearLayout
         android:id="@+id/main_tabs"

@@ -20,7 +20,7 @@ public class MainPagerAdepter extends FragmentPagerAdapter {
 
 	@Override
 	public int getCount() {
-		return 3;
+		return frags.length;
 	}
 
 	@Override

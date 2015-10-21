@@ -15,7 +15,6 @@ public class OrderEntity {
     private String orderStatus;
     private String orderTime;
 
-
     public OrderEntity() {
     }
 
