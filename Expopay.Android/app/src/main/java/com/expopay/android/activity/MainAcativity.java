@@ -155,7 +155,7 @@ public class MainAcativity extends BaseActivity {
     }
 
     private void getNewVersionCode() throws JSONException {
-        AppRequest request = new AppRequest(AppRequest.GET_VERSIONCODE);
+        AppRequest request = new AppRequest("");
         //request.setEntity(request.createOpenIdParams(""));
         request.setRequestMethod(RequestMethod.POST);
         request.setOutTime(5 * 1000);
