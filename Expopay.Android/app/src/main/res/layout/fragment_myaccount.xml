@@ -68,6 +68,7 @@
         android:paddingBottom="0.5dp">
 
         <LinearLayout
+            android:id="@+id/myaccount_mycards"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginRight="0.5dp"
@@ -222,6 +223,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/myaccount_settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"

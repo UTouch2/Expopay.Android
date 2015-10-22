@@ -32,6 +32,16 @@ public class OrderDetailsEntity extends OrderEntity {
     public OrderDetailsEntity() {
     }
 
+    @Override
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
+    @Override
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
     public String getOrderType() {
         return orderType;
     }
@@ -61,6 +71,16 @@ public class OrderDetailsEntity extends OrderEntity {
     }
 
     @Override
+    public String getProductQutity() {
+        return productQutity;
+    }
+
+    @Override
+    public void setProductQutity(String productQutity) {
+        this.productQutity = productQutity;
+    }
+
+    @Override
     public String getOrderAmount() {
         return orderAmount;
     }
@@ -68,6 +88,16 @@ public class OrderDetailsEntity extends OrderEntity {
     @Override
     public void setOrderAmount(String orderAmount) {
         this.orderAmount = orderAmount;
+    }
+
+    @Override
+    public String getRepaymentPeriod() {
+        return repaymentPeriod;
+    }
+
+    @Override
+    public void setRepaymentPeriod(String repaymentPeriod) {
+        this.repaymentPeriod = repaymentPeriod;
     }
 
     public String getPeriodAmount() {
@@ -84,6 +114,16 @@ public class OrderDetailsEntity extends OrderEntity {
 
     public void setServiceAmount(String serviceAmount) {
         this.serviceAmount = serviceAmount;
+    }
+
+    @Override
+    public String getProperties() {
+        return properties;
+    }
+
+    @Override
+    public void setProperties(String properties) {
+        this.properties = properties;
     }
 
     public String getConsignee() {

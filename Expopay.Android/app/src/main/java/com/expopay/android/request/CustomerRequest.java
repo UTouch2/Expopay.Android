@@ -18,28 +18,17 @@ import java.util.Map;
  */
 public class CustomerRequest extends Request {
     public static final int VERIFY_VERCODE = 0;
-    public static final int GET_VERCODE = 1;
-    public static final int GET_OPENID = 2;
-    public static final int CHANGE_PASSWORD = 3;
-    private String host = MyApplication.HOST;
-
-    public CustomerRequest(int action) {
+    public CustomerRequest(String url) {
         super();
         setRequestMethod(RequestMethod.POST);
         setOutTime(10 * 1000);
-        if (action == GET_VERCODE) {
-            setUrl(host + "system/sendcode");
-        } else if (action == VERIFY_VERCODE) {
-            setUrl(host + "system/verifycode");
-        } else if (action == GET_OPENID) {
-            setUrl(host + "customer/getopenid");
-        } else if (action == CHANGE_PASSWORD) {
-            setUrl(host + "customer/changecardpwd");
-        }
+        setUrl(url);
     }
+
     public CustomerRequest(String url, int method) {
         super(url, method);
     }
+
     /**
      * 获取验证码
      *
@@ -65,6 +54,7 @@ public class CustomerRequest extends Request {
 
     /**
      * 登录
+     *
      * @param phoneNum
      * @param vercode
      * @param userName
@@ -73,7 +63,7 @@ public class CustomerRequest extends Request {
      * @throws JSONException
      */
     public Map<String, String> createLoginParams(String phoneNum,
-                                                         String vercode,String userName,String loginPwd) throws JSONException {
+                                                 String vercode, String userName, String loginPwd) throws JSONException {
         JSONObject data = new JSONObject();
         JSONObject header = new JSONObject();
         header.put("openid", "");
@@ -93,6 +83,7 @@ public class CustomerRequest extends Request {
         map.put("data", data.toString());
         return map;
     }
+
     /**
      * 获取用户信息
      *
@@ -121,14 +112,13 @@ public class CustomerRequest extends Request {
     }
 
     /**
-     *
      * @param openId
      * @param mobile
      * @param code
      * @return
      * @throws JSONException
      */
-    public Map<String, String> createChangeMobileParams(String openId,String mobile,String code)
+    public Map<String, String> createChangeMobileParams(String openId, String mobile, String code)
             throws JSONException {
         JSONObject data = new JSONObject();
         JSONObject header = new JSONObject();
@@ -136,8 +126,8 @@ public class CustomerRequest extends Request {
         header.put("action", "");
         header.put("machineNumber", "android");
         JSONObject body = new JSONObject();
-        body.put("mobile",mobile);
-        body.put("code",code);
+        body.put("mobile", mobile);
+        body.put("code", code);
         String signHead = MD5Util.GetMD5Code(body.toString());
         String signTail = MD5Util.getTail(openId);
         header.put("sign", signHead + signTail);

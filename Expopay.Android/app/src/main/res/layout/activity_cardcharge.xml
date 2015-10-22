@@ -6,22 +6,23 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_weight="1000"
         android:background="#0000">
 
     </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:background="#FFFFFF"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:paddingTop="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:padding="10dp">
 
             <TextView
@@ -31,10 +32,99 @@
                 android:textColor="#000000" />
 
             <ImageView
+                android:onClick="closeOnclick"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:adjustViewBounds="true" />
+                android:layout_alignParentRight="true"
+                android:adjustViewBounds="true"
+                android:src="@mipmap/mall_delete" />
         </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="卡号："
+                android:textColor="#4F4F4F"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="88888888888"
+                android:textColor="#4F4F4F"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#F9F9F9"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="余额："
+                android:textColor="#4F4F4F"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="88888888888"
+                android:textColor="#4F4F4F"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="充值金额："
+                android:textColor="#4F4F4F"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="true"
+                android:src="@mipmap/cardcharge_editclose" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text=""
+                android:textColor="#4F4F4F"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+        <Button
+            android:onClick="okOnclick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="充 值"
+            android:textColor="#fff"
+            android:textSize="14sp" />
     </LinearLayout>
 
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.expopay.android.request;
 
 import com.android.kechong.lib.http.Request;
+import com.android.kechong.lib.http.RequestMethod;
 import com.android.kechong.lib.util.MD5Util;
 
 import org.json.JSONException;
@@ -13,7 +14,11 @@ import java.util.Map;
  * Created by misxu012 on 2015/10/21.
  */
 public class OrderRequest extends Request {
-
+    public OrderRequest(String url){
+        setRequestMethod(RequestMethod.POST);
+        setOutTime(10 * 1000);
+        setUrl(url);
+    }
     /**
      * 创建卡订单
      *

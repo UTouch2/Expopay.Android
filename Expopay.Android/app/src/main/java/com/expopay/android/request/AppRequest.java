@@ -15,24 +15,11 @@ import java.util.Map;
  * Created by misxu012 on 2015/10/15.
  */
 public class AppRequest extends Request{
-    public static final int GET_VERSIONCODE = 0;
-    public static final int COMMIT_ADVICE = 1;
-    public static final int GET_ADVICES = 2;
-    public static final int UPDATE_APP = 3;
-    private String host = MyApplication.HOST;
-    public AppRequest(int action) {
-        super();
+
+    public AppRequest(String url){
         setRequestMethod(RequestMethod.POST);
         setOutTime(10 * 1000);
-        if (action == GET_VERSIONCODE) {
-            setUrl(host + "system/getversioncode");
-        } else if (action == COMMIT_ADVICE) {
-            setUrl(host + "customer/suggest");
-        } else if (action == GET_ADVICES) {
-            setUrl(host + "customer/getsuggestion");
-        } else if (action == UPDATE_APP) {
-            setUrl(host + "install/ExpoPay.Android.apk");
-        }
+        setUrl(url);
     }
 
 

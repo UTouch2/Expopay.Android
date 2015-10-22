@@ -18,22 +18,11 @@ import java.util.Map;
  */
 public class WegRequest extends Request {
 
-    public static final int GET_COMPANY = 1;
-    public static final int QUERY_AMOUNT = 2;
-    public static final int GET_TRANSFICATION = 3;
-    private String host = MyApplication.HOST;
 
-    public WegRequest(int action) {
-        super();
+    public WegRequest(String url){
         setRequestMethod(RequestMethod.POST);
         setOutTime(10 * 1000);
-        if (action == GET_COMPANY) {
-            setUrl(host + "ecommerce/getcompaines");
-        } else if (action == QUERY_AMOUNT) {
-            setUrl(host + "ecommerce/queryamount");
-        } else if (action == GET_TRANSFICATION) {
-            setUrl(host + "order/getorders");
-        }
+        setUrl(url);
     }
 
     /**

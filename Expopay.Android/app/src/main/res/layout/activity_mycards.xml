@@ -5,11 +5,6 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <include
-        layout="@layout/view_myactionbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></include>
-
     <ListView
         android:id="@+id/mycards_listview"
         android:layout_width="match_parent"

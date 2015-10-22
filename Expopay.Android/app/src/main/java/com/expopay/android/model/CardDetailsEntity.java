@@ -5,7 +5,5 @@ package com.expopay.android.model;
  */
 public class CardDetailsEntity extends CardEntity {
 
-    public CardDetailsEntity(String json) {
-        super(json);
-    }
+
 }
