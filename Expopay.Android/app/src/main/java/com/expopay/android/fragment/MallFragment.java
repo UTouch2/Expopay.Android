@@ -25,9 +25,9 @@ public class MallFragment extends  BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_mall,null,false);
 
-        myGridView = (GridView) view.findViewById(R.id.mygridview);
-        adapter = new MallProductAdapter(getActivity().getApplicationContext(),list);
-        myGridView.setAdapter(adapter);
+//        myGridView = (GridView) view.findViewById(R.id.mygridview);
+//        adapter = new MallProductAdapter(getActivity().getApplicationContext(),list);
+//        myGridView.setAdapter(adapter);
 
         return view;
     }
