@@ -1,41 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/action_bar"
     android:layout_width="match_parent"
     android:layout_height="66dp"
     android:background="#3D3D3C">
-    <RelativeLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ImageView
-            android:id="@+id/leftbutton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_centerVertical="true"
-            android:adjustViewBounds="true"
-            android:padding="5dp"
-            android:src="@mipmap/back" />
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="南博卡"
-            android:textColor="#fff"
-            android:textSize="18sp" />
+    <ImageView
+        android:id="@+id/leftbutton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:adjustViewBounds="true"
+        android:padding="5dp"
+        android:src="@mipmap/back" />
 
-        <ImageView
-            android:id="@+id/rightbutton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:adjustViewBounds="true"
-            android:padding="5dp" />
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="南博卡"
+        android:textColor="#fff"
+        android:textSize="18sp" />
 
+    <ImageView
+        android:id="@+id/rightbutton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:adjustViewBounds="true"
+        android:padding="5dp" />
 </RelativeLayout>

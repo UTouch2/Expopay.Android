@@ -4,7 +4,12 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical">
-
+    <include
+        android:id="@+id/actionbar"
+        layout="@layout/view_myactionbar"
+        android:layout_width="match_parent"
+        android:layout_height="66dp">
+    </include>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="130dp"
@@ -214,6 +219,5 @@
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
-
     </android.support.v4.view.ViewPager>
 </LinearLayout>
