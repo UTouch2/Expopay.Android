@@ -39,17 +39,20 @@ public class CompanyListAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         CompanyEntity c = data.get(position);
-        ViewHolder vh =null;
+        ViewHolder vh = null;
         if (null != convertView) {
-            vh = (ViewHolder)convertView.getTag();
+            vh = (ViewHolder) convertView.getTag(1);
         } else {
             convertView = LayoutInflater.from(context).inflate(R.layout.view_myactionbar, null);
             vh = new ViewHolder();
-            convertView.setTag(vh);
+            vh.compantName = (TextView) convertView.findViewById(R.id.companylist_item_companyname);
+            convertView.setTag(1, vh);
         }
+        convertView.setTag(2, c);
         vh.compantName.setText(c.getCompanyName());
         return convertView;
     }
