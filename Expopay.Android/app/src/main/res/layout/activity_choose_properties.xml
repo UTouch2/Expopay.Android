@@ -106,35 +106,35 @@
                     <Button
                         android:id="@+id/colourBlack"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
+                        android:background="@mipmap/mall_unoutline"
                         android:layout_weight="1"
-                        android:background="#FFFFFF"
                         android:text="黑色" />
 
                     <Button
                         android:id="@+id/colourWhite"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:background="#FFFFFF"
+                        android:background="@mipmap/mall_unoutline"
                         android:layout_marginLeft="5dp"
                         android:text="白色" />
 
                     <Button
                         android:id="@+id/colourGolden"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:background="#FFFFFF"
+                        android:background="@mipmap/mall_unoutline"
                         android:layout_marginLeft="5dp"
                         android:text="金色" />
 
                     <Button
                         android:id="@+id/colourGoldPink"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:background="#FFFFFF"
+                        android:background="@mipmap/mall_unoutline"
                         android:layout_marginLeft="5dp"
                         android:text="金粉色" />
                 </LinearLayout>
@@ -161,26 +161,26 @@
                     <Button
                         android:id="@+id/g16"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:background="#FFFFFF"
+                        android:background="@mipmap/mall_unoutline"
                         android:text="16G" />
 
                     <Button
                         android:id="@+id/g64"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:background="#FFFFFF"
+                        android:background="@mipmap/mall_unoutline"
                         android:layout_marginLeft="5dp"
                         android:text="64G" />
 
                     <Button
                         android:id="@+id/g128"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:background="#FFFFFF"
+                        android:background="@mipmap/mall_unoutline"
                         android:layout_marginLeft="5dp"
                         android:text="128G" />
 
