@@ -5,13 +5,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.expopay.android.R;
 
 public class ChoosePeriodActivity extends BaseActivity implements View.OnClickListener{
 
-    private String str_periods = "3";
+    private String str_periods;
 
     private ImageButton imageButton;
     private Button installment3;
@@ -86,12 +85,8 @@ public class ChoosePeriodActivity extends BaseActivity implements View.OnClickLi
                 str_periods=installment24.getText().toString();
                 break;
             default:
-                //判断空，我就不判断了。。。。
-                Toast.makeText(this, "sure", Toast.LENGTH_SHORT).show();
                 intent.putExtra("str_periods", str_periods);
-                //请求代码可以自己设置，这里设置成1
                 setResult(1, intent);
-                //关闭掉这个Activity
                 finish();
                 break;
         }

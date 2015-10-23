@@ -5,14 +5,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.expopay.android.R;
 
 public class ChoosePropertiesActivity extends BaseActivity implements View.OnClickListener{
 
-    private static String str_colour = "黑色";
-    private static String str_g = "16G";
+    private static String str_colour;
+    private static String str_g;
 
     private ImageButton imgBtnCancle;
     private Button colourBlack;
@@ -88,13 +87,9 @@ public class ChoosePropertiesActivity extends BaseActivity implements View.OnCli
                 str_g=g128.getText().toString();
                 break;
             default:
-                //判断空，我就不判断了。。。。
-                Toast.makeText(this, "sure", Toast.LENGTH_SHORT).show();
                 intent.putExtra("str_colour", str_colour);
                 intent.putExtra("str_g", str_g);
-                //请求代码可以自己设置，这里设置成0
                 setResult(0, intent);
-                //关闭掉这个Activity
                 finish();
                 break;
         }
@@ -102,7 +97,6 @@ public class ChoosePropertiesActivity extends BaseActivity implements View.OnCli
 
     @Override
     public void onBackPressed() {
-        Toast.makeText(this, "ggggg", Toast.LENGTH_SHORT).show();
         intent.putExtra("str_colour", str_colour);
         intent.putExtra("str_g", str_g);
         setResult(0, intent);
