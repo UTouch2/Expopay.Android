@@ -78,7 +78,6 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                 break;
             case R.id.btnImmediatelyOrder:
                 Toast.makeText(this, "立即订单", Toast.LENGTH_SHORT).show();
-                startActivity(intent.setClass(ProductDetailsActivity.this, MyOrderActivity.class));
                 break;
             default:
                 break;
