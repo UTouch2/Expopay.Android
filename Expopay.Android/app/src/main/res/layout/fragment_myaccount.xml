@@ -131,6 +131,7 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/account_order"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
@@ -177,6 +178,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/account_bill"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
@@ -186,7 +188,7 @@
         android:padding="15dp">
 
         <ImageView
-            android:id="@+id/account_tranacation_icon"
+            android:id="@+id/account_bill_icon"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -195,17 +197,17 @@
             android:src="@mipmap/myaccount_transcatin_icon" />
 
         <TextView
-            android:id="@+id/account_tranacation_text"
+            android:id="@+id/account_bill_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_margin="3dp"
-            android:layout_toRightOf="@id/account_tranacation_icon"
+            android:layout_toRightOf="@id/account_bill_icon"
             android:text="我的账单"
             android:textSize="14sp" />
 
         <ImageView
-            android:id="@+id/account_tranacation_toicon"
+            android:id="@+id/account_bill_toicon"
             android:layout_width="13dp"
             android:layout_height="20dp"
             android:layout_alignParentRight="true"
@@ -217,8 +219,8 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginRight="30dp"
-            android:layout_toLeftOf="@id/account_tranacation_text"
-            android:layout_toRightOf="@id/account_tranacation_toicon"
+            android:layout_toLeftOf="@id/account_bill_text"
+            android:layout_toRightOf="@id/account_bill_toicon"
             android:gravity="right" />
     </RelativeLayout>
 
@@ -270,6 +272,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/account_aboutme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
