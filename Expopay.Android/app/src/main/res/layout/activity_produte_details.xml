@@ -51,7 +51,7 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:id="@+id/imageStyle"
+            android:id="@+id/relativeLayoutProperties"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -88,7 +88,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/imageInstallment"
+            android:id="@+id/relativeLayoutStage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#EEEEEE"

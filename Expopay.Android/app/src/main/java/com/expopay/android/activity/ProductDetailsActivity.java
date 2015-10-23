@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,23 +12,22 @@ import com.expopay.android.R;
 
 public class ProductDetailsActivity extends BaseActivity implements View.OnClickListener{
 
-    private ImageButton imageStyle;
-    private ImageButton imageInstallment;
+    private RelativeLayout relativeLayoutProperties,relativeLayoutStage;
     private Button btnDetail;
     private Button btnImmediatelyOrder;
     private TextView tvSelected;
     private TextView tvStaging;
 
     private void assignViews() {
-        imageStyle = (ImageButton) findViewById(R.id.imageStyle);
-        imageInstallment = (ImageButton) findViewById(R.id.imageInstallment);
+        relativeLayoutProperties = (RelativeLayout) findViewById(R.id.relativeLayoutProperties);
+        relativeLayoutStage = (RelativeLayout) findViewById(R.id.relativeLayoutStage);
         btnDetail = (Button) findViewById(R.id.btnDetail);
         btnImmediatelyOrder = (Button) findViewById(R.id.btnImmediatelyOrder);
         tvSelected = (TextView) findViewById(R.id.tvSelected);
         tvStaging = (TextView) findViewById(R.id.tvStaging);
 
-        imageStyle.setOnClickListener(this);
-        imageInstallment.setOnClickListener(this);
+        relativeLayoutProperties.setOnClickListener(this);
+        relativeLayoutStage.setOnClickListener(this);
         btnDetail.setOnClickListener(this);
         btnImmediatelyOrder.setOnClickListener(this);
     }
@@ -66,11 +65,11 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
     public void onClick(View v) {
         Intent intent = new Intent();
         switch (v.getId()) {
-            case R.id.imageStyle:
+            case R.id.relativeLayoutProperties:
                 intent.setClass(ProductDetailsActivity.this, ChoosePropertiesActivity.class);
                 startActivityForResult(intent,0);
                 break;
-            case R.id.imageInstallment:
+            case R.id.relativeLayoutStage:
                 intent.setClass(ProductDetailsActivity.this, ChoosePeriodActivity.class);
                 startActivityForResult(intent,1);
                 break;
