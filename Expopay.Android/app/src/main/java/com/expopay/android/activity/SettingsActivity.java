@@ -38,10 +38,12 @@ public class SettingsActivity extends BaseActivity {
     }
 
     public void addressOnclick(View v){
-
+        Intent intent =new Intent(getApplicationContext(),MyAddressActivity.class);
+        startActivity(intent);
     }
 
     public void cardPasswordOnclock(View v){
-
+        Intent intent =new Intent(getApplicationContext(),ChangeCardPasswordActivity.class);
+        startActivity(intent);
     }
 }

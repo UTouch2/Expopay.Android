@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:paddingLeft="20dp"
+                android:onClick="chooseCityOnclick"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:id="@+id/address_city_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:padding="5dp"
+                    android:text="城  市:"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/address_city_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:src="@mipmap/account_right_arrow">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/address_city_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/address_city_btn"
+                    android:layout_toRightOf="@id/address_city_label"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="#F9F9F9"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:id="@+id/address_address_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="地  址:"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/address_address_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/address_address_label"
+                    android:background="#00000000"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:maxLength="11"
+                    android:singleLine="true"
+                    android:textColor="#EF8261"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:id="@+id/address_zipcode_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="邮  编:"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/address_zipcode_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/address_zipcode_label"
+                    android:background="#00000000"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:maxLength="11"
+                    android:singleLine="true"
+                    android:textColor="#EF8261"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="#F9F9F9"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:id="@+id/address_name_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="姓  名:"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/address_name_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/address_name_label"
+                    android:background="#00000000"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:maxLength="11"
+                    android:singleLine="true"
+                    android:textColor="#EF8261"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <TextView
+                    android:id="@+id/address_mobile_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:padding="5dp"
+                    android:text="手机号:"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/address_mobile_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/address_mobile_label"
+                    android:background="#00000000"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:maxLength="11"
+                    android:singleLine="true"
+                    android:textColor="#EF8261"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+        </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="保  存" />
+    </RelativeLayout>
+</LinearLayout>

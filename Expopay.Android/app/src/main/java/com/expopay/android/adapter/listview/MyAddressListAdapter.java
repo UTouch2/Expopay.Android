@@ -1,6 +1,7 @@
 package com.expopay.android.adapter.listview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,9 +10,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.expopay.android.R;
+import com.expopay.android.activity.AddressDetailsActivity;
 import com.expopay.android.model.AddressEntity;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -60,9 +60,23 @@ public class MyAddressListAdapter extends BaseAdapter {
         boolean isDefault = "0".equals(address.getIsDefault());
         vh.mobileText.setText(address.getMobile());
         vh.nameText.setText(address.getPersonName());
-        vh.isDefaultText.setVisibility(!isDefault?View.VISIBLE:View.GONE);
+        vh.isDefaultText.setVisibility(!isDefault ? View.VISIBLE : View.GONE);
         vh.redadio.setChecked(isDefault);
-        vh.addressText.setText(address.getProvinceName()+address.getCityName()+address.getDistrictName()+address.getAddress());
+        vh.addressText.setText(address.getProvinceName() + address.getCityName() + address.getDistrictName() + address.getAddress());
+        vh.redadio.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context.getApplicationContext(), AddressDetailsActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
         return v;
     }
     private class ViewHolder{
