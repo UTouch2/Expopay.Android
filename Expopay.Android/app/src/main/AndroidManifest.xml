@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.expopay.android">
+    package="com.expopay.android" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -25,39 +25,40 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="南博卡"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".activity.StartActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activity.MainAcativity"
-            android:theme="@android:style/Theme.Holo.Light"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Holo.Light" />
         <activity
             android:name=".activity.WebActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Holo.Light"></activity>
+            android:theme="@android:style/Theme.Holo.Light" />
         <activity
             android:name=".activity.MyCardsActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Holo.Light"></activity>
+            android:theme="@android:style/Theme.Holo.Light" />
         <activity
             android:name=".activity.CardDetailsActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Holo.Light"></activity>
+            android:theme="@android:style/Theme.Holo.Light" />
         <activity
             android:name=".activity.SettingsActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Holo.Light"></activity>
+            android:theme="@android:style/Theme.Holo.Light" />
         <activity
             android:name=".activity.CardChargeActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Holo.Light"></activity>
+            android:theme="@android:style/Theme.Holo.Light" />
         <activity
             android:name=".activity.ProductDetailsActivity"
             android:label="@string/title_activity_produte_details" >
@@ -86,5 +87,10 @@
             android:name=".activity.OrderDetailCancelActivity"
             android:label="@string/title_activity_order_detail_cancel" >
         </activity>
+        <activity
+            android:name=".activity.OrderDetailItemActivity"
+            android:label="@string/title_activity_order_detail_item" >
+        </activity>
     </application>
+
 </manifest>
