@@ -57,10 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="10dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingTop="10dp">
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/tv"
@@ -81,7 +78,7 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="15dp"
                 android:background="#FFFFFF"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
@@ -95,10 +92,7 @@
             android:layout_height="wrap_content"
             android:background="#EEEEEE"
             android:orientation="horizontal"
-            android:paddingBottom="10dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:paddingTop="10dp">
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/tv1"
@@ -119,7 +113,7 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="15dp"
                 android:background="#EEEEEE"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
@@ -131,13 +125,11 @@
             android:id="@+id/btnDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
+            android:padding="20dp"
             android:gravity="left"
             android:background="#FFFFFF"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:text="详情"
-            android:textColor="#666666"/>
+            android:textColor="#666666"
+            android:text="详情"/>
 
     </LinearLayout>
 

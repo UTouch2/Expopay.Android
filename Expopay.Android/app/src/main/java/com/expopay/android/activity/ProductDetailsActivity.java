@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.expopay.android.R;
 
@@ -77,7 +76,6 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                 startActivity(intent.setClass(ProductDetailsActivity.this, OrderDetailActivity.class));
                 break;
             case R.id.btnImmediatelyOrder:
-                Toast.makeText(this, "立即订单", Toast.LENGTH_SHORT).show();
                 startActivity(intent.setClass(ProductDetailsActivity.this, MyOrderActivity.class));
                 break;
             default:

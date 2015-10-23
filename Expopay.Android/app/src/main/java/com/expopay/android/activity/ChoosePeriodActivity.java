@@ -1,18 +1,16 @@
 package com.expopay.android.activity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.expopay.android.R;
 
 public class ChoosePeriodActivity extends BaseActivity implements View.OnClickListener{
 
-    private String str_periods = "3";
+    private String str_periods = "12期";
 
     private ImageButton imageButton;
     private Button installment3;
@@ -87,12 +85,8 @@ public class ChoosePeriodActivity extends BaseActivity implements View.OnClickLi
                 str_periods=installment24.getText().toString();
                 break;
             default:
-                //判断空，我就不判断了。。。。
-                Toast.makeText(this, "sure", Toast.LENGTH_SHORT).show();
                 intent.putExtra("str_periods", str_periods);
-                //请求代码可以自己设置，这里设置成1
                 setResult(1, intent);
-                //关闭掉这个Activity
                 finish();
                 break;
         }
@@ -112,31 +106,24 @@ public class ChoosePeriodActivity extends BaseActivity implements View.OnClickLi
             case 3:
                 // 当点击了按钮installment3时，改变控件的背景图片
                 installment3.setBackgroundResource(R.mipmap.mall_outline);
-                installment3.setTextColor(Color.RED);
                 break;
             case 6:
                 installment6.setBackgroundResource(R.mipmap.mall_outline);
-                installment6.setTextColor(Color.RED);
                 break;
             case 9:
                 installment9.setBackgroundResource(R.mipmap.mall_outline);
-                installment9.setTextColor(Color.RED);
                 break;
             case 12:
                 installment12.setBackgroundResource(R.mipmap.mall_outline);
-                installment12.setTextColor(Color.RED);
                 break;
             case 15:
                 installment15.setBackgroundResource(R.mipmap.mall_outline);
-                installment15.setTextColor(Color.RED);
                 break;
             case 18:
                 installment18.setBackgroundResource(R.mipmap.mall_outline);
-                installment18.setTextColor(Color.RED);
                 break;
             case 24:
                 installment24.setBackgroundResource(R.mipmap.mall_outline);
-                installment24.setTextColor(Color.RED);
                 break;
             default:
 
@@ -147,19 +134,12 @@ public class ChoosePeriodActivity extends BaseActivity implements View.OnClickLi
     //清除掉所有的选中状态
     private void clearSelection() {
         installment3.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment3.setTextColor(Color.BLACK);
         installment6.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment6.setTextColor(Color.BLACK);
         installment9.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment9.setTextColor(Color.BLACK);
         installment12.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment12.setTextColor(Color.BLACK);
         installment15.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment15.setTextColor(Color.BLACK);
         installment18.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment18.setTextColor(Color.BLACK);
         installment24.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment24.setTextColor(Color.BLACK);
     }
 
 }
