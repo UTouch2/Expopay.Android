@@ -47,7 +47,7 @@ public class CompanyListAdapter extends BaseAdapter {
         if (null != convertView) {
             vh = (ViewHolder) convertView.getTag(1);
         } else {
-            convertView = LayoutInflater.from(context).inflate(R.layout.view_myactionbar, null);
+           // convertView = LayoutInflater.from(context).inflate(R.layout.view_myactionbar, null);
             vh = new ViewHolder();
             vh.compantName = (TextView) convertView.findViewById(R.id.companylist_item_companyname);
             convertView.setTag(1, vh);
@@ -56,8 +56,8 @@ public class CompanyListAdapter extends BaseAdapter {
         vh.compantName.setText(c.getCompanyName());
         return convertView;
     }
+    private class ViewHolder {
+        TextView compantName;
+    }
 }
 
-class ViewHolder {
-    TextView compantName;
-}
