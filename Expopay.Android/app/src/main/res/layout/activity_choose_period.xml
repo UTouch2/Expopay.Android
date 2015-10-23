@@ -80,6 +80,8 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:textSize="15dp"
             android:text="分期"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -96,6 +98,8 @@
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:background="@mipmap/mall_unoutline"
+                    android:textColor="#000"
+                    android:textSize="15dp"
                     android:text="3期"/>
                 <Button
                     android:id="@+id/installment6"
@@ -104,6 +108,8 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="5dp"
                     android:text="6期"
+                    android:textSize="15dp"
+                    android:textColor="#000"
                     android:background="@mipmap/mall_unoutline"/>
                 <Button
                     android:id="@+id/installment9"
@@ -112,6 +118,8 @@
                     android:layout_weight="1"
                     android:background="@mipmap/mall_unoutline"
                     android:layout_marginLeft="5dp"
+                    android:textColor="#000"
+                    android:textSize="15dp"
                     android:text="9期"/>
                 <Button
                     android:id="@+id/installment12"
@@ -120,6 +128,8 @@
                     android:layout_weight="1"
                     android:background="@mipmap/mall_unoutline"
                     android:layout_marginLeft="5dp"
+                    android:textColor="#000"
+                    android:textSize="15dp"
                     android:text="12期"/>
             </LinearLayout>
             <LinearLayout
@@ -133,6 +143,8 @@
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:background="@mipmap/mall_unoutline"
+                    android:textColor="#000"
+                    android:textSize="15dp"
                     android:text="15期"/>
                 <Button
                     android:id="@+id/installment18"
@@ -141,6 +153,8 @@
                     android:layout_weight="1"
                     android:background="@mipmap/mall_unoutline"
                     android:layout_marginLeft="5dp"
+                    android:textColor="#000"
+                    android:textSize="15dp"
                     android:text="18期"/>
                 <Button
                     android:id="@+id/installment24"
@@ -149,6 +163,8 @@
                     android:layout_weight="1"
                     android:background="@mipmap/mall_unoutline"
                     android:layout_marginLeft="5dp"
+                    android:textColor="#000"
+                    android:textSize="15dp"
                     android:text="24期"/>
                 <TextView
                     android:layout_width="0dp"
@@ -157,7 +173,7 @@
                     android:layout_marginLeft="5dp"
                     android:gravity="center_horizontal"
                     android:text=""
-                    android:textSize="18dp"/>
+                    android:textSize="15dp"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
