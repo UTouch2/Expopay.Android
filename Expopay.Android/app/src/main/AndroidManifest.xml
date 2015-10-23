@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.expopay.android">
+    package="com.expopay.android"
+    android:versionCode="40"
+    android:versionName="1.0.1">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -18,7 +20,6 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
 
     <application
         android:name=".application.MyApplication"
@@ -32,36 +33,87 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.AboutActivity"></activity>
-        <activity android:name=".activity.MainAcativity"></activity>
+        <activity
+            android:name=".activity.AboutActivity"
+            android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.MainAcativity"
+            android:label="南博卡"></activity>
 
-        <activity android:name=".activity.CardDetailsActivity"></activity>
-        <activity android:name=".activity.CardChargeActivity"></activity>
-        <activity android:name=".activity.ChangePasswordActivity"></activity>
-        <activity android:name=".activity.ChangePayPasswordActivity"></activity>
-        <activity android:name=".activity.ChangePasswordQuestionAcitivy"></activity>
-        <activity android:name=".activity.ChangeMobileActivity"></activity>
-        <activity android:name=".activity.ChooseCompanyActivity"></activity>
-        <activity android:name=".activity.ChoosePeriodActivity"></activity>
-        <activity android:name=".activity.ChoosePropertiesActivity"></activity>
+        <activity
+            android:name=".activity.CardDetailsActivity"
+            android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.CardChargeActivity"
+            android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.ChangePasswordActivity"
+            android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.ChangePayPasswordActivity"
+            android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.ChangeCardPasswordActivity"
+            android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.ChangePasswordQuestionAcitivy"
+            android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.ChangeMobileActivity"
+            android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.ChooseCompanyActivity"
+            android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.ChoosePeriodActivity"
+            android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.ChoosePropertiesActivity"
+            android:label="南博卡"></activity>
 
-        <activity android:name=".activity.LoginByPasswordActivity"></activity>
-        <activity android:name=".activity.LoginByVerifycodeActivity"></activity>
+        <activity
+            android:name=".activity.LoginByPasswordActivity"
+            android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.LoginByVerifycodeActivity"
+            android:label="南博卡"></activity>
 
-        <activity android:name=".activity.MyCardsActivity"></activity>
-        <activity android:name=".activity.MyBillsActivity"></activity>
-        <activity android:name=".activity.MyOrderActivity"></activity>
+        <activity
+            android:name=".activity.MyCardsActivity"
+            android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.MyBillsActivity"
+            android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.MyOrderActivity"
+            android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.MyAddressActivity"
+            android:label="南博卡"></activity>
 
-        <activity android:name=".activity.OrderDetailActivity"></activity>
-        <activity android:name=".activity.OrderDetailCommitActivity"></activity>
-        <activity android:name=".activity.OrderDetailCancelActivity"></activity>
-        <activity android:name=".activity.OrderDetailItemActivity"></activity>
+        <activity
+            android:name=".activity.OrderDetailActivity"
+            android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.OrderDetailCommitActivity"
+            android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.OrderDetailCancelActivity"
+            android:label="南博卡"></activity>
 
-        <activity android:name=".activity.SettingsActivity"></activity>
+        <activity
+            android:name=".activity.SettingsActivity"
+            android:label="南博卡"></activity>
 
-        <activity android:name=".activity.ProductDetailsActivity"></activity>
+        <activity
+            android:name=".activity.ProductDetailsActivity"
+            android:label="南博卡"></activity>
 
-        <activity android:name=".activity.WegQueryTransActivity"></activity>
-        <activity android:name=".activity.WebActivity"></activity>
+        <activity
+            android:name=".activity.WegQueryTransActivity"
+            android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.WebActivity"
+            android:label="南博卡"></activity>
     </application>
 </manifest>
