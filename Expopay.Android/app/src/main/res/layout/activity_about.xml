@@ -47,6 +47,7 @@
                 android:layout_weight="1">
 
                 <ImageView
+                    android:onClick="phoneOnclick"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
@@ -55,6 +56,7 @@
                     android:src="@mipmap/aboutme_phone" />
 
                 <ImageView
+                    android:onClick="emailOnclick"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
@@ -63,6 +65,7 @@
                     android:src="@mipmap/aboutme_email" />
 
                 <ImageView
+                    android:onClick="netOnclick"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
@@ -77,6 +80,7 @@
                 android:layout_weight="1">
 
                 <ImageView
+                    android:onClick="advanceOnclick"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
@@ -85,6 +89,7 @@
                     android:src="@mipmap/aboutme_advance" />
 
                 <ImageView
+                    android:onClick="versionOnclick"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"

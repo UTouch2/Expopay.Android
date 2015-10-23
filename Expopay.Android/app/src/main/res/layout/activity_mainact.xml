@@ -4,12 +4,6 @@
     android:layout_height="match_parent"
     tools:context="com.kechong.ui.activity.MainActivity"
     tools:ignore="MergeRootFrame">
-    <include
-        android:id="@+id/actionbar"
-        layout="@layout/view_myactionbar"
-        android:layout_width="match_parent"
-        android:layout_height="66dp">
-    </include>
     <LinearLayout
         android:id="@+id/main_tabs"
         android:layout_width="match_parent"
@@ -104,7 +98,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/main_tabs"
-        android:layout_below="@id/actionbar"
         android:fadingEdge="none">
 
         <android.support.v4.view.ViewPager
