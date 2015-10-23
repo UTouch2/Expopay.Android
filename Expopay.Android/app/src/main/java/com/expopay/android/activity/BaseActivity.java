@@ -34,29 +34,6 @@ public class BaseActivity extends AbsFragmentActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
-        if (mActionbar != null) {
-            mActionbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3D3D3C")));
-            mActionbar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-            mActionbar.setDisplayShowCustomEnabled(true);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-              setActionBar(null);
-            }else{
-                mActionbar.setCustomView(R.layout.view_myactionbar);
-            }
-            tvTitle = (TextView) mActionbar.getCustomView().findViewById(R.id.title);
-            mActionbar.getCustomView().findViewById(R.id.leftbutton).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
-            mActionbar.getCustomView().findViewById(R.id.rightbutton).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-        }
     }
 
     @Override
@@ -76,16 +53,4 @@ public class BaseActivity extends AbsFragmentActivity {
        // if (initCustomActionBar())
        // tvTitle.setText(title);
     }
-
-    protected void showAsAction(boolean flag) {
-        // i.setShowAsAction(flag ? MenuItem.SHOW_AS_ACTION_ALWAYS : MenuItem.SHOW_AS_ACTION_NEVER);
-    }
-
-    private void initActionbar() {
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(false);
-    }
-
-
 }
