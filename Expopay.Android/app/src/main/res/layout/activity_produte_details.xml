@@ -2,18 +2,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context="com.expopay.android.activity.ProductDetailsActivity">
 
+    <include
+        android:id="@+id/actionbar"
+        layout="@layout/view_myactionbar"
+        android:layout_width="match_parent"
+        android:layout_height="66dp">
+    </include>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/actionbar"
         android:orientation="vertical">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:adjustViewBounds="true"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@mipmap/mall_mobile"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,24 +36,22 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Apple iPhone 6S 移动联通电信4G手机"
-                android:textSize="20dp" />
+                android:text="Apple iPhone 6S 移动联通电信4G手机" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="正品行货  全国联保"
-                android:textSize="20dp" />
+                android:text="正品行货  全国联保" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="￥5288.00"
-                android:textColor="#FF0000"
-                android:textSize="25dp" />
+                android:textColor="#FF0000" />
         </LinearLayout>
 
         <RelativeLayout
+            android:id="@+id/imageStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -59,8 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="已选"
-                android:textSize="20dp" />
+                android:text="已选"/>
 
             <TextView
                 android:id="@+id/tvSelected"
@@ -70,13 +75,12 @@
                 android:layout_marginLeft="20dp"
                 android:layout_toEndOf="@+id/tv"
                 android:layout_toRightOf="@+id/tv"
-                android:text="金色 64G 非合约机"
-                android:textSize="20dp" />
+                android:text="金色 64G 非合约机" />
 
-            <ImageButton
-                android:id="@+id/imageStyle"
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="#FFFFFF"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:src="@mipmap/mall_more" />
@@ -84,6 +88,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/imageInstallment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#EEEEEE"
@@ -98,8 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="分期"
-                android:textSize="20dp" />
+                android:text="分期" />
 
             <TextView
                 android:id="@+id/tvStaging"
@@ -109,13 +113,12 @@
                 android:layout_marginLeft="20dp"
                 android:layout_toEndOf="@+id/tv1"
                 android:layout_toRightOf="@+id/tv1"
-                android:text="12期 (522+12)X12=5288"
-                android:textSize="20dp" />
+                android:text="12期 (522+12)X12=5288" />
 
-            <ImageButton
-                android:id="@+id/imageInstallment"
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="#EEEEEE"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:src="@mipmap/mall_more" />
@@ -126,11 +129,13 @@
             android:id="@+id/btnDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:gravity="left"
             android:background="#FFFFFF"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:text="详情"
-            android:textSize="20dp" />
+            android:textColor="#666666"/>
 
     </LinearLayout>
 
@@ -138,11 +143,11 @@
         android:id="@+id/btnImmediatelyOrder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#23A4F7"
+        android:background="@drawable/_button"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:text="立即下单"
-        android:textSize="25dp"
+        android:textSize="20dp"
         android:textColor="#FFFFFF"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"

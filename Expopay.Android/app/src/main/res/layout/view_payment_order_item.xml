@@ -31,8 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:text="缴纳水费"
-                    android:textSize="20dp" />
+                    android:text="缴纳水费" />
 
                 <TextView
                     android:id="@+id/pricePaymentOrder"
@@ -40,8 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="￥18.80"
-                    android:textColor="#FF0000"
-                    android:textSize="20dp" />
+                    android:textColor="#FF0000" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -54,8 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:text="2015年9月30日"
-                    android:textSize="18dp" />
+                    android:text="2015年9月30日" />
 
                 <TextView
                     android:id="@+id/statePaymentOrder"
@@ -63,8 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="已完成"
-                    android:textColor="#00FF00"
-                    android:textSize="18dp" />
+                    android:textColor="#00FF00" />
             </RelativeLayout>
         </LinearLayout>
 
