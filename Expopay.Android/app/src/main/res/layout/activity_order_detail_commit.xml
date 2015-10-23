@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     tools:context="com.expopay.android.activity.OrderDetailCommitActivity">
 
     <LinearLayout
@@ -32,16 +33,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:text="缴纳水费"
-                    android:textSize="20dp" />
+                    android:text="缴纳水费" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="￥18.80"
-                    android:textColor="#FF0000"
-                    android:textSize="20dp" />
+                    android:textColor="#FF0000" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -53,16 +52,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:text="白色 16G x1"
-                    android:textSize="18dp" />
+                    android:text="白色 16G x1"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="已完成"
-                    android:textColor="#00FF00"
-                    android:textSize="18dp" />
+                    android:textColor="#00FF00" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
@@ -80,8 +77,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="分期"
-            android:textSize="20dp" />
+            android:text="分期" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -91,7 +87,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:text="12期 (522+12)x12=5288"
-                android:textSize="20dp"
                 android:textColor="#AAAAAA"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -99,7 +94,6 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
                 android:text="每期应还款534元"
-                android:textSize="20dp"
                 android:textColor="#AAAAAA"/>
         </LinearLayout>
     </LinearLayout>
@@ -126,21 +120,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="收件人："
-                    android:textSize="20dp"/>
+                    android:text="收件人："/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="克里斯"
-                    android:textSize="20dp"/>
+                    android:text="克里斯"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
                     android:src="@mipmap/mall_phone"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
                     android:text="13666666666"/>
             </LinearLayout>
             <LinearLayout
@@ -155,7 +147,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
                     android:text="云南省昆明市五华区海源中路1088号和成国际A座25楼"/>
 
             </LinearLayout>
@@ -164,6 +155,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:background="#F8F8F8"
             android:layout_weight="1"
             android:src="@mipmap/mall_more"/>
     </LinearLayout>
@@ -171,9 +163,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:background="#FFFFFF"
         android:text="物流信息"
-        android:textSize="20dp"
         android:layout_below="@+id/linearLayout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

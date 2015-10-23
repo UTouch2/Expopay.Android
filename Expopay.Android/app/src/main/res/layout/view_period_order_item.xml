@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="10dp">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -31,8 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:text="Apple iPhone 6S"
-                    android:textSize="20dp" />
+                    android:text="Apple iPhone 6S" />
 
                 <TextView
                     android:id="@+id/priceInstallmentOrder"
@@ -40,8 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="￥5288.00"
-                    android:textColor="#FF0000"
-                    android:textSize="20dp" />
+                    android:textColor="#FF0000" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -54,16 +52,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:text="白色 16G x1"
-                    android:textSize="18dp" />
+                    android:text="白色 16G x1" />
 
                 <TextView
                     android:id="@+id/installmentOrder"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="12期"
-                    android:textSize="20dp" />
+                    android:text="12期" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -76,8 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:text="2015年9月30日"
-                    android:textSize="20dp" />
+                    android:text="2015年9月30日" />
 
                 <TextView
                     android:id="@+id/stateInstallmentOrder"
@@ -85,8 +80,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="待审核"
-                    android:textColor="#00FF00"
-                    android:textSize="18dp" />
+                    android:textColor="#00FF00" />
             </RelativeLayout>
         </LinearLayout>
 

@@ -66,6 +66,7 @@
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="#F9F9F9"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:src="@mipmap/mall_more"/>
