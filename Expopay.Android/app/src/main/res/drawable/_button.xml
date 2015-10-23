@@ -4,7 +4,7 @@
         <shape android:shape="rectangle">
             <!-- 主体渐变 startColor开始颜色，endColor结束颜色,
              angle开始渐变的角度（值只能为90的倍数，0时为左到右渐变，90时为下到上渐变，依次逆时针类推-->
-            <gradient android:startColor="#23A4F7" android:endColor="#0d76e1" android:angle="270" />
+            <gradient android:startColor="#23A4F7" android:endColor="#F8F8F8" android:angle="270" />
             <!-- 边框 -->
             <stroke android:width="0dip" android:color="#f403c9" />
             <!-- 填充的颜色 -->
