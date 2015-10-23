@@ -10,7 +10,7 @@ import com.expopay.android.R;
 
 public class ChoosePeriodActivity extends BaseActivity implements View.OnClickListener{
 
-    private String str_periods;
+    private String str_periods = "12期";
 
     private ImageButton imageButton;
     private Button installment3;

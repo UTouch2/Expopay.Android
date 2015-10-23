@@ -10,8 +10,8 @@ import com.expopay.android.R;
 
 public class ChoosePropertiesActivity extends BaseActivity implements View.OnClickListener{
 
-    private static String str_colour;
-    private static String str_g;
+    private static String str_colour = "黑色";
+    private static String str_g = "16G";
 
     private ImageButton imgBtnCancle;
     private Button colourBlack;
