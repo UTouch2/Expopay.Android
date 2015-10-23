@@ -7,7 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.expopay.android.R;
+import com.expopay.android.activity.AboutActivity;
+import com.expopay.android.activity.MyBillsActivity;
 import com.expopay.android.activity.MyCardsActivity;
+import com.expopay.android.activity.MyOrderActivity;
 import com.expopay.android.activity.SettingsActivity;
 
 /**
@@ -28,6 +31,28 @@ public class MyAccFragment extends  BaseFragment {
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(getActivity(), SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        view.findViewById(R.id.account_aboutme).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(getActivity(), AboutActivity.class);
+                startActivity(intent);
+            }
+        });
+        view.findViewById(R.id.account_bill).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(getActivity(), MyBillsActivity.class);
+                startActivity(intent);
+            }
+        });
+        view.findViewById(R.id.account_order).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(getActivity(), AboutActivity.class);
                 startActivity(intent);
             }
         });
