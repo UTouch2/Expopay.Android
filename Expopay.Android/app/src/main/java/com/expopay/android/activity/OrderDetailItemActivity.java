@@ -2,6 +2,7 @@ package com.expopay.android.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
 
 import com.expopay.android.R;
 
@@ -13,11 +14,16 @@ public class OrderDetailItemActivity extends ActionBarActivity {
         setContentView(R.layout.activity_order_detail_item);
     }
 
-    private void btnCancel(){
+    public void btnCancel(View view){
         finish();
     }
 
-    private void btnOk(){
+    public void btnOk(View view){
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
         finish();
     }
 }

@@ -30,7 +30,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:onClick="btncCancel"/>
+            android:onClick="btnCancel"/>
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
