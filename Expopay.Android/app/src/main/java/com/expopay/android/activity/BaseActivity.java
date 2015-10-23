@@ -17,7 +17,6 @@ import android.widget.Toolbar;
 
 import com.android.kechong.lib.AbsFragmentActivity;
 import com.expopay.android.R;
-
 /**
  * Created by misxu012 on 2015/10/16.
  */
@@ -35,6 +34,29 @@ public class BaseActivity extends AbsFragmentActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
+        if (mActionbar != null) {
+            mActionbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#3D3D3C")));
+            mActionbar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+            mActionbar.setDisplayShowCustomEnabled(true);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+              setActionBar(null);
+            }else{
+                mActionbar.setCustomView(R.layout.view_myactionbar);
+            }
+            tvTitle = (TextView) mActionbar.getCustomView().findViewById(R.id.title);
+            mActionbar.getCustomView().findViewById(R.id.leftbutton).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+            mActionbar.getCustomView().findViewById(R.id.rightbutton).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+        }
     }
 
     @Override
@@ -51,8 +73,8 @@ public class BaseActivity extends AbsFragmentActivity {
     }
 
     public void setTitle(String title) {
-        // if (initCustomActionBar())
-        // tvTitle.setText(title);
+       // if (initCustomActionBar())
+       // tvTitle.setText(title);
     }
 
     protected void showAsAction(boolean flag) {
