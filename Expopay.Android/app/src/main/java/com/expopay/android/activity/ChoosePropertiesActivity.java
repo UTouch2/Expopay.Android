@@ -1,7 +1,6 @@
 package com.expopay.android.activity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -118,19 +117,15 @@ public class ChoosePropertiesActivity extends BaseActivity implements View.OnCli
             case 1:
                 // 当点击了按钮installment3时，改变控件的背景图片
                 colourBlack.setBackgroundResource(R.mipmap.mall_outline);
-                colourBlack.setTextColor(Color.RED);
                 break;
             case 2:
                 colourWhite.setBackgroundResource(R.mipmap.mall_outline);
-                colourWhite.setTextColor(Color.RED);
                 break;
             case 3:
                 colourGolden.setBackgroundResource(R.mipmap.mall_outline);
-                colourGolden.setTextColor(Color.RED);
                 break;
             case 4:
                 colourGoldPink.setBackgroundResource(R.mipmap.mall_outline);
-                colourGoldPink.setTextColor(Color.RED);
                 break;
             default:
                 break;
@@ -145,15 +140,12 @@ public class ChoosePropertiesActivity extends BaseActivity implements View.OnCli
             case 5:
                 // 当点击了按钮installment5时，改变控件的背景图片
                 g16.setBackgroundResource(R.mipmap.mall_outline);
-                g16.setTextColor(Color.RED);
                 break;
             case 6:
                 g64.setBackgroundResource(R.mipmap.mall_outline);
-                g64.setTextColor(Color.RED);
                 break;
             case 7:
                 g128.setBackgroundResource(R.mipmap.mall_outline);
-                g128.setTextColor(Color.RED);
                 break;
             default:
                 break;
@@ -163,23 +155,16 @@ public class ChoosePropertiesActivity extends BaseActivity implements View.OnCli
     //清除掉所有的手机颜色选中状态
     private void clearColourSelection() {
         colourBlack.setBackgroundResource(R.mipmap.mall_unoutline);
-        colourBlack.setTextColor(Color.BLACK);
         colourWhite.setBackgroundResource(R.mipmap.mall_unoutline);
-        colourWhite.setTextColor(Color.BLACK);
         colourGolden.setBackgroundResource(R.mipmap.mall_unoutline);
-        colourGolden.setTextColor(Color.BLACK);
         colourGoldPink.setBackgroundResource(R.mipmap.mall_unoutline);
-        colourGoldPink.setTextColor(Color.BLACK);
     }
 
     //清除掉所有的手机内存选中状态
     private void clearGSelection() {
         g16.setBackgroundResource(R.mipmap.mall_unoutline);
-        g16.setTextColor(Color.BLACK);
         g64.setBackgroundResource(R.mipmap.mall_unoutline);
-        g64.setTextColor(Color.BLACK);
         g128.setBackgroundResource(R.mipmap.mall_unoutline);
-        g128.setTextColor(Color.BLACK);
     }
 
 }

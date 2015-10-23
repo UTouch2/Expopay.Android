@@ -1,7 +1,6 @@
 package com.expopay.android.activity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -112,31 +111,24 @@ public class ChoosePeriodActivity extends BaseActivity implements View.OnClickLi
             case 3:
                 // 当点击了按钮installment3时，改变控件的背景图片
                 installment3.setBackgroundResource(R.mipmap.mall_outline);
-                installment3.setTextColor(Color.RED);
                 break;
             case 6:
                 installment6.setBackgroundResource(R.mipmap.mall_outline);
-                installment6.setTextColor(Color.RED);
                 break;
             case 9:
                 installment9.setBackgroundResource(R.mipmap.mall_outline);
-                installment9.setTextColor(Color.RED);
                 break;
             case 12:
                 installment12.setBackgroundResource(R.mipmap.mall_outline);
-                installment12.setTextColor(Color.RED);
                 break;
             case 15:
                 installment15.setBackgroundResource(R.mipmap.mall_outline);
-                installment15.setTextColor(Color.RED);
                 break;
             case 18:
                 installment18.setBackgroundResource(R.mipmap.mall_outline);
-                installment18.setTextColor(Color.RED);
                 break;
             case 24:
                 installment24.setBackgroundResource(R.mipmap.mall_outline);
-                installment24.setTextColor(Color.RED);
                 break;
             default:
 
@@ -147,19 +139,12 @@ public class ChoosePeriodActivity extends BaseActivity implements View.OnClickLi
     //清除掉所有的选中状态
     private void clearSelection() {
         installment3.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment3.setTextColor(Color.BLACK);
         installment6.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment6.setTextColor(Color.BLACK);
         installment9.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment9.setTextColor(Color.BLACK);
         installment12.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment12.setTextColor(Color.BLACK);
         installment15.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment15.setTextColor(Color.BLACK);
         installment18.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment18.setTextColor(Color.BLACK);
         installment24.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment24.setTextColor(Color.BLACK);
     }
 
 }
