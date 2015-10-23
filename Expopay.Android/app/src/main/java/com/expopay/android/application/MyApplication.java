@@ -7,4 +7,5 @@ import android.app.Application;
  */
 public class MyApplication extends Application {
     public final static String HOST= "";
+    public static final String PHONE = "400-022-7299";
 }
