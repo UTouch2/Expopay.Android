@@ -5,19 +5,12 @@
     android:background="#FFFFFF"
     tools:context="com.expopay.android.activity.OrderDetailActivity">
 
-    <include
-        android:id="@+id/actionbar"
-        layout="@layout/view_myactionbar"
-        android:layout_width="match_parent"
-        android:layout_height="66dp">
-    </include>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#F9F9F9"
         android:orientation="horizontal"
-        android:layout_below="@+id/actionbar"
+        android:layout_alignParentTop=""
         android:layout_alignParentLeft="true"
         android:padding="10dp"
         android:id="@+id/linearLayout">
@@ -171,6 +164,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
         android:layout_above="@+id/btnSubmit"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
