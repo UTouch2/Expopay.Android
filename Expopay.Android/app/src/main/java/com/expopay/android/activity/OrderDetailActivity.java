@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +24,12 @@ public class OrderDetailActivity extends BaseActivity {
     private TextView repaymentPeriod;
     private TextView serviceAmount;
     private TextView cancelPeriodAmount;
+    private TextView orderStatus;
+    private TextView orderNumber;
+    private TextView transcationCode;
+    private TextView orderTime;
     private CheckBox checkBox;
+    private ListView lvLogistics;
 
     private void assignViews() {
         llAddress = (LinearLayout) findViewById(R.id.llAddress);
@@ -37,7 +43,12 @@ public class OrderDetailActivity extends BaseActivity {
         repaymentPeriod = (TextView) findViewById(R.id.repaymentPeriod);
         serviceAmount = (TextView) findViewById(R.id.serviceAmount);
         cancelPeriodAmount = (TextView) findViewById(R.id.cancelPeriodAmount);
+        orderStatus = (TextView) findViewById(R.id.orderStatus);
+        orderNumber = (TextView) findViewById(R.id.orderNumber);
+        transcationCode = (TextView) findViewById(R.id.transcationCode);
+        orderTime = (TextView) findViewById(R.id.orderTime);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
+        lvLogistics = (ListView) findViewById(R.id.lvLogistics);
     }
 
 
@@ -71,6 +82,10 @@ public class OrderDetailActivity extends BaseActivity {
         consigneeName.setText("克里斯");
         consigneeMobile.setText("13600000000");
         consigneeAddress.setText("云南省昆明市五华区海源中路1088号和成国际A座25楼");
+        orderStatus.setText("已完成");
+        orderNumber.setText("1234567890");
+        transcationCode.setText("交易流水号:678839903987484");
+        orderTime.setText("交易时间：2015-09-26  00:00:00");
     }
 
 }
