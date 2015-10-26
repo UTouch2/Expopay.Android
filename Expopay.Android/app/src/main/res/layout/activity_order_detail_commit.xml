@@ -26,7 +26,7 @@ tools:context="com.expopay.android.activity.OrderDetailActivity">
                 android:layout_height="wrap_content"
                 android:text="收件人："/>
             <TextView
-                android:id="@+id/consigneeName"
+                android:id="@+id/commitConsignee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="克里斯"/>
@@ -36,7 +36,7 @@ tools:context="com.expopay.android.activity.OrderDetailActivity">
                 android:layout_marginLeft="20dp"
                 android:src="@mipmap/mall_phone"/>
             <TextView
-                android:id="@+id/consigneeMobile"
+                android:id="@+id/commitConsigneeMobile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="13666666666"/>
@@ -50,7 +50,7 @@ tools:context="com.expopay.android.activity.OrderDetailActivity">
                 android:layout_height="wrap_content"
                 android:src="@mipmap/mall_address"/>
             <TextView
-                android:id="@+id/consigneeAddress"
+                android:id="@+id/commitConsigneeAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="云南省昆明市五华区海源中路1088号和成国际A座25楼"/>
@@ -78,7 +78,7 @@ tools:context="com.expopay.android.activity.OrderDetailActivity">
     android:layout_alignParentStart="true"
     android:id="@+id/linearLayout2">
     <ImageView
-        android:id="@+id/productImg"
+        android:id="@+id/commitProductImg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -89,7 +89,7 @@ tools:context="com.expopay.android.activity.OrderDetailActivity">
         android:layout_gravity="center_vertical"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/productName"
+            android:id="@+id/commitProductName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Apple iPhone 6S 移动联通电信4G手机"/>
@@ -103,7 +103,7 @@ tools:context="com.expopay.android.activity.OrderDetailActivity">
                 android:layout_height="wrap_content"
                 android:text="已选"/>
             <TextView
-                android:id="@+id/properties"
+                android:id="@+id/commitProperties"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -116,7 +116,7 @@ tools:context="com.expopay.android.activity.OrderDetailActivity">
             android:layout_marginTop="5dp"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/orderAmount"
+                android:id="@+id/commitOrderAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="￥5288.00"
@@ -153,14 +153,14 @@ tools:context="com.expopay.android.activity.OrderDetailActivity">
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/repaymentPeriod"
+                android:id="@+id/commitRepaymentPeriod"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:text="12期 "
                 android:textColor="#AAAAAA"/>
             <TextView
-                android:id="@+id/serviceAmount"
+                android:id="@+id/commitServiceAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -168,7 +168,7 @@ tools:context="com.expopay.android.activity.OrderDetailActivity">
                 android:textColor="#AAAAAA"/>
         </LinearLayout>
         <TextView
-            android:id="@+id/periodAmount"
+            android:id="@+id/commitPeriodAmount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -219,7 +219,6 @@ tools:context="com.expopay.android.activity.OrderDetailActivity">
     android:id="@+id/btnSubmit"
     android:layout_alignParentBottom="true"
     android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:onClick="btnCommit"/>
+    android:layout_alignParentStart="true"/>
 
 </RelativeLayout>

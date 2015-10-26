@@ -14,7 +14,7 @@
         android:id="@+id/linearLayout5">
 
         <ImageView
-            android:id="@+id/commitProductImg"
+            android:id="@+id/productImg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -32,14 +32,14 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/commitProductName"
+                    android:id="@+id/productName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:text="iPhone" />
 
                 <TextView
-                    android:id="@+id/commitOrderAmount"
+                    android:id="@+id/orderAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -53,14 +53,14 @@
                 android:layout_marginTop="10dp">
 
                 <TextView
-                    android:id="@+id/commitProperties"
+                    android:id="@+id/properties"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:text="白色 16G x1"/>
 
                 <TextView
-                    android:id="@+id/commitOrderStatus"
+                    android:id="@+id/orderStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -93,14 +93,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
-                    android:id="@+id/commitRepaymentPeriod"
+                    android:id="@+id/repaymentPeriod"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:text="12期 "
                     android:textColor="#AAAAAA"/>
                 <TextView
-                    android:id="@+id/commitServiceAmount"
+                    android:id="@+id/serviceAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -108,7 +108,7 @@
                     android:textColor="#AAAAAA"/>
             </LinearLayout>
             <TextView
-                android:id="@+id/commitPeriodAmount"
+                android:id="@+id/periodAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -142,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:text="收件人："/>
                 <TextView
-                    android:id="@+id/commitConsignee"
+                    android:id="@+id/consigneeName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="克里斯"/>
@@ -152,7 +152,7 @@
                     android:layout_marginLeft="30dp"
                     android:src="@mipmap/mall_phone"/>
                 <TextView
-                    android:id="@+id/commitConsigneeMobile"
+                    android:id="@+id/consigneeMobile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="13666666666"/>
@@ -167,7 +167,7 @@
                     android:layout_height="wrap_content"
                     android:src="@mipmap/mall_address"/>
                 <TextView
-                    android:id="@+id/commitConsigneeAddress"
+                    android:id="@+id/consigneeAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="云南省昆明市五华区海源中路1088号和成国际A座25楼"/>
@@ -223,7 +223,7 @@
                 android:layout_height="wrap_content"
                 android:text="订单编号："/>
             <TextView
-                android:id="@+id/commitOrderNumber"
+                android:id="@+id/orderNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1234567890"/>
@@ -238,7 +238,7 @@
                 android:layout_height="wrap_content"
                 android:text="交易流水号："/>
             <TextView
-                android:id="@+id/commitTranscationCode"
+                android:id="@+id/transcationCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="9876543456789"/>
@@ -253,7 +253,7 @@
                 android:layout_height="wrap_content"
                 android:text="交易时间："/>
             <TextView
-                android:id="@+id/commitOrderTime"
+                android:id="@+id/orderTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2015-09-26  00:00:00"/>
