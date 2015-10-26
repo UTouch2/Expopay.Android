@@ -10,34 +10,37 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.expopay.android.R;
+import com.expopay.android.activity.LoginByVerifycodeActivity;
 import com.expopay.android.activity.WebActivity;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
 
 /**
  * Created by misxu012 on 2015/10/20.
  */
-public class MainFragment extends  BaseFragment {
+public class MainFragment extends BaseFragment {
     int size = 3;
-    ImageView [] bannerViews;
+    ImageView[] bannerViews;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.fragment_main,container,false);
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
         view.findViewById(R.id.main_service).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), WebActivity.class);
-                intent.putExtra("url","http://www.baidu.com");
-                intent.putExtra("title","便民服务");
+                intent.putExtra("url", "http://www.baidu.com");
+                intent.putExtra("title", "便民服务");
                 startActivity(intent);
             }
         });
-        view. findViewById(R.id.main_water).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.main_water).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity(), LoginByVerifycodeActivity.class);
+                startActivity(intent);
             }
         });
-        view. findViewById(R.id.main_power).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.main_power).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -49,13 +52,13 @@ public class MainFragment extends  BaseFragment {
 
             }
         });
-        view. findViewById(R.id.main_merchant).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.main_merchant).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-        view. findViewById(R.id.main_buycard).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.main_buycard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
