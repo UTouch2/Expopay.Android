@@ -27,14 +27,11 @@ public class BannerPagerAdapter extends PagerAdapter {
      */
     @Override
     public int getCount() {
-        // Log.v(TAG, "getCount" + views.size());
         return Integer.MAX_VALUE;
     }
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-
-        // Log.v(TAG, "isViewFromObject" + (view == object));
         return view == object;
     }
 
