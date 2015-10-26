@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class OrderDetailActivity extends BaseActivity {
     private TextView serviceAmount;
     private TextView cancelPeriodAmount;
     private CheckBox checkBox;
+    private ListView lvLogistics;
 
     private void assignViews() {
         llAddress = (LinearLayout) findViewById(R.id.llAddress);
@@ -38,6 +40,7 @@ public class OrderDetailActivity extends BaseActivity {
         serviceAmount = (TextView) findViewById(R.id.serviceAmount);
         cancelPeriodAmount = (TextView) findViewById(R.id.cancelPeriodAmount);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
+        lvLogistics = (ListView) findViewById(R.id.lvLogistics);
     }
 
 

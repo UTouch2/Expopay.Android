@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,7 +23,6 @@ public class OrderDetailCommitActivity extends BaseActivity {
     private TextView commitConsignee;
     private TextView commitConsigneeMobile;
     private TextView commitConsigneeAddress;
-    private ListView lvLogistics;
     private TextView commitOrderNumber;
     private TextView commitTranscationCode;
     private TextView commitOrderTime;
@@ -42,7 +40,6 @@ public class OrderDetailCommitActivity extends BaseActivity {
         commitConsignee = (TextView) findViewById(R.id.commitConsignee);
         commitConsigneeMobile = (TextView) findViewById(R.id.commitConsigneeMobile);
         commitConsigneeAddress = (TextView) findViewById(R.id.commitConsigneeAddress);
-        lvLogistics = (ListView) findViewById(R.id.lvLogistics);
         commitOrderNumber = (TextView) findViewById(R.id.commitOrderNumber);
         commitTranscationCode = (TextView) findViewById(R.id.commitTranscationCode);
         commitOrderTime = (TextView) findViewById(R.id.commitOrderTime);
