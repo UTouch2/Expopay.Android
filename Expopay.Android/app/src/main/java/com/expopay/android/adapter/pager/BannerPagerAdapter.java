@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewStub;
 
 /**
@@ -19,26 +20,41 @@ public class BannerPagerAdapter extends PagerAdapter {
         super();
         this.views = views;
     }
+
+
+    /**
+     * 获取当前页面数
+     */
     @Override
     public int getCount() {
+        // Log.v(TAG, "getCount" + views.size());
         return Integer.MAX_VALUE;
     }
-    @Override
-    public boolean isViewFromObject(View arg0, Object arg1) {
-        return arg0 == (arg1);
-    }
-    @Override
-    public Object instantiateItem(View arg0, int arg1) {
-        ((ViewPager) arg0).addView(views[arg1], 0);
-        return views[arg1];
-    }
 
     @Override
-    public void restoreState(Parcelable arg0, ClassLoader arg1) {
+    public boolean isViewFromObject(View view, Object object) {
 
+        // Log.v(TAG, "isViewFromObject" + (view == object));
+        return view == object;
     }
+
+    /**
+     * 适配器给container容器添加视图
+     */
     @Override
-    public Parcelable saveState() {
-        return null;
+    public Object instantiateItem(ViewGroup container, int position) {
+        position = position % views.length;
+        View v = views[position];
+        container.addView(v, 0);
+        return v;
+    }
+
+    /**
+     * 适配器移除container容器中的视图
+     */
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        position = position % views.length;
+        container.removeView(views[position]);
     }
 }
