@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="0.5dp"
             android:layout_weight="1"
-            android:background="@drawable/_rectangle_bg"
+            android:background="@drawable/_square_bg"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="0.5dp"
             android:layout_weight="1"
-            android:background="@drawable/_rectangle_bg"
+            android:background="@drawable/_square_bg"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="0.5dp"
             android:layout_weight="1"
-            android:background="@drawable/_rectangle_bg"
+            android:background="@drawable/_square_bg"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -109,7 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/_rectangle_bg"
+            android:background="@drawable/_square_bg"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -142,7 +142,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="0.5dp"
             android:layout_weight="1"
-            android:background="@drawable/_rectangle_bg"
+            android:background="@drawable/_square_bg"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -167,7 +167,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="0.5dp"
             android:layout_weight="1"
-            android:background="@drawable/_rectangle_bg"
+            android:background="@drawable/_square_bg"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -193,7 +193,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="0.5dp"
             android:layout_weight="1"
-            android:background="@drawable/_rectangle_bg"
+            android:background="@drawable/_square_bg"
             android:gravity="center"
             android:orientation="vertical">
 
