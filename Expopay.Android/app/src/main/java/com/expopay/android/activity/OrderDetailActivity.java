@@ -51,26 +51,26 @@ public class OrderDetailActivity extends BaseActivity {
         llAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(OrderDetailActivity.this, "ÊÕ»õµØÖ·£º", Toast.LENGTH_SHORT).show();
+                Toast.makeText(OrderDetailActivity.this, "æ”¶è·åœ°å€ï¼š", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     public void btnCommit(View view) {
-        Toast.makeText(this, "Ìá½»¶©µ¥", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "æäº¤è®¢å•", Toast.LENGTH_SHORT).show();
     }
 
     private void setTextView(){
         productImg.setImageResource(R.mipmap.mall_mobile);
         productName.setText("iPhone6S");
-        properties.setText("°×É« 32G");
-        orderAmount.setText("5200.00");
-        repaymentPeriod.setText("12ÆÚ");
-        serviceAmount.setText("12Ôª");
-        cancelPeriodAmount.setText("Ã¿ÆÚ»¹¿î470Ôª");
-        consigneeName.setText("¿ËÀïË¹");
+        properties.setText("ç™½è‰²");
+        orderAmount.setText("5200");
+        repaymentPeriod.setText("12æœŸ");
+        serviceAmount.setText("12å…ƒ");
+        cancelPeriodAmount.setText("æ¯æœŸè¿˜æ¬¾470å…ƒ");
+        consigneeName.setText("å…‹é‡Œæ–¯");
         consigneeMobile.setText("13600000000");
-        consigneeAddress.setText("ÔÆÄÏÊ¡À¥Ã÷ÊĞÎå»ªÇøº£Ô´ÖĞÂ·1088ºÅºÍ³É¹ú¼ÊA×ù25Â¥");
+        consigneeAddress.setText("äº‘å—çœæ˜†æ˜å¸‚äº”ååŒºæµ·æºä¸­è·¯1088å·å’Œæˆå›½é™…Aåº§25æ¥¼");
     }
 
 }

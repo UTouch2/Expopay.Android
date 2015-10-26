@@ -37,12 +37,12 @@ public class PeriodOrderFragment extends Fragment {
         List<PeriodOrderEntity> list = new ArrayList<PeriodOrderEntity>();
         for(int i = 0;i<10;i++){
             PeriodOrderEntity po = new PeriodOrderEntity();
-            po.setProductName("iPhone6S4GÊÖ»ú"+i);
+            po.setProductName("iPhone6S4G"+i);
             po.setOrderAmount("5200.00");
-            po.setProperties("°×É«");
-            po.setRepaymentPeriod("12ÆÚ");
+            po.setProperties("yu");
+            po.setRepaymentPeriod("12æœŸ");
             po.setOrderTime("2015-09-26");
-            po.setOrderStatus("ÒÑÍê³É");
+            po.setOrderStatus("æœªå®Œæˆ");
             list.add(po);
         }
         return list ;

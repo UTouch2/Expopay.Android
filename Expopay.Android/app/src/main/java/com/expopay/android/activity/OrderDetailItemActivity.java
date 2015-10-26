@@ -42,7 +42,7 @@ public class OrderDetailItemActivity extends BaseActivity {
         itemBlank.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(OrderDetailItemActivity.this, "·µ»ØÈ¥", Toast.LENGTH_SHORT).show();
+                Toast.makeText(OrderDetailItemActivity.this, "ï¿½ï¿½ï¿½ï¿½È¥", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -52,10 +52,10 @@ public class OrderDetailItemActivity extends BaseActivity {
         itemProductImg.setImageResource(R.mipmap.mall_mobile);
         itemProductName.setText("iPhone6S");
         itemOrderNumber.setText("1234567890");
-        itemTranscationCode.setText("½»Ò×Á÷Ë®ºÅ:678839903987484");
-        itemPayCode.setText("Ö§¸¶Á÷Ë®ºÅ£º23456787655678");
-        itemOrderTime.setText("½»Ò×Ê±¼ä£º2015-09-26  00:00:00");
-        itemOrderStatus.setText("Î´Íê³É");
+        itemTranscationCode.setText("äº¤æ˜“æµæ°´å·:678839903987484");
+        itemPayCode.setText("æ”¯ä»˜æµæ°´å·ï¼š23456787655678");
+        itemOrderTime.setText("äº¤æ˜“æ—¶é—´ï¼š2015-09-26  00:00:00");
+        itemOrderStatus.setText("æœªå®Œæˆ");
 
     }
 

@@ -50,20 +50,19 @@ public class OrderDetailCancelActivity extends BaseActivity {
     }
 
     private void setTextView(){
-        cancelProductImg.setImageResource(R.mipmap.mall_mobile);
         cancelProductName.setText("iPhone6S");
         cancelOrderAmmount.setText("5200.00");
-        cancelProperties.setText("°×É« 32G");
-        cancelOrderStatus.setText("ÒÑÍê³É");
-        cancelRepaymentPeriod.setText("12ÆÚ");
-        cancelServiceAmount.setText("£¨440+30£©x"+12+"="+(440+30)*12);
-        cancelPeriodAmount.setText("Ã¿ÆÚ»¹¿î"+470+"Ôª");
-        cancelConsignee.setText("¿ËÀïË¹");
+        cancelProperties.setText("ç™½è‰² 32G");
+        cancelOrderStatus.setText("å·²å®Œæˆ");
+        cancelRepaymentPeriod.setText("12æœŸ");
+        cancelServiceAmount.setText("ï¼ˆ440+30ï¼‰x"+12+"="+(440+30)*12);
+        cancelPeriodAmount.setText("æ¯æœŸè¿˜æ¬¾"+470+"å…ƒ");
+        cancelConsignee.setText("å…‹é‡Œæ–¯");
         cancelConsigneeMobile.setText("13600000000");
-        cancelConsigneeAddress.setText("ÔÆÄÏÊ¡À¥Ã÷ÊĞÎå»ªÇøº£Ô´ÖĞÂ·1088ºÅºÍ³É¹ú¼ÊA×ù25Â¥");
+        cancelConsigneeAddress.setText("äº‘å—çœæ˜†æ˜å¸‚äº”ååŒºæµ·æºä¸­è·¯1088å·å’Œæˆå›½é™…Aåº§25æ¥¼");
         cancelOrderNumber.setText("1234567890");
-        cancelTranscationCode.setText("½»Ò×Á÷Ë®ºÅ:678839903987484");
-        cancelOrderTime.setText("½»Ò×Ê±¼ä£º2015-09-26  00:00:00");
+        cancelTranscationCode.setText("äº¤æ˜“æµæ°´å·:678839903987484");
+        cancelOrderTime.setText("äº¤æ˜“æ—¶é—´ï¼š2015-09-26  00:00:00");
 
     }
 }

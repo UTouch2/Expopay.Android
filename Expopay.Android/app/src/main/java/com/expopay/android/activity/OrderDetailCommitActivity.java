@@ -59,7 +59,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
         llAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(OrderDetailCommitActivity.this, "ÊÕ»ñµØÖ·", Toast.LENGTH_SHORT).show();
+                Toast.makeText(OrderDetailCommitActivity.this, "æäº¤", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -68,17 +68,17 @@ public class OrderDetailCommitActivity extends BaseActivity {
         commitProductImg.setImageResource(R.mipmap.mall_mobile);
         commitProductName.setText("iPhone6S");
         commitOrderAmount.setText("5200.00");
-        commitProperties.setText("°×É« 32G");
-        commitOrderStatus.setText("ÒÑÍê³É");
-        commitRepaymentPeriod.setText("12ÆÚ");
-        commitServiceAmount.setText("£¨440+30£©x"+12+"="+(440+30)*12);
-        commitPeriodAmount.setText("Ã¿ÆÚ»¹¿î"+470+"Ôª");
-        commitConsignee.setText("¿ËÀïË¹");
+        commitProperties.setText("ç™½è‰² 32G");
+        commitOrderStatus.setText("å·²å®Œæˆ");
+        commitRepaymentPeriod.setText("12æœŸ");
+        commitServiceAmount.setText("ï¼ˆ440+30ï¼‰x"+12+"="+(440+30)*12);
+        commitPeriodAmount.setText("æ¯æœŸåº”è¿˜æ¬¾"+470+" ");
+        commitConsignee.setText("æ”¶è´§äºº");
         commitConsigneeMobile.setText("13600000000");
-        commitConsigneeAddress.setText("ÔÆÄÏÊ¡À¥Ã÷ÊĞÎå»ªÇøº£Ô´ÖĞÂ·1088ºÅºÍ³É¹ú¼ÊA×ù25Â¥");
+        commitConsigneeAddress.setText("äº‘å—çœæ˜†æ˜å¸‚äº”ååŒºæµ·æºä¸­è·¯1088å·å’Œæˆå›½é™…Aåº§25æ¥¼");
         commitOrderNumber.setText("1234567890");
-        commitTranscationCode.setText("½»Ò×Á÷Ë®ºÅ:678839903987484");
-        commitOrderTime.setText("½»Ò×Ê±¼ä£º2015-09-26  00:00:00");
+        commitTranscationCode.setText("äº¤æ˜“æµæ°´å·:678839903987484");
+        commitOrderTime.setText("äº¤æ˜“æ—¶é—´ï¼š2015-09-26  00:00:00");
 
     }
 }

@@ -46,7 +46,7 @@ public class MallFragment extends  BaseFragment {
         List<MallProductEntity> list = new ArrayList<MallProductEntity>();
         for (int i = 0; i < 15; i++) {
             MallProductEntity mp = new MallProductEntity();
-            mp.setProductName("iPhone6S4GÊÖ»ú"+i);
+            mp.setProductName("iPhone6S4G"+i);
             mp.setOrderAmount("5200.00");
             list.add(mp);
         }
