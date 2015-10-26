@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.expopay.android.R;
 import com.expopay.android.model.PeriodOrderEntity;
@@ -18,13 +19,14 @@ import java.util.List;
  */
 public class PeriodOrderAdapter extends BaseAdapter {
 
-    private LayoutInflater mInflater = null;
+    private LayoutInflater mInflater;
     private List<PeriodOrderEntity> data;
+    private Context context;
 
     public PeriodOrderAdapter(Context context, List<PeriodOrderEntity> data) {
         this.data = data;
-        //根据context上下文加载布局
         this.mInflater = LayoutInflater.from(context);
+        this.context = context;
     }
 
     @Override
@@ -74,6 +76,16 @@ public class PeriodOrderAdapter extends BaseAdapter {
         holder.repaymentPeriod.setText(entity.getRepaymentPeriod());
         holder.orderTime.setText(entity.getOrderTime());
         holder.orderStatus.setText(entity.getOrderStatus());
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent(context, OrderDetailItemActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                context.startActivity(intent);
+                Toast.makeText(context, "分期订单", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return convertView;
     }

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.expopay.android.R;
 import com.expopay.android.model.PaymentOrderEntity;
@@ -17,13 +18,15 @@ import java.util.List;
  * Created by NB-MIS-100002 on 2015/10/22.
  */
 public class PaymentOrderAdapter extends BaseAdapter {
-    private LayoutInflater mInflater = null;
-    private List<PaymentOrderEntity> data = null;
+    private LayoutInflater mInflater;
+    private List<PaymentOrderEntity> data ;
+    private Context context;
 
-    private PaymentOrderAdapter(Context context,List<PaymentOrderEntity> data) {
+    public PaymentOrderAdapter(Context context,List<PaymentOrderEntity> data) {
         this.data = data;
         //根据context上下文加载布局
         this.mInflater = LayoutInflater.from(context);
+        this.context = context;
     }
 
     @Override
@@ -53,7 +56,7 @@ public class PaymentOrderAdapter extends BaseAdapter {
         if (convertView == null) {
             holder = new ViewHolder();
             //根据自定义的Item布局加载布局
-            convertView = mInflater.inflate(R.layout.view_period_order_item, null);
+            convertView = mInflater.inflate(R.layout.view_payment_order_item, null);
             holder.productImg = (ImageView) convertView.findViewById(R.id.imgPaymentOrder);
             holder.productName = (TextView) convertView.findViewById(R.id.titlePaymentOrder);
             holder.orderAmount = (TextView) convertView.findViewById(R.id.pricePaymentOrder);
@@ -64,11 +67,21 @@ public class PaymentOrderAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-//        holder.productImg.setBackgroundResource(entity.getProductImg());
+//        holder.productImg.setImageResource(entity.getProductImg());
         holder.productName.setText(entity.getProductName());
         holder.orderAmount.setText(entity.getOrderAmount());
         holder.orderTime.setText(entity.getOrderTime());
         holder.orderStatus.setText(entity.getOrderStatus());
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent(context, OrderDetailItemActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                context.startActivity(intent);
+                Toast.makeText(context, "缴费订单", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return convertView;
     }

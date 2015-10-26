@@ -12,6 +12,7 @@ import com.expopay.android.activity.ProductDetailsActivity;
 import com.expopay.android.adapter.gridview.MallProductAdapter;
 import com.expopay.android.model.MallProductEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,7 +22,6 @@ public class MallFragment extends  BaseFragment {
 
     private GridView myGridView;
     private MallProductAdapter adapter;
-    private List<MallProductEntity> list = null;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,10 +35,21 @@ public class MallFragment extends  BaseFragment {
             }
         });
 
-//        myGridView = (GridView) view.findViewById(R.id.mygridview);
-//        adapter = new MallProductAdapter(getActivity().getApplicationContext(),list);
-//        myGridView.setAdapter(adapter);
+        myGridView = (GridView) view.findViewById(R.id.mygridview);
+        adapter = new MallProductAdapter(getActivity().getApplicationContext(),testData());
+        myGridView.setAdapter(adapter);
 
         return view;
+    }
+
+    private List<MallProductEntity> testData() {
+        List<MallProductEntity> list = new ArrayList<MallProductEntity>();
+        for (int i = 0; i < 15; i++) {
+            MallProductEntity mp = new MallProductEntity();
+            mp.setProductName("iPhone6S4GÊÖ»ú"+i);
+            mp.setOrderAmount("5200.00");
+            list.add(mp);
+        }
+        return list;
     }
 }

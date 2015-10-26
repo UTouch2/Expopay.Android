@@ -92,13 +92,6 @@ public class ChoosePeriodActivity extends BaseActivity implements View.OnClickLi
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        intent.putExtra("str_periods", str_periods);
-        setResult(1, intent);
-        finish();
-    }
-
     private void setTabSelection(int index) {
         // 每次选中之前先清楚掉上次的选中状态
         clearSelection();
@@ -140,6 +133,13 @@ public class ChoosePeriodActivity extends BaseActivity implements View.OnClickLi
         installment15.setBackgroundResource(R.mipmap.mall_unoutline);
         installment18.setBackgroundResource(R.mipmap.mall_unoutline);
         installment24.setBackgroundResource(R.mipmap.mall_unoutline);
+    }
+
+    @Override
+    public void onBackPressed() {
+        intent.putExtra("str_periods", str_periods);
+        setResult(1, intent);
+        finish();
     }
 
 }

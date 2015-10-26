@@ -4,135 +4,184 @@
     android:layout_height="match_parent"
     tools:context="com.expopay.android.activity.OrderDetailItemActivity">
 
-    <EditText
+    <LinearLayout
+        android:id="@+id/itemBlank"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/relativeLayout"
         android:layout_alignParentTop="true"
-        android:background="#FFAAAAAA"/>
+        android:background="#FFAAAAAA"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_above="@+id/linearLayout8"
+        android:layout_above="@+id/relativeLayout2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/relativeLayout">
+        android:padding="10dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="详情"/>
+            android:text="详情" />
+
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            android:src="@mipmap/mall_delete"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:onClick="btnCancel"/>
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="#FFFFFF"
+            android:onClick="btnCancel"
+            android:src="@mipmap/mall_delete" />
     </RelativeLayout>
-    <LinearLayout
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:orientation="vertical"
         android:layout_above="@+id/linearLayout7"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/linearLayout8">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="电费订单"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal">
-        <TextView
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:id="@+id/itemProductImg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="订单编号："/>
-        <TextView
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/main_power" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2134567889999"/>
-    </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:padding="10dp">
+
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/itemProductName"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="交易流水号："/>
-            <TextView
-                android:layout_width="wrap_content"
+                android:text="电费订单" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="67889999"/>
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="订单编号：" />
+
+                <TextView
+                    android:id="@+id/itemOrderNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2134567889999" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="交易流水号：" />
+
+                <TextView
+                    android:id="@+id/itemTranscationCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="67889999" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="支付流水号：" />
+
+                <TextView
+                    android:id="@+id/itemPayCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="287889999" />
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="支付流水号："/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="287889999"/>
-        </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
+
     <LinearLayout
+        android:id="@+id/linearLayout7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dp"
         android:layout_above="@+id/imageButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/linearLayout7">
+        android:orientation="vertical"
+        android:padding="10dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="交易时间："/>
+                android:text="交易时间：" />
+
             <TextView
+                android:id="@+id/itemOrderTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="2015-09-26"/>
+                android:text="2015-09-26" />
         </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="交易时间："/>
-        <TextView
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="完成"
-            android:textColor="#0000FF"/>
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="交易状态：" />
+
+            <TextView
+                android:id="@+id/itemOrderStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="完成"
+                android:textColor="#0000FF" />
         </LinearLayout>
     </LinearLayout>
 
     <ImageButton
+        android:id="@+id/imageButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:src="@mipmap/mall_ok"
-        android:id="@+id/imageButton"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:onClick="btnOk"/>
+        android:adjustViewBounds="true"
+        android:onClick="btnOk"
+        android:src="@mipmap/mall_ok" />
 </RelativeLayout>

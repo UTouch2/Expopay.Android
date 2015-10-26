@@ -12,16 +12,18 @@
         android:background="#F8F8F8"
         android:orientation="horizontal"
         android:id="@+id/linearLayout5">
-        
+
         <ImageView
+            android:id="@+id/cancelProductImg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/mall_mobile" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:orientation="vertical"
             android:padding="20dp">
 
@@ -30,16 +32,18 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/cancelProductName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:text="缴纳水费"/>
+                    android:text="iPhone"/>
 
                 <TextView
+                    android:id="@+id/cancelOrderAmmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:text="￥18.80"
+                    android:text="￥5288.00"
                     android:textColor="#FF0000" />
             </RelativeLayout>
 
@@ -49,12 +53,14 @@
                 android:layout_marginTop="10dp">
 
                 <TextView
+                    android:id="@+id/cancelProperties"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:text="白色 16G x1"/>
 
                 <TextView
+                    android:id="@+id/cancelOrderStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -79,16 +85,30 @@
             android:layout_height="wrap_content"
             android:text="分期"/>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:text="12期 (522+12)x12=5288"
-                android:textColor="#AAAAAA"/>
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/cancelRepaymentPeriod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:text="12期 "
+                    android:textColor="#AAAAAA"/>
+                <TextView
+                    android:id="@+id/cancelServiceAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="(522+12)x12=5288"
+                    android:textColor="#AAAAAA"/>
+            </LinearLayout>
             <TextView
+                android:id="@+id/cancelPeriodAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -122,14 +142,17 @@
                     android:layout_height="wrap_content"
                     android:text="收件人："/>
                 <TextView
+                    android:id="@+id/cancelConsignee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="克里斯"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
                     android:src="@mipmap/mall_phone"/>
                 <TextView
+                    android:id="@+id/cancelConsigneeMobile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="13666666666"/>
@@ -144,6 +167,7 @@
                     android:layout_height="wrap_content"
                     android:src="@mipmap/mall_address"/>
                 <TextView
+                    android:id="@+id/cancelConsigneeAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="云南省昆明市五华区海源中路1088号和成国际A座25楼"/>
@@ -177,6 +201,7 @@
                 android:layout_height="wrap_content"
                 android:text="订单编号："/>
             <TextView
+                android:id="@+id/cancelOrderNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1234567890"/>
@@ -184,13 +209,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="交易流水号："/>
             <TextView
+                android:id="@+id/cancelTranscationCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="9876543456789"/>
@@ -198,13 +224,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="交易时间："/>
             <TextView
+                android:id="@+id/cancelOrderTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2015-09-26  00:00:00"/>
