@@ -1,6 +1,7 @@
 package com.expopay.android.adapter.gridview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.expopay.android.R;
+import com.expopay.android.activity.ProductDetailsActivity;
 import com.expopay.android.model.MallProductEntity;
 
 import java.util.List;
@@ -18,12 +20,14 @@ import java.util.List;
  */
 public class MallProductAdapter extends BaseAdapter{
 
-    private LayoutInflater inflater = null;
-    private List<MallProductEntity> data = null;
+    private LayoutInflater inflater ;
+    private List<MallProductEntity> data ;
+    private Context context;
 
     public MallProductAdapter(Context context,List<MallProductEntity> data){
         this.data = data;
         this.inflater = LayoutInflater.from(context);
+        this.context = context;
     }
 
     @Override
@@ -49,7 +53,7 @@ public class MallProductAdapter extends BaseAdapter{
         if (convertView == null) {
             holder = new ViewHolder();
             //根据自定义的Item布局加载布局
-            convertView = inflater.inflate(R.layout.view_period_order_item, null);
+            convertView = inflater.inflate(R.layout.view_mall, null);
             holder.productImg = (ImageView) convertView.findViewById(R.id.image_grid_item);
             holder.productName = (TextView) convertView.findViewById(R.id.text1_grid_item);
             holder.orderAmount = (TextView) convertView.findViewById(R.id.text2_grid_item);
@@ -61,6 +65,15 @@ public class MallProductAdapter extends BaseAdapter{
 //        holder.productImg.setBackgroundResource(entity.getProductImg());
         holder.productName.setText(entity.getProductName());
         holder.orderAmount.setText(entity.getOrderAmount());
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ProductDetailsActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
 
         return convertView;
     }

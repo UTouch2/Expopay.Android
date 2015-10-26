@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -11,23 +12,30 @@ import com.expopay.android.R;
 
 public class ProductDetailsActivity extends BaseActivity implements View.OnClickListener{
 
-    private RelativeLayout relativeLayoutProperties,relativeLayoutStage;
-    private Button btnDetail;
+    private RelativeLayout relativeLayoutProperties,relativeLayoutStage,llDetail;
     private Button btnImmediatelyOrder;
+    private ImageView detailProductImg;
+    private TextView detailProductName;
+    private TextView detailAmount;
+
     private TextView tvSelected;
     private TextView tvStaging;
 
     private void assignViews() {
         relativeLayoutProperties = (RelativeLayout) findViewById(R.id.relativeLayoutProperties);
         relativeLayoutStage = (RelativeLayout) findViewById(R.id.relativeLayoutStage);
-        btnDetail = (Button) findViewById(R.id.btnDetail);
+        llDetail = (RelativeLayout) findViewById(R.id.llDetail);
         btnImmediatelyOrder = (Button) findViewById(R.id.btnImmediatelyOrder);
+        detailProductImg = (ImageView) findViewById(R.id.detailProductImg);
+        detailProductName = (TextView) findViewById(R.id.detailProductName);
+        detailAmount = (TextView) findViewById(R.id.detailAmount);
+
         tvSelected = (TextView) findViewById(R.id.tvSelected);
         tvStaging = (TextView) findViewById(R.id.tvStaging);
 
         relativeLayoutProperties.setOnClickListener(this);
         relativeLayoutStage.setOnClickListener(this);
-        btnDetail.setOnClickListener(this);
+        llDetail.setOnClickListener(this);
         btnImmediatelyOrder.setOnClickListener(this);
     }
 
@@ -37,6 +45,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
         setContentView(R.layout.activity_produte_details);
 
         assignViews();
+        setTextView();
     }
 
     @Override
@@ -72,15 +81,22 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                 intent.setClass(ProductDetailsActivity.this, ChoosePeriodActivity.class);
                 startActivityForResult(intent,1);
                 break;
-            case R.id.btnDetail:
+            case R.id.llDetail:
                 startActivity(intent.setClass(ProductDetailsActivity.this, OrderDetailActivity.class));
                 break;
             case R.id.btnImmediatelyOrder:
-                startActivity(intent.setClass(ProductDetailsActivity.this, MyOrderActivity.class));
+                intent.setClass(ProductDetailsActivity.this, MyOrderActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;
         }
+    }
+
+    private void setTextView(){
+        detailProductImg.setImageResource(R.mipmap.mall_mobile);
+        detailProductName.setText("iPhone6S");
+        detailAmount.setText("5288.00");
     }
 
 }

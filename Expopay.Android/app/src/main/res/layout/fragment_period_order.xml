@@ -5,9 +5,11 @@
     tools:context="com.expopay.android.fragment.PeriodOrderFragment">
 
     <ListView
-        android:id="@+id/lvInstallmentOrder"
+        android:id="@+id/lvPeriodOrder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:divider="#AAAAAA"
+        android:dividerHeight="1dp">
     </ListView>
 
 </LinearLayout>

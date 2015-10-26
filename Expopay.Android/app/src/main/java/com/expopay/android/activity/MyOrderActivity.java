@@ -14,11 +14,11 @@ import com.expopay.android.fragment.PaymentOrderFragment;
 
 public class MyOrderActivity extends BaseActivity implements View.OnClickListener{
 
-    private PeriodOrderFragment installmentOrderFragment;
+    private PeriodOrderFragment periodOrderFragment;
     private PaymentOrderFragment paymentOrderFragment;
     private FragmentManager fragmentManager;
 
-    private Button btnInstallmentOrders;
+    private Button btnPeriodOrder;
     private Button btnPaymentOrders;
     private FrameLayout content;
 
@@ -37,11 +37,11 @@ public class MyOrderActivity extends BaseActivity implements View.OnClickListene
      * 在这里获取到每个需要用到的控件的实例，并给它们设置好必要的点击事件。
      */
     private void assignViews() {
-        btnInstallmentOrders = (Button) findViewById(R.id.btn_installmentOrders);
+        btnPeriodOrder = (Button) findViewById(R.id.btn_installmentOrders);
         btnPaymentOrders = (Button) findViewById(R.id.btn_paymentOrders);
         content = (FrameLayout) findViewById(R.id.content);
 
-        btnInstallmentOrders.setOnClickListener(this);
+        btnPeriodOrder.setOnClickListener(this);
         btnPaymentOrders.setOnClickListener(this);
     }
 
@@ -78,28 +78,28 @@ public class MyOrderActivity extends BaseActivity implements View.OnClickListene
         switch (index) {
             case 0:
                 // 当点击了消息tab时，改变控件的背景颜色和文字颜色
-                btnInstallmentOrders.setBackgroundColor(Color.parseColor("#0000FF"));
-                btnInstallmentOrders.setTextColor(Color.WHITE);
+                btnPeriodOrder.setBackgroundColor(Color.parseColor("#AAAAAA"));
+                btnPeriodOrder.setTextColor(Color.WHITE);
                 if (paymentOrderFragment == null) {
                     // 如果paymentOrderFragment为空，则创建一个并添加到界面上
-                    paymentOrderFragment = new PaymentOrderFragment();
-                    transaction.add(R.id.content, paymentOrderFragment);
+                    periodOrderFragment = new PeriodOrderFragment();
+                    transaction.add(R.id.content, periodOrderFragment);
                 } else {
                     // 如果MessageFragment不为空，则直接将它显示出来
-                    transaction.show(paymentOrderFragment);
+                    transaction.show(periodOrderFragment);
                 }
                 break;
             default:
                 // 当点击了设置tab时，改变控件的背景颜色和文字颜色
-                btnPaymentOrders.setBackgroundColor(Color.parseColor("#0000FF"));
+                btnPaymentOrders.setBackgroundColor(Color.parseColor("#AAAAAA"));
                 btnPaymentOrders.setTextColor(Color.WHITE);
-                if (installmentOrderFragment == null) {
+                if (paymentOrderFragment == null) {
                     // 如果installmentOrderFragment为空，则创建一个并添加到界面上
-                    installmentOrderFragment = new PeriodOrderFragment();
-                    transaction.add(R.id.content, installmentOrderFragment);
+                    paymentOrderFragment = new PaymentOrderFragment();
+                    transaction.add(R.id.content, paymentOrderFragment);
                 } else {
                     // 如果installmentOrderFragment不为空，则直接将它显示出来
-                    transaction.show(installmentOrderFragment);
+                    transaction.show(paymentOrderFragment);
                 }
                 break;
         }
@@ -110,8 +110,8 @@ public class MyOrderActivity extends BaseActivity implements View.OnClickListene
      * 清除掉所有的选中状态。
      */
     private void clearSelection() {
-        btnInstallmentOrders.setBackgroundColor(Color.WHITE);
-        btnInstallmentOrders.setTextColor(Color.BLACK);
+        btnPeriodOrder.setBackgroundColor(Color.WHITE);
+        btnPeriodOrder.setTextColor(Color.BLACK);
         btnPaymentOrders.setBackgroundColor(Color.WHITE);
         btnPaymentOrders.setTextColor(Color.BLACK);
     }
@@ -123,8 +123,8 @@ public class MyOrderActivity extends BaseActivity implements View.OnClickListene
      *            用于对Fragment执行操作的事务
      */
     private void hideFragments(FragmentTransaction transaction) {
-        if (installmentOrderFragment != null) {
-            transaction.hide(installmentOrderFragment);
+        if (periodOrderFragment != null) {
+            transaction.hide(periodOrderFragment);
         }
         if (paymentOrderFragment != null) {
             transaction.hide(paymentOrderFragment);
