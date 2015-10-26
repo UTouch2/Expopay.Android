@@ -18,6 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+
         android:lineSpacingExtra="5dp"
         android:text="1、 邮政网点购卡。全市100多个邮政营业厅网点均可购买南博卡。详情请查看网点分布图。\n2、 昆广网络营业厅：全市14个昆广网络营业厅网点均可以购买南博卡，详情请查看网点分布图\n3、 南博卡是南亚博览会官方指定用卡。南博卡售价30元/张。\n4、 南博卡是可充值卡，可用作南博会门票进入场馆、在馆内消费、在馆内用餐等。\n5、详情请咨询400-022-7299"
         android:textSize="14sp" />
