@@ -71,6 +71,8 @@
         android:background="@drawable/_button"
         android:padding="20dp"
         android:text="绑定"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
         android:onClick="btnBind"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
