@@ -1,130 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:fillViewport="true">
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1000"
-        android:background="#0000">
-
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="#FFFFFF"
-        android:orientation="vertical"
-        android:paddingTop="10dp">
-
-        <RelativeLayout
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/cardcharge_content"
+            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:background="#FFFFFF"
+            android:orientation="vertical"
+            android:paddingTop="10dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="卡片充值"
-                android:textColor="#000000" />
+                android:padding="10dp">
 
-            <ImageView
-                android:onClick="closeOnclick"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignParentRight="true"
-                android:adjustViewBounds="true"
-                android:src="@mipmap/mall_delete" />
-        </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="卡片充值"
+                    android:textColor="#000000" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="10dp">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:adjustViewBounds="true"
+                    android:onClick="closeOnclick"
+                    android:src="@mipmap/mall_delete" />
+            </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="卡号："
+                    android:textColor="#4F4F4F"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/cardcharge_cardnumber_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="88888888888"
+                    android:textColor="#4F4F4F"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="#F9F9F9"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="余额："
+                    android:textColor="#4F4F4F"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/cardcharge_cardbalancer_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="88888888888"
+                    android:textColor="#4F4F4F"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/cardcharge_amount_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="充值金额："
+                    android:textColor="#4F4F4F"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/cardcharge_amount_clear"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:adjustViewBounds="true"
+                    android:onClick="amountClearOnclick"
+                    android:src="@mipmap/cardcharge_editclose" />
+
+                <EditText
+                    android:id="@+id/cardcharge_amount_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/cardcharge_amount_clear"
+                    android:layout_toRightOf="@id/cardcharge_amount_label"
+                    android:textColor="#4F4F4F"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="卡号："
-                android:textColor="#4F4F4F"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="88888888888"
-                android:textColor="#4F4F4F"
+                android:onClick="okOnclick"
+                android:text="充 值"
+                android:textColor="#fff"
                 android:textSize="14sp" />
         </LinearLayout>
-
-        <LinearLayout
+        <FrameLayout
+            android:layout_above="@id/cardcharge_content"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="#F9F9F9"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="余额："
-                android:textColor="#4F4F4F"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="88888888888"
-                android:textColor="#4F4F4F"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="充值金额："
-                android:textColor="#4F4F4F"
-                android:textSize="14sp" />
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:adjustViewBounds="true"
-                android:src="@mipmap/cardcharge_editclose" />
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text=""
-                android:textColor="#4F4F4F"
-                android:textSize="14sp" />
-
-        </RelativeLayout>
-
-        <Button
-            android:onClick="okOnclick"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="充 值"
-            android:textColor="#fff"
-            android:textSize="14sp" />
-    </LinearLayout>
-
-</LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_weight="1000"
+            android:background="#0000"
+            android:onClick="closeOnclick">
+        </FrameLayout>
+    </RelativeLayout>
+</ScrollView>

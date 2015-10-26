@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="130dp"
@@ -49,8 +50,9 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:orientation="vertical">
+                android:onClick="certificationOnclick"
+                android:orientation="vertical"
+                android:padding="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -69,6 +71,7 @@
                 android:layout_height="30dp"
                 android:layout_alignParentRight="true"
                 android:adjustViewBounds="true"
+                android:onClick="deleteOnclick"
                 android:padding="5dp"
                 android:src="@mipmap/carddetails_deletecard" />
         </RelativeLayout>
@@ -103,10 +106,11 @@
             <ImageView
                 android:layout_width="70dp"
                 android:layout_height="30dp"
+                android:layout_alignParentRight="true"
                 android:adjustViewBounds="true"
+                android:onClick="chargeOnclick"
                 android:padding="5dp"
-                android:src="@mipmap/carddetails_charge"
-                android:layout_alignParentRight="true"  />
+                android:src="@mipmap/carddetails_charge" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -175,43 +179,33 @@
         android:paddingBottom="0.5dp"
         android:paddingTop="0.5dp">
 
-        <LinearLayout
+        <Button
+            android:id="@+id/carddetails_payoutbtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginRight="0.5dp"
             android:layout_weight="1"
             android:background="#959595"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:text="消费记录"
+            android:textColor="#fff"
+            android:textSize="14sp">
 
+        </Button>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="消费记录"
-                android:textColor="#fff"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <LinearLayout
+        <Button
+            android:id="@+id/carddetails_incomebtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#fff"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:text="充值记录"
+            android:textColor="#959595"
+            android:textSize="14sp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="充值记录"
-                android:textColor="#959595"
-                android:textSize="14sp" />
-        </LinearLayout>
+        </Button>
     </LinearLayout>
 
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </android.support.v4.view.ViewPager>
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
 </LinearLayout>

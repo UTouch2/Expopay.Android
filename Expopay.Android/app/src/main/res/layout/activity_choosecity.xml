@@ -47,23 +47,34 @@
             android:layout_height="240dp"
             android:orientation="horizontal">
 
-            <FrameLayout
-                android:id="@+id/choosecity_province_container"
+            <ListView
+                android:id="@+id/choosecity_province_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"></FrameLayout>
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1"
+                android:divider="#06DA7E"
+                android:dividerHeight="0.5dp"
+                android:scrollbars="none"></ListView>
 
-            <FrameLayout
-                android:id="@+id/choosecity_city_container"
+            <ListView
+                android:id="@+id/choosecity_city_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"></FrameLayout>
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1"
+                android:divider="#06DA7E"
+                android:dividerHeight="0.5dp"
+                android:scrollbars="none"></ListView>
 
-            <FrameLayout
-                android:id="@+id/choosecity_district_container"
+            <ListView
+                android:id="@+id/choosecity_district_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"></FrameLayout>
+                android:layout_weight="1"
+                android:divider="#06DA7E"
+                android:dividerHeight="0.5dp"
+                android:scrollbars="none"></ListView>
         </LinearLayout>
 
         <Button

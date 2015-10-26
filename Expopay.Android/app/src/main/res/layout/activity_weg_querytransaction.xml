@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="#fff"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -34,7 +35,8 @@
                     android:layout_width="13dp"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:adjustViewBounds="true" />
+                    android:adjustViewBounds="true"
+                    android:src="@mipmap/account_right_arrow"/>
             </RelativeLayout>
 
             <TextView
@@ -75,7 +77,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_centerInParent="true"
-                    android:adjustViewBounds="true" />
+                    android:adjustViewBounds="true"
+                    android:src="@mipmap/barcode"/>
             </RelativeLayout>
 
             <EditText
@@ -141,6 +144,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14sp"
+        android:onClick="okOnclick"
         android:layout_alignParentBottom="true"
         android:text="确   定"
         android:textColor="#fff"/>
