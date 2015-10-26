@@ -36,6 +36,7 @@ public class MyAddressActivity extends BaseActivity {
             e.setPersonName("克里斯");
             e.setProvinceName("云南省");
             e.setZipCode("234567890");
+            list.add(e);
         }
         return list;
     }
