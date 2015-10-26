@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.expopay.android.activity.CertificationActivity">
+
+    <RelativeLayout
+        android:id="@+id/rlCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="卡号："
+            android:id="@+id/textView4" />
+        <TextView
+            android:id="@+id/certificationCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6666666666666666："
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/textView4" />
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@mipmap/mall_more"
+            android:background="#FFFFFF"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/llname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/rlCard"
+        android:background="#F9F9F9"
+        android:padding="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="姓名："/>
+        <EditText
+            android:id="@+id/certificationName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="克里斯"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:layout_below="@+id/llname"
+        android:id="@+id/linearLayout11">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="身份证："/>
+        <EditText
+            android:id="@+id/certificationID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="23456789987656789"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/_button"
+        android:padding="20dp"
+        android:text="绑定"
+        android:onClick="btnBind"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:text="*请输入你的真实有效身份，一确保可能发生的挂失服务。"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/linearLayout11"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>
