@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.expopay.android.R;
@@ -45,20 +46,25 @@ public class CityListAdapter extends BaseAdapter {
         CityEntity c = data.get(position);
         ViewHolder vh = null;
         if (null != convertView) {
-            vh = (ViewHolder) convertView.getTag(1);
+            vh = (ViewHolder) convertView.getTag();
         } else {
             convertView = LayoutInflater.from(context).inflate(R.layout.view_citylist_item, null);
             vh = new ViewHolder();
             vh.compantName = (TextView) convertView.findViewById(R.id.citylist_item_name);
-            convertView.setTag(1, vh);
+            vh.arrow = (ImageView)convertView.findViewById(R.id.citylist_item_arraw);
+            convertView.setTag(vh);
         }
-        convertView.setTag(2, c);
+        //convertView.setTag(2, c);
         vh.compantName.setText(c.getName());
+        if(c.getLevel() == 3){
+            vh.arrow.setVisibility(View.GONE);
+        }
         return convertView;
     }
 
     private class ViewHolder {
         TextView compantName;
+        ImageView arrow;
     }
 }
 
