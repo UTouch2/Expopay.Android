@@ -86,7 +86,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                 startActivity(intent);
                 break;
             case R.id.btnImmediatelyOrder:
-                intent.setClass(ProductDetailsActivity.this, OrderDetailCommitActivity.class);
+                intent.setClass(ProductDetailsActivity.this, MyBillsActivity.class);
                 startActivity(intent);
                 break;
             default:
