@@ -4,11 +4,23 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
+import android.text.Editable;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.android.kechong.lib.http.RequestMethod;
+import com.android.kechong.lib.http.listener.BitmapRequestListener;
+import com.android.kechong.lib.http.listener.JsonRequestListener;
+import com.android.kechong.lib.listener.AbsTextWatcher;
+import com.android.kechong.lib.util.SharedRefUtil;
 import com.expopay.android.R;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
+import com.expopay.android.application.MyApplication;
+import com.expopay.android.request.AppRequest;
+import com.expopay.android.request.CustomerRequest;
+
+import org.json.JSONObject;
 
 /**
  * Created by misxu012 on 2015/10/20.
@@ -16,6 +28,7 @@ import com.expopay.android.adapter.pager.BannerPagerAdapter;
 public class LoginByPasswordActivity extends BaseActivity {
     ViewPager viewPager;
     int startIndex = 100;
+    TextView t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +37,6 @@ public class LoginByPasswordActivity extends BaseActivity {
         viewPager = (ViewPager) findViewById(R.id.login_viewpager);
         viewPager.setAdapter(new BannerPagerAdapter(createViews()));
         viewPager.setCurrentItem(startIndex);
-
         new Thread() {
             @Override
             public void run() {
@@ -45,6 +57,7 @@ public class LoginByPasswordActivity extends BaseActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             viewPager.setCurrentItem(startIndex);
+
         }
     };
 
@@ -69,5 +82,30 @@ public class LoginByPasswordActivity extends BaseActivity {
         views[5] = view;
         views[5].setBackgroundResource(R.mipmap.loginbanner_06);
         return views;
+    }
+
+    private void loginRequest() throws Exception {
+        CustomerRequest re = new CustomerRequest(MyApplication.HOST + "");
+        re.setEntity(re.createLoginParams("", "", "", ""));
+        re.setRequestMethod(RequestMethod.GET);
+        re.setOutTime(10000);
+        re.setIRequestListener(new BitmapRequestListener() {
+            @Override
+            public void onFilure(Exception e) {
+
+            }
+
+            @Override
+            public void onSuccess(Object o) {
+                JSONObject js = (JSONObject) o;
+            }
+
+            @Override
+            public void onProgressUpdate(int i, int i1) {
+
+            }
+        });
+        re.execute();
+        cancelRequest(re);
     }
 }
