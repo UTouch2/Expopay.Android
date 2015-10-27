@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
     android:layout_height="wrap_content"
+    android:background="#fff"
     android:orientation="vertical">
 
     <TextView
@@ -18,9 +19,10 @@
 
     <LinearLayout
         android:id="@+id/dialog_content"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
         android:orientation="vertical"
         android:padding="15dp">
 
@@ -35,21 +37,22 @@
             android:id="@+id/dialog_ok"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="@drawable/_button"
+            android:text="确定"
             android:textColor="#fff"
-            android:textSize="14sp"
-            android:layout_margin="5dp"
-            android:text="确定"/>
+            android:textSize="14sp" />
+
         <Button
             android:id="@+id/dialog_cancel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:background="@drawable/_rectangle_bg2"
+            android:text="取消"
             android:textColor="#fff"
-            android:layout_margin="5dp"
-            android:textSize="14sp"
-            android:text="确定"/>
+            android:textSize="14sp" />
     </LinearLayout>
 </LinearLayout>
