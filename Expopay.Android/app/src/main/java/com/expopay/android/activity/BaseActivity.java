@@ -4,30 +4,31 @@ import android.app.ActionBar;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.kechong.lib.AbsFragmentActivity;
+import com.expopay.android.R;
 import com.expopay.android.systembar.SystemBarTintManager;
 
 /**
  * Created by misxu012 on 2015/10/16.
  */
 public class BaseActivity extends AbsFragmentActivity {
-    TextView tvTitle;
+    protected TextView titleTextView;
+    protected ImageView leftButton, rightButtton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        }
-        ActionBar mActionbar = getActionBar();
-        setStatusColor();
+//        ActionBar mActionbar = getActionBar();
+//        setStatusColor();
+        initCustomActionBar();
         //statusBarCoverActivity();
     }
 
@@ -35,6 +36,7 @@ public class BaseActivity extends AbsFragmentActivity {
     protected void onResume() {
         super.onResume();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 //        MenuInflater inflater = getMenuInflater();
@@ -44,20 +46,25 @@ public class BaseActivity extends AbsFragmentActivity {
     }
 
     public void setTitle(String title) {
-        // if (initCustomActionBar())
-        // tvTitle.setText(title);
+        titleTextView.setText(title);
     }
 
     protected void statusBarCoverActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-
         }
     }
 
     protected void setStatusColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window win = this.getWindow();
+            WindowManager.LayoutParams winParams = win.getAttributes();
+            final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+            winParams.flags |= bits;
+            win.setAttributes(winParams);
             // 创建状态栏的管理实例
             SystemBarTintManager tintManager = new SystemBarTintManager(this);
             // 激活状态栏设置
@@ -65,11 +72,30 @@ public class BaseActivity extends AbsFragmentActivity {
             // 激活导航栏设置
             tintManager.setNavigationBarTintEnabled(true);
             // 设置一个颜色给系统栏
-           // tintManager.setTintColor(Color.parseColor("#ff0000"));
+            // tintManager.setTintColor(Color.parseColor("#ff0000"));
             // 设置一个样式背景给导航栏
-           // tintManager.setNavigationBarTintColor(Color.parseColor("#ff0000"));
+            // tintManager.setNavigationBarTintColor(Color.parseColor("#ff0000"));
             // 设置一个状态栏资源
-            tintManager.setStatusBarTintColor(Color.parseColor("#ff0000"));
+            tintManager.setStatusBarTintColor(Color.parseColor("#3D3D3D"));
         }
+    }
+
+    private void initCustomActionBar() {
+        final ActionBar actionBar = getActionBar();
+        if (actionBar == null) {
+            return;
+        }
+        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        View v = LayoutInflater.from(this).inflate(R.layout.view_myactionbar, null);
+        titleTextView = (TextView) v.findViewById(R.id.title);
+        leftButton = (ImageView) v.findViewById(R.id.leftbutton);
+        rightButtton = (ImageView) v.findViewById(R.id.rightbutton);
+        actionBar.setCustomView(v);//自定义ActionBar布局
+        leftButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 }
