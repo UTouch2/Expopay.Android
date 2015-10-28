@@ -6,11 +6,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 
 import com.expopay.android.R;
-import com.expopay.android.fragment.PeriodOrderFragment;
 import com.expopay.android.fragment.PaymentOrderFragment;
+import com.expopay.android.fragment.PeriodOrderFragment;
 
 public class MyOrderActivity extends BaseActivity implements View.OnClickListener{
 
@@ -20,7 +19,6 @@ public class MyOrderActivity extends BaseActivity implements View.OnClickListene
 
     private Button btnPeriodOrder;
     private Button btnPaymentOrders;
-    private FrameLayout content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,18 +31,12 @@ public class MyOrderActivity extends BaseActivity implements View.OnClickListene
         setTabSelection(0);
     }
 
-    /**
-     * 在这里获取到每个需要用到的控件的实例，并给它们设置好必要的点击事件。
-     */
     private void assignViews() {
         btnPeriodOrder = (Button) findViewById(R.id.btn_installmentOrders);
         btnPaymentOrders = (Button) findViewById(R.id.btn_paymentOrders);
-        content = (FrameLayout) findViewById(R.id.content);
-
         btnPeriodOrder.setOnClickListener(this);
         btnPaymentOrders.setOnClickListener(this);
     }
-
 
     @Override
     public void onClick(View v) {
@@ -64,9 +56,6 @@ public class MyOrderActivity extends BaseActivity implements View.OnClickListene
 
     /**
      * 根据传入的index参数来设置选中的tab页。
-     *
-     * @param index
-     *            每个tab页对应的下标。0表示分期订单，1表示缴费订单。
      */
     private void setTabSelection(int index) {
         // 每次选中之前先清楚掉上次的选中状态

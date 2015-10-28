@@ -61,7 +61,7 @@ public class LoginByPasswordActivity extends BaseActivity {
                     loginByPasswordOnClick.setBackgroundResource(R.drawable._button);
                 } else {
                     loginByPasswordOnClick.setEnabled(false);
-                    loginByPasswordOnClick.setBackgroundResource(R.drawable._button_down);
+                    loginByPasswordOnClick.setBackgroundResource(R.drawable._button_normal);
                 }
             }
         });
@@ -73,7 +73,7 @@ public class LoginByPasswordActivity extends BaseActivity {
                 String pwd = login_pwd.getText().toString().trim();
                 if (6 == pwd.length() && 11 == phonenum.length()) {
                     loginByPasswordOnClick.setEnabled(true);
-                    loginByPasswordOnClick.setBackgroundResource(R.drawable._button);
+                    loginByPasswordOnClick.setBackgroundResource(R.drawable._button_down);
                 } else {
                     loginByPasswordOnClick.setEnabled(false);
                     loginByPasswordOnClick.setBackgroundResource(R.drawable._button_down);
