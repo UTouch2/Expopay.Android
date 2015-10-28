@@ -11,6 +11,7 @@ public class WebActivity extends BaseWebActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusColor();
         addJavascriptInterface(new MyJavascriptInterace());
     }
 
