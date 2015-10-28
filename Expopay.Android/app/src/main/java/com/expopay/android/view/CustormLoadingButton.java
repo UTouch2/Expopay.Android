@@ -46,8 +46,7 @@ public class CustormLoadingButton extends FrameLayout {
         super.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (!isLoading&&onClickListener!=null) {
+                if (!isLoading && onClickListener != null) {
                     onClickListener.onClick(v);
                 }
             }
@@ -74,5 +73,10 @@ public class CustormLoadingButton extends FrameLayout {
 
     public void setLoading(boolean flag) {
         isLoading = flag;
+    }
+
+    @Override
+    public void setOnClickListener(OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
     }
 }
