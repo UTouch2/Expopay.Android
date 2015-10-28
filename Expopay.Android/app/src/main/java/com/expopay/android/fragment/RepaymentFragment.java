@@ -43,6 +43,7 @@ public class RepaymentFragment extends Fragment {
         List<BillRepaymentEntity> list = new ArrayList<BillRepaymentEntity>();
         for (int i = 0; i < 20; i++) {
             BillRepaymentEntity br = new BillRepaymentEntity();
+            br.setRemainingDays("逾期5天");
             br.setProductName("iPHone");
             br.setOverdueAmount("440+30");
             br.setRepaymentTime("2015-10-26");
