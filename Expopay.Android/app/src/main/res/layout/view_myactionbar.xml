@@ -3,7 +3,7 @@
     android:id="@+id/action_bar"
     android:layout_width="match_parent"
     android:layout_height="56dp"
-    android:background="#3D3D3C">
+    android:background="#3D3D3D">
 
     <ImageView
         android:id="@+id/leftbutton"

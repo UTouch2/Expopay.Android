@@ -2,8 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
     tools:context="com.kechong.ui.activity.MainActivity"
     tools:ignore="MergeRootFrame">
+    
     <LinearLayout
         android:id="@+id/main_tabs"
         android:layout_width="match_parent"
@@ -13,6 +16,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingTop="0.5dp">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -98,6 +102,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/main_tabs"
+        android:layout_below="@id/action_bar"
         android:fadingEdge="none">
 
         <android.support.v4.view.ViewPager
