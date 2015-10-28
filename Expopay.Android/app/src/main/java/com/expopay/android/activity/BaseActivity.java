@@ -26,10 +26,7 @@ public class BaseActivity extends AbsFragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        ActionBar mActionbar = getActionBar();
-//        setStatusColor();
         initCustomActionBar();
-        //statusBarCoverActivity();
     }
 
     @Override
@@ -39,9 +36,6 @@ public class BaseActivity extends AbsFragmentActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.menu_main, menu);
-//        i = menu.findItem(R.id.action_notify);
         return super.onCreateOptionsMenu(menu);
     }
 
