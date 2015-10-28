@@ -183,17 +183,27 @@
             android:layout_weight="1"
             android:src="@mipmap/mall_more"/>
     </LinearLayout>
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
         android:background="#FFFFFF"
-        android:text="物流信息"
+        android:orientation="vertical"
+        android:padding="10dp"
         android:layout_below="@+id/llAddress"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/textView2" />
+        android:id="@+id/textView2">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="物流信息" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@mipmap/mall_ogistics_line"/>
+    </LinearLayout>
 
     <ListView
         android:background="#FFFFFF"
