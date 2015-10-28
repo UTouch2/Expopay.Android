@@ -1,6 +1,7 @@
 package com.expopay.android.adapter.listview;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,6 +74,12 @@ public class BillUnrepaymentAdapter extends BaseAdapter {
         holder.unrepaymentTime.setText(entity.getRepaymentTime());
         holder.unrepaymentOrderTime.setText(entity.getOrderTime());
         holder.unrepaymentPeriod.setText(entity.getOverdueDays());
+
+        if (position % 2 == 0) {
+            view.setBackgroundColor(Color.parseColor("#ffffff"));
+        } else {
+            view.setBackgroundColor(Color.parseColor("#f9f9f9"));
+        }
 
         return view;
     }

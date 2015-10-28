@@ -1,6 +1,7 @@
 package com.expopay.android.adapter.listview;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,6 +87,11 @@ public class PeriodOrderAdapter extends BaseAdapter {
                 Toast.makeText(context, "分期订单", Toast.LENGTH_SHORT).show();
             }
         });
+        if (position % 2 == 0) {
+            convertView.setBackgroundColor(Color.parseColor("#ffffff"));
+        } else {
+            convertView.setBackgroundColor(Color.parseColor("#f9f9f9"));
+        }
 
         return convertView;
     }

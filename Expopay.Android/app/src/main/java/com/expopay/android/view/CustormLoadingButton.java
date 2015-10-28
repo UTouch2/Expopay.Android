@@ -60,17 +60,17 @@ public class CustormLoadingButton extends FrameLayout {
         contentTextView.setText(loadingText);
     }
 
-//    public void showLoading() {
-//        loadinView.setVisibility(View.VISIBLE);
-//        contentTextView.setVisibility(View.GONE);
-//        isLoading = true;
-//    }
+    public void showLoading() {
+        loadinView.setVisibility(View.VISIBLE);
+        contentTextView.setVisibility(View.GONE);
+        isLoading = true;
+    }
 
-//    public void dismissLoading() {
-//        loadinView.setVisibility(View.GONE);
-//        contentTextView.setVisibility(View.VISIBLE);
-//        isLoading = false;
-//    }
+    public void dismissLoading() {
+        loadinView.setVisibility(View.GONE);
+        contentTextView.setVisibility(View.VISIBLE);
+        isLoading = false;
+    }
 
     public void setLoading(boolean flag) {
         isLoading = flag;
