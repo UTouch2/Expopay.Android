@@ -1,5 +1,6 @@
 package com.expopay.android.activity;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -13,8 +14,11 @@ import com.android.kechong.lib.http.RequestMethod;
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.android.kechong.lib.listener.AbsOnPageChangeListener;
 import com.android.kechong.lib.util.ApkUtil;
+import com.expopay.android.Dialog.DialogFactory;
+import com.expopay.android.Dialog.MyDialog;
 import com.expopay.android.R;
 import com.expopay.android.adapter.pager.MainPagerAdepter;
+import com.expopay.android.application.MyApplication;
 import com.expopay.android.fragment.MainFragment;
 import com.expopay.android.fragment.MallFragment;
 import com.expopay.android.fragment.MyAccFragment;
@@ -51,6 +55,7 @@ public class MainAcativity extends BaseActivity {
         setContentView(R.layout.activity_mainact);
         initPerp();
         initView();
+
     }
 
     @Override
@@ -95,7 +100,6 @@ public class MainAcativity extends BaseActivity {
                     System.out.println(positionOffset);
                     ImageView left = mTabIndicator.get(position);
                     ImageView right = mTabIndicator.get(position + 1);
-
                     ImageView bgLeft = mBgTabIndicator.get(position);
                     ImageView bgRight = mBgTabIndicator.get(position + 1);
 
@@ -155,8 +159,8 @@ public class MainAcativity extends BaseActivity {
     }
 
     private void getNewVersionCode() throws JSONException {
-        AppRequest request = new AppRequest("");
-        //request.setEntity(request.createOpenIdParams(""));
+        AppRequest request = new AppRequest(MyApplication.HOST + "/system/version");
+        request.setEntity(request.createVersionCodeParams());
         request.setRequestMethod(RequestMethod.POST);
         request.setOutTime(5 * 1000);
         request.setIRequestListener(new JsonRequestListener() {
@@ -168,7 +172,7 @@ public class MainAcativity extends BaseActivity {
                             .equals("0000")) {
                         // 成功
                         Gson gson = new Gson();
-                        UpdateAppEntity e = gson.fromJson(json.getJSONObject("body").toString(),UpdateAppEntity.class);
+                        UpdateAppEntity e = gson.fromJson(json.getJSONObject("body").toString(), UpdateAppEntity.class);
                         final String newVercode = e.getVersionCode();
                         final String[] details = e.getUpdateexplain();
                         final int oldVercode = ApkUtil.findVersionCodeByName(
@@ -176,7 +180,7 @@ public class MainAcativity extends BaseActivity {
                                 "com.expopay.android");
                         // 如果最新版本大于当前版本
                         if (Integer.parseInt(newVercode) > oldVercode) {
-
+                            createUpdateDialog(details);
                         }
                     } else {
                         // 失败
@@ -189,7 +193,6 @@ public class MainAcativity extends BaseActivity {
             public void onProgressUpdate(int i, int j) {
 
             }
-
             @Override
             public void onFilure(Exception result) {
                 System.out.println(result);
@@ -197,5 +200,16 @@ public class MainAcativity extends BaseActivity {
         });
         request.execute();
         cancelRequest(request);
+    }
+
+    private void createUpdateDialog(String[] details) {
+        final MyDialog dialog = DialogFactory.createDialog(this, "更新提示", details);
+        dialog.setOkOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        dialog.show();
     }
 }

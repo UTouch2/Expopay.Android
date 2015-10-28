@@ -28,7 +28,7 @@ public class MyAddressActivity extends BaseActivity {
         for(int i = 0;i<10;i++){
             AddressEntity  e =new AddressEntity();
             e.setIsDefault("0");
-            e.setAddress("qwertyuio;sdfghjkl;asdvabsdaosda[sl,[dals,");
+            e.setAddress("海源中路1088号和成国际A座25楼");
             e.setAddressId("" + i);
             e.setCityName("昆明市");
             e.setDistrictName("五华区");
