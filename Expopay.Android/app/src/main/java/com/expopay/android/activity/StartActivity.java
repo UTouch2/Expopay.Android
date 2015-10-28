@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 
 import com.android.kechong.lib.util.BitmapUtil;
@@ -23,30 +25,39 @@ public class StartActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        statusBarCoverActivity();
         setContentView(R.layout.activity_start);
         initView();
-        contentView.setBackgroundDrawable(new BitmapDrawable(BitmapUtil.readBitMap(getApplicationContext(), R.mipmap.start_bg)));
-        AsyncTask task = new AsyncTask() {
+        initApp();
+    }
+
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            startActivity(new Intent().setClass(getApplicationContext(), MainAcativity.class));
+            finish();
+        }
+    };
+
+    private void initApp() {
+        Thread t = new Thread() {
             @Override
-            protected Object doInBackground(Object[] params) {
+            public void run() {
                 try {
+                    Thread.sleep(3000l);
                     FileManager.createDir();
                     FileUtil.deleteFile(FileManager.dbPath
                             + MyApplication.DB_NAME);
-                    FileUtil.createFileByStream(getAssets().open(MyApplication.DB_NAME),FileManager.dbPath, MyApplication.DB_NAME);
+                    FileUtil.createFileByStream(getAssets().open(MyApplication.DB_NAME), FileManager.dbPath, MyApplication.DB_NAME);
+                    handler.sendEmptyMessage(1);
                 } catch (IOException e) {
                     e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Object o) {
-                super.onPostExecute(o);
-                startActivity(new Intent().setClass(getApplicationContext(), MainAcativity.class));
             }
         };
-        task.execute(new String[]{});
+        t.start();
     }
 
     @Override
@@ -58,5 +69,6 @@ public class StartActivity extends BaseActivity {
     protected void initView() {
         super.initView();
         contentView = findViewById(R.id.start_bg);
+        contentView.setBackgroundDrawable(new BitmapDrawable(BitmapUtil.readBitMap(getApplicationContext(), R.mipmap.start_bg)));
     }
 }
