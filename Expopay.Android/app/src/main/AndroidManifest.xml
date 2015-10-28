@@ -27,7 +27,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="南博卡"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.StartActivity">
+        <activity android:name="com.expopay.android.activity.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
