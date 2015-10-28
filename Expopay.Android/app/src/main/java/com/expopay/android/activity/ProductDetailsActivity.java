@@ -3,17 +3,17 @@ package com.expopay.android.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.expopay.android.R;
+import com.expopay.android.view.CustormLoadingButton;
 
 public class ProductDetailsActivity extends BaseActivity implements View.OnClickListener{
 
     private RelativeLayout relativeLayoutProperties,relativeLayoutStage,llDetail;
-    private Button btnImmediatelyOrder;
+    private CustormLoadingButton btnImmediatelyOrder;
     private ImageView detailProductImg;
     private TextView detailProductName;
     private TextView detailAmount;
@@ -25,7 +25,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
         relativeLayoutProperties = (RelativeLayout) findViewById(R.id.relativeLayoutProperties);
         relativeLayoutStage = (RelativeLayout) findViewById(R.id.relativeLayoutStage);
         llDetail = (RelativeLayout) findViewById(R.id.llDetail);
-        btnImmediatelyOrder = (Button) findViewById(R.id.btnImmediatelyOrder);
+        btnImmediatelyOrder = (CustormLoadingButton) findViewById(R.id.btnImmediatelyOrder);
         detailProductImg = (ImageView) findViewById(R.id.detailProductImg);
         detailProductName = (TextView) findViewById(R.id.detailProductName);
         detailAmount = (TextView) findViewById(R.id.detailAmount);
@@ -33,6 +33,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
         tvSelected = (TextView) findViewById(R.id.tvSelected);
         tvStaging = (TextView) findViewById(R.id.tvStaging);
 
+        btnImmediatelyOrder.setText("立即下单");
         relativeLayoutProperties.setOnClickListener(this);
         relativeLayoutStage.setOnClickListener(this);
         llDetail.setOnClickListener(this);
@@ -86,6 +87,10 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                 startActivity(intent);
                 break;
             case R.id.btnImmediatelyOrder:
+                btnImmediatelyOrder.showLoading();
+                btnImmediatelyOrder.setLoading(true);
+                btnImmediatelyOrder.setLoadingText("正在下单...");
+
                 intent.setClass(ProductDetailsActivity.this, MyOrderActivity.class);
                 startActivity(intent);
                 break;

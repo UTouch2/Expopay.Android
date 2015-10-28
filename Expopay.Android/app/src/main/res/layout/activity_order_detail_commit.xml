@@ -237,17 +237,14 @@
         </LinearLayout>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnSubmit"
+    <com.expopay.android.view.CustormLoadingButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/btnSubmit"
+        android:textSize="20dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/_button"
-        android:padding="10dp"
-        android:text="提交订单"
-        android:textColor="#FFFFFF"
-        android:textSize="20dp" />
+        android:layout_alignParentStart="true">
+    </com.expopay.android.view.CustormLoadingButton>
 
 </RelativeLayout>

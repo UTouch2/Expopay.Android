@@ -3,13 +3,13 @@ package com.expopay.android.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.expopay.android.R;
+import com.expopay.android.view.CustormLoadingButton;
 
 public class OrderDetailCommitActivity extends BaseActivity {
 
@@ -24,7 +24,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
     private TextView commitConsignee;
     private TextView commitConsigneeMobile;
     private TextView commitConsigneeAddress;
-    private Button btnSubmit;
+    private CustormLoadingButton btnSubmit;
 
     private void assignViews() {
         commitProductImg = (ImageView) findViewById(R.id.commitProductImg);
@@ -38,7 +38,8 @@ public class OrderDetailCommitActivity extends BaseActivity {
         commitConsignee = (TextView) findViewById(R.id.commitConsignee);
         commitConsigneeMobile = (TextView) findViewById(R.id.commitConsigneeMobile);
         commitConsigneeAddress = (TextView) findViewById(R.id.commitConsigneeAddress);
-        btnSubmit = (Button) findViewById(R.id.btnSubmit);
+        btnSubmit = (CustormLoadingButton) findViewById(R.id.btnSubmit);
+        btnSubmit.setText("提交订单");
     }
 
 
@@ -59,6 +60,10 @@ public class OrderDetailCommitActivity extends BaseActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnSubmit.showLoading();
+                btnSubmit.setLoading(true);
+                btnSubmit.setLoadingText("正在提交...");
+
                 Intent intent = new Intent(OrderDetailCommitActivity.this, OrderDetailCancelActivity.class);
                 startActivity(intent);
             }
