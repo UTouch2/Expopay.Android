@@ -2,33 +2,52 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
     android:background="#fff"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
-    <ListView
-        android:id="@+id/mycards_listview"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:divider="#0000"></ListView>
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:onClick="lossOnclick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="我要挂失"
-            android:textColor="#9ED7FB"
-            android:textSize="12sp" />
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:textColor="#9ED7FB"
-            android:textSize="12sp" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/mycards_listview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="#0000"></ListView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="lossOnclick"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="我要挂失"
+                    android:textColor="#9ED7FB"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:textColor="#9ED7FB"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.expopay.android.view.CustormLoadingView
+            android:id="@+id/mycards_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </com.expopay.android.view.CustormLoadingView>
+    </RelativeLayout>
+
 </LinearLayout>
