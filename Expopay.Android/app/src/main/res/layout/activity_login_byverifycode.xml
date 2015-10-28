@@ -55,8 +55,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true">
 
-                <TextView
-                    android:id="@+id/login_vercode_text"
+                <Button
+                    android:id="@+id/btn_sendvercode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -70,6 +70,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:layout_centerVertical="true"
                 android:layout_toLeftOf="@id/login_vercode_btn"
                 android:layout_toRightOf="@id/login_phonenum_lable"
                 android:background="#00000000"
@@ -145,9 +146,11 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_loginByVerifycode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="@drawable/_button_normal"
         android:text="确   定"
         android:textColor="#fff"
         android:textSize="14sp" />
