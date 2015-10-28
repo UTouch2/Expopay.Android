@@ -2,5 +2,5 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="actionbar1">46dp</dimen>
     <dimen name="actionbar2">66dp</dimen>
-    <dimen name="dialogtextpadding">56dp</dimen>
+    <dimen name="dialogtextpadding">5dp</dimen>
 </resources>
