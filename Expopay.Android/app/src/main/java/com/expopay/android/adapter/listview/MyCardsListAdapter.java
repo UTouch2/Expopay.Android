@@ -24,6 +24,7 @@ public class MyCardsListAdapter extends BaseAdapter {
     Context context;
     List<CardEntity> data;
 
+
     public MyCardsListAdapter(Context context, List<CardEntity> data) {
         this.context = context;
         this.data = data;
@@ -94,5 +95,13 @@ public class MyCardsListAdapter extends BaseAdapter {
         TextView isDefaultText;
         TextView cardTypeText;
         RadioButton redadio;
+    }
+
+    public List<CardEntity> getData() {
+        return data;
+    }
+
+    public void setData(List<CardEntity> data) {
+        this.data = data;
     }
 }
