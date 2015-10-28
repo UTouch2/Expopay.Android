@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PaymentOrderFragment extends BaseFragment {
+public class PaymentOrderFragment extends Fragment {
 
     private ListView lvPaymentOrder;
     private PaymentOrderAdapter adapter;

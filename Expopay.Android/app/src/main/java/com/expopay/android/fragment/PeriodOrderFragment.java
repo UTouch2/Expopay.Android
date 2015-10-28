@@ -1,5 +1,6 @@
 package com.expopay.android.fragment;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +14,7 @@ import com.expopay.android.model.PeriodOrderEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PeriodOrderFragment extends BaseFragment {
+public class PeriodOrderFragment extends Fragment {
 
     private ListView lvPeriodOrder;
     private PeriodOrderAdapter adapter;
