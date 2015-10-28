@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.expopay.android.R;
+import com.expopay.android.activity.LoginByPasswordActivity;
 import com.expopay.android.activity.LoginByVerifycodeActivity;
 import com.expopay.android.activity.WebActivity;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
@@ -36,7 +37,7 @@ public class MainFragment extends BaseFragment {
         view.findViewById(R.id.main_water).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), LoginByVerifycodeActivity.class);
+                Intent intent = new Intent(getActivity(), LoginByPasswordActivity.class);
                 startActivity(intent);
             }
         });
