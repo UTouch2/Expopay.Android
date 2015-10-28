@@ -15,8 +15,9 @@
 
         <ImageView
             android:id="@+id/productImg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical"
             android:src="@mipmap/mall_mobile" />
 
@@ -182,17 +183,27 @@
             android:layout_weight="1"
             android:src="@mipmap/mall_more"/>
     </LinearLayout>
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
         android:background="#FFFFFF"
-        android:text="物流信息"
+        android:orientation="vertical"
+        android:padding="10dp"
         android:layout_below="@+id/llAddress"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/textView2" />
+        android:id="@+id/textView2">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="物流信息" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@mipmap/mall_ogistics_line"/>
+    </LinearLayout>
 
     <ListView
         android:background="#FFFFFF"
@@ -257,6 +268,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2015-09-26  00:00:00"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="承运公司："/>
+            <TextView
+                android:id="@+id/carrierCompany"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="顺丰快递"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="承运单号："/>
+            <TextView
+                android:id="@+id/carrierCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="65456789098"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

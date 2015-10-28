@@ -4,20 +4,16 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
-import android.text.Editable;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.android.kechong.lib.http.RequestMethod;
-import com.android.kechong.lib.http.listener.BitmapRequestListener;
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.android.kechong.lib.listener.AbsTextWatcher;
-import com.android.kechong.lib.util.SharedRefUtil;
 import com.expopay.android.R;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
 import com.expopay.android.application.MyApplication;
-import com.expopay.android.request.AppRequest;
 import com.expopay.android.request.CustomerRequest;
 
 import org.json.JSONObject;
@@ -26,14 +22,16 @@ import org.json.JSONObject;
  * Created by misxu012 on 2015/10/20.
  */
 public class LoginByPasswordActivity extends BaseActivity {
-    ViewPager viewPager;
     int startIndex = 100;
-    TextView t;
+    private ViewPager viewPager;
+    private EditText login_phonenum;
+    private EditText login_pwd;
+    private Button loginByPasswordOnClick;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_bypassword);
+    private void assignViews(){
+        login_phonenum = (EditText) findViewById(R.id.login_phonenum);
+        login_pwd = (EditText) findViewById(R.id.login_pwd);
+        loginByPasswordOnClick = (Button) findViewById(R.id.btn_loginByPassword);
         viewPager = (ViewPager) findViewById(R.id.login_viewpager);
         viewPager.setAdapter(new BannerPagerAdapter(createViews()));
         viewPager.setCurrentItem(startIndex);
@@ -50,6 +48,57 @@ public class LoginByPasswordActivity extends BaseActivity {
                 }
             }
         }.start();
+        loginByPasswordOnClick.setEnabled(false);
+        loginByPasswordOnClick.setBackgroundResource(R.drawable._button_normal);
+        login_phonenum.addTextChangedListener(new AbsTextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+                super.onTextChanged(arg0, arg1, arg2, arg3);
+                String phonenum = login_phonenum.getText().toString().trim();
+                String pwd = login_pwd.getText().toString().trim();
+                if (0 == pwd.length() && 11 == phonenum.length()) {
+                    loginByPasswordOnClick.setEnabled(true);
+                    loginByPasswordOnClick.setBackgroundResource(R.drawable._button);
+                } else {
+                    loginByPasswordOnClick.setEnabled(false);
+                    loginByPasswordOnClick.setBackgroundResource(R.drawable._button_normal);
+                }
+            }
+        });
+        login_pwd.addTextChangedListener(new AbsTextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+                super.onTextChanged(arg0, arg1, arg2, arg3);
+                String phonenum = login_phonenum.getText().toString().trim();
+                String pwd = login_pwd.getText().toString().trim();
+                if (6 == pwd.length() && 11 == phonenum.length()) {
+                    loginByPasswordOnClick.setEnabled(true);
+                    loginByPasswordOnClick.setBackgroundResource(R.drawable._button_normal);
+                } else {
+                    loginByPasswordOnClick.setEnabled(false);
+                    loginByPasswordOnClick.setBackgroundResource(R.drawable._button_normal);
+                }
+            }
+        });
+        loginByPasswordOnClick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String phonenum = login_phonenum.getText().toString().trim();
+                String pwd = login_pwd.getText().toString().trim();
+                try {
+                    loginRequest(phonenum, "", "", pwd);
+                } catch (Exception e) {
+
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login_bypassword);
+        assignViews();
     }
 
     Handler handler = new Handler() {
@@ -57,7 +106,6 @@ public class LoginByPasswordActivity extends BaseActivity {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             viewPager.setCurrentItem(startIndex);
-
         }
     };
 
@@ -84,12 +132,12 @@ public class LoginByPasswordActivity extends BaseActivity {
         return views;
     }
 
-    private void loginRequest() throws Exception {
+    private void loginRequest(String phoneNum,
+                              String vercode, String userName, String loginPwd) throws Exception {
         CustomerRequest re = new CustomerRequest(MyApplication.HOST + "");
-        re.setEntity(re.createLoginParams("", "", "", ""));
-        re.setRequestMethod(RequestMethod.GET);
+        re.setEntity(re.createLoginParams(phoneNum, vercode, userName, loginPwd));
         re.setOutTime(10000);
-        re.setIRequestListener(new BitmapRequestListener() {
+        re.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
 
@@ -98,6 +146,19 @@ public class LoginByPasswordActivity extends BaseActivity {
             @Override
             public void onSuccess(Object o) {
                 JSONObject js = (JSONObject) o;
+//                String phoneNum = ;
+//                String loginPwd = ;
+//
+//                SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss ");
+//                Date curDate = new Date(System.currentTimeMillis());//获取当前时间
+//                String date = formatter.format(curDate);
+//
+//                SharedPreferences sp = getSharedPreferences("info", MODE_PRIVATE);
+//                SharedPreferences.Editor ed = sp.edit();
+//                ed.putString("login_phonenum", phoneNum);
+//                ed.putString("login_pwd", loginPwd);
+//                ed.putString("login_date", date);
+//                ed.commit();
             }
 
             @Override
@@ -109,3 +170,4 @@ public class LoginByPasswordActivity extends BaseActivity {
         cancelRequest(re);
     }
 }
+

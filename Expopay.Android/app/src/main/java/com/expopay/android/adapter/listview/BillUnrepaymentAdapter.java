@@ -53,6 +53,7 @@ public class BillUnrepaymentAdapter extends BaseAdapter {
             //根据自定义的Item布局加载布局
             view = mInflater.inflate(R.layout.view_unrepayment_item, null);
             holder.unrepaymentImg = (ImageView) view.findViewById(R.id.unrepaymentImg);
+            holder.overdueDays = (TextView) view.findViewById(R.id.overdueDays);
             holder.unrepaymentProductName = (TextView) view.findViewById(R.id.unrepaymentProductName);
             holder.unrepaymentPro = (TextView) view.findViewById(R.id.unrepaymentPro);
             holder.unrepaymentBillAmount = (TextView) view.findViewById(R.id.unrepaymentBillAmount);
@@ -65,6 +66,7 @@ public class BillUnrepaymentAdapter extends BaseAdapter {
             holder = (ViewHolder) view.getTag();
         }
 //        holder.unrepaymentImg.setImageResource(entity.getProductImg());
+        holder.overdueDays.setText(entity.getOverdueDays());
         holder.unrepaymentProductName.setText(entity.getProductName());
         holder.unrepaymentPro.setText(entity.getProductName());
         holder.unrepaymentBillAmount.setText(entity.getOverdueAmount());
@@ -77,6 +79,7 @@ public class BillUnrepaymentAdapter extends BaseAdapter {
 
     static class ViewHolder {
         public ImageView unrepaymentImg;
+        public TextView overdueDays;
         public TextView unrepaymentProductName;
         public TextView unrepaymentPro;
         public TextView unrepaymentBillAmount;

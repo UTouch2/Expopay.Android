@@ -3,14 +3,11 @@ package com.expopay.android.request;
 import com.android.kechong.lib.http.Request;
 import com.android.kechong.lib.http.RequestMethod;
 import com.android.kechong.lib.util.MD5Util;
-import com.expopay.android.application.MyApplication;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**

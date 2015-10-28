@@ -28,6 +28,8 @@ public class OrderDetailActivity extends BaseActivity {
     private TextView orderNumber;
     private TextView transcationCode;
     private TextView orderTime;
+    private TextView carrierCompany;
+    private TextView carrierCode;
     private CheckBox checkBox;
     private ListView lvLogistics;
 
@@ -47,6 +49,8 @@ public class OrderDetailActivity extends BaseActivity {
         orderNumber = (TextView) findViewById(R.id.orderNumber);
         transcationCode = (TextView) findViewById(R.id.transcationCode);
         orderTime = (TextView) findViewById(R.id.orderTime);
+        carrierCompany = (TextView) findViewById(R.id.carrierCompany);
+        carrierCode = (TextView) findViewById(R.id.carrierCode);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
         lvLogistics = (ListView) findViewById(R.id.lvLogistics);
     }
@@ -67,9 +71,6 @@ public class OrderDetailActivity extends BaseActivity {
         });
     }
 
-    public void btnCommit(View view) {
-        Toast.makeText(this, "提交订单", Toast.LENGTH_SHORT).show();
-    }
 
     private void setTextView(){
         productImg.setImageResource(R.mipmap.mall_mobile);
@@ -86,6 +87,8 @@ public class OrderDetailActivity extends BaseActivity {
         orderNumber.setText("1234567890");
         transcationCode.setText("交易流水号:678839903987484");
         orderTime.setText("交易时间：2015-09-26  00:00:00");
+        carrierCompany.setText("顺丰快递");
+        carrierCode.setText("888888888888");
     }
 
 }

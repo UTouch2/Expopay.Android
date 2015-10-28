@@ -22,6 +22,8 @@ public class OrderDetailCancelActivity extends BaseActivity {
     private TextView cancelOrderNumber;
     private TextView cancelTranscationCode;
     private TextView cancelOrderTime;
+    private TextView cancelCarrierCompany;
+    private TextView cancelCarrierCode;
 
     private void assignViews() {
         cancelProductImg = (ImageView) findViewById(R.id.cancelProductImg);
@@ -38,6 +40,8 @@ public class OrderDetailCancelActivity extends BaseActivity {
         cancelOrderNumber = (TextView) findViewById(R.id.cancelOrderNumber);
         cancelTranscationCode = (TextView) findViewById(R.id.cancelTranscationCode);
         cancelOrderTime = (TextView) findViewById(R.id.cancelOrderTime);
+        cancelCarrierCompany = (TextView) findViewById(R.id.cancelCarrierCompany);
+        cancelCarrierCode = (TextView) findViewById(R.id.cancelCarrierCode);
     }
 
     @Override
@@ -63,6 +67,7 @@ public class OrderDetailCancelActivity extends BaseActivity {
         cancelOrderNumber.setText("1234567890");
         cancelTranscationCode.setText("交易流水号:678839903987484");
         cancelOrderTime.setText("交易时间：2015-09-26  00:00:00");
-
+        cancelCarrierCompany.setText("顺丰快递");
+        cancelCarrierCode.setText("66666688688688");
     }
 }

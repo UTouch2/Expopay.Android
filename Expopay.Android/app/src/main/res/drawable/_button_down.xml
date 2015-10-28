@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <shape android:shape="rectangle">
+        <!-- 主体渐变 startColor开始颜色，endColor结束颜色,
+         angle开始渐变的角度（值只能为90的倍数，0时为左到右渐变，90时为下到上渐变，依次逆时针类推-->
+        <gradient android:startColor="#23A4F7" android:endColor="#969696" android:angle="270" />
+        <!-- 边框 -->
+        <stroke android:width="0dip" android:color="#f403c9" />
+        <!-- 填充的颜色 -->
+        <solid android:color="#23A4F7" />
+        <!-- 设置按钮的四个角为弧形,android:radius 弧形的半径 -->
+        <corners android:radius="0dip" />
+        <!-- padding：内边距 -->
+        <padding android:bottom="10dp" android:left="10dp" android:right="10dp" android:top="10dp" />
+    </shape>
+</selector>
