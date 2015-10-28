@@ -15,8 +15,9 @@
 
         <ImageView
             android:id="@+id/productImg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical"
             android:src="@mipmap/mall_mobile" />
 
@@ -257,6 +258,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2015-09-26  00:00:00"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="承运公司："/>
+            <TextView
+                android:id="@+id/carrierCompany"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="顺丰快递"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="承运单号："/>
+            <TextView
+                android:id="@+id/carrierCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="65456789098"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
