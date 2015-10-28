@@ -6,10 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-
 import com.expopay.android.R;
-
-import org.w3c.dom.Text;
 
 /**
  * Created by misxu012 on 2015/10/28.
