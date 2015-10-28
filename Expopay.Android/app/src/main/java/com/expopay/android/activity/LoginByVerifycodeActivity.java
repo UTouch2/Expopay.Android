@@ -68,7 +68,7 @@ public class LoginByVerifycodeActivity extends BaseActivity {
                     btnLoginByVerifycode.setBackgroundResource(R.drawable._button);
                 } else {
                     btnLoginByVerifycode.setEnabled(false);
-                    btnLoginByVerifycode.setBackgroundResource(R.drawable._button_normal);
+                    btnLoginByVerifycode.setBackgroundResource(R.drawable._button_down);
                 }
             }
         });
@@ -83,7 +83,7 @@ public class LoginByVerifycodeActivity extends BaseActivity {
                     btnLoginByVerifycode.setBackgroundResource(R.drawable._button);
                 } else {
                     btnLoginByVerifycode.setEnabled(false);
-                    btnLoginByVerifycode.setBackgroundResource(R.drawable._button_normal);
+                    btnLoginByVerifycode.setBackgroundResource(R.drawable._button_down);
                 }
             }
         });
