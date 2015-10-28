@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
 import com.expopay.android.R;
 
 /**
@@ -44,6 +45,7 @@ public class CustormLoadingButton extends FrameLayout {
             @Override
             public void onClick(View v) {
                 if (!isLoading && onClickListener != null) {
+                    setLoading(true);
                     onClickListener.onClick(v);
                 }
             }
@@ -58,18 +60,27 @@ public class CustormLoadingButton extends FrameLayout {
         contentTextView.setText(loadingText);
     }
 
-    public void showLoading() {
-        loadinView.setVisibility(View.VISIBLE);
-        contentTextView.setVisibility(View.GONE);
-    }
+//    public void showLoading() {
+//        loadinView.setVisibility(View.VISIBLE);
+//        contentTextView.setVisibility(View.GONE);
+//        isLoading = true;
+//    }
 
-    public void dismissLoading() {
-        loadinView.setVisibility(View.GONE);
-        contentTextView.setVisibility(View.VISIBLE);
-    }
+//    public void dismissLoading() {
+//        loadinView.setVisibility(View.GONE);
+//        contentTextView.setVisibility(View.VISIBLE);
+//        isLoading = false;
+//    }
 
     public void setLoading(boolean flag) {
         isLoading = flag;
+        if (flag) {
+            loadinView.setVisibility(View.VISIBLE);
+            contentTextView.setVisibility(View.GONE);
+        } else {
+            loadinView.setVisibility(View.GONE);
+            contentTextView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
