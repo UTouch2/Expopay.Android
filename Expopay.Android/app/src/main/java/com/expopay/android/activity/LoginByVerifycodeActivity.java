@@ -1,30 +1,47 @@
 package com.expopay.android.activity;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.android.kechong.lib.http.listener.JsonRequestListener;
+import com.android.kechong.lib.listener.AbsTextWatcher;
 import com.expopay.android.R;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
+import com.expopay.android.application.MyApplication;
+import com.expopay.android.request.CustomerRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by misxu012 on 2015/10/20.
  */
 public class LoginByVerifycodeActivity extends BaseActivity {
-    ViewPager viewPager;
     int startIndex = 100;
+    private ViewPager viewPager;
+    private EditText loginPhonenum;
+    private EditText loginVercode;
+    private TextView loginTimeoutText;
+    private Button btnSendVercode;
+    private Button btnLoginByVerifycode;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_byverifycode);
+    private void assignViews() {
         viewPager = (ViewPager) findViewById(R.id.login_viewpager);
         viewPager.setAdapter(new BannerPagerAdapter(createViews()));
         viewPager.setCurrentItem(startIndex);
+
+        loginPhonenum = (EditText) findViewById(R.id.login_phonenum);
+        loginVercode = (EditText) findViewById(R.id.login_vercode);
+        loginTimeoutText = (TextView) findViewById(R.id.login_timeout_text);
+        btnSendVercode = (Button) findViewById(R.id.btn_sendvercode);
+        btnLoginByVerifycode = (Button) findViewById(R.id.btn_loginByVerifycode);
 
         new Thread() {
             @Override
@@ -39,8 +56,66 @@ public class LoginByVerifycodeActivity extends BaseActivity {
                 }
             }
         }.start();
+        btnLoginByVerifycode.setEnabled(false);
+        loginPhonenum.addTextChangedListener(new AbsTextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+                super.onTextChanged(arg0, arg1, arg2, arg3);
+                String phonenum = loginPhonenum.getText().toString().trim();
+                String vercode = loginVercode.getText().toString().trim();
+                if (11 == phonenum.length() && 6 == vercode.length()) {
+                    btnLoginByVerifycode.setEnabled(true);
+                    btnLoginByVerifycode.setBackgroundResource(R.drawable._button);
+                } else {
+                    btnLoginByVerifycode.setEnabled(false);
+                    btnLoginByVerifycode.setBackgroundResource(R.drawable._button_normal);
+                }
+            }
+        });
+        loginVercode.addTextChangedListener(new AbsTextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+                super.onTextChanged(arg0, arg1, arg2, arg3);
+                String phonenum = loginPhonenum.getText().toString().trim();
+                String vercode = loginVercode.getText().toString().trim();
+                if (11 == phonenum.length() && 6 == vercode.length()) {
+                    btnLoginByVerifycode.setEnabled(true);
+                    btnLoginByVerifycode.setBackgroundResource(R.drawable._button);
+                } else {
+                    btnLoginByVerifycode.setEnabled(false);
+                    btnLoginByVerifycode.setBackgroundResource(R.drawable._button_normal);
+                }
+            }
+        });
+        btnSendVercode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btnLoginByVerifycode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String phonenum = loginPhonenum.getText().toString().trim();
+                String vercode = loginVercode.getText().toString().trim();
+                try {
+                    loginRequest(phonenum, vercode, "", "");
+                } catch (Exception e) {
+
+                }
+            }
+        });
     }
-    Handler handler =new Handler(){
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login_byverifycode);
+        assignViews();
+    }
+
+    Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
@@ -69,5 +144,49 @@ public class LoginByVerifycodeActivity extends BaseActivity {
         views[5] = view;
         views[5].setBackgroundResource(R.mipmap.loginbanner_06);
         return views;
+    }
+
+    private void loginRequest(String phoneNum,
+                              String vercode, String userName, String loginPwd) throws Exception {
+        CustomerRequest re = new CustomerRequest(MyApplication.HOST + "");
+        re.setEntity(re.createLoginParams(phoneNum, vercode, userName, loginPwd));
+        re.setOutTime(10000);
+        re.setIRequestListener(new JsonRequestListener() {
+            @Override
+            public void onFilure(Exception e) {
+
+            }
+
+            @Override
+            public void onSuccess(Object o) {
+                JSONObject js = (JSONObject) o;
+                try {
+                    js.getJSONObject("");
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+//                String phoneNum = ;
+//                String vercode = ;
+//
+//                SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss ");
+//                Date curDate = new Date(System.currentTimeMillis());//获取当前时间
+//                String date = formatter.format(curDate);
+//
+//                SharedPreferences sp = getSharedPreferences("info", MODE_PRIVATE);
+//                SharedPreferences.Editor ed = sp.edit();
+//                ed.putString("login_phonenum", phoneNum);
+//                ed.putString("login_vercode", vercode);
+//                ed.putString("login_date", date);
+//                ed.commit();
+            }
+
+            @Override
+            public void onProgressUpdate(int i, int i1) {
+
+            }
+        });
+        re.execute();
+        cancelRequest(re);
     }
 }
