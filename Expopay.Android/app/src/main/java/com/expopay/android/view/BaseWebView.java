@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.CheckBox;
 
 public class BaseWebView extends WebView {
 	public BaseWebView(Context context) {
