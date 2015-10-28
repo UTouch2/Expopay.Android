@@ -10,6 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.expopay.android.R;
+import com.expopay.android.adapter.listview.LogisticsAdapter;
+import com.expopay.android.model.OrderDetailsEntity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrderDetailActivity extends BaseActivity {
 
@@ -32,6 +37,7 @@ public class OrderDetailActivity extends BaseActivity {
     private TextView carrierCode;
     private CheckBox checkBox;
     private ListView lvLogistics;
+    private LogisticsAdapter adapter;
 
     private void assignViews() {
         llAddress = (LinearLayout) findViewById(R.id.llAddress);
@@ -53,6 +59,9 @@ public class OrderDetailActivity extends BaseActivity {
         carrierCode = (TextView) findViewById(R.id.carrierCode);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
         lvLogistics = (ListView) findViewById(R.id.lvLogistics);
+
+        adapter = new LogisticsAdapter(this,testData());
+        lvLogistics.setAdapter(adapter);
     }
 
 
@@ -91,4 +100,13 @@ public class OrderDetailActivity extends BaseActivity {
         carrierCode.setText("888888888888");
     }
 
+    private List<OrderDetailsEntity> testData(){
+        List<OrderDetailsEntity> list = new ArrayList<OrderDetailsEntity>();
+        for (int i = 0; i <10 ; i++){
+            OrderDetailsEntity le = new OrderDetailsEntity();
+            le.setLogistics("【昆明市】正在配送中，李师傅13900003325  2015年10月05日   09:10:00");
+            list.add(le);
+        }
+        return list;
+    }
 }
