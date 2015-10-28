@@ -6,6 +6,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_loginByVerifycode"
+        android:layout_alignParentTop="true"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -27,8 +29,8 @@
             android:id="@+id/login_viewpager"
             android:layout_width="150dp"
             android:layout_height="70dp"
-            android:layout_marginBottom="50dp"
-            android:layout_marginTop="50dp">
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp">
 
         </android.support.v4.view.ViewPager>
 
@@ -36,21 +38,15 @@
             android:id="@+id/login_phonemun_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center_vertical">
-
-            <TextView
-                android:id="@+id/login_phonenum_lable"
-                android:layout_width="80dp"
-                android:layout_height="35dp"
-                android:layout_centerVertical="true"
-                android:gravity="center_vertical"
-                android:padding="5dp"
-                android:text="手机号码:" />
 
             <RelativeLayout
                 android:id="@+id/login_vercode_btn"
-                android:layout_width="80dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true">
@@ -60,6 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:text="发送验证码"
                     android:textColor="#00CC65" />
@@ -67,19 +64,21 @@
 
             <EditText
                 android:id="@+id/login_phonenum"
-
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/login_vercode_btn"
-                android:layout_toRightOf="@id/login_phonenum_lable"
                 android:background="#00000000"
-                android:hint="请输入手机号"
+                android:hint="请输入您的手机号码"
                 android:inputType="number"
                 android:lines="1"
                 android:maxLength="11"
                 android:singleLine="true"
                 android:text="" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/login_vercode_btn"
+                android:src="@mipmap/login_line"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -87,22 +86,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/login_phonemun_group"
-            android:layout_margin="20dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center_vertical">
-
-            <TextView
-                android:id="@+id/login_vercode_lable"
-                android:layout_width="80dp"
-                android:layout_height="35dp"
-                android:layout_centerVertical="true"
-                android:gravity="center_vertical"
-                android:padding="5dp"
-                android:text="验 证  码:" />
 
             <RelativeLayout
                 android:id="@+id/login_timeout_btn"
-                android:layout_width="80dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true">
@@ -121,9 +113,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_toLeftOf="@id/login_timeout_btn"
-                android:layout_toRightOf="@id/login_vercode_lable"
                 android:background="#00000000"
-                android:hint="请输入验证码"
+                android:hint="请输入您收到的验证码"
                 android:inputType="number"
                 android:lines="1"
                 android:maxLength="6"
@@ -142,6 +133,8 @@
             android:layout_height="50dp"
             android:adjustViewBounds="true"
             android:padding="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:src="@mipmap/login_forgetpassword" />
     </LinearLayout>
 
@@ -151,7 +144,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@drawable/_button_normal"
-        android:text="确   定"
+        android:text="登   录"
         android:textColor="#fff"
         android:textSize="14sp" />
 </RelativeLayout>
