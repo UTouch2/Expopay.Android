@@ -143,7 +143,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/_button_normal"
+        android:background="@drawable/_button_down"
         android:text="登   录"
         android:textColor="#fff"
         android:textSize="14sp" />
