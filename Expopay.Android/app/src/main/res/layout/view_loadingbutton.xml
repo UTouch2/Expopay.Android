@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/_button"
-    android:padding="10dp">
+    android:background="@drawable/_button">
 
     <LinearLayout
         android:id="@+id/loadingbutton_loading"
@@ -16,14 +15,15 @@
 
         <ProgressBar
             style="?android:attr/progressBarStyleSmall"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_margin="5dp" />
+            android:layout_width="25dp"
+            android:layout_height="25dp"  />
 
         <TextView
             android:id="@+id/loadingbutton_message"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
             android:text="正在加载..."
             android:textColor="#fff"
             android:textSize="15sp" />
@@ -32,8 +32,9 @@
     <TextView
         android:id="@+id/loadingbutton_text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_centerInParent="true"
+        android:gravity="center"
         android:text="加载更多"
         android:textColor="#fff"
         android:textSize="15sp" />

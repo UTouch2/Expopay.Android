@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -13,6 +14,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingBottom="30dp">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -104,8 +106,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:onClick="changeMobileOnclick"
                 android:background="@drawable/_rectangle_bg2"
+                android:onClick="changeMobileOnclick"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp">
 
@@ -129,8 +131,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:onClick="changeLoginPasswordOnclock"
                 android:background="@drawable/_rectangle_bg"
+                android:onClick="changeLoginPasswordOnclock"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp">
 
@@ -154,8 +156,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:onClick="changePayPasswordOnclock"
                 android:background="@drawable/_rectangle_bg2"
+                android:onClick="changePayPasswordOnclock"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp">
 
@@ -179,8 +181,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:onClick="cardPasswordOnclock"
                 android:background="@drawable/_rectangle_bg"
+                android:onClick="cardPasswordOnclock"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp">
 
@@ -251,6 +253,7 @@
                     android:adjustViewBounds="true"
                     android:src="@mipmap/account_right_arrow" />
             </RelativeLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -260,6 +263,7 @@
                 android:text="安全"
                 android:textColor="#000"
                 android:textSize="15sp" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
