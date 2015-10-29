@@ -22,26 +22,24 @@ import org.json.JSONObject;
  * Created by misxu012 on 2015/10/20.
  */
 public class LoginByPasswordActivity extends BaseActivity {
-    int startIndex = 100;
     private ViewPager viewPager;
     private EditText login_phonenum;
     private EditText login_pwd;
     private Button loginByPasswordOnClick;
 
-    private void assignViews(){
+    private void assignViews() {
         login_phonenum = (EditText) findViewById(R.id.login_phonenum);
         login_pwd = (EditText) findViewById(R.id.login_pwd);
         loginByPasswordOnClick = (Button) findViewById(R.id.btn_loginByPassword);
         viewPager = (ViewPager) findViewById(R.id.login_viewpager);
         viewPager.setAdapter(new BannerPagerAdapter(createViews()));
-        viewPager.setCurrentItem(startIndex);
+        viewPager.setCurrentItem(100);
         new Thread() {
             @Override
             public void run() {
                 while (true) {
                     try {
                         Thread.sleep(2000l);
-                        startIndex++;
                         handler.sendEmptyMessage(1);
                     } catch (Exception e) {
                     }
@@ -105,6 +103,7 @@ public class LoginByPasswordActivity extends BaseActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            int startIndex = viewPager.getCurrentItem() + 1;
             viewPager.setCurrentItem(startIndex);
         }
     };

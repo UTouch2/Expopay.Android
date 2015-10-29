@@ -24,7 +24,6 @@ import org.json.JSONObject;
  * Created by misxu012 on 2015/10/20.
  */
 public class LoginByVerifycodeActivity extends BaseActivity {
-    int startIndex = 100;
     private ViewPager viewPager;
     private EditText loginPhonenum;
     private EditText loginVercode;
@@ -35,7 +34,7 @@ public class LoginByVerifycodeActivity extends BaseActivity {
     private void assignViews() {
         viewPager = (ViewPager) findViewById(R.id.login_viewpager);
         viewPager.setAdapter(new BannerPagerAdapter(createViews()));
-        viewPager.setCurrentItem(startIndex);
+        viewPager.setCurrentItem(100);
 
         loginPhonenum = (EditText) findViewById(R.id.login_phonenum);
         loginVercode = (EditText) findViewById(R.id.login_vercode);
@@ -49,7 +48,6 @@ public class LoginByVerifycodeActivity extends BaseActivity {
                 while (true) {
                     try {
                         Thread.sleep(2000l);
-                        startIndex++;
                         handler.sendEmptyMessage(1);
                     } catch (Exception e) {
                     }
@@ -119,6 +117,7 @@ public class LoginByVerifycodeActivity extends BaseActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            int startIndex = viewPager.getCurrentItem() + 1;
             viewPager.setCurrentItem(startIndex);
         }
     };
