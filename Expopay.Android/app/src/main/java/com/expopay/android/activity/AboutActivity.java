@@ -15,7 +15,7 @@ public class AboutActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        statusBarCoverActivity();
+       statusBarCoverActivity();
         setContentView(R.layout.activity_about);
     }
 

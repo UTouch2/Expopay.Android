@@ -89,11 +89,4 @@ public class BaseActivity extends AbsFragmentActivity {
             }
         });
     }
-
-    @Override
-    public void setContentView(int layoutResID) {
-        super.setContentView(layoutResID);
-        initPerp();
-        initView();
-    }
 }
