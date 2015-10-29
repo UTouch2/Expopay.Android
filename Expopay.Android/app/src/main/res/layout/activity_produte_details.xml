@@ -118,7 +118,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="15dp"
-                android:background="#EEEEEE"
+                android:background="#f9f9f9"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:src="@mipmap/mall_more" />

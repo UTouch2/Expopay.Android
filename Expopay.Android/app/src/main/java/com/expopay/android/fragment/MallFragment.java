@@ -82,7 +82,7 @@ public class MallFragment extends  BaseFragment {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            int startItem=viewPager.getCurrentItem()+1;
+            int startItem = viewPager.getCurrentItem()+1;
             viewPager.setCurrentItem(startItem);
         }
     };
