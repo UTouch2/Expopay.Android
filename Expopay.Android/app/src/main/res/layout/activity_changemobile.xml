@@ -110,9 +110,11 @@
         </LinearLayout>
     </LinearLayout>
 
-    <Button
+    <com.expopay.android.view.CustormLoadingButton
+        android:background="@drawable/_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="确定修改" />
+        android:layout_height="wrap_content"
+        android:id="@+id/changecardpassword_ok">
+    </com.expopay.android.view.CustormLoadingButton>
 </RelativeLayout>
