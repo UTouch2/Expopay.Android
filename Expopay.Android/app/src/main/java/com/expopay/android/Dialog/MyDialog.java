@@ -18,6 +18,7 @@ public class MyDialog extends Dialog {
     TextView titleTextView;
     Button okButton, cancelButton;
     LinearLayout contentLayout;
+    View.OnClickListener okOnclickListener, cancelOnclickListener;
 
     MyDialog(Context context) {
         super(context);
@@ -42,6 +43,24 @@ public class MyDialog extends Dialog {
         okButton = (Button) findViewById(R.id.dialog_ok);
         cancelButton = (Button) findViewById(R.id.dialog_cancel);
         contentLayout = (LinearLayout) findViewById(R.id.dialog_content);
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+                if (okOnclickListener != null) {
+                    okOnclickListener.onClick(v);
+                }
+            }
+        });
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+                if (cancelOnclickListener != null) {
+                    cancelOnclickListener.onClick(v);
+                }
+            }
+        });
     }
 
     public MyDialog setTitle(String title) {
@@ -60,29 +79,13 @@ public class MyDialog extends Dialog {
         return this;
     }
 
-    public MyDialog setOkOnclickListener(final View.OnClickListener l) {
-        okButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-                if (l != null) {
-                    l.onClick(v);
-                }
-            }
-        });
+    public MyDialog setOkOnclickListener(View.OnClickListener l) {
+        okOnclickListener = l;
         return this;
     }
 
-    public MyDialog setCancelOnclickListener(final View.OnClickListener l) {
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-                if (l != null) {
-                    l.onClick(v);
-                }
-            }
-        });
+    public MyDialog setCancelOnclickListener(View.OnClickListener l) {
+        cancelOnclickListener = l;
         return this;
     }
 }
