@@ -78,7 +78,7 @@ public class BillUnrepaymentAdapter extends BaseAdapter {
         if (position % 2 == 0) {
             view.setBackgroundColor(Color.parseColor("#ffffff"));
         } else {
-            view.setBackgroundColor(Color.parseColor("#f9f9f9"));
+            view.setBackgroundColor(Color.parseColor("#F8F8F8"));
         }
 
         return view;

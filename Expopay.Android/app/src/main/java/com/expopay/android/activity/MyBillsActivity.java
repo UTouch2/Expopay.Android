@@ -60,7 +60,7 @@ public class MyBillsActivity extends BaseActivity implements View.OnClickListene
         hideFragments(transaction);
         switch (index) {
             case 0:
-                btn_unrepayment.setBackgroundColor(Color.parseColor("#AAAAAA"));
+                btn_unrepayment.setBackgroundColor(Color.parseColor("#BCBCBC"));
                 if (unrepaymentFragment == null) {
                     unrepaymentFragment = new UnrepaymentFragment();
                     transaction.add(R.id.flContent, unrepaymentFragment);
@@ -69,7 +69,7 @@ public class MyBillsActivity extends BaseActivity implements View.OnClickListene
                 }
                 break;
             default:
-                btn_repayment.setBackgroundColor(Color.parseColor("#AAAAAA"));
+                btn_repayment.setBackgroundColor(Color.parseColor("#BCBCBC"));
                 if (repaymentFragment == null) {
                     repaymentFragment = new RepaymentFragment();
                     transaction.add(R.id.flContent, repaymentFragment);

@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="￥18.80"
-                    android:textColor="#FF0000" />
+                    android:textColor="#E85D2E" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="已完成"
-                    android:textColor="#00FF00" />
+                    android:textColor="#7DE161" />
             </RelativeLayout>
         </LinearLayout>
 
