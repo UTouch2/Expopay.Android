@@ -47,8 +47,9 @@
                 android:layout_height="30dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
+                android:background="@drawable/_button_verifycode"
                 android:text="发送验证码"
-                android:textColor="#fff"
+                android:textColor="#999999"
                 android:textSize="11sp" />
 
             <EditText
@@ -87,9 +88,10 @@
                 android:layout_height="25dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
+                android:background="@drawable/_button_verifycode_normal"
                 android:gravity="center"
                 android:text="60秒"
-                android:textColor="#fff"
+                android:textColor="#999999"
                 android:textSize="13sp"></TextView>
 
             <EditText
