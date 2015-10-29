@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <ScrollView
@@ -12,8 +14,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="30dp">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
@@ -36,14 +37,14 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="用户名："
-                    android:textColor="#9E9E9E"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:layout_weight="1" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="paulxu"
-                    android:textColor="#9E9E9E"
+                    android:textColor="#3c3c3c"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -58,14 +59,14 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="用户名："
-                    android:textColor="#9E9E9E"
+                    android:textColor="#3c3c3c"
                     android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="paulxu"
-                    android:textColor="#9E9E9E"
+                    android:textColor="#3c3c3c"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -82,14 +83,14 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="企业认证："
-                    android:textColor="#9E9E9E"
+                    android:textColor="#3c3c3c"
                     android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="paulxu"
-                    android:textColor="#9E9E9E"
+                    android:textColor="#3c3c3c"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -116,7 +117,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="更改手机"
-                    android:textColor="#9E9E9E"
+                    android:textColor="#3c3c3c"
                     android:textSize="14sp" />
 
                 <ImageView
@@ -141,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="更改登录密码"
-                    android:textColor="#9E9E9E"
+                    android:textColor="#3c3c3c"
                     android:textSize="14sp" />
 
                 <ImageView
@@ -166,7 +167,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="更改支付密码"
-                    android:textColor="#9E9E9E"
+                    android:textColor="#3c3c3c"
                     android:textSize="14sp" />
 
                 <ImageView
@@ -191,7 +192,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="更改卡密码"
-                    android:textColor="#9E9E9E"
+                    android:textColor="#3c3c3c"
                     android:textSize="14sp" />
 
                 <ImageView
@@ -217,7 +218,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="更改密保问题"
-                    android:textColor="#9E9E9E"
+                    android:textColor="#3c3c3c"
                     android:textSize="14sp" />
 
                 <ImageView
@@ -242,7 +243,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="分期自动扣款"
-                    android:textColor="#9E9E9E"
+                    android:textColor="#3c3c3c"
                     android:textSize="14sp" />
 
                 <ImageView
@@ -260,7 +261,7 @@
                 android:layout_marginTop="44dp"
                 android:gravity="center_vertical"
                 android:paddingLeft="20dp"
-                android:text="安全"
+                android:text="信息"
                 android:textColor="#000"
                 android:textSize="15sp" />
 
@@ -277,7 +278,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="我的收货地址"
-                    android:textColor="#9E9E9E"
+                    android:textColor="#3c3c3c"
                     android:textSize="14sp" />
 
                 <ImageView
@@ -286,8 +287,15 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:adjustViewBounds="true"
+                    android:paddingBottom="30dp"
                     android:src="@mipmap/account_right_arrow" />
             </RelativeLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="exitOnclick"
+                android:text="退出登录" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
