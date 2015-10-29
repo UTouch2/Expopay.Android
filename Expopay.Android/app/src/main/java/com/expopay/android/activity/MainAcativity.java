@@ -43,13 +43,12 @@ public class MainAcativity extends BaseActivity {
 
     private ImageView mainImg, mallImg, myaccImg;
     private ImageView mainBgImg, mallBgImg, myaccBgImg;
-
     private Fragment cardFragment, discoveryFragment, myAccountFragment;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusColor();
+        leftButton.setVisibility(View.GONE);
         setContentView(R.layout.activity_mainact);
         initPerp();
         initView();

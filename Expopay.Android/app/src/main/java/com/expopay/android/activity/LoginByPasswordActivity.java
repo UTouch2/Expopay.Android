@@ -1,6 +1,7 @@
 package com.expopay.android.activity;
 
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.android.kechong.lib.listener.AbsTextWatcher;
+import com.android.kechong.lib.util.BitmapUtil;
 import com.expopay.android.R;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
 import com.expopay.android.application.MyApplication;
@@ -24,6 +26,7 @@ import org.json.JSONObject;
  * Created by misxu012 on 2015/10/20.
  */
 public class LoginByPasswordActivity extends BaseActivity {
+    private View contentView;
     private ViewPager viewPager;
     private EditText login_phonenum;
     private EditText login_pwd;
@@ -34,10 +37,12 @@ public class LoginByPasswordActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         statusBarCoverActivity();
         setContentView(R.layout.activity_login_bypassword);
+        initView();
     }
-
     @Override
     protected void initView() {
+        contentView = findViewById(R.id.login_contentview);
+        contentView.setBackgroundDrawable(new BitmapDrawable(BitmapUtil.readBitMap(getApplicationContext(), R.drawable.about_bg)));
         login_phonenum = (EditText) findViewById(R.id.login_phonenum);
         login_pwd = (EditText) findViewById(R.id.login_pwd);
         viewPager = (ViewPager) findViewById(R.id.login_viewpager);

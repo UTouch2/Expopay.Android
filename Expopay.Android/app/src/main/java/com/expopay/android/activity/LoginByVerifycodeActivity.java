@@ -1,5 +1,6 @@
 package com.expopay.android.activity;
 
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.android.kechong.lib.listener.AbsTextWatcher;
+import com.android.kechong.lib.util.BitmapUtil;
 import com.expopay.android.R;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
 import com.expopay.android.application.MyApplication;
@@ -30,7 +32,7 @@ public class LoginByVerifycodeActivity extends BaseActivity {
     private EditText loginVercode;
     private Button btnSendVercode;
     private CustormLoadingButton loginBtn;
-
+    private View contentView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +44,12 @@ public class LoginByVerifycodeActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        contentView = findViewById(R.id.login_contentview);
+        contentView.setBackgroundDrawable(new BitmapDrawable
+                (BitmapUtil.readBitMap(getApplicationContext(), R.drawable.about_bg)));
         viewPager = (ViewPager) findViewById(R.id.login_viewpager);
         viewPager.setAdapter(new BannerPagerAdapter(createViews()));
         viewPager.setCurrentItem(100);
-
         loginPhonenum = (EditText) findViewById(R.id.login_phonenum);
         loginVercode = (EditText) findViewById(R.id.login_vercode);
         btnSendVercode = (Button) findViewById(R.id.btn_sendvercode);
@@ -118,9 +122,10 @@ public class LoginByVerifycodeActivity extends BaseActivity {
         finish();
     }
 
-    public void forgetPasswordOnclick(View view){
+    public void forgetPasswordOnclick(View view) {
         finish();
     }
+
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
