@@ -142,7 +142,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/imageButton"
-        android:background="#F8F8F8"
+        android:background="#EEEEEE"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:orientation="vertical"
