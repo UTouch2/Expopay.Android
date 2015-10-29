@@ -2,32 +2,40 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#FFFFFF"
-    android:gravity="center"
-    android:padding="20dp">
+    android:orientation="vertical">
+    <com.expopay.android.view.SquareLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:padding="10dp">
+            <ImageView
+                android:id="@+id/image_grid_item"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:adjustViewBounds="true"
+                android:src="@mipmap/mall_mobile" />
 
-    <ImageView
-        android:id="@+id/image_grid_item"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:adjustViewBounds="true"
-        android:src="@mipmap/mall_mobile" />
+            <TextView
+                android:id="@+id/text1_grid_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image_grid_item"
+                android:layout_marginTop="5dp"
+                android:text="Apple iPhone 6S" />
 
-    <TextView
-        android:id="@+id/text1_grid_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/image_grid_item"
-        android:layout_marginTop="5dp"
-        android:text="Apple iPhone 6S" />
-
-    <TextView
-        android:id="@+id/text2_grid_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/text1_grid_item"
-        android:layout_marginTop="5dp"
-        android:text="售价：5288.00" />
+            <TextView
+                android:id="@+id/text2_grid_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text1_grid_item"
+                android:layout_marginTop="5dp"
+                android:text="售价：5288.00" />
+        </LinearLayout>
+    </com.expopay.android.view.SquareLayout>
 
 </LinearLayout>
