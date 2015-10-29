@@ -68,7 +68,7 @@ public class MyDialog extends Dialog {
         return this;
     }
 
-    public MyDialog setContent(String[] content) {
+    public MyDialog setContent(String... content) {
         int padding = (int) getContext().getResources().getDimension(R.dimen.dialogtextpadding);
         for (int i = 0; i < content.length; i++) {
             TextView textView = new TextView(getContext());

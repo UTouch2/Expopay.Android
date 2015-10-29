@@ -10,7 +10,7 @@ import com.expopay.android.R;
  */
 public class DialogFactory {
 
-    public static MyDialog createDialog(Context context,String Title,String[] content){
+    public static MyDialog createDialog(Context context,String Title,String... content){
         MyDialog d = new MyDialog(context);
         d.setContent(content);
         d.setTitle(Title);
