@@ -16,6 +16,7 @@ import com.expopay.android.R;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
 import com.expopay.android.application.MyApplication;
 import com.expopay.android.request.CustomerRequest;
+import com.expopay.android.view.CustormLoadingButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,20 +28,28 @@ public class LoginByVerifycodeActivity extends BaseActivity {
     private ViewPager viewPager;
     private EditText loginPhonenum;
     private EditText loginVercode;
-    private TextView loginTimeoutText;
     private Button btnSendVercode;
-    private Button btnLoginByVerifycode;
+    private CustormLoadingButton loginBtn;
 
-    private void assignViews() {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        statusBarCoverActivity();
+        setContentView(R.layout.activity_login_byverifycode);
+        initView();
+    }
+
+    @Override
+    protected void initView() {
         viewPager = (ViewPager) findViewById(R.id.login_viewpager);
         viewPager.setAdapter(new BannerPagerAdapter(createViews()));
         viewPager.setCurrentItem(100);
 
         loginPhonenum = (EditText) findViewById(R.id.login_phonenum);
         loginVercode = (EditText) findViewById(R.id.login_vercode);
-        loginTimeoutText = (TextView) findViewById(R.id.login_timeout_text);
         btnSendVercode = (Button) findViewById(R.id.btn_sendvercode);
-        btnLoginByVerifycode = (Button) findViewById(R.id.btn_loginByVerifycode);
+        loginBtn = (CustormLoadingButton) findViewById(R.id.login_ok);
 
         new Thread() {
             @Override
@@ -54,7 +63,7 @@ public class LoginByVerifycodeActivity extends BaseActivity {
                 }
             }
         }.start();
-        btnLoginByVerifycode.setEnabled(false);
+        loginBtn.setEnabled(false);
         loginPhonenum.addTextChangedListener(new AbsTextWatcher() {
             @Override
             public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
@@ -62,11 +71,11 @@ public class LoginByVerifycodeActivity extends BaseActivity {
                 String phonenum = loginPhonenum.getText().toString().trim();
                 String vercode = loginVercode.getText().toString().trim();
                 if (11 == phonenum.length() && 6 == vercode.length()) {
-                    btnLoginByVerifycode.setEnabled(true);
-                    btnLoginByVerifycode.setBackgroundResource(R.drawable._button);
+                    loginBtn.setEnabled(true);
+                    loginBtn.setBackgroundResource(R.drawable._button);
                 } else {
-                    btnLoginByVerifycode.setEnabled(false);
-                    btnLoginByVerifycode.setBackgroundResource(R.drawable._button_down);
+                    loginBtn.setEnabled(false);
+                    loginBtn.setBackgroundResource(R.drawable._button_down);
                 }
             }
         });
@@ -77,11 +86,11 @@ public class LoginByVerifycodeActivity extends BaseActivity {
                 String phonenum = loginPhonenum.getText().toString().trim();
                 String vercode = loginVercode.getText().toString().trim();
                 if (11 == phonenum.length() && 6 == vercode.length()) {
-                    btnLoginByVerifycode.setEnabled(true);
-                    btnLoginByVerifycode.setBackgroundResource(R.drawable._button);
+                    loginBtn.setEnabled(true);
+                    loginBtn.setBackgroundResource(R.drawable._button);
                 } else {
-                    btnLoginByVerifycode.setEnabled(false);
-                    btnLoginByVerifycode.setBackgroundResource(R.drawable._button_down);
+                    loginBtn.setEnabled(false);
+                    loginBtn.setBackgroundResource(R.drawable._button_down);
                 }
             }
         });
@@ -91,7 +100,7 @@ public class LoginByVerifycodeActivity extends BaseActivity {
 
             }
         });
-        btnLoginByVerifycode.setOnClickListener(new View.OnClickListener() {
+        loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String phonenum = loginPhonenum.getText().toString().trim();
@@ -105,15 +114,13 @@ public class LoginByVerifycodeActivity extends BaseActivity {
         });
     }
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        statusBarCoverActivity();
-        setContentView(R.layout.activity_login_byverifycode);
-        assignViews();
+    public void passwordLoginOnclick(View view) {
+        finish();
     }
 
+    public void forgetPasswordOnclick(View view){
+        finish();
+    }
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {

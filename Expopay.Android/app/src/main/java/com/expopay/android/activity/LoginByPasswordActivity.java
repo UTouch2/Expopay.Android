@@ -1,5 +1,6 @@
 package com.expopay.android.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,6 +16,7 @@ import com.expopay.android.R;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
 import com.expopay.android.application.MyApplication;
 import com.expopay.android.request.CustomerRequest;
+import com.expopay.android.view.CustormLoadingButton;
 
 import org.json.JSONObject;
 
@@ -25,13 +27,21 @@ public class LoginByPasswordActivity extends BaseActivity {
     private ViewPager viewPager;
     private EditText login_phonenum;
     private EditText login_pwd;
-    private Button loginByPasswordOnClick;
+    private CustormLoadingButton loginButton;
 
-    private void assignViews() {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        statusBarCoverActivity();
+        setContentView(R.layout.activity_login_bypassword);
+    }
+
+    @Override
+    protected void initView() {
         login_phonenum = (EditText) findViewById(R.id.login_phonenum);
         login_pwd = (EditText) findViewById(R.id.login_pwd);
-        loginByPasswordOnClick = (Button) findViewById(R.id.btn_loginByPassword);
         viewPager = (ViewPager) findViewById(R.id.login_viewpager);
+        loginButton = (CustormLoadingButton) findViewById(R.id.login_ok);
         viewPager.setAdapter(new BannerPagerAdapter(createViews()));
         viewPager.setCurrentItem(100);
         new Thread() {
@@ -46,8 +56,8 @@ public class LoginByPasswordActivity extends BaseActivity {
                 }
             }
         }.start();
-        loginByPasswordOnClick.setEnabled(false);
-        loginByPasswordOnClick.setBackgroundResource(R.drawable._button_down);
+        loginButton.setEnabled(false);
+        loginButton.setBackgroundResource(R.drawable._button_down);
         login_phonenum.addTextChangedListener(new AbsTextWatcher() {
             @Override
             public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
@@ -55,11 +65,11 @@ public class LoginByPasswordActivity extends BaseActivity {
                 String phonenum = login_phonenum.getText().toString().trim();
                 String pwd = login_pwd.getText().toString().trim();
                 if (0 == pwd.length() && 11 == phonenum.length()) {
-                    loginByPasswordOnClick.setEnabled(true);
-                    loginByPasswordOnClick.setBackgroundResource(R.drawable._button);
+                    loginButton.setEnabled(true);
+                    loginButton.setBackgroundResource(R.drawable._button);
                 } else {
-                    loginByPasswordOnClick.setEnabled(false);
-                    loginByPasswordOnClick.setBackgroundResource(R.drawable._button_normal);
+                    loginButton.setEnabled(false);
+                    loginButton.setBackgroundResource(R.drawable._button_normal);
                 }
             }
         });
@@ -70,15 +80,15 @@ public class LoginByPasswordActivity extends BaseActivity {
                 String phonenum = login_phonenum.getText().toString().trim();
                 String pwd = login_pwd.getText().toString().trim();
                 if (6 == pwd.length() && 11 == phonenum.length()) {
-                    loginByPasswordOnClick.setEnabled(true);
-                    loginByPasswordOnClick.setBackgroundResource(R.drawable._button_down);
+                    loginButton.setEnabled(true);
+                    loginButton.setBackgroundResource(R.drawable._button_down);
                 } else {
-                    loginByPasswordOnClick.setEnabled(false);
-                    loginByPasswordOnClick.setBackgroundResource(R.drawable._button_down);
+                    loginButton.setEnabled(false);
+                    loginButton.setBackgroundResource(R.drawable._button_down);
                 }
             }
         });
-        loginByPasswordOnClick.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String phonenum = login_phonenum.getText().toString().trim();
@@ -93,11 +103,18 @@ public class LoginByPasswordActivity extends BaseActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        statusBarCoverActivity();
-        setContentView(R.layout.activity_login_bypassword);
-        assignViews();
+    protected void initPerp() {
+
+    }
+
+    public void messageOnclick(View v) {
+        Intent intent = new Intent(this, LoginByVerifycodeActivity.class);
+        startActivity(intent);
+    }
+
+    public void forgetPasswordOnclick(View v) {
+        Intent intent = new Intent(this, LoginByVerifycodeActivity.class);
+        startActivity(intent);
     }
 
     Handler handler = new Handler() {
