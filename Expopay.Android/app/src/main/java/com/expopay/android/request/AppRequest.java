@@ -35,6 +35,7 @@ public class AppRequest extends Request{
         header.put("sign", "");
         header.put("machineNumber", "android");
         JSONObject body = new JSONObject();
+        body.put("clientType","android");
         data.put("header", header);
         data.put("body", body);
         Map<String, String> map = new HashMap<String, String>();
