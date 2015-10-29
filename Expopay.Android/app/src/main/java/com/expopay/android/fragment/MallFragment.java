@@ -11,7 +11,7 @@ import android.widget.ImageView;
 
 import com.expopay.android.R;
 import com.expopay.android.adapter.gridview.MallProductAdapter;
-import com.expopay.android.adapter.pager.MallPagerAdapter;
+import com.expopay.android.adapter.pager.BannerPagerAdapter;
 import com.expopay.android.model.MallProductEntity;
 
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class MallFragment extends  BaseFragment {
         View view =inflater.inflate(R.layout.fragment_mall,container,false);
 
         viewPager = (ViewPager) view.findViewById(R.id.mall_viewpager);
-        viewPager.setAdapter(new MallPagerAdapter(createViews()));
+        viewPager.setAdapter(new BannerPagerAdapter(createViews()));
         viewPager.setCurrentItem(100);
         new Thread(){
             @Override
