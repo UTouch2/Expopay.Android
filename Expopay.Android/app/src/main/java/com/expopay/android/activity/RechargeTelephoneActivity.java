@@ -44,6 +44,7 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusColor();
         setContentView(R.layout.activity_recharge_telephone);
 
         assignViews();

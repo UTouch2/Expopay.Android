@@ -63,10 +63,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
-        android:layout_marginTop="10dp"
         android:columnCount="3"
         android:rowCount="3"
-        android:layout_above="@+id/btnRecharge"
+        android:layout_below="@+id/linearLayout10"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true">
         <Button android:text="10元"
             android:id="@+id/charge10"

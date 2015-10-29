@@ -46,6 +46,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusColor();
         setContentView(R.layout.activity_order_detail_commit);
 
         assignViews();
