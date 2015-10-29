@@ -4,13 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#F9F9F9">
-    
-    <TextView
-        android:id="@+id/overdueDays"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="逾期三天"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,14 +13,14 @@
 
         <ImageView
             android:id="@+id/unrepaymentImg"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_gravity="center_vertical"
             android:src="@mipmap/mall_mobile"/>
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="5"
+            android:layout_weight="7"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:orientation="vertical">
@@ -35,11 +28,14 @@
                 android:id="@+id/unrepaymentProductName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#666666"
                 android:text="Apple Iphone"/>
             <TextView
                 android:id="@+id/unrepaymentPro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textColor="#666666"
                 android:text="白色 16G"/>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -49,13 +45,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="本期应还："
-                    android:textColor="#FF0000"/>
+                    android:textColor="#E85D2C"/>
                 <TextView
                     android:id="@+id/unrepaymentBillAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="440+30"
-                    android:textColor="#FF0000"/>
+                    android:textColor="#E85D2C"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="(违约金)"
+                    android:textColor="#666666"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -64,12 +66,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#666666"
                     android:text="还款日期："/>
                 <TextView
                     android:id="@+id/unrepaymentTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#666666"
                     android:text="2014-12-12"/>
+                <TextView
+                    android:id="@+id/unrepaymentOverdueDays"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#F5081D"
+                    android:text="逾期3天"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -78,11 +88,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#666666"
                     android:text="消费时间："/>
                 <TextView
                     android:id="@+id/unrepaymentOrderTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#666666"
                     android:text="2014-12-12"/>
             </LinearLayout>
         </LinearLayout>
@@ -107,7 +119,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_gravity="center_horizontal"
                 android:text="剩余10期"
-                android:textColor="#000000"/>
+                android:textColor="#B1B1B1"/>
         </LinearLayout>
 
     </LinearLayout>

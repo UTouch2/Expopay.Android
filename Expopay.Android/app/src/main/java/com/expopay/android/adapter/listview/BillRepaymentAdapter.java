@@ -53,24 +53,26 @@ public class BillRepaymentAdapter extends BaseAdapter {
             //根据自定义的Item布局加载布局
             view = mInflater.inflate(R.layout.view_repayment_item, null);
             holder.repaymentImg = (ImageView) view.findViewById(R.id.repaymentImg);
-            holder.remainingDays = (TextView) view.findViewById(R.id.remainingDays);
+            holder.remainingTime = (TextView) view.findViewById(R.id.remainingTime);
             holder.repaymentProductName = (TextView) view.findViewById(R.id.repaymentProductName);
             holder.repaymentPro = (TextView) view.findViewById(R.id.repaymentPro);
             holder.repaymentBillAmount = (TextView) view.findViewById(R.id.repaymentBillAmount);
             holder.repaymentTime = (TextView) view.findViewById(R.id.repaymentTime);
             holder.repaymentOrderTime = (TextView) view.findViewById(R.id.repaymentOrderTime);
+            holder.repaymentOverdueDays = (TextView) view.findViewById(R.id.repaymentOverdueDays);
             //将设置好的布局保存到缓存中，并将其设置在Tag里，以便后面方便取出Tag
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
 //        holder.repaymentImg.setImageResource(entity.getProductImg());
-        holder.remainingDays.setText(entity.getRemainingDays());
+        holder.remainingTime.setText(entity.getRemainingDays());
         holder.repaymentProductName.setText(entity.getProductName());
-        holder.repaymentPro.setText(entity.getProductName());
+        holder.repaymentPro.setText(entity.getPro());
         holder.repaymentBillAmount.setText(entity.getOverdueAmount());
         holder.repaymentTime.setText(entity.getRepaymentTime());
         holder.repaymentOrderTime.setText(entity.getOrderTime());
+        holder.repaymentOverdueDays.setText(entity.getOverdueDays());
 
         if (position % 2 == 0) {
             view.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -83,11 +85,12 @@ public class BillRepaymentAdapter extends BaseAdapter {
 
     static class ViewHolder {
         public ImageView repaymentImg;
-        public TextView remainingDays;
+        public TextView remainingTime;
         public TextView repaymentProductName;
         public TextView repaymentPro;
         public TextView repaymentBillAmount;
         public TextView repaymentTime;
         public TextView repaymentOrderTime;
+        public TextView repaymentOverdueDays;
     }
 }

@@ -54,26 +54,26 @@ public class BillUnrepaymentAdapter extends BaseAdapter {
             //根据自定义的Item布局加载布局
             view = mInflater.inflate(R.layout.view_unrepayment_item, null);
             holder.unrepaymentImg = (ImageView) view.findViewById(R.id.unrepaymentImg);
-            holder.overdueDays = (TextView) view.findViewById(R.id.overdueDays);
             holder.unrepaymentProductName = (TextView) view.findViewById(R.id.unrepaymentProductName);
             holder.unrepaymentPro = (TextView) view.findViewById(R.id.unrepaymentPro);
             holder.unrepaymentBillAmount = (TextView) view.findViewById(R.id.unrepaymentBillAmount);
             holder.unrepaymentTime = (TextView) view.findViewById(R.id.unrepaymentTime);
             holder.unrepaymentOrderTime = (TextView) view.findViewById(R.id.unrepaymentOrderTime);
             holder.unrepaymentPeriod = (TextView) view.findViewById(R.id.unrepaymentPeriod);
+            holder.unrepaymentOverdueDays = (TextView) view.findViewById(R.id.unrepaymentOverdueDays);
             //将设置好的布局保存到缓存中，并将其设置在Tag里，以便后面方便取出Tag
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
 //        holder.unrepaymentImg.setImageResource(entity.getProductImg());
-        holder.overdueDays.setText(entity.getOverdueDays());
         holder.unrepaymentProductName.setText(entity.getProductName());
-        holder.unrepaymentPro.setText(entity.getProductName());
+        holder.unrepaymentPro.setText(entity.getPro());
         holder.unrepaymentBillAmount.setText(entity.getOverdueAmount());
         holder.unrepaymentTime.setText(entity.getRepaymentTime());
         holder.unrepaymentOrderTime.setText(entity.getOrderTime());
-        holder.unrepaymentPeriod.setText(entity.getOverdueDays());
+        holder.unrepaymentPeriod.setText(entity.getRepaymentPeriod());
+        holder.unrepaymentOverdueDays.setText(entity.getOverdueDays());
 
         if (position % 2 == 0) {
             view.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -86,12 +86,12 @@ public class BillUnrepaymentAdapter extends BaseAdapter {
 
     static class ViewHolder {
         public ImageView unrepaymentImg;
-        public TextView overdueDays;
         public TextView unrepaymentProductName;
         public TextView unrepaymentPro;
         public TextView unrepaymentBillAmount;
         public TextView unrepaymentTime;
         public TextView unrepaymentOrderTime;
         public TextView unrepaymentPeriod;
+        public TextView unrepaymentOverdueDays;
     }
 }
