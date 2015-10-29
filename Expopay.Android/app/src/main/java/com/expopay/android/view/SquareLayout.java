@@ -26,9 +26,10 @@ public class SquareLayout extends LinearLayout {
 		setMeasuredDimension(getDefaultSize(0, widthMeasureSpec),
 				getDefaultSize(0, heightMeasureSpec));
 		int childWidthSize = getMeasuredWidth();
-		heightMeasureSpec = widthMeasureSpec = MeasureSpec.makeMeasureSpec(
+		widthMeasureSpec = MeasureSpec.makeMeasureSpec(
 				childWidthSize, MeasureSpec.EXACTLY);
-		//this.setMinimumHeight((int)(childWidthSize));
+		heightMeasureSpec =(int)(widthMeasureSpec*1.1);
+				//this.setMinimumHeight((int)(childWidthSize));ddd
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 	}
 }
