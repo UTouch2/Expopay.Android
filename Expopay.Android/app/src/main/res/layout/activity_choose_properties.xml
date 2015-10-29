@@ -36,15 +36,19 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/colourName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#666666"
+                    android:layout_marginRight="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@+id/imgBtnCancle"
                     android:text="Apple iPhone 6S 移动联通电信4G手机"/>
 
                 <ImageButton
                     android:id="@+id/imgBtnCancle"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:background="#FFFFFF"
                     android:layout_alignParentRight="true"
                     android:src="@mipmap/mall_delete" />

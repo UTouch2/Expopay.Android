@@ -31,14 +31,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent">
                 <TextView
+                    android:id="@+id/installmentName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#666666"
+                    android:layout_toLeftOf="@+id/ibCancle"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginRight="5dp"
                     android:text="Apple iPhone 6S 移动联通电信4G手机"/>
                 <ImageButton
                     android:id="@+id/ibCancle"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:background="#FFFFFF"
                     android:layout_alignParentRight="true"
                     android:src="@mipmap/mall_delete"/>
