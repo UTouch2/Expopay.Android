@@ -52,7 +52,6 @@
             android:layout_weight="1"
             android:background="@drawable/_rectangle_bg2"
             android:text="取消"
-            android:textColor="#fff"
             android:textSize="14sp" />
     </LinearLayout>
 </LinearLayout>
