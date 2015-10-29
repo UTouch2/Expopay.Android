@@ -64,7 +64,7 @@ public class MyAccFragment extends  BaseFragment {
         view.findViewById(R.id.account_order).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(getActivity(), AboutActivity.class);
+                Intent intent =new Intent(getActivity(), MyOrderActivity.class);
                 startActivity(intent);
             }
         });
