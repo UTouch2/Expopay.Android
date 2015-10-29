@@ -28,14 +28,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="收件人：" />
+                    android:text="收件人："
+                    android:textColor="#666666"/>
 
                 <TextView
                     android:id="@+id/commitConsignee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="克里斯"
-                    android:textColor="#C8C8C8"/>
+                    android:textColor="#666666"/>
 
                 <ImageView
                     android:layout_width="15dp"
@@ -48,7 +49,7 @@
                     android:id="@+id/commitConsigneeMobile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#C8C8C8"
+                    android:textColor="#666666"
                     android:text="13666666666" />
             </LinearLayout>
 
@@ -130,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:text="金色 64G 非合约机"
-                    android:textColor="#C8C8C8" />
+                    android:textColor="#666666" />
             </LinearLayout>
 
             <RelativeLayout
@@ -153,7 +154,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:text="x1"
-                    android:textColor="#C8C8C8"/>
+                    android:textColor="#666666"/>
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
@@ -189,7 +190,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:text="12期 "
-                    android:textColor="#C8C8C8" />
+                    android:textColor="#666666" />
 
                 <TextView
                     android:id="@+id/commitServiceAmount"
@@ -197,7 +198,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="(522+12)x12=5288"
-                    android:textColor="#C8C8C8" />
+                    android:textColor="#666666" />
             </LinearLayout>
 
             <TextView
@@ -207,7 +208,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
                 android:text="每期应还款534元"
-                android:textColor="#C8C8C8" />
+                android:textColor="#666666" />
         </LinearLayout>
     </LinearLayout>
 
@@ -227,7 +228,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="我同意"
-            android:textColor="#C8C8C8"
+            android:textColor="#666666"
             android:textSize="15dp" />
 
         <LinearLayout
@@ -240,7 +241,7 @@
                 android:layout_height="wrap_content"
                 android:text="《南博卡分期协议》"
                 android:textSize="15dp"
-                android:textColor="#C8C8C8"/>
+                android:textColor="#666666"/>
 
         </LinearLayout>
     </LinearLayout>

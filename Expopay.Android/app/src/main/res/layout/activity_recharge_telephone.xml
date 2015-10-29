@@ -14,10 +14,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="充值手机："
             android:textColor="#000000"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:gravity="center" />
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,13 +49,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="您需支付："
-            android:textColor="#FF0000"/>
+            android:textColor="#EB744A"/>
         <TextView
             android:id="@+id/rechange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:textColor="#FF0000"
+            android:textColor="#EB744A"
             android:text="10元"/>
     </LinearLayout>
 
@@ -73,52 +73,52 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:background="#F9F9F9"
-            android:textColor="#000000"
+            android:textColor="#666666"
             android:layout_height="100dp"
             android:layout_width="100dp"/>
         <Button android:text="20元"
             android:id="@+id/charge20"
             android:background="#F9F9F9"
-            android:textColor="#000000"
+            android:textColor="#666666"
             android:layout_height="100dp"
             android:layout_width="100dp"/>
         <Button android:text="30元"
             android:id="@+id/charge30"
             android:layout_marginLeft="10dp"
             android:background="#F9F9F9"
-            android:textColor="#000000"
+            android:textColor="#666666"
             android:layout_height="100dp"
             android:layout_width="100dp"/>
         <Button android:text="50元"
             android:id="@+id/charge50"
             android:layout_marginBottom="10dp"
             android:background="#F9F9F9"
-            android:textColor="#000000"
+            android:textColor="#666666"
             android:layout_height="100dp"
             android:layout_width="100dp"/>
         <Button android:text="100元"
             android:id="@+id/charge100"
             android:background="#F9F9F9"
-            android:textColor="#000000"
+            android:textColor="#666666"
             android:layout_height="100dp"
             android:layout_width="100dp"/>
         <Button android:text="200元"
             android:id="@+id/charge200"
             android:layout_marginLeft="10dp"
             android:background="#F9F9F9"
-            android:textColor="#000000"
+            android:textColor="#666666"
             android:layout_height="100dp"
             android:layout_width="100dp"/>
         <Button android:text="300元"
             android:id="@+id/charge300"
             android:background="#F9F9F9"
-            android:textColor="#000000"
+            android:textColor="#666666"
             android:layout_height="100dp"
             android:layout_width="100dp"/>
         <Button android:text="500元"
             android:id="@+id/charge500"
             android:background="#F9F9F9"
-            android:textColor="#000000"
+            android:textColor="#666666"
             android:layout_height="100dp"
             android:layout_width="100dp"/>
     </GridLayout>
