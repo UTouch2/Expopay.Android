@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="分期订单"
-            android:textSize="20dp"/>
+            android:textSize="15dp"/>
         <Button
             android:id="@+id/btn_paymentOrders"
             android:layout_width="0dp"
@@ -24,8 +24,12 @@
             android:background="#FFFFFF"
             android:layout_weight="1"
             android:text="缴费订单"
-            android:textSize="20dp"/>
+            android:textSize="15dp"/>
     </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/mall_ogistics_line"/>
 
     <FrameLayout
         android:id="@+id/content"

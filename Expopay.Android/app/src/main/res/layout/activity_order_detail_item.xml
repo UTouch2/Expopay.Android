@@ -33,8 +33,8 @@
             android:text="详情" />
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
@@ -48,6 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/linearLayout7"
+        android:background="#FFFFFF"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
@@ -77,52 +78,60 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#666666"
                     android:text="订单编号：" />
 
                 <TextView
                     android:id="@+id/itemOrderNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#666666"
                     android:text="2134567889999" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#666666"
                     android:text="交易流水号：" />
 
                 <TextView
                     android:id="@+id/itemTranscationCode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#666666"
                     android:text="67889999" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#666666"
                     android:text="支付流水号：" />
 
                 <TextView
                     android:id="@+id/itemPayCode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#666666"
                     android:text="287889999" />
             </LinearLayout>
         </LinearLayout>
@@ -133,6 +142,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/imageButton"
+        android:background="#F8F8F8"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:orientation="vertical"
@@ -146,12 +156,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#666666"
                 android:text="交易时间：" />
 
             <TextView
                 android:id="@+id/itemOrderTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="#666666"
                 android:text="2015-09-26" />
         </LinearLayout>
 
@@ -171,14 +183,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="完成"
-                android:textColor="#0000FF" />
+                android:textColor="#39ADF7" />
         </LinearLayout>
     </LinearLayout>
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

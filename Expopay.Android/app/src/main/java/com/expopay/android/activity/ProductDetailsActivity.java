@@ -43,6 +43,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusColor();
         setContentView(R.layout.activity_produte_details);
 
         assignViews();

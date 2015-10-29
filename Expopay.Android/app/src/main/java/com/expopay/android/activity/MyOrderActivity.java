@@ -67,7 +67,7 @@ public class MyOrderActivity extends BaseActivity implements View.OnClickListene
         switch (index) {
             case 0:
                 // 当点击了消息tab时，改变控件的背景颜色和文字颜色
-                btnPeriodOrder.setBackgroundColor(Color.parseColor("#AAAAAA"));
+                btnPeriodOrder.setBackgroundColor(Color.parseColor("#BCBCBC"));
                 btnPeriodOrder.setTextColor(Color.WHITE);
                 if (paymentOrderFragment == null) {
                     // 如果paymentOrderFragment为空，则创建一个并添加到界面上
@@ -80,7 +80,7 @@ public class MyOrderActivity extends BaseActivity implements View.OnClickListene
                 break;
             default:
                 // 当点击了设置tab时，改变控件的背景颜色和文字颜色
-                btnPaymentOrders.setBackgroundColor(Color.parseColor("#AAAAAA"));
+                btnPaymentOrders.setBackgroundColor(Color.parseColor("#BCBCBC"));
                 btnPaymentOrders.setTextColor(Color.WHITE);
                 if (paymentOrderFragment == null) {
                     // 如果installmentOrderFragment为空，则创建一个并添加到界面上
@@ -100,9 +100,9 @@ public class MyOrderActivity extends BaseActivity implements View.OnClickListene
      */
     private void clearSelection() {
         btnPeriodOrder.setBackgroundColor(Color.WHITE);
-        btnPeriodOrder.setTextColor(Color.BLACK);
+        btnPeriodOrder.setTextColor(Color.parseColor("#666666"));
         btnPaymentOrders.setBackgroundColor(Color.WHITE);
-        btnPaymentOrders.setTextColor(Color.BLACK);
+        btnPaymentOrders.setTextColor(Color.parseColor("#666666"));
     }
 
     /**

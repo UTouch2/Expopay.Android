@@ -14,6 +14,24 @@ public class BillRepaymentEntity implements Serializable{
     private String orderTime;
     private String repaymentTime;
     private String repaymentPeriod;
+    private String overdueDays;
+    private String pro;
+
+    public String getPro() {
+        return pro;
+    }
+
+    public void setPro(String pro) {
+        this.pro = pro;
+    }
+
+    public String getOverdueDays() {
+        return overdueDays;
+    }
+
+    public void setOverdueDays(String overdueDays) {
+        this.overdueDays = overdueDays;
+    }
 
     public String getBillAmount() {
         return billAmount;

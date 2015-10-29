@@ -49,6 +49,7 @@ public class ChoosePeriodActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusColor();
         setContentView(R.layout.activity_choose_period);
         assignViews();
     }

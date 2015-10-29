@@ -7,13 +7,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#F8F8F8"
-        android:padding="20dp"
+        android:padding="10dp"
         android:orientation="vertical"
         android:id="@+id/linearLayout13">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:textColor="#666666"
             android:text="总额度"/>
         <TextView
             android:layout_width="wrap_content"
@@ -22,13 +23,12 @@
             android:layout_marginTop="5dp"
             android:text="8000.00"
             android:textSize="20sp"
-            android:textColor="#FF0000"/>
+            android:textColor="#E96336"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#F8F8F8"
-        android:padding="20dp"
         android:orientation="horizontal"
         android:layout_below="@+id/linearLayout13"
         android:layout_alignParentLeft="true"
@@ -37,6 +37,8 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="#FDFDFD"
             android:orientation="vertical"
             android:layout_weight="1">
             <TextView
@@ -49,12 +51,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_gravity="center_horizontal"
+                android:textColor="#666666"
                 android:text="本期应还" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
+            android:padding="10dp"
+            android:background="#FDFDFD"
             android:orientation="vertical"
             android:layout_weight="1">
             <TextView
@@ -67,21 +72,37 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_gravity="center_horizontal"
+                android:textColor="#666666"
                 android:text="待还款总额" />
         </LinearLayout>
     </LinearLayout>
-    <TextView
+    <LinearLayout
+        android:id="@+id/line"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout14"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/textView6" />
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/mall_ogistics_line"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="#FFFFFF"
+            android:id="@+id/textView6" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/mall_ogistics_line"/>
+
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/line"
+        android:background="#FFFFFF"
         android:orientation="horizontal"
-        android:layout_below="@+id/textView6"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/linearLayout15">
@@ -90,16 +111,19 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#FFFFFF"
             android:text="待还款"
-            android:textSize="20dp"/>
+            android:textColor="#666666"
+            android:textSize="15dp"/>
         <Button
             android:id="@+id/btn_repayment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
             android:layout_weight="1"
+            android:textColor="#666666"
             android:text="已还款"
-            android:textSize="20dp"/>
+            android:textSize="15dp"/>
     </LinearLayout>
 
     <FrameLayout

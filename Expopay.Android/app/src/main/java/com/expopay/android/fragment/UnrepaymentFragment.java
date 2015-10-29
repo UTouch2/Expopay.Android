@@ -45,10 +45,11 @@ public class UnrepaymentFragment extends Fragment {
             BillUnrepaymentEntity br = new BillUnrepaymentEntity();
             br.setOverdueDays("逾期6天");
             br.setProductName("iPHone6S");
+            br.setPro("土豪金64G");
             br.setOverdueAmount("440+30");
-            br.setRepaymentTime("2015-10-30");
-            br.setOrderTime("2015-10-10");
-            br.setOverdueDays("剩余10期");
+            br.setRepaymentTime("2015年10月30日");
+            br.setOrderTime("2015年10月10日");
+            br.setRepaymentPeriod("剩余10期");
             list.add(br);
         }
         return list;

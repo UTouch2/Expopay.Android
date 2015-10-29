@@ -3,21 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff">
-    <ImageButton
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mall_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:src="@mipmap/mall_mobile"
-        android:id="@+id/imageButton" />
+        android:layout_height="150dp">
+    </android.support.v4.view.ViewPager>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="分期商品"
-        android:layout_below="@+id/imageButton"
+        android:textSize="15sp"
+        android:textColor="#666666"
+        android:layout_below="@+id/mall_viewpager"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/textView3" />
+    <ImageView
+        android:id="@+id/imgLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/mall_ogistics_line"
+        android:layout_below="@+id/textView3"/>
 
     <GridView
         android:layout_width="wrap_content"
@@ -27,7 +36,7 @@
         android:verticalSpacing="1px"
         android:background="#999999"
         android:numColumns="3"
-        android:layout_below="@+id/textView3"
+        android:layout_below="@+id/imgLine"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"/>

@@ -51,6 +51,7 @@ public class ChoosePropertiesActivity extends BaseActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusColor();
         setContentView(R.layout.activity_choose_properties);
         assignViews();
     }
