@@ -59,7 +59,7 @@ public class MallFragment extends  BaseFragment {
         List<MallProductEntity> list = new ArrayList<MallProductEntity>();
         for (int i = 0; i < 15; i++) {
             MallProductEntity mp = new MallProductEntity();
-            mp.setProductName("iPhone6S4G"+i);
+            mp.setProductName("iPhone6S");
             mp.setOrderAmount("5200.00");
             list.add(mp);
         }
@@ -73,7 +73,7 @@ public class MallFragment extends  BaseFragment {
         views[0].setBackgroundResource(R.mipmap.mall_banner01);
         view = new ImageView(getActivity().getApplicationContext());
         views[1] = view;
-        views[1].setBackgroundResource(R.mipmap.ic_launcher);
+        views[1].setBackgroundResource(R.mipmap.mall_banner01);
         view = new ImageView(getActivity().getApplicationContext());
         views[2] = view;
         views[2].setBackgroundResource(R.mipmap.mall_banner01);

@@ -112,6 +112,7 @@
                 android:id="@+id/commitProductName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#666666"
                 android:text="Apple iPhone 6S 移动联通电信4G手机" />
 
             <LinearLayout
@@ -123,6 +124,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#666666"
                     android:text="已选" />
 
                 <TextView
@@ -172,6 +174,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="#666666"
             android:text="分期" />
 
         <LinearLayout
@@ -248,7 +251,7 @@
 
     <com.expopay.android.view.CustormLoadingButton
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:id="@+id/btnSubmit"
         android:textSize="20dp"
         android:layout_alignParentBottom="true"

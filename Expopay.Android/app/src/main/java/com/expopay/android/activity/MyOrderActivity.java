@@ -100,9 +100,9 @@ public class MyOrderActivity extends BaseActivity implements View.OnClickListene
      */
     private void clearSelection() {
         btnPeriodOrder.setBackgroundColor(Color.WHITE);
-        btnPeriodOrder.setTextColor(Color.BLACK);
+        btnPeriodOrder.setTextColor(Color.parseColor("#666666"));
         btnPaymentOrders.setBackgroundColor(Color.WHITE);
-        btnPaymentOrders.setTextColor(Color.BLACK);
+        btnPaymentOrders.setTextColor(Color.parseColor("#666666"));
     }
 
     /**
