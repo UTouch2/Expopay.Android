@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.expopay.android.R;
+import com.expopay.android.view.CustormLoadingButton;
 
 /**
  * Created by misxu012 on 2015/10/22.
@@ -13,37 +14,42 @@ public class SettingsActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusColor();
         setContentView(R.layout.activity_settings);
     }
 
     public void changeMobileOnclick(View v) {
-        Intent intent =new Intent(getApplicationContext(),ChangeMobileActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ChangeMobileActivity.class);
         startActivity(intent);
     }
+
     public void changeLoginPasswordOnclock(View v) {
-        Intent intent =new Intent(getApplicationContext(),ChangePasswordActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
         startActivity(intent);
     }
+
     public void changePayPasswordOnclock(View v) {
-        Intent intent =new Intent(getApplicationContext(),ChangePayPasswordActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ChangePayPasswordActivity.class);
         startActivity(intent);
     }
+
     public void changePasswordQuestionOnclick(View v) {
-        Intent intent =new Intent(getApplicationContext(),ChangePasswordQuestionAcitivy.class);
+        Intent intent = new Intent(getApplicationContext(), ChangePasswordQuestionAcitivy.class);
         startActivity(intent);
     }
+
     public void autoPayOnclick(View v) {
-        Intent intent =new Intent(getApplicationContext(),ChangePasswordActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
         startActivity(intent);
     }
 
-    public void addressOnclick(View v){
-        Intent intent =new Intent(getApplicationContext(),MyAddressActivity.class);
+    public void addressOnclick(View v) {
+        Intent intent = new Intent(getApplicationContext(), MyAddressActivity.class);
         startActivity(intent);
     }
 
-    public void cardPasswordOnclock(View v){
-        Intent intent =new Intent(getApplicationContext(),ChangeCardPasswordActivity.class);
+    public void cardPasswordOnclock(View v) {
+        Intent intent = new Intent(getApplicationContext(), ChangeCardPasswordActivity.class);
         startActivity(intent);
     }
 }
