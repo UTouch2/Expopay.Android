@@ -54,11 +54,8 @@ public class BaseActivity extends AbsFragmentActivity {
 
     protected void setStatusColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window win = this.getWindow();
-            WindowManager.LayoutParams winParams = win.getAttributes();
-            final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-            winParams.flags |= bits;
-            win.setAttributes(winParams);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
             // 创建状态栏的管理实例
             SystemBarTintManager tintManager = new SystemBarTintManager(this);
             // 激活状态栏设置

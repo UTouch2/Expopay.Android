@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.expopay.android.Dialog.DialogFactory;
+import com.expopay.android.Dialog.MyDialog;
 import com.expopay.android.R;
 import com.expopay.android.view.CustormLoadingButton;
 
@@ -51,5 +53,16 @@ public class SettingsActivity extends BaseActivity {
     public void cardPasswordOnclock(View v) {
         Intent intent = new Intent(getApplicationContext(), ChangeCardPasswordActivity.class);
         startActivity(intent);
+    }
+
+    public void exitOnclick(View v){
+        MyDialog dialog =  DialogFactory.createDialog(this,"提示","您确认要退出吗？");
+        dialog.setOkOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        dialog.show();
     }
 }
