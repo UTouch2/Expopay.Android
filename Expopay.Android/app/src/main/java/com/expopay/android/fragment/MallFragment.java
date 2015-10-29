@@ -22,7 +22,6 @@ import java.util.List;
  */
 public class MallFragment extends  BaseFragment {
 
-    int startItem = 101;
     private ViewPager viewPager;
     private GridView myGridView;
     private MallProductAdapter adapter;
@@ -33,14 +32,13 @@ public class MallFragment extends  BaseFragment {
 
         viewPager = (ViewPager) view.findViewById(R.id.mall_viewpager);
         viewPager.setAdapter(new MallPagerAdapter(createViews()));
-        viewPager.setCurrentItem(startItem);
+        viewPager.setCurrentItem(100);
         new Thread(){
             @Override
             public void run() {
                 while (true) {
                     try {
                         Thread.sleep(3000l);
-                        startItem++;
                         handler.sendEmptyMessage(1);
                     } catch (Exception e) {
                     }
@@ -84,6 +82,7 @@ public class MallFragment extends  BaseFragment {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            int startItem=viewPager.getCurrentItem()+1;
             viewPager.setCurrentItem(startItem);
         }
     };
