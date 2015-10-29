@@ -95,6 +95,7 @@ public class LoginByPasswordActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        statusBarCoverActivity();
         setContentView(R.layout.activity_login_bypassword);
         assignViews();
     }
