@@ -34,35 +34,41 @@
                     android:id="@+id/commitConsignee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="克里斯" />
+                    android:text="克里斯"
+                    android:textColor="#C8C8C8"/>
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="50dp"
                     android:src="@mipmap/mall_phone" />
 
                 <TextView
+                    android:layout_marginLeft="5dp"
                     android:id="@+id/commitConsigneeMobile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#C8C8C8"
                     android:text="13666666666" />
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:src="@mipmap/mall_address" />
 
                 <TextView
+                    android:layout_marginLeft="5dp"
                     android:id="@+id/commitConsigneeAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#EFA38D"
                     android:text="云南省昆明市五华区海源中路1088号和成国际A座25楼" />
 
             </LinearLayout>
@@ -70,7 +76,7 @@
 
         <ImageButton
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="20dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:background="#F9F9F9"
@@ -124,7 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:text="金色 64G 非合约机"
-                    android:textColor="#AAAAAA" />
+                    android:textColor="#C8C8C8" />
             </LinearLayout>
 
             <RelativeLayout
@@ -138,7 +144,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="￥5288.00"
-                    android:textColor="#FF0000" />
+                    android:textColor="#F1987A" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -146,7 +152,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:text="x1" />
+                    android:text="x1"
+                    android:textColor="#C8C8C8"/>
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
@@ -182,7 +189,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:text="12期 "
-                    android:textColor="#AAAAAA" />
+                    android:textColor="#C8C8C8" />
 
                 <TextView
                     android:id="@+id/commitServiceAmount"
@@ -190,7 +197,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="(522+12)x12=5288"
-                    android:textColor="#AAAAAA" />
+                    android:textColor="#C8C8C8" />
             </LinearLayout>
 
             <TextView
@@ -200,7 +207,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
                 android:text="每期应还款534元"
-                android:textColor="#AAAAAA" />
+                android:textColor="#C8C8C8" />
         </LinearLayout>
     </LinearLayout>
 
@@ -220,7 +227,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="我同意"
-            android:textColor="#666"
+            android:textColor="#C8C8C8"
             android:textSize="15dp" />
 
         <LinearLayout
@@ -232,7 +239,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="《南博卡分期协议》"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:textColor="#C8C8C8"/>
 
         </LinearLayout>
     </LinearLayout>
