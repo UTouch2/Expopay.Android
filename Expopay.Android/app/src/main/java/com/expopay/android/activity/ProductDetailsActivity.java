@@ -92,7 +92,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                 btnImmediatelyOrder.setLoading(true);
                 btnImmediatelyOrder.setLoadingText("正在下单...");
 
-                intent.setClass(ProductDetailsActivity.this, MyOrderActivity.class);
+                intent.setClass(ProductDetailsActivity.this, OrderDetailActivity.class);
                 startActivity(intent);
                 break;
             default:

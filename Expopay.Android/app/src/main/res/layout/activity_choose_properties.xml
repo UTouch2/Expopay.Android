@@ -20,8 +20,8 @@
         android:layout_alignParentStart="true">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center_vertical"
             android:src="@mipmap/mall_mobile" />
 
@@ -31,37 +31,36 @@
             android:layout_gravity="center_vertical"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="7"
+                    android:textColor="#666666"
                     android:text="Apple iPhone 6S 移动联通电信4G手机"/>
 
                 <ImageButton
                     android:id="@+id/imgBtnCancle"
-                    android:layout_width="0dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:background="#FFFFFF"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
+                    android:layout_alignParentRight="true"
                     android:src="@mipmap/mall_delete" />
-            </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:text="￥5288.00"
-                    android:textColor="#FF0000" />
+                    android:textColor="#EC784F" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -95,7 +94,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textColor="#000"
                     android:textSize="15dp"
                     android:text="颜色" />
 
@@ -111,7 +109,7 @@
                         android:layout_height="40dp"
                         android:background="@mipmap/mall_unoutline"
                         android:layout_weight="1"
-                        android:textColor="#000"
+                        android:textColor="#666666"
                         android:textSize="15dp"
                         android:text="黑色" />
 
@@ -122,7 +120,7 @@
                         android:layout_weight="1"
                         android:background="@mipmap/mall_unoutline"
                         android:layout_marginLeft="5dp"
-                        android:textColor="#000"
+                        android:textColor="#666666"
                         android:textSize="15dp"
                         android:text="白色" />
 
@@ -133,7 +131,7 @@
                         android:layout_weight="1"
                         android:background="@mipmap/mall_unoutline"
                         android:layout_marginLeft="5dp"
-                        android:textColor="#000"
+                        android:textColor="#666666"
                         android:textSize="15dp"
                         android:text="金色" />
 
@@ -144,7 +142,7 @@
                         android:layout_weight="1"
                         android:background="@mipmap/mall_unoutline"
                         android:layout_marginLeft="5dp"
-                        android:textColor="#000"
+                        android:textColor="#666666"
                         android:textSize="15dp"
                         android:text="金粉色" />
                 </LinearLayout>
@@ -160,7 +158,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:textColor="#000"
                     android:textSize="15dp"
                     android:text="容量"/>
 
@@ -176,7 +173,7 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@mipmap/mall_unoutline"
-                        android:textColor="#000"
+                        android:textColor="#666666"
                         android:textSize="15dp"
                         android:text="16G" />
 
@@ -187,7 +184,7 @@
                         android:layout_weight="1"
                         android:background="@mipmap/mall_unoutline"
                         android:layout_marginLeft="5dp"
-                        android:textColor="#000"
+                        android:textColor="#666666"
                         android:textSize="15dp"
                         android:text="64G" />
 
@@ -198,7 +195,7 @@
                         android:layout_weight="1"
                         android:background="@mipmap/mall_unoutline"
                         android:layout_marginLeft="5dp"
-                        android:textColor="#000"
+                        android:textColor="#666666"
                         android:textSize="15dp"
                         android:text="128G" />
 

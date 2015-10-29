@@ -80,7 +80,7 @@
             android:layout_height="20dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:background="#EEEEEE"
+            android:background="#f9f9f9"
             android:src="@mipmap/mall_more" />
     </LinearLayout>
 
@@ -167,7 +167,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/linearLayout2"
-        android:background="#EEEEEE"
+        android:background="#f9f9f9"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -180,6 +180,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#f9f9f9"
             android:orientation="vertical">
 
             <LinearLayout
