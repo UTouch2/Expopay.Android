@@ -7,8 +7,10 @@ import android.app.Application;
  */
 public class MyApplication extends Application {
     public final static String HOST = "";
+
     public static final String PHONE = "400-022-7299";
     public static final String EMAIL = "service@expopay.cn";
     public static final String NET = "http://www.expopay.cn";
+
     public final static String DB_NAME = "expopay.db";
 }
