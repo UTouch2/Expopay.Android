@@ -27,7 +27,7 @@ public class AboutActivity extends BaseActivity {
 
     public void emailOnclick(View v) {
         Intent data = new Intent(Intent.ACTION_SENDTO);
-        data.setData(Uri.parse("mailto:service@expopay.cn"));
+        data.setData(Uri.parse("mailto:"+MyApplication.EMAIL));
         startActivity(data);
     }
 
@@ -35,12 +35,14 @@ public class AboutActivity extends BaseActivity {
         Intent intent = new Intent(AboutActivity.this,
                 WebActivity.class);
         intent.putExtra("title", "官网");
-        intent.putExtra("url", "http://www.expopay.cn");
+        intent.putExtra("url", MyApplication.NET);
         startActivity(intent);
     }
 
     public void advanceOnclick(View v) {
-
+        Intent intent = new Intent(AboutActivity.this,
+                AdvanceActivity.class);
+        startActivity(intent);
     }
 
     public void versionOnclick(View v) {
