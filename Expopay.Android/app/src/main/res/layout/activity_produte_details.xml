@@ -2,7 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:id="@+id/linearLayout9"
@@ -14,7 +16,7 @@
         <ImageView
             android:id="@+id/detailProductImg"
             android:layout_width="match_parent"
-            android:layout_height="155dp"
+            android:layout_height="130dp"
             android:adjustViewBounds="true"
             android:src="@mipmap/mall_mobile" />
 
