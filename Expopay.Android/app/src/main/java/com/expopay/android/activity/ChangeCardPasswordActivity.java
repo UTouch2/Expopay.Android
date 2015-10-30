@@ -11,11 +11,13 @@ import com.expopay.android.view.CustormLoadingButton;
  */
 public class ChangeCardPasswordActivity extends BaseActivity {
     CustormLoadingButton loadingButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusColor();
         setContentView(R.layout.activity_changecardpassword);
-        loadingButton= (CustormLoadingButton)findViewById(R.id.changecardpassword_ok);
+        loadingButton = (CustormLoadingButton) findViewById(R.id.changecardpassword_ok);
         loadingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -23,7 +25,10 @@ public class ChangeCardPasswordActivity extends BaseActivity {
             }
         });
     }
-    public  void chooseCardOnclick(View v){
-        
+
+    public void chooseCardOnclick(View v) {
+
     }
+
+
 }

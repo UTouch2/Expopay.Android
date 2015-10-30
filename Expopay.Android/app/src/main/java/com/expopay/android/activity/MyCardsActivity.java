@@ -43,6 +43,7 @@ public class MyCardsActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusColor();
         setContentView(R.layout.activity_mycards);
         listView = (ListView) findViewById(R.id.mycards_listview);
         loadingView = (CustormLoadingView) findViewById(R.id.mycards_loading);

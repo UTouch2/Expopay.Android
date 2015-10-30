@@ -11,6 +11,7 @@ public class ChangeMobileActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusColor();
         setContentView(R.layout.activity_changemobile);
     }
 }

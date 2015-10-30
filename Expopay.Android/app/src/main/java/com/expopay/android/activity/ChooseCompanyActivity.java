@@ -21,6 +21,7 @@ public class ChooseCompanyActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusColor();
         setContentView(R.layout.activity_weg_choosecompany);
         listView = (ListView) findViewById(R.id.choosecompany_listview);
         Intent intent = getIntent();

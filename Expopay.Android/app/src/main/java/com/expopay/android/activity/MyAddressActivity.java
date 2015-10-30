@@ -3,10 +3,19 @@ package com.expopay.android.activity;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
 import com.expopay.android.adapter.listview.MyAddressListAdapter;
+import com.expopay.android.application.MyApplication;
 import com.expopay.android.model.AddressEntity;
 import com.expopay.android.model.CardEntity;
+import com.expopay.android.request.AddressRequest;
+import com.expopay.android.view.CustormLoadingView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,17 +25,63 @@ import java.util.List;
  */
 public class MyAddressActivity extends BaseActivity {
     ListView listView;
+    CustormLoadingView loadingView;
+    MyAddressListAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusColor();
         setContentView(R.layout.activity_myaddress);
         listView = (ListView) findViewById(R.id.myaddress_listview);
-        listView.setAdapter(new MyAddressListAdapter(getApplicationContext(),testDate()));
+        loadingView = (CustormLoadingView) findViewById(R.id.myaddress_loadingview);
+        adapter = new MyAddressListAdapter(this, new ArrayList<AddressEntity>());
+        listView.setAdapter(adapter);
     }
-    private List<AddressEntity> testDate(){
+
+
+    private void getAddress(String openId) throws JSONException {
+        AddressRequest request = new AddressRequest(MyApplication.HOST + "");
+        request.setEntity(request.createGetAddressesParams(openId));
+        request.setIRequestListener(new JsonRequestListener() {
+            @Override
+            public void onFilure(Exception e) {
+
+            }
+
+            @Override
+            public void onSuccess(Object o) {
+                JSONObject json = (JSONObject) o;
+                try {
+                    if (json.getJSONObject("header").getString("code").equals("0000")) {
+                        Gson gson = new Gson();
+                        List<AddressEntity> list = gson.fromJson(json.getJSONObject("body").getJSONArray("").toString(),
+                                new TypeToken<List<AddressEntity>>() {
+                                }.getType());
+                        adapter.setData(list);
+                        adapter.notifyDataSetChanged();
+                        loadingView.dismiss();
+                    } else {
+                        loadingView.setMessage(json.getJSONObject("header").getString("desc"));
+                    }
+                } catch (JSONException e) {
+                }
+            }
+
+            @Override
+            public void onProgressUpdate(int i, int i1) {
+
+            }
+        });
+        request.execute();
+        cancelRequest(request);
+    }
+
+
+    private List<AddressEntity> testDate() {
         List<AddressEntity> list = new ArrayList<AddressEntity>();
-        for(int i = 0;i<10;i++){
-            AddressEntity  e =new AddressEntity();
+        for (int i = 0; i < 10; i++) {
+            AddressEntity e = new AddressEntity();
             e.setIsDefault("0");
             e.setAddress("海源中路1088号和成国际A座25楼");
             e.setAddressId("" + i);
