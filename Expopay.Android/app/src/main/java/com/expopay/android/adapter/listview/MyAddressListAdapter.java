@@ -2,6 +2,7 @@ package com.expopay.android.adapter.listview;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import java.util.List;
 public class MyAddressListAdapter extends BaseAdapter {
     Context context;
     List<AddressEntity> data;
+
     public MyAddressListAdapter(Context context, List<AddressEntity> data) {
         this.context = context;
         this.data = data;
@@ -44,18 +46,18 @@ public class MyAddressListAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View v, ViewGroup parent) {
         final AddressEntity address = data.get(i);
-        ViewHolder vh =null;
-        if( v ==null){
+        ViewHolder vh = null;
+        if (v == null) {
             vh = new ViewHolder();
-            v = LayoutInflater.from(context).inflate(R.layout.view_myaddress_item,null);
-            vh.mobileText = (TextView)v.findViewById(R.id.address_item_mobile);
-            vh.nameText = (TextView)v.findViewById(R.id.address_item_name);
-            vh.isDefaultText = (TextView)v.findViewById(R.id.address_item_isdefualt);
-            vh.addressText = (TextView)v.findViewById(R.id.address_item_address);
-            vh.redadio = (RadioButton)v.findViewById(R.id.address_item_radio);
+            v = LayoutInflater.from(context).inflate(R.layout.view_myaddress_item, null);
+            vh.mobileText = (TextView) v.findViewById(R.id.address_item_mobile);
+            vh.nameText = (TextView) v.findViewById(R.id.address_item_name);
+            vh.isDefaultText = (TextView) v.findViewById(R.id.address_item_isdefualt);
+            vh.addressText = (TextView) v.findViewById(R.id.address_item_address);
+            vh.redadio = (RadioButton) v.findViewById(R.id.address_item_radio);
             v.setTag(vh);
-        }else{
-            vh = (ViewHolder)v.getTag();
+        } else {
+            vh = (ViewHolder) v.getTag();
         }
         boolean isDefault = "0".equals(address.getIsDefault());
         vh.mobileText.setText(address.getMobile());
@@ -63,7 +65,7 @@ public class MyAddressListAdapter extends BaseAdapter {
         vh.isDefaultText.setVisibility(!isDefault ? View.VISIBLE : View.GONE);
         vh.redadio.setChecked(isDefault);
         vh.addressText.setText(address.getProvinceName() + address.getCityName() + address.getDistrictName() + address.getAddress());
-        vh.redadio.setOnClickListener(new View.OnClickListener(){
+        vh.redadio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -77,13 +79,23 @@ public class MyAddressListAdapter extends BaseAdapter {
                 context.startActivity(intent);
             }
         });
+        if (i % 2 == 0) {
+            v.setBackgroundColor(Color.parseColor("#ffffff"));
+        } else {
+            v.setBackgroundColor(Color.parseColor("#f9f9f9"));
+        }
         return v;
     }
-    private class ViewHolder{
+
+    private class ViewHolder {
         TextView nameText;
         TextView mobileText;
         TextView isDefaultText;
         TextView addressText;
         RadioButton redadio;
+    }
+
+    public void setData(List<AddressEntity> data) {
+        this.data = data;
     }
 }
