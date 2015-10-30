@@ -42,7 +42,12 @@ public class BannerPagerAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         position = position % views.length;
         View v = views[position];
-        container.addView(v, 0);
+        if (v.getParent() == null) {
+            container.addView(v, 0);
+        } else {
+            ((ViewGroup) v.getParent()).removeView(v);
+            container.addView(v);
+        }
         return v;
     }
 
@@ -51,7 +56,7 @@ public class BannerPagerAdapter extends PagerAdapter {
      */
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        position = position % views.length;
-        container.removeView(views[position]);
+//        position = position % views.length;
+//        container.removeView(views[position]);
     }
 }
