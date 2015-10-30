@@ -84,15 +84,11 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                 startActivityForResult(intent,1);
                 break;
             case R.id.llDetail:
-                intent.setClass(ProductDetailsActivity.this, OrderDetailCommitActivity.class);
+                intent.setClass(ProductDetailsActivity.this, OrderDetailActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btnImmediatelyOrder:
-                btnImmediatelyOrder.showLoading();
-                btnImmediatelyOrder.setLoading(true);
-                btnImmediatelyOrder.setLoadingText("正在下单...");
-
-                intent.setClass(ProductDetailsActivity.this, RechargeTelephoneActivity.class);
+                intent.setClass(ProductDetailsActivity.this, OrderDetailCommitActivity.class);
                 startActivity(intent);
                 break;
             default:
