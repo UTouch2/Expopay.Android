@@ -28,6 +28,7 @@
             android:text="13666666666"
             android:gravity="center"
             android:singleLine="true"
+            android:phoneNumber="true"
             android:layout_toLeftOf="@+id/imgContacts"
             android:layout_toRightOf="@+id/tvlab"
             android:layout_marginRight="15dp"
