@@ -178,19 +178,6 @@ public class LoginByVerifycodeActivity extends BaseActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-//                String phoneNum = ;
-//                String vercode = ;
-//
-//                SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss ");
-//                Date curDate = new Date(System.currentTimeMillis());//获取当前时间
-//                String date = formatter.format(curDate);
-//
-//                SharedPreferences sp = getSharedPreferences("info", MODE_PRIVATE);
-//                SharedPreferences.Editor ed = sp.edit();
-//                ed.putString("login_phonenum", phoneNum);
-//                ed.putString("login_vercode", vercode);
-//                ed.putString("login_date", date);
-//                ed.commit();
             }
 
             @Override

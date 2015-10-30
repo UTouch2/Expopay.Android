@@ -14,12 +14,14 @@ import android.widget.ImageView;
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.android.kechong.lib.listener.AbsTextWatcher;
 import com.android.kechong.lib.util.BitmapUtil;
+import com.android.kechong.lib.util.SharedRefUtil;
 import com.expopay.android.R;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
 import com.expopay.android.application.MyApplication;
 import com.expopay.android.request.CustomerRequest;
 import com.expopay.android.view.CustormLoadingButton;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -32,6 +34,9 @@ public class LoginByPasswordActivity extends BaseActivity {
     private EditText login_pwd;
     private CustormLoadingButton loginButton;
 
+
+    private String userName, password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +44,7 @@ public class LoginByPasswordActivity extends BaseActivity {
         setContentView(R.layout.activity_login_bypassword);
         initView();
     }
+
     @Override
     protected void initView() {
         contentView = findViewById(R.id.login_contentview);
@@ -96,10 +102,10 @@ public class LoginByPasswordActivity extends BaseActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String phonenum = login_phonenum.getText().toString().trim();
-                String pwd = login_pwd.getText().toString().trim();
+                userName = login_phonenum.getText().toString().trim();
+                password = login_pwd.getText().toString().trim();
                 try {
-                    loginRequest(phonenum, "", "", pwd);
+                    loginRequest("", "", userName, password);
                 } catch (Exception e) {
 
                 }
@@ -155,36 +161,35 @@ public class LoginByPasswordActivity extends BaseActivity {
     }
 
     private void loginRequest(String phoneNum,
-                              String vercode, String userName, String loginPwd) throws Exception {
+                              String vercode, final String userName, String loginPwd) throws Exception {
         CustomerRequest re = new CustomerRequest(MyApplication.HOST + "");
         re.setEntity(re.createLoginParams(phoneNum, vercode, userName, loginPwd));
         re.setOutTime(10000);
         re.setIRequestListener(new JsonRequestListener() {
-            @Override
-            public void onFilure(Exception e) {
 
-            }
 
             @Override
             public void onSuccess(Object o) {
-                JSONObject js = (JSONObject) o;
-//                String phoneNum = ;
-//                String loginPwd = ;
-//
-//                SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss ");
-//                Date curDate = new Date(System.currentTimeMillis());//获取当前时间
-//                String date = formatter.format(curDate);
-//
-//                SharedPreferences sp = getSharedPreferences("info", MODE_PRIVATE);
-//                SharedPreferences.Editor ed = sp.edit();
-//                ed.putString("login_phonenum", phoneNum);
-//                ed.putString("login_pwd", loginPwd);
-//                ed.putString("login_date", date);
-//                ed.commit();
-            }
+                JSONObject json = (JSONObject) o;
+                try {
+                    if (json.getJSONObject("header").getString("code").equals("")) {
+                        String openId = json.getJSONObject("body").getString("openId");
+                        SharedRefUtil.setSharedPreference(LoginByPasswordActivity.this, MyApplication.USERNAME, userName);
+                        SharedRefUtil.setSharedPreference(LoginByPasswordActivity.this, MyApplication.PASSWORD, password);
+                        SharedRefUtil.setSharedPreference(LoginByPasswordActivity.this, MyApplication.OPENID, password);
+                    } else {
 
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
             @Override
             public void onProgressUpdate(int i, int i1) {
+
+            }
+            @Override
+            public void onFilure(Exception e) {
 
             }
         });
