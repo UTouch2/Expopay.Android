@@ -50,7 +50,7 @@ public class OrderDetailActivity extends BaseActivity {
         orderAmount = (TextView) findViewById(R.id.orderAmount);
         repaymentPeriod = (TextView) findViewById(R.id.repaymentPeriod);
         serviceAmount = (TextView) findViewById(R.id.serviceAmount);
-        cancelPeriodAmount = (TextView) findViewById(R.id.cancelPeriodAmount);
+        cancelPeriodAmount = (TextView) findViewById(R.id.periodAmount);
         orderStatus = (TextView) findViewById(R.id.orderStatus);
         orderNumber = (TextView) findViewById(R.id.orderNumber);
         transcationCode = (TextView) findViewById(R.id.transcationCode);

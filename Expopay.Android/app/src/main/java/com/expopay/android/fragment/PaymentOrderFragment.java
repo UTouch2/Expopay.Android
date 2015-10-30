@@ -41,7 +41,7 @@ public class PaymentOrderFragment extends Fragment {
         List<PaymentOrderEntity> list = new ArrayList<PaymentOrderEntity>();
         for(int i = 0;i<20;i++){
             PaymentOrderEntity po = new PaymentOrderEntity();
-            po.setProductName("iPhone");
+            po.setProductName("水电煤");
             po.setOrderAmount("18.00");
             po.setOrderTime("2015-10-26");
             po.setOrderStatus("未完成");

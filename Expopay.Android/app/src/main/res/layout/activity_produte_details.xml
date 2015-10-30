@@ -2,8 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    tools:context="com.expopay.android.activity.ProductDetailsActivity">
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:id="@+id/linearLayout9"
@@ -154,10 +153,12 @@
     <com.expopay.android.view.CustormLoadingButton
         android:id="@+id/btnImmediatelyOrder"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/_button"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"></com.expopay.android.view.CustormLoadingButton>
+        android:layout_alignParentStart="true">
+    </com.expopay.android.view.CustormLoadingButton>
 
     <TextView
         android:layout_width="match_parent"
