@@ -1,7 +1,6 @@
 package com.expopay.android.adapter.listview;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.expopay.android.R;
-import com.expopay.android.activity.OrderDetailItemActivity;
 import com.expopay.android.model.PaymentOrderEntity;
 
 import java.util.List;
@@ -79,9 +77,9 @@ public class PaymentOrderAdapter extends BaseAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context.getApplicationContext(), OrderDetailItemActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
+//                Intent intent = new Intent(context.getApplicationContext(), OrderDetailItemActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                context.startActivity(intent);
                 Toast.makeText(context, "缴费订单", Toast.LENGTH_SHORT).show();
             }
         });
@@ -102,4 +100,11 @@ public class PaymentOrderAdapter extends BaseAdapter {
         public TextView orderStatus;
     }
 
+    public List<PaymentOrderEntity> getData() {
+        return data;
+    }
+
+    public void setData(List<PaymentOrderEntity> data) {
+        this.data = data;
+    }
 }

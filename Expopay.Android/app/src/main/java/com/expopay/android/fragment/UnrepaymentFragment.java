@@ -8,9 +8,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
 import com.expopay.android.adapter.listview.BillUnrepaymentAdapter;
+import com.expopay.android.application.MyApplication;
 import com.expopay.android.model.BillUnrepaymentEntity;
+import com.expopay.android.request.CardRequest;
+import com.expopay.android.view.CustormLoadingView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,22 +30,72 @@ import java.util.List;
 public class UnrepaymentFragment extends Fragment {
 
     private ListView lvUnRepayment;
+    private CustormLoadingView billUnrepayment_loading;
     private BillUnrepaymentAdapter adapter;
-
-    public UnrepaymentFragment() {
-        // Required empty public constructor
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_unrepayment, container, false);
         lvUnRepayment = (ListView) view.findViewById(R.id.lvUnRepayment);
+        billUnrepayment_loading = (CustormLoadingView) view.findViewById(R.id.billUnrepayment_loading);
         adapter = new BillUnrepaymentAdapter(getActivity().getApplicationContext(), testData());
         lvUnRepayment.setAdapter(adapter);
+        try {
+            getBillRepayment("123456");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         return view;
+    }
+
+    private void getBillRepayment(String openId) throws JSONException {
+        billUnrepayment_loading.show();
+        CardRequest request = new CardRequest(MyApplication.HOST + "/system/version");
+        request.setEntity(request.createCardListParams(openId));
+        request.setOutTime(10 * 1000);
+        request.setIRequestListener(new JsonRequestListener() {
+            @Override
+            public void onSuccess(Object result) {
+                JSONObject json = (JSONObject) result;
+                try {
+                    if (json.getJSONObject("header").getString("code")
+                            .equals("0000")) {
+                        // 成功
+                        Gson gson = new Gson();
+                        List<BillUnrepaymentEntity> list = gson.fromJson(json.getJSONObject("").toString(), new TypeToken<List<BillUnrepaymentEntity>>() {
+                        }.getType());
+                        adapter.setData(list);
+                        adapter.notifyDataSetChanged();
+                        billUnrepayment_loading.dismiss();
+                    } else {
+                        // 失败
+                        billUnrepayment_loading.showRetry();
+                        billUnrepayment_loading.setMessage(json.getJSONObject("header").getString("desc"));
+                    }
+                } catch (JSONException e) {
+                    // 数据解析异常
+                    // 失败
+                    billUnrepayment_loading.showRetry();
+                    billUnrepayment_loading.setMessage("数据解析异常");
+                }
+            }
+
+            @Override
+            public void onProgressUpdate(int i, int j) {
+
+            }
+
+            @Override
+            public void onFilure(Exception result) {
+                System.out.println(result);
+                billUnrepayment_loading.showRetry();
+                billUnrepayment_loading.setMessage("请求失败");
+            }
+        });
+        request.execute();
+//        cancelRequest(request);
     }
 
     private List<BillUnrepaymentEntity> testData() {

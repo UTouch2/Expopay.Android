@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 
 import com.expopay.android.R;
 import com.expopay.android.fragment.RepaymentFragment;
@@ -19,12 +18,10 @@ public class MyBillsActivity extends BaseActivity implements View.OnClickListene
     private FragmentManager fragmentManager;
     private Button btn_unrepayment;
     private Button btn_repayment;
-    private FrameLayout flContent;
 
     private void assignViews() {
         btn_unrepayment = (Button) findViewById(R.id.btn_unrepayment);
         btn_repayment = (Button) findViewById(R.id.btn_repayment);
-        flContent = (FrameLayout) findViewById(R.id.flContent);
 
         btn_unrepayment.setOnClickListener(this);
         btn_repayment.setOnClickListener(this);
@@ -63,7 +60,7 @@ public class MyBillsActivity extends BaseActivity implements View.OnClickListene
                 btn_unrepayment.setBackgroundColor(Color.parseColor("#BCBCBC"));
                 if (unrepaymentFragment == null) {
                     unrepaymentFragment = new UnrepaymentFragment();
-                    transaction.add(R.id.flContent, unrepaymentFragment);
+                    transaction.add(R.id.bill_content, unrepaymentFragment);
                 } else {
                     transaction.show(unrepaymentFragment);
                 }
@@ -72,7 +69,7 @@ public class MyBillsActivity extends BaseActivity implements View.OnClickListene
                 btn_repayment.setBackgroundColor(Color.parseColor("#BCBCBC"));
                 if (repaymentFragment == null) {
                     repaymentFragment = new RepaymentFragment();
-                    transaction.add(R.id.flContent, repaymentFragment);
+                    transaction.add(R.id.bill_content, repaymentFragment);
                 } else {
                     transaction.show(repaymentFragment);
                 }

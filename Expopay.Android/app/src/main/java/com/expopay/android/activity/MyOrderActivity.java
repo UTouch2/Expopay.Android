@@ -11,7 +11,7 @@ import com.expopay.android.R;
 import com.expopay.android.fragment.PaymentOrderFragment;
 import com.expopay.android.fragment.PeriodOrderFragment;
 
-public class MyOrderActivity extends BaseActivity implements View.OnClickListener{
+public class MyOrderActivity extends BaseActivity implements View.OnClickListener {
 
     private PeriodOrderFragment periodOrderFragment;
     private PaymentOrderFragment paymentOrderFragment;
@@ -72,7 +72,7 @@ public class MyOrderActivity extends BaseActivity implements View.OnClickListene
                 if (paymentOrderFragment == null) {
                     // 如果paymentOrderFragment为空，则创建一个并添加到界面上
                     periodOrderFragment = new PeriodOrderFragment();
-                    transaction.add(R.id.content, periodOrderFragment);
+                    transaction.add(R.id.order_content, periodOrderFragment);
                 } else {
                     // 如果MessageFragment不为空，则直接将它显示出来
                     transaction.show(periodOrderFragment);
@@ -85,7 +85,7 @@ public class MyOrderActivity extends BaseActivity implements View.OnClickListene
                 if (paymentOrderFragment == null) {
                     // 如果installmentOrderFragment为空，则创建一个并添加到界面上
                     paymentOrderFragment = new PaymentOrderFragment();
-                    transaction.add(R.id.content, paymentOrderFragment);
+                    transaction.add(R.id.order_content, paymentOrderFragment);
                 } else {
                     // 如果installmentOrderFragment不为空，则直接将它显示出来
                     transaction.show(paymentOrderFragment);
@@ -108,8 +108,7 @@ public class MyOrderActivity extends BaseActivity implements View.OnClickListene
     /**
      * 将所有的Fragment都置为隐藏状态。
      *
-     * @param transaction
-     *            用于对Fragment执行操作的事务
+     * @param transaction 用于对Fragment执行操作的事务
      */
     private void hideFragments(FragmentTransaction transaction) {
         if (periodOrderFragment != null) {
