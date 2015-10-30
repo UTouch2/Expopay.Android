@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.expopay.android.R;
+import com.expopay.android.view.CustormLoadingButton;
 
 public class RechargeTelephoneActivity extends BaseActivity implements View.OnClickListener{
 
@@ -24,7 +25,7 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
     private Button charge200;
     private Button charge300;
     private Button charge500;
-    private Button btnRecharge;
+    private CustormLoadingButton btnRecharge;
 
     private void assignViews() {
         contacts = (EditText) findViewById(R.id.contacts);
@@ -38,7 +39,18 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
         charge200 = (Button) findViewById(R.id.charge200);
         charge300 = (Button) findViewById(R.id.charge300);
         charge500 = (Button) findViewById(R.id.charge500);
-        btnRecharge = (Button) findViewById(R.id.btnRecharge);
+        btnRecharge = (CustormLoadingButton) findViewById(R.id.btnRecharge);
+        btnRecharge.setText("充值");
+        imgContacts.setOnClickListener(this);
+        charge10.setOnClickListener(this);
+        charge20.setOnClickListener(this);
+        charge30.setOnClickListener(this);
+        charge50.setOnClickListener(this);
+        charge100.setOnClickListener(this);
+        charge200.setOnClickListener(this);
+        charge300.setOnClickListener(this);
+        charge500.setOnClickListener(this);
+        btnRecharge.setOnClickListener(this);
     }
 
     @Override
@@ -55,45 +67,49 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
         switch (view.getId()) {
             case R.id.charge10:
                 setTabSelection(10);
-                rechange.setText(charge20.getText().toString());
+                rechange.setText("10");
                 break;
             case R.id.charge20:
                 setTabSelection(20);
-                rechange.setText(charge20.getText().toString());
+                rechange.setText("20");
                 break;
             case R.id.charge30:
                 setTabSelection(30);
-                rechange.setText(charge20.getText().toString());
+                rechange.setText("30");
                 break;
             case R.id.charge50:
                 setTabSelection(50);
-                rechange.setText(charge20.getText().toString());
+                rechange.setText("50");
                 break;
             case R.id.charge100:
                 setTabSelection(100);
-                rechange.setText(charge20.getText().toString());
+                rechange.setText("100");
                 break;
             case R.id.charge200:
                 setTabSelection(200);
-                rechange.setText(charge20.getText().toString());
+                rechange.setText("200");
                 break;
             case R.id.charge300:
                 setTabSelection(300);
-                rechange.setText(charge20.getText().toString());
+                rechange.setText("300");
             break;
             case R.id.charge500:
                 setTabSelection(500);
-                rechange.setText(charge20.getText().toString());
+                rechange.setText("500");
                 break;
             case R.id.imgContacts:
                 Toast.makeText(this, "选择联系人...", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnRecharge:
                 if(contacts != null) {
+                    btnRecharge.showLoading();
+                    btnRecharge.setLoading(true);
+                    btnRecharge.setLoadingText("正在充值...");
+                    String amount = rechange.getText().toString().trim();
 //                    Intent intent = new Intent(RechargeTelephoneActivity.this,);
 //
 //                    startActivity(intent);
-                    Toast.makeText(this, "去充值...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "去充值..."+amount, Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(this, "请输入充值金额", Toast.LENGTH_SHORT).show();
                 }
