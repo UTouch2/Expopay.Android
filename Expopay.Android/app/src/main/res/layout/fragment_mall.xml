@@ -7,7 +7,7 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/mall_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="155dp">
+        android:layout_height="130dp">
     </android.support.v4.view.ViewPager>
 
     <TextView
@@ -34,7 +34,7 @@
         android:id="@+id/mygridview"
         android:horizontalSpacing="1px"
         android:verticalSpacing="1px"
-        android:background="#999999"
+        android:background="#AAAAAA"
         android:numColumns="3"
         android:layout_below="@+id/imgLine"
         android:layout_alignParentLeft="true"

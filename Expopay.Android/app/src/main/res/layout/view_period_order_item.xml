@@ -11,8 +11,9 @@
 
         <ImageView
             android:id="@+id/imgInstallmentOrder"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="20dp"
             android:layout_gravity="center_vertical"
             android:src="@mipmap/mall_mobile" />
 
@@ -20,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="20dp">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -31,6 +32,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
+                    android:textSize="15dp"
+                    android:textColor="#666666"
                     android:text="Apple iPhone 6S" />
 
                 <TextView
@@ -39,6 +42,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="￥5288.00"
+                    android:textSize="15dp"
                     android:textColor="#E85D2E" />
             </RelativeLayout>
 
@@ -52,6 +56,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
+                    android:textSize="12dp"
+                    android:textColor="#999999"
                     android:text="白色 16G x1" />
 
                 <TextView
@@ -59,6 +65,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:textSize="15dp"
+                    android:textColor="#666666"
                     android:text="12期" />
             </RelativeLayout>
 
@@ -72,6 +80,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
+                    android:textSize="12dp"
+                    android:textColor="#999999"
                     android:text="2015年9月30日" />
 
                 <TextView
@@ -80,6 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="待审核"
+                    android:textSize="12dp"
                     android:textColor="#7DE161" />
             </RelativeLayout>
         </LinearLayout>

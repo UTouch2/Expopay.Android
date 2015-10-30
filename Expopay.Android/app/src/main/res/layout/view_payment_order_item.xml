@@ -11,8 +11,9 @@
 
         <ImageView
             android:id="@+id/imgPaymentOrder"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="20dp"
             android:layout_gravity="center_vertical"
             android:src="@mipmap/main_power" />
 
@@ -31,6 +32,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
+                    android:textSize="15dp"
+                    android:textColor="#666666"
                     android:text="缴纳水费" />
 
                 <TextView
@@ -39,19 +42,22 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="￥18.80"
+                    android:textSize="15dp"
                     android:textColor="#E85D2E" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:id="@+id/datePaymentOrder"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
+                    android:textSize="12dp"
+                    android:textColor="#999999"
                     android:text="2015年9月30日" />
 
                 <TextView
@@ -60,6 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="已完成"
+                    android:textSize="12dp"
                     android:textColor="#7DE161" />
             </RelativeLayout>
         </LinearLayout>
