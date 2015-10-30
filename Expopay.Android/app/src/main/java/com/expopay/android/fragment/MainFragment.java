@@ -71,20 +71,22 @@ public class MainFragment extends BaseFragment {
 
             }
         });
-//        final ViewPager pager =(ViewPager)view.findViewById(R.id.main_viewpager);
-//        bannerViews = new  ImageView [3];
-//        for(int i = 0;i<size;i++){
-//            ImageView iv = new ImageView(getActivity());
-//            iv.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//                }
-//            });
-//            iv.setImageDrawable(getActivity().getResources().getDrawable(R.mipmap.ic_launcher));
-//            bannerViews[i] =iv;
-//        }
-//        pager.setAdapter(new BannerPagerAdapter(bannerViews));
+        final ViewPager pager = (ViewPager) view.findViewById(R.id.main_bannerpager);
+        pager.setAdapter(new BannerPagerAdapter(createViews()));
         return view;
+    }
+
+    private View[] createViews() {
+        View[] views = new View[3];
+        ImageView view = new ImageView(getActivity());
+        views[0] = view;
+        views[0].setBackgroundResource(R.mipmap.mall_banner01);
+        view = new ImageView(getActivity());
+        views[1] = view;
+        views[1].setBackgroundResource(R.mipmap.mall_banner01);
+        view = new ImageView(getActivity());
+        views[2] = view;
+        views[2].setBackgroundResource(R.mipmap.mall_banner01);
+        return views;
     }
 }
