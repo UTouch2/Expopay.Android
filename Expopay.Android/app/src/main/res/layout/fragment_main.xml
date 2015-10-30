@@ -7,18 +7,20 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="130dp">
+        android:layout_height="140dp">
 
         <android.support.v4.view.ViewPager
             android:id="@+id/main_bannerpager"
             android:layout_width="match_parent"
-            android:layout_height="130dp"></android.support.v4.view.ViewPager>
+            android:layout_height="140dp"></android.support.v4.view.ViewPager>
 
-        <LinearLayout
+        <com.expopay.android.view.BannerFootView
+            android:id="@+id/main_bannerpager_footview"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_alignParentBottom="true"
-            android:gravity="center"></LinearLayout>
+            android:background="#a0000000" >
+        </com.expopay.android.view.BannerFootView>
     </RelativeLayout>
 
     <LinearLayout
@@ -40,7 +42,7 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:adjustViewBounds="true"
                 android:src="@mipmap/main_service" />
 
@@ -64,7 +66,7 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:adjustViewBounds="true"
                 android:src="@mipmap/main_water" />
 
@@ -88,7 +90,7 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:adjustViewBounds="true"
                 android:src="@mipmap/main_power" />
 
@@ -112,7 +114,7 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:adjustViewBounds="true"
                 android:src="@mipmap/main_mobile" />
 
@@ -131,7 +133,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#DBDBDB"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <com.expopay.android.view.SquareLayout
             android:layout_width="match_parent"
@@ -143,7 +145,7 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:adjustViewBounds="true"
                 android:src="@mipmap/main_merchant" />
 
@@ -167,7 +169,7 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:adjustViewBounds="true"
                 android:padding="5dp"
                 android:src="@mipmap/main_buycard" />
@@ -192,7 +194,7 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:adjustViewBounds="true"
                 android:src="@mipmap/main_callme" />
 
@@ -209,13 +211,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#fff"
+            android:background="@drawable/_square_bg_normal"
             android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:adjustViewBounds="true" />
 
             <TextView

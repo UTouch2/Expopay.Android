@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
@@ -46,8 +48,7 @@
         <com.expopay.android.view.CustormLoadingView
             android:id="@+id/mycards_loading"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </com.expopay.android.view.CustormLoadingView>
+            android:layout_height="match_parent"></com.expopay.android.view.CustormLoadingView>
     </RelativeLayout>
 
 </LinearLayout>

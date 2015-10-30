@@ -3,4 +3,5 @@
     <dimen name="actionbar1">46dp</dimen>
     <dimen name="actionbar2">66dp</dimen>
     <dimen name="dialogtextpadding">5dp</dimen>
+    <dimen name="bannerpointsize">5dp</dimen>
 </resources>
