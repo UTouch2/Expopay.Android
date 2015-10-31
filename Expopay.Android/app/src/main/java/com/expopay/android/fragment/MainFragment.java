@@ -9,11 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.android.kechong.lib.listener.AbsOnPageChangeListener;
 import com.expopay.android.R;
 import com.expopay.android.activity.LoginByPasswordActivity;
 import com.expopay.android.activity.LoginByVerifycodeActivity;
 import com.expopay.android.activity.WebActivity;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
+import com.expopay.android.view.BannerFootView;
 
 /**
  * Created by misxu012 on 2015/10/20.
@@ -21,6 +23,7 @@ import com.expopay.android.adapter.pager.BannerPagerAdapter;
 public class MainFragment extends BaseFragment {
     int size = 3;
     ImageView[] bannerViews;
+    BannerFootView footView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -72,7 +75,15 @@ public class MainFragment extends BaseFragment {
             }
         });
         final ViewPager pager = (ViewPager) view.findViewById(R.id.main_bannerpager);
+        footView = (BannerFootView) view.findViewById(R.id.main_bannerpager_footview);
         pager.setAdapter(new BannerPagerAdapter(createViews()));
+        footView.setViewsSize(createViews().length);
+        pager.setOnPageChangeListener(new AbsOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int i) {
+                footView.setSelectedIndex(i % createViews().length);
+            }
+        });
         return view;
     }
 
