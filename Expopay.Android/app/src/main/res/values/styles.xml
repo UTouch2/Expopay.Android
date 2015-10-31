@@ -1,4 +1,7 @@
 <resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light"></style>
+    <style name="ActvTheme" parent="AppTheme">    　　
+    　　<item name="android:windowIsTranslucent">true</item>
+    </style>
 </resources>
