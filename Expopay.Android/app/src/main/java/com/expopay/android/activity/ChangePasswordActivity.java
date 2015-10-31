@@ -2,7 +2,9 @@ package com.expopay.android.activity;
 
 import android.os.Bundle;
 
+import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
+import com.expopay.android.request.CustomerRequest;
 
 /**
  * Created by misxu012 on 2015/10/23.
@@ -14,4 +16,29 @@ public class ChangePasswordActivity extends BaseActivity {
         setStatusColor();
         setContentView(R.layout.activity_changepassword);
     }
+
+
+    private void changePasswoedRequest() {
+        CustomerRequest request = new CustomerRequest("");
+        request.setEntity("");
+        request.setIRequestListener(new JsonRequestListener() {
+            @Override
+            public void onFilure(Exception e) {
+
+            }
+
+            @Override
+            public void onSuccess(Object o) {
+
+            }
+
+            @Override
+            public void onProgressUpdate(int i, int i1) {
+
+            }
+        });
+        request.execute();
+        cancelRequest(request);
+    }
+
 }
