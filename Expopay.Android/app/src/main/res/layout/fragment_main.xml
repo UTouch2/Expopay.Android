@@ -18,8 +18,7 @@
             android:id="@+id/main_bannerpager_footview"
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:layout_alignParentBottom="true"
-            android:background="#a0000000" >
+            android:layout_alignParentBottom="true"  >
         </com.expopay.android.view.BannerFootView>
     </RelativeLayout>
 
