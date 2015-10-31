@@ -2,43 +2,68 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff">
+    android:background="#FAFAFA">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/mall_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="130dp">
-    </android.support.v4.view.ViewPager>
+        android:layout_height="130dp"></android.support.v4.view.ViewPager>
 
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="分期商品"
-        android:textSize="15sp"
-        android:textColor="#666666"
-        android:layout_below="@+id/mall_viewpager"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/textView3" />
+        android:layout_below="@+id/mall_viewpager"
+        android:padding="10dp"
+        android:text="分期商品"
+        android:textColor="#666666"
+        android:textSize="15sp" />
+
     <ImageView
         android:id="@+id/imgLine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@mipmap/mall_ogistics_line"
-        android:layout_below="@+id/textView3"/>
+        android:layout_below="@+id/textView3"
+        android:src="@mipmap/mall_ogistics_line" />
 
     <GridView
+        android:id="@+id/mygridview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/mygridview"
-        android:horizontalSpacing="1px"
-        android:verticalSpacing="1px"
-        android:background="#AAAAAA"
-        android:numColumns="3"
+        android:layout_above="@+id/tvMore"
         android:layout_below="@+id/imgLine"
+        android:background="#AAAAAA"
+        android:horizontalSpacing="1px"
+        android:numColumns="3"
+        android:verticalSpacing="1px" />
+
+    <LinearLayout
+        android:id="@+id/tvMore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"/>
+        android:gravity="center"
+        android:background="#FAFAFA"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/mall_ogistics_line" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:background="#FAFAFA"
+            android:textColor="#AAAAAA"
+            android:text="更多商品，敬请期待" />
+
+    </LinearLayout>
 
 </RelativeLayout>

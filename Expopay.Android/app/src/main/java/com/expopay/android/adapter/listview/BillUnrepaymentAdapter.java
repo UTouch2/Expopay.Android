@@ -94,4 +94,12 @@ public class BillUnrepaymentAdapter extends BaseAdapter {
         public TextView unrepaymentPeriod;
         public TextView unrepaymentOverdueDays;
     }
+
+    public List<BillUnrepaymentEntity> getData() {
+        return data;
+    }
+
+    public void setData(List<BillUnrepaymentEntity> data) {
+        this.data = data;
+    }
 }

@@ -116,6 +116,9 @@
         <activity
             android:name=".activity.OrderDetailCancelActivity"
             android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.RechargeTelephoneActivity"
+            android:label="南博卡"></activity>
 
         <activity
             android:name=".activity.SettingsActivity"

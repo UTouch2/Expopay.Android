@@ -1,7 +1,6 @@
 package com.expopay.android.fragment;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -12,7 +11,7 @@ import android.widget.ImageView;
 import com.android.kechong.lib.listener.AbsOnPageChangeListener;
 import com.expopay.android.R;
 import com.expopay.android.activity.LoginByPasswordActivity;
-import com.expopay.android.activity.LoginByVerifycodeActivity;
+import com.expopay.android.activity.RechargeTelephoneActivity;
 import com.expopay.android.activity.WebActivity;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
 import com.expopay.android.view.BannerFootView;
@@ -53,7 +52,8 @@ public class MainFragment extends BaseFragment {
         view.findViewById(R.id.main_mobile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity(), RechargeTelephoneActivity.class);
+                startActivity(intent);
             }
         });
         view.findViewById(R.id.main_merchant).setOnClickListener(new View.OnClickListener() {

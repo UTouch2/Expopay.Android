@@ -106,4 +106,11 @@ public class PeriodOrderAdapter extends BaseAdapter {
         public TextView orderStatus;
     }
 
+    public List<PeriodOrderEntity> getData() {
+        return data;
+    }
+
+    public void setData(List<PeriodOrderEntity> data) {
+        this.data = data;
+    }
 }

@@ -93,4 +93,12 @@ public class BillRepaymentAdapter extends BaseAdapter {
         public TextView repaymentOrderTime;
         public TextView repaymentOverdueDays;
     }
+
+    public List<BillRepaymentEntity> getData() {
+        return data;
+    }
+
+    public void setData(List<BillRepaymentEntity> data) {
+        this.data = data;
+    }
 }
