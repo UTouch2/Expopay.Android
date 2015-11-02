@@ -1,5 +1,6 @@
 package com.expopay.android.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -21,6 +22,7 @@ import com.expopay.android.fragment.MallFragment;
 import com.expopay.android.fragment.MyAccFragment;
 import com.expopay.android.model.UpdateAppEntity;
 import com.expopay.android.request.AppRequest;
+import com.expopay.android.serivice.DownLoadService;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -44,6 +46,7 @@ public class MainAcativity extends BaseActivity {
     private ImageView mainImg, mallImg, myaccImg;
     private ImageView mainBgImg, mallBgImg, myaccBgImg;
     private Fragment cardFragment, discoveryFragment, myAccountFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +55,11 @@ public class MainAcativity extends BaseActivity {
         setContentView(R.layout.activity_mainact);
         initPerp();
         initView();
-
+        try {
+            getNewVersionCode();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -203,7 +210,7 @@ public class MainAcativity extends BaseActivity {
         dialog.setOkOnclickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startService(new Intent(getApplicationContext(), DownLoadService.class));
             }
         });
         dialog.show();

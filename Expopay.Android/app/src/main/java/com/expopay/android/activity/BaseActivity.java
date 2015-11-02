@@ -13,7 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.kechong.lib.AbsFragmentActivity;
+import com.android.kechong.lib.util.SharedRefUtil;
 import com.expopay.android.R;
+import com.expopay.android.model.UserEntity;
 import com.expopay.android.systembar.SystemBarTintManager;
 
 /**
@@ -88,5 +90,25 @@ public class BaseActivity extends AbsFragmentActivity {
                 onBackPressed();
             }
         });
+    }
+
+    protected UserEntity getUser() {
+        UserEntity user = new UserEntity();
+        String openId = SharedRefUtil.getSharedPreference(this, "openId", "");
+        String userName = SharedRefUtil.getSharedPreference(this, "userName", "");
+        String password = SharedRefUtil.getSharedPreference(this, "password", "");
+        user.setOpenId(openId);
+        user.setUserName(userName);
+        user.setPassword(password);
+        return user;
+    }
+
+    protected void saveUser(UserEntity user) {
+        String openId = user.getOpenId();
+        String userName = user.getUserName();
+        String password = user.getPassword();
+        SharedRefUtil.setSharedPreference(this, "openId", openId);
+        SharedRefUtil.setSharedPreference(this, "userName", userName);
+        SharedRefUtil.setSharedPreference(this, "password", password);
     }
 }

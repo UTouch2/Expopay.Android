@@ -18,6 +18,7 @@ import com.android.kechong.lib.util.SharedRefUtil;
 import com.expopay.android.R;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
 import com.expopay.android.application.MyApplication;
+import com.expopay.android.model.UserEntity;
 import com.expopay.android.request.CustomerRequest;
 import com.expopay.android.view.CustormLoadingButton;
 
@@ -33,7 +34,6 @@ public class LoginByPasswordActivity extends BaseActivity {
     private EditText login_phonenum;
     private EditText login_pwd;
     private CustormLoadingButton loginButton;
-
 
     private String userName, password;
 
@@ -67,6 +67,7 @@ public class LoginByPasswordActivity extends BaseActivity {
                 }
             }
         }.start();
+        loginButton.showNormal("登 录");
         loginButton.setEnabled(false);
         loginButton.setBackgroundResource(R.drawable._button_down);
         login_phonenum.addTextChangedListener(new AbsTextWatcher() {
@@ -162,35 +163,40 @@ public class LoginByPasswordActivity extends BaseActivity {
 
     private void loginRequest(String phoneNum,
                               String vercode, final String userName, String loginPwd) throws Exception {
+        loginButton.showLoading("正在登录···");
         CustomerRequest re = new CustomerRequest(MyApplication.HOST + "");
         re.setEntity(re.createLoginParams(phoneNum, vercode, userName, loginPwd));
         re.setOutTime(10000);
         re.setIRequestListener(new JsonRequestListener() {
-
-
             @Override
             public void onSuccess(Object o) {
                 JSONObject json = (JSONObject) o;
                 try {
                     if (json.getJSONObject("header").getString("code").equals("")) {
                         String openId = json.getJSONObject("body").getString("openId");
-                        SharedRefUtil.setSharedPreference(LoginByPasswordActivity.this, MyApplication.USERNAME, userName);
-                        SharedRefUtil.setSharedPreference(LoginByPasswordActivity.this, MyApplication.PASSWORD, password);
-                        SharedRefUtil.setSharedPreference(LoginByPasswordActivity.this, MyApplication.OPENID, password);
+                        UserEntity user = new UserEntity();
+                        user.setOpenId(openId);
+                        user.setUserName(userName);
+                        user.setPassword(password);
+                        saveUser(user);
+                        loginButton.showResult("登录成功",true);
                     } else {
-
+                        loginButton.showResult(json.getJSONObject("header").getString("desc"),false);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    loginButton.showResult("数据解析异常",false);
                 }
             }
+
             @Override
             public void onProgressUpdate(int i, int i1) {
 
             }
+
             @Override
             public void onFilure(Exception e) {
-
+                loginButton.showResult("网络请求失败",false);
             }
         });
         re.execute();
