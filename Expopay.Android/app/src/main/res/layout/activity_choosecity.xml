@@ -81,6 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="okOnclick"
+            android:background="@drawable/_button"
             android:text="确  定"
             android:textColor="#fff"
             android:textSize="14sp" />

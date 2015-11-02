@@ -179,9 +179,10 @@
             </RelativeLayout>
         </LinearLayout>
 
-        <Button
+        <com.expopay.android.view.CustormLoadingButton
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/_button"
             android:layout_alignParentBottom="true"
             android:text="保  存" />
     </RelativeLayout>

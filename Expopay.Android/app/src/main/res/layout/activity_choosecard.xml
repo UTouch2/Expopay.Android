@@ -33,6 +33,7 @@
                 android:layout_alignParentBottom="true"
                 android:onClick="okOnclick"
                 android:text="充 值"
+                android:background="@drawable/_button"
                 android:textColor="#fff"
                 android:textSize="14sp" />
 

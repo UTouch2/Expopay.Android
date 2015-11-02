@@ -115,6 +115,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_centerVertical="true"
+                    android:background="#0000"
                     android:layout_toLeftOf="@id/cardcharge_amount_clear"
                     android:layout_toRightOf="@id/cardcharge_amount_label"
                     android:textColor="#4F4F4F"
@@ -122,13 +123,14 @@
 
             </RelativeLayout>
 
-            <Button
+            <com.expopay.android.view.CustormLoadingButton
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:onClick="okOnclick"
                 android:text="充 值"
+                android:background="@drawable/_button"
                 android:textColor="#fff"
-                android:textSize="14sp" />
+                android:textSize="14sp"  />
         </LinearLayout>
         <FrameLayout
             android:layout_above="@id/cardcharge_content"
