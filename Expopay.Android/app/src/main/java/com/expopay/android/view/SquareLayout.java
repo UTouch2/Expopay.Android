@@ -12,7 +12,6 @@ public class SquareLayout extends LinearLayout {
 	}
 	public SquareLayout(Context context, AttributeSet attrs) {
 		super(context, attrs);
-
 	}
 	@Override
 	protected void onLayout(boolean changed, int l, int t, int r, int b) {
