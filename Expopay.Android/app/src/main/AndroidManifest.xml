@@ -76,6 +76,7 @@
             android:label="南博卡"></activity>
         <activity
             android:name=".activity.ChoosePeriodActivity"
+            android:theme="@style/ActvTheme"
             android:label="南博卡"></activity>
         <activity
             android:name=".activity.ChoosePropertiesActivity"
