@@ -23,6 +23,7 @@ public class MyOrderActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusColor();
         setContentView(R.layout.activity_my_order);
         // 初始化布局元素
         assignViews();

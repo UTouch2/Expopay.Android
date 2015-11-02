@@ -3,7 +3,6 @@ package com.expopay.android.view;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.LinearLayout;
 public class SquareLayout extends LinearLayout {
 
@@ -13,6 +12,7 @@ public class SquareLayout extends LinearLayout {
 	}
 	public SquareLayout(Context context, AttributeSet attrs) {
 		super(context, attrs);
+
 	}
 	@Override
 	protected void onLayout(boolean changed, int l, int t, int r, int b) {

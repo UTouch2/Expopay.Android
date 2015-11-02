@@ -1,7 +1,13 @@
 package com.expopay.android.activity;
 
+import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,7 +46,7 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
         charge300 = (Button) findViewById(R.id.charge300);
         charge500 = (Button) findViewById(R.id.charge500);
         btnRecharge = (CustormLoadingButton) findViewById(R.id.btnRecharge);
-//        btnRecharge.setText("充值");
+        btnRecharge.showNormal("充值");
         imgContacts.setOnClickListener(this);
         charge10.setOnClickListener(this);
         charge20.setOnClickListener(this);
@@ -99,16 +105,19 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
                 break;
             case R.id.imgContacts:
                 Toast.makeText(this, "选择联系人...", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(Intent.ACTION_PICK);
+                i.setType("vnd.android.cursor.dir/phone");
+                startActivityForResult(i, 0);
                 break;
             case R.id.btnRecharge:
                 if(contacts != null) {
-//                    btnRecharge.showLoading();
-//                    btnRecharge.setLoading(true);
-//                    btnRecharge.setLoadingText("正在充值...");
+                    btnRecharge.showLoading("正在充值...");
+                    btnRecharge.showResult("充值失败",false);
                     String amount = rechange.getText().toString().trim();
 //                    Intent intent = new Intent(RechargeTelephoneActivity.this,);
 //
 //                    startActivity(intent);
+
                     Toast.makeText(this, "去充值..."+amount, Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(this, "请输入充值金额", Toast.LENGTH_SHORT).show();
@@ -164,5 +173,27 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
         charge200.setBackgroundColor(Color.parseColor("#F9F9F9"));
         charge300.setBackgroundColor(Color.parseColor("#F9F9F9"));
         charge500.setBackgroundColor(Color.parseColor("#F9F9F9"));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        String usernumber;
+        if (resultCode == Activity.RESULT_OK) {
+            ContentResolver reContentResolverol = getContentResolver();
+            Uri contactData = data.getData();
+            @SuppressWarnings("deprecation")
+            Cursor cursor = managedQuery(contactData, null, null, null, null);
+            cursor.moveToFirst();
+            String contactId = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
+            Cursor phone = reContentResolverol.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                    null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=" + contactId,
+                    null, null);
+            while (phone.moveToNext()) {
+                usernumber = phone.getString(phone.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                contacts.setText(usernumber);
+            }
+
+        }
     }
 }

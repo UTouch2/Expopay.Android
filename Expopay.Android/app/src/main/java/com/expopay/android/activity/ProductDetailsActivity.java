@@ -33,7 +33,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
         tvSelected = (TextView) findViewById(R.id.tvSelected);
         tvStaging = (TextView) findViewById(R.id.tvStaging);
 
-//        btnImmediatelyOrder.setText("立即下单");
+        btnImmediatelyOrder.showNormal("立即下单");
         relativeLayoutProperties.setOnClickListener(this);
         relativeLayoutStage.setOnClickListener(this);
         llDetail.setOnClickListener(this);
@@ -88,6 +88,8 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                 startActivity(intent);
                 break;
             case R.id.btnImmediatelyOrder:
+                btnImmediatelyOrder.showLoading("正在下单...");
+                btnImmediatelyOrder.showResult("下单成功",true);
                 intent.setClass(ProductDetailsActivity.this, OrderDetailCommitActivity.class);
                 startActivity(intent);
                 break;
