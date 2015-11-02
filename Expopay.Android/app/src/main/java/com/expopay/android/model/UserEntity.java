@@ -5,6 +5,7 @@ package com.expopay.android.model;
  */
 public class UserEntity {
     private String openId;
+    private String password;
     private String mobile;
     private String userName;
     private String userType;
@@ -15,9 +16,19 @@ public class UserEntity {
     private String defCardNumber;
     private String companyName;
     private String payStatus;
+
     public UserEntity() {
 
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public void setOpenId(String openId) {
         this.openId = openId;
     }
