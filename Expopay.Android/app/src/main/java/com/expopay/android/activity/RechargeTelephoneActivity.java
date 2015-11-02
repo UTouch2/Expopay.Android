@@ -40,7 +40,7 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
         charge300 = (Button) findViewById(R.id.charge300);
         charge500 = (Button) findViewById(R.id.charge500);
         btnRecharge = (CustormLoadingButton) findViewById(R.id.btnRecharge);
-        btnRecharge.setText("充值");
+//        btnRecharge.setText("充值");
         imgContacts.setOnClickListener(this);
         charge10.setOnClickListener(this);
         charge20.setOnClickListener(this);
@@ -102,9 +102,9 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
                 break;
             case R.id.btnRecharge:
                 if(contacts != null) {
-                    btnRecharge.showLoading();
-                    btnRecharge.setLoading(true);
-                    btnRecharge.setLoadingText("正在充值...");
+//                    btnRecharge.showLoading();
+//                    btnRecharge.setLoading(true);
+//                    btnRecharge.setLoadingText("正在充值...");
                     String amount = rechange.getText().toString().trim();
 //                    Intent intent = new Intent(RechargeTelephoneActivity.this,);
 //
