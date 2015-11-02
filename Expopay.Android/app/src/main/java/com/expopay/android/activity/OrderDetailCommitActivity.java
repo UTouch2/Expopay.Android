@@ -39,7 +39,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
         commitConsigneeMobile = (TextView) findViewById(R.id.commitConsigneeMobile);
         commitConsigneeAddress = (TextView) findViewById(R.id.commitConsigneeAddress);
         btnSubmit = (CustormLoadingButton) findViewById(R.id.btnSubmit);
-        btnSubmit.setText("提交订单");
+        btnSubmit.showNormal("提交订单");
     }
 
 
@@ -61,9 +61,9 @@ public class OrderDetailCommitActivity extends BaseActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnSubmit.showLoading();
-                btnSubmit.setLoading(true);
-                btnSubmit.setLoadingText("正在提交...");
+//                btnSubmit.showLoading();
+//                btnSubmit.setLoading(true);
+//                btnSubmit.setLoadingText("正在提交...");
 
                 Intent intent = new Intent(OrderDetailCommitActivity.this, OrderDetailCancelActivity.class);
                 startActivity(intent);

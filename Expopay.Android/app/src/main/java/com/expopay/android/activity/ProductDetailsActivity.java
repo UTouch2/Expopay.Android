@@ -33,7 +33,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
         tvSelected = (TextView) findViewById(R.id.tvSelected);
         tvStaging = (TextView) findViewById(R.id.tvStaging);
 
-        btnImmediatelyOrder.setText("立即下单");
+//        btnImmediatelyOrder.setText("立即下单");
         relativeLayoutProperties.setOnClickListener(this);
         relativeLayoutStage.setOnClickListener(this);
         llDetail.setOnClickListener(this);
