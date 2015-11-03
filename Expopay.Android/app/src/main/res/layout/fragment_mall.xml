@@ -4,18 +4,30 @@
     android:layout_height="match_parent"
     android:background="#FAFAFA">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/mall_viewpager"
+    <RelativeLayout
+        android:id="@+id/rlViewPage"
         android:layout_width="match_parent"
-        android:layout_height="130dp"></android.support.v4.view.ViewPager>
+        android:layout_height="130dp">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/mall_bannerpager"
+            android:layout_width="match_parent"
+            android:layout_height="130dp">
+        </android.support.v4.view.ViewPager>
 
+        <com.expopay.android.view.BannerFootView
+            android:id="@+id/mall_bannerpager_footview"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_alignParentBottom="true">
+        </com.expopay.android.view.BannerFootView>
+    </RelativeLayout>
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/mall_viewpager"
+        android:layout_below="@+id/rlViewPage"
         android:padding="10dp"
         android:text="分期商品"
         android:textColor="#666666"
@@ -26,18 +38,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView3"
-        android:src="@mipmap/mall_ogistics_line" />
+        android:src="@mipmap/mall_ogistics_line"
+        android:adjustViewBounds="true"/>
 
     <GridView
         android:id="@+id/mygridview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scrollbars="none"
         android:layout_above="@+id/tvMore"
         android:layout_below="@+id/imgLine"
-        android:background="#AAAAAA"
-        android:horizontalSpacing="1px"
-        android:numColumns="3"
-        android:verticalSpacing="1px" />
+        android:background="#DBDBDB"
+        android:numColumns="3" />
 
     <LinearLayout
         android:id="@+id/tvMore"
@@ -53,6 +65,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:src="@mipmap/mall_ogistics_line" />
 
         <TextView

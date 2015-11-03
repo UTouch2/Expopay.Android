@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -8,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/_square_bg"
+        app:proportion="1.1"
         android:gravity="center">
 
         <LinearLayout
@@ -16,7 +18,7 @@
             android:background="@drawable/_square_bg"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="5dp">
 
             <ImageView
                 android:id="@+id/image_grid_item"
@@ -32,7 +34,8 @@
                 android:layout_below="@id/image_grid_item"
                 android:layout_marginTop="5dp"
                 android:text="Apple iPhone 6S"
-                android:textColor="#666666" />
+                android:textSize="12sp"
+                android:textColor="#999999" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -45,14 +48,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="售价："
-                    android:textColor="#666666" />
+                    android:textSize="12sp"
+                    android:textColor="#999999" />
 
                 <TextView
                     android:id="@+id/text2_grid_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="$5288.00"
-                    android:textColor="#666666" />
+                    android:textSize="12sp"
+                    android:textColor="#999999" />
 
             </LinearLayout>
 

@@ -1,7 +1,5 @@
 package com.expopay.android.activity;
 
-import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -12,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +20,7 @@ import com.expopay.android.view.CustormLoadingButton;
 public class RechargeTelephoneActivity extends BaseActivity implements View.OnClickListener{
 
     private EditText contacts;
-    private ImageButton imgContacts;
+    private ImageView imgContacts;
     private TextView rechange;
     private Button charge10;
     private Button charge20;
@@ -35,7 +34,7 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
 
     private void assignViews() {
         contacts = (EditText) findViewById(R.id.contacts);
-        imgContacts = (ImageButton) findViewById(R.id.imgContacts);
+        imgContacts = (ImageView) findViewById(R.id.imgContacts);
         rechange = (TextView) findViewById(R.id.rechange);
         charge10 = (Button) findViewById(R.id.charge10);
         charge20 = (Button) findViewById(R.id.charge20);
@@ -178,22 +177,61 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        String usernumber;
-        if (resultCode == Activity.RESULT_OK) {
-            ContentResolver reContentResolverol = getContentResolver();
-            Uri contactData = data.getData();
-            @SuppressWarnings("deprecation")
-            Cursor cursor = managedQuery(contactData, null, null, null, null);
-            cursor.moveToFirst();
-            String contactId = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
-            Cursor phone = reContentResolverol.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                    null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=" + contactId,
-                    null, null);
-            while (phone.moveToNext()) {
-                usernumber = phone.getString(phone.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                contacts.setText(usernumber);
-            }
+        switch (requestCode) {
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    Uri contactData = data.getData();
+                    Cursor cursor = managedQuery(contactData, null, null, null,
+                            null);
+                    cursor.moveToFirst();
+                    String num = this.getContactPhone(cursor);
+                    contacts.setText(num);
+                }
+                break;
 
+            default:
+                break;
         }
+    }
+
+    private String getContactPhone(Cursor cursor) {
+        int phoneColumn = cursor
+                .getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER);
+        int phoneNum = cursor.getInt(phoneColumn);
+        String result = "";
+        if (phoneNum > 0) {
+            // 获得联系人的ID号
+            int idColumn = cursor.getColumnIndex(ContactsContract.Contacts._ID);
+            String contactId = cursor.getString(idColumn);
+            // 获得联系人电话的cursor
+            Cursor phone = getContentResolver().query(
+                    ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                    null,
+                    ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "="
+                            + contactId, null, null);
+            if (phone.moveToFirst()) {
+                for (; !phone.isAfterLast(); phone.moveToNext()) {
+                    int index = phone
+                            .getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+                    int typeindex = phone
+                            .getColumnIndex(ContactsContract.CommonDataKinds.Phone.TYPE);
+                    int phone_type = phone.getInt(typeindex);
+                    String phoneNumber = phone.getString(index);
+                    result = phoneNumber;
+//                  switch (phone_type) {//此处请看下方注释
+//                  case 2:
+//                      result = phoneNumber;
+//                      break;
+//
+//                  default:
+//                      break;
+//                  }
+                }
+                if (!phone.isClosed()) {
+                    phone.close();
+                }
+            }
+        }
+        return result;
     }
 }

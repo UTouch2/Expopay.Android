@@ -198,16 +198,13 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:layout_height="50dp"
         android:text="确定"
         android:textColor="#FFFFFF"
-        android:textSize="20dp"
+        android:textSize="15dp"
         android:background="@drawable/_button"
         android:id="@+id/btnSureInstallment"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentBottom="true" />
 
     <TextView
         android:layout_width="match_parent"
