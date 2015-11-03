@@ -42,10 +42,10 @@ public class BannerFootView extends LinearLayout {
     }
 
     public void setViewsSize(int size) {
+        LayoutParams p = new LayoutParams(w, w);
+        p.setMargins(5, 5, 5, 5);
         for (int i = 0; i < size; i++) {
             CircleView v = new CircleView(getContext());
-            LayoutParams p = new LayoutParams(w, w);
-            p.setMargins(5, 5, 5, 5);
             v.setLayoutParams(p);
             v.setCircleColor(Color.parseColor("#A1A19F"));
             addView(v);
@@ -53,10 +53,11 @@ public class BannerFootView extends LinearLayout {
     }
 
     public void setSelectedIndex(int size, int index) {
+        removeAllViews();
+        LayoutParams p = new LayoutParams(w, w);
+        p.setMargins(5, 5, 5, 5);
         for (int i = 0; i < size; i++) {
             CircleView v = new CircleView(getContext());
-            LayoutParams p = new LayoutParams(w, w);
-            p.setMargins(5, 5, 5, 5);
             v.setLayoutParams(p);
             if (i == index) {
                 v.setCircleColor(Color.parseColor("#ffffff"));
@@ -68,12 +69,11 @@ public class BannerFootView extends LinearLayout {
     }
 
     public void setSelectedIndex(int index) {
+        LayoutParams p = new LayoutParams(w, w);
+        p.setMargins(5, 5, 5, 5);
         for (int i = 0; i < getChildCount(); i++) {
             CircleView v = new CircleView(getContext());
-            LayoutParams p = new LayoutParams(w, w);
-            p.setMargins(5, 5, 5, 5);
             v.setLayoutParams(p);
-            v.setCircleColor(Color.parseColor("#A1A19F"));
             addView(v);
             if (i == index) {
                 v.setCircleColor(Color.parseColor("#ffffff"));
