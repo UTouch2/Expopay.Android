@@ -8,143 +8,257 @@
     tools:context="com.expopay.android.activity.RechargeTelephoneActivity">
 
     <RelativeLayout
+        android:id="@+id/relativeLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
-        android:padding="20dp"
-        android:id="@+id/relativeLayout3">
+        android:padding="15dp">
+
         <TextView
             android:id="@+id/tvlab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_centerVertical="true"
             android:text="充值手机："
-            android:textColor="#666666"
-            android:gravity="center" />
+            android:textColor="#666666" />
+
         <EditText
+            android:id="@+id/contacts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#999999"
-            android:text="13666666666"
-            android:gravity="center"
-            android:singleLine="true"
-            android:phoneNumber="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:layout_toLeftOf="@+id/imgContacts"
             android:layout_toRightOf="@+id/tvlab"
-            android:layout_marginRight="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/contacts" />
+            android:background="@null"
+            android:gravity="center"
+            android:phoneNumber="true"
+            android:singleLine="true"
+            android:textColor="#999999" />
+
         <ImageButton
             android:id="@+id/imgContacts"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:background="#FFFFFF"
-            android:src="@mipmap/mall_contacts"
-            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_centerVertical="true"
+            android:background="#FFFFFF"
+            android:padding="2dp"
+            android:src="@mipmap/mall_contacts" />
     </RelativeLayout>
+
     <LinearLayout
+        android:id="@+id/linearLayout10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#F9F9F9"
-        android:padding="20dp"
-        android:layout_below="@+id/relativeLayout3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/linearLayout10">
+        android:layout_below="@+id/relativeLayout3"
+        android:background="#F9F9F9"
+        android:orientation="horizontal"
+        android:padding="15dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="您需支付："
-            android:textColor="#EB744A"/>
+            android:textColor="#EB744A" />
+
         <TextView
             android:id="@+id/rechange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-            android:textColor="#EB744A"
-            android:text="10"/>
+            android:text="10"
+            android:textColor="#EB744A" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#EB744A"
-            android:text="元"/>
+            android:text="元"
+            android:textColor="#EB744A" />
     </LinearLayout>
 
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:columnCount="3"
-        android:rowCount="3"
-        android:layout_below="@+id/linearLayout10"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true">
-        <Button android:text="10元"
-            android:id="@+id/charge10"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="#F9F9F9"
-            android:textColor="#666666"
-            android:layout_height="100dp"
-            android:layout_width="100dp"/>
-        <Button android:text="20元"
-            android:id="@+id/charge20"
-            android:background="#F9F9F9"
-            android:textColor="#666666"
-            android:layout_height="100dp"
-            android:layout_width="100dp"/>
-        <Button android:text="30元"
-            android:id="@+id/charge30"
-            android:layout_marginLeft="10dp"
-            android:background="#F9F9F9"
-            android:textColor="#666666"
-            android:layout_height="100dp"
-            android:layout_width="100dp"/>
-        <Button android:text="50元"
-            android:id="@+id/charge50"
-            android:layout_marginBottom="10dp"
-            android:background="#F9F9F9"
-            android:textColor="#666666"
-            android:layout_height="100dp"
-            android:layout_width="100dp"/>
-        <Button android:text="100元"
-            android:id="@+id/charge100"
-            android:background="#F9F9F9"
-            android:textColor="#666666"
-            android:layout_height="100dp"
-            android:layout_width="100dp"/>
-        <Button android:text="200元"
-            android:id="@+id/charge200"
-            android:layout_marginLeft="10dp"
-            android:background="#F9F9F9"
-            android:textColor="#666666"
-            android:layout_height="100dp"
-            android:layout_width="100dp"/>
-        <Button android:text="300元"
-            android:id="@+id/charge300"
-            android:background="#F9F9F9"
-            android:textColor="#666666"
-            android:layout_height="100dp"
-            android:layout_width="100dp"/>
-        <Button android:text="500元"
-            android:id="@+id/charge500"
-            android:background="#F9F9F9"
-            android:textColor="#666666"
-            android:layout_height="100dp"
-            android:layout_width="100dp"/>
-    </GridLayout>
-
-    <com.expopay.android.view.CustormLoadingButton
+    <LinearLayout
+        android:id="@+id/ll1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/_button"
+        android:layout_below="@+id/linearLayout10"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <com.expopay.android.view.SquareLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/charge10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F9F9F9"
+                android:gravity="center"
+                android:text="10元"
+                android:textColor="#666666" />
+        </com.expopay.android.view.SquareLayout>
+
+        <com.expopay.android.view.SquareLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/charge20"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F9F9F9"
+                android:gravity="center"
+                android:text="20元"
+                android:textColor="#666666" />
+        </com.expopay.android.view.SquareLayout>
+
+        <com.expopay.android.view.SquareLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/charge30"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F9F9F9"
+                android:gravity="center"
+                android:text="30元"
+                android:textColor="#666666" />
+        </com.expopay.android.view.SquareLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll1"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <com.expopay.android.view.SquareLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/charge50"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F9F9F9"
+                android:gravity="center"
+                android:text="50元"
+                android:textColor="#666666" />
+        </com.expopay.android.view.SquareLayout>
+
+        <com.expopay.android.view.SquareLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/charge100"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F9F9F9"
+                android:gravity="center"
+                android:text="100元"
+                android:textColor="#666666" />
+        </com.expopay.android.view.SquareLayout>
+
+        <com.expopay.android.view.SquareLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/charge200"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F9F9F9"
+                android:gravity="center"
+                android:text="200元"
+                android:textColor="#666666" />
+        </com.expopay.android.view.SquareLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll2"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <com.expopay.android.view.SquareLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/charge300"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F9F9F9"
+                android:gravity="center"
+                android:text="300元"
+                android:textColor="#666666" />
+        </com.expopay.android.view.SquareLayout>
+
+        <com.expopay.android.view.SquareLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/charge500"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F9F9F9"
+                android:gravity="center"
+                android:text="500元"
+                android:textColor="#666666" />
+        </com.expopay.android.view.SquareLayout>
+
+        <com.expopay.android.view.SquareLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:text=""
+                android:textColor="#666666" />
+        </com.expopay.android.view.SquareLayout>
+    </LinearLayout>
+
+    <com.expopay.android.view.CustormLoadingButton
         android:id="@+id/btnRecharge"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" >
-    </com.expopay.android.view.CustormLoadingButton>
+        android:layout_alignParentStart="true"
+        android:background="@drawable/_button"></com.expopay.android.view.CustormLoadingButton>
 </RelativeLayout>

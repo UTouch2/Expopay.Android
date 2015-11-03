@@ -3,8 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    android:clipToPadding="true"
-    android:fitsSystemWindows="true"
     tools:context="com.expopay.android.activity.ChoosePropertiesActivity">
 
     <LinearLayout
@@ -233,7 +231,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#66AAAAAA"
         android:text=""
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"

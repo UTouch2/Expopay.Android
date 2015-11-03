@@ -190,7 +190,6 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="20dp"
-            android:background="#f9f9f9"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:src="@mipmap/mall_more"/>
