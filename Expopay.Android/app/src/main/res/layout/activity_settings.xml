@@ -281,7 +281,6 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:adjustViewBounds="true"
-                android:paddingBottom="30dp"
                 android:src="@mipmap/account_right_arrow" />
         </RelativeLayout>
 
@@ -289,6 +288,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="exitOnclick"
+            android:background="@drawable/_button"
             android:text="退出登录" />
     </LinearLayout>
 </ScrollView>
