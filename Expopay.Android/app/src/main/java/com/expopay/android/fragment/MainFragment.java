@@ -76,14 +76,15 @@ public class MainFragment extends BaseFragment {
         });
         final ViewPager pager = (ViewPager) view.findViewById(R.id.main_bannerpager);
         footView = (BannerFootView) view.findViewById(R.id.main_bannerpager_footview);
+
         pager.setAdapter(new BannerPagerAdapter(createViews()));
-        footView.setViewsSize(createViews().length);
         pager.setOnPageChangeListener(new AbsOnPageChangeListener() {
             @Override
             public void onPageSelected(int i) {
-                footView.setSelectedIndex(i % createViews().length);
+                footView.setSelectedIndex(createViews().length, i % createViews().length);
             }
         });
+        footView.setSelectedIndex(createViews().length, pager.getCurrentItem() % createViews().length);
         return view;
     }
 
