@@ -84,10 +84,10 @@ public class MallFragment extends  BaseFragment {
         views[0].setBackgroundResource(R.mipmap.mall_banner01);
         view = new ImageView(getActivity().getApplicationContext());
         views[1] = view;
-        views[1].setBackgroundResource(R.mipmap.mall_banner01);
+        views[1].setBackgroundResource(R.mipmap.mall_banner02);
         view = new ImageView(getActivity().getApplicationContext());
         views[2] = view;
-        views[2].setBackgroundResource(R.mipmap.mall_banner01);
+        views[2].setBackgroundResource(R.mipmap.mall_banner03);
         return views;
     }
 
