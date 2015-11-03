@@ -218,15 +218,12 @@
     <Button
         android:id="@+id/btnSureStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:background="@drawable/_button"
-        android:padding="10dp"
         android:text="确定"
         android:textColor="#FFFFFF"
-        android:textSize="20dp" />
+        android:textSize="15dp" />
 
     <TextView
         android:layout_width="match_parent"

@@ -62,7 +62,6 @@ public class OrderDetailCommitActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 btnSubmit.showLoading("正在提交...");
-                btnSubmit.showResult("提交成功",true);
 
                 Intent intent = new Intent(OrderDetailCommitActivity.this, OrderDetailCancelActivity.class);
                 startActivity(intent);
