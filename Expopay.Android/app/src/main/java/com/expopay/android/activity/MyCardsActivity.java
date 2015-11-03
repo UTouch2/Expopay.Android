@@ -1,22 +1,14 @@
 package com.expopay.android.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.android.kechong.lib.http.RequestMethod;
 import com.android.kechong.lib.http.listener.JsonRequestListener;
-import com.android.kechong.lib.util.ApkUtil;
 import com.expopay.android.R;
 import com.expopay.android.adapter.listview.MyCardsListAdapter;
 import com.expopay.android.application.MyApplication;
 import com.expopay.android.model.CardEntity;
-import com.expopay.android.model.UpdateAppEntity;
-import com.expopay.android.request.AppRequest;
 import com.expopay.android.request.CardRequest;
 import com.expopay.android.view.CustormLoadingView;
 import com.google.gson.Gson;
@@ -26,10 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 /**
  * Created by misxu012 on 2015/10/22.
@@ -50,7 +39,7 @@ public class MyCardsActivity extends BaseActivity {
         adapter = new MyCardsListAdapter(getApplicationContext(), new ArrayList<CardEntity>());
         listView.setAdapter(adapter);
         try {
-            getMyCards("12312");
+            getMyCards(getUser().getOpenId());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -96,12 +85,10 @@ public class MyCardsActivity extends BaseActivity {
                     loadingView.setMessage("数据解析异常");
                 }
             }
-
             @Override
             public void onProgressUpdate(int i, int j) {
 
             }
-
             @Override
             public void onFilure(Exception result) {
                 System.out.println(result);
@@ -111,18 +98,5 @@ public class MyCardsActivity extends BaseActivity {
         });
         request.execute();
         cancelRequest(request);
-    }
-
-    private List<CardEntity> testDate() {
-        List<CardEntity> list = new ArrayList<CardEntity>();
-        for (int i = 0; i < 10; i++) {
-            CardEntity e = new CardEntity();
-            e.setBalance("20");
-            e.setCardType("qweqweq");
-            e.setIsDefault("0");
-            e.setCardNumber("88888888888888888");
-            list.add(e);
-        }
-        return list;
     }
 }
