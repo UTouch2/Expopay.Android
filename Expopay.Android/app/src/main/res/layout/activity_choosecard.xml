@@ -13,7 +13,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#0000"
             android:onClick="closeOnclick"></FrameLayout>
 
         <RelativeLayout
@@ -31,9 +30,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:onClick="okOnclick"
-                android:text="充 值"
                 android:background="@drawable/_button"
+                android:onClick="okOnclick"
+                android:text="切 换"
                 android:textColor="#fff"
                 android:textSize="14sp" />
 

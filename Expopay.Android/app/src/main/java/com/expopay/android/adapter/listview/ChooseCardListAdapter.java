@@ -1,10 +1,15 @@
 package com.expopay.android.adapter.listview;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.RadioButton;
+import android.widget.TextClock;
+import android.widget.TextView;
 
+import com.expopay.android.R;
 import com.expopay.android.model.CardEntity;
 
 import java.util.List;
@@ -23,7 +28,7 @@ public class ChooseCardListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return data.size();
     }
 
     @Override
@@ -38,10 +43,19 @@ public class ChooseCardListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return null;
+        CardEntity e = data.get(position);
+        View view = LayoutInflater.from(context).inflate(R.layout.view_choosecard_item, null);
+        TextView cardNumberText = (TextView) view.findViewById(R.id.choosecard_item_cardnumber);
+        RadioButton radio = (RadioButton) view.findViewById(R.id.choosecard_item_radio);
+        cardNumberText.setText(e.getCardNumber());
+        return view;
     }
 
     public List<CardEntity> getData() {
         return data;
+    }
+
+    public void setData(List<CardEntity> data) {
+        this.data = data;
     }
 }

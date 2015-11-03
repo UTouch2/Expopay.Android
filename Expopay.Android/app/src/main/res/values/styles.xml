@@ -1,8 +1,12 @@
 <resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light"></style>
-    <style name="ActvTheme" parent="AppTheme">    　　
-    　　<item name="android:windowIsTranslucent">true</item>
+
+    <style name="ActvTheme"  parent="AppTheme">　　
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@color/WindowBackground</item>
+        <item name="android:windowNoTitle">true</item>　
+    　　<item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
     </style>
     <style name="CustomCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
         <item name="android:button">@drawable/_checkbox_style</item>
