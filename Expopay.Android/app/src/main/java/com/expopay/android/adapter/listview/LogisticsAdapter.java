@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.expopay.android.R;
@@ -49,17 +50,25 @@ public class LogisticsAdapter extends BaseAdapter {
         if (view == null){
             holder = new ViewHolder();
             view = mInflater.inflate(R.layout.view_logistics_item,null);
-            holder.logistics = (TextView) view.findViewById(R.id.logisticsStatus);
+            holder.logistics_img = (ImageView) view.findViewById(R.id.logistics_img);
+            holder.logistics_line = (ImageView) view.findViewById(R.id.logistics_line);
+            holder.logisticsStatus = (TextView) view.findViewById(R.id.logisticsStatus);
+            holder.logisticsTime = (TextView) view.findViewById(R.id.logisticsTime);
             view.setTag(holder);
         }else {
             holder = (ViewHolder) view.getTag();
         }
-        holder.logistics.setText(entity.getLogistics());
+        holder.logistics_img.setImageResource(R.mipmap.logistics_unfinished);
+        holder.logisticsStatus.setText(entity.getLogistics());
+        holder.logisticsTime.setText(entity.getOrderTime());
 
         return view;
     }
 
     static class ViewHolder{
-        public TextView logistics;
+        public ImageView logistics_img;
+        public ImageView logistics_line;
+        public TextView logisticsStatus;
+        public TextView logisticsTime;
     }
 }
