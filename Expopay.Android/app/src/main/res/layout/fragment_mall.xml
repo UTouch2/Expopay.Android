@@ -38,8 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView3"
-        android:src="@mipmap/mall_ogistics_line"
-        android:adjustViewBounds="true"/>
+        android:src="@mipmap/mall_ogistics_line"/>
 
     <GridView
         android:id="@+id/mygridview"
@@ -65,7 +64,6 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
             android:src="@mipmap/mall_ogistics_line" />
 
         <TextView
