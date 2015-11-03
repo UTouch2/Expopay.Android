@@ -129,13 +129,56 @@
                 android:text="4" />
         </LinearLayout>
     </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/myaccount_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/_rectangle_bg"
+        android:onClick="orderOnclick"
+        android:orientation="horizontal"
+        android:padding="15dp">
 
+        <ImageView
+            android:id="@+id/account_settings_icon"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="3dp"
+            android:adjustViewBounds="true"
+            android:src="@mipmap/myaccount_settings_icon" />
+
+        <TextView
+            android:id="@+id/account_settings_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="3dp"
+            android:layout_toRightOf="@id/account_settings_icon"
+            android:text="个人中心"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/account_settings_toicon"
+            android:layout_width="13dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/account_right_arrow" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:layout_toLeftOf="@id/account_settings_text"
+            android:layout_toRightOf="@id/account_settings_toicon"
+            android:gravity="right" />
+    </RelativeLayout>
     <RelativeLayout
         android:id="@+id/account_order"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:background="@drawable/_rectangle_bg"
+        android:background="@drawable/_rectangle_bg2"
         android:onClick="orderOnclick"
         android:orientation="horizontal"
         android:padding="15dp">
@@ -181,8 +224,7 @@
         android:id="@+id/account_bill"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:background="@drawable/_rectangle_bg2"
+        android:background="@drawable/_rectangle_bg"
         android:onClick="orderOnclick"
         android:orientation="horizontal"
         android:padding="15dp">
@@ -224,58 +266,12 @@
             android:gravity="right" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/myaccount_settings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:background="@drawable/_rectangle_bg"
-        android:onClick="orderOnclick"
-        android:orientation="horizontal"
-        android:padding="15dp">
 
-        <ImageView
-            android:id="@+id/account_settings_icon"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_margin="3dp"
-            android:adjustViewBounds="true"
-            android:src="@mipmap/myaccount_settings_icon" />
-
-        <TextView
-            android:id="@+id/account_settings_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_margin="3dp"
-            android:layout_toRightOf="@id/account_settings_icon"
-            android:text="通用设置"
-            android:textSize="14sp" />
-
-        <ImageView
-            android:id="@+id/account_settings_toicon"
-            android:layout_width="13dp"
-            android:layout_height="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/account_right_arrow" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="30dp"
-            android:layout_toLeftOf="@id/account_settings_text"
-            android:layout_toRightOf="@id/account_settings_toicon"
-            android:gravity="right" />
-    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/account_aboutme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
         android:background="@drawable/_rectangle_bg2"
         android:onClick="orderOnclick"
         android:orientation="horizontal"
