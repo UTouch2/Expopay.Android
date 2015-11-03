@@ -11,8 +11,4 @@ public class MyApplication extends Application {
     public static final String EMAIL = "service@expopay.cn";
     public static final String NET = "http://www.expopay.cn";
     public final static String DB_NAME = "expopay.db";
-    public final static String USERNAME = "username";
-    public final static String PASSWORD = "password";
-    ;
-    public final static String OPENID = "openId";
 }
