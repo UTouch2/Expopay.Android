@@ -154,9 +154,12 @@ public class MainAcativity extends BaseActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        moveTaskToBack(true);
-        super.onBackPressed();
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            moveTaskToBack(true);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     private void getNewVersionCode() throws JSONException {
