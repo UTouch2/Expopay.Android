@@ -1,5 +1,6 @@
 package com.expopay.android.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -27,8 +28,6 @@ public class ChangeCardPasswordActivity extends BaseActivity {
     }
 
     public void chooseCardOnclick(View v) {
-
+        startActivityForResult(new Intent(this, ChooseCardActivity.class), 0);
     }
-
-
 }
