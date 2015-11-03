@@ -22,7 +22,6 @@ public class AppRequest extends Request{
         setUrl(url);
     }
 
-
     public AppRequest(String url, int method) {
         super(url, method);
     }
