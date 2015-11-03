@@ -88,9 +88,9 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                 startActivity(intent);
                 break;
             case R.id.btnImmediatelyOrder:
+                btnImmediatelyOrder.showLoading("正在下单...");
                 intent.setClass(ProductDetailsActivity.this, OrderDetailCommitActivity.class);
                 startActivity(intent);
-                btnImmediatelyOrder.showLoading("正在下单...");
                 break;
             default:
                 break;

@@ -61,10 +61,10 @@ public class OrderDetailCommitActivity extends BaseActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnSubmit.showLoading("正在提交...");
 
                 Intent intent = new Intent(OrderDetailCommitActivity.this, OrderDetailCancelActivity.class);
                 startActivity(intent);
-                btnSubmit.showLoading("正在提交...");
             }
         });
     }
