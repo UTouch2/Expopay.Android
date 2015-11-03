@@ -14,7 +14,6 @@ import com.expopay.android.R;
  */
 public class BannerFootView extends LinearLayout {
     int w = (int) getContext().getResources().getDimension(R.dimen.bannerpointsize);
-
     public BannerFootView(Context context) {
         super(context);
         setGravity(Gravity.CENTER);
