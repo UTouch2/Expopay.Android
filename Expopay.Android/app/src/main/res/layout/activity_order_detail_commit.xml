@@ -232,23 +232,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:text="我同意"
+            android:text="我同意《南博卡分期协议》"
             android:textColor="#666666"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            style="@style/CustomCheckboxTheme"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical">-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="《南博卡分期协议》"
-                android:textSize="15dp"
-                android:textColor="#666666"/>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="《南博卡分期协议》"-->
+                <!--android:textSize="15dp"-->
+                <!--android:textColor="#666666"/>-->
 
-        </LinearLayout>
+        <!--</LinearLayout>-->
     </LinearLayout>
 
     <com.expopay.android.view.CustormLoadingButton

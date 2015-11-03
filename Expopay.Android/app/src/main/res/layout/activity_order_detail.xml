@@ -222,6 +222,8 @@
         android:id="@+id/lvLogistics"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:divider="#00000000"
+        android:dividerHeight="0dip"
         android:layout_below="@+id/textView2"
         android:layout_above="@+id/llLogistics"
         android:layout_alignParentLeft="true"
