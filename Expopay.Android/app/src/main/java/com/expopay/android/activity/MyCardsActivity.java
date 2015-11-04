@@ -97,7 +97,7 @@ public class MyCardsActivity extends BaseActivity {
                 loadingView.showRetry();
                 loadingView.setMessage("请求失败");
                 loadingView.dismiss();
-                adapter.setData(null);
+                adapter.setData(data);
                 adapter.notifyDataSetChanged();
             }
         });
