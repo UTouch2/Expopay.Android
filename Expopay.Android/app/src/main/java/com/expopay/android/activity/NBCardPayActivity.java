@@ -12,6 +12,10 @@ public class NBCardPayActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addFragment(R.id.nbkcardpay_container, new NBKCardpayFragment());
+        statusBarCoverActivity();
+        setContentView(R.layout.activity_nbkcardpay);
+        NBKCardpayFragment f = new NBKCardpayFragment();
+        f.setArguments(getIntent().getExtras());
+        addFragment(R.id.nbkcardpay_container, f);
     }
 }
