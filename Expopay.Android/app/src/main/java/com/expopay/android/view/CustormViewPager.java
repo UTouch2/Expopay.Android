@@ -59,6 +59,7 @@ public class CustormViewPager extends ViewPager {
 
         @Override
         public void startScroll(int startX, int startY, int dx, int dy) {
+            // Ignore received duration, use fixed one instead
             super.startScroll(startX, startY, dx, dy, mDuration);
         }
 
@@ -70,5 +71,4 @@ public class CustormViewPager extends ViewPager {
             return mDuration;
         }
     }
-
 }
