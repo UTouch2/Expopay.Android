@@ -5,13 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.expopay.android.activity.NBCardPayActivity;
-
 /**
  * Created by misxu012 on 2015/11/4.
  */
 public class NBKCardPayUtil {
     public static final int PAY_REQUEST_CODE = 99;
-
     /**
      * @param activity
      * @param orderNumer
