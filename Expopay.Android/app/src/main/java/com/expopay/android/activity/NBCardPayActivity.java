@@ -1,6 +1,7 @@
 package com.expopay.android.activity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.expopay.android.R;
 import com.expopay.android.fragment.NBKCardpayFragment;
@@ -16,6 +17,10 @@ public class NBCardPayActivity extends BaseActivity {
         setContentView(R.layout.activity_nbkcardpay);
         NBKCardpayFragment f = new NBKCardpayFragment();
         f.setArguments(getIntent().getExtras());
-        addFragment(R.id.nbkcardpay_container, f);
+        repleaceFragment(R.id.nbkcardpay_container, f);
+    }
+
+    public void closeOnclick(View v) {
+        finish();
     }
 }
