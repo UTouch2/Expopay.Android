@@ -1,12 +1,14 @@
 package com.expopay.android.view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
+
+import com.expopay.android.R;
 
 import java.lang.reflect.Field;
 
@@ -15,7 +17,6 @@ import java.lang.reflect.Field;
  */
 public class CustormViewPager extends ViewPager {
     private Boolean isScrollable = false;
-
     private int duration = 1000;
 
     public CustormViewPager(Context context) {
@@ -25,7 +26,20 @@ public class CustormViewPager extends ViewPager {
 
     public CustormViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
+
+        TypedArray t = context.obtainStyledAttributes(attrs, R.styleable.CustormViewPager);
+        duration = t.getInt(R.styleable.CustormViewPager_duration, 1000);
+        t.recycle();
+
         init();
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
     private void init() {
@@ -34,7 +48,7 @@ public class CustormViewPager extends ViewPager {
             field.setAccessible(true);
             FixedSpeedScroller scroller = new FixedSpeedScroller(getContext(),
                     new AccelerateInterpolator());
-            scroller.setmDuration(duration);
+            scroller.setmDuration(getDuration());
             field.set(this, scroller);
         } catch (Exception e) {
         }
@@ -70,5 +84,6 @@ public class CustormViewPager extends ViewPager {
         public int getmDuration() {
             return mDuration;
         }
+
     }
 }
