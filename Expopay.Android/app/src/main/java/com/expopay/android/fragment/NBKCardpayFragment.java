@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
 
 import com.expopay.android.R;
@@ -23,9 +24,12 @@ public class NBKCardpayFragment extends BaseFragment {
     TextView amountText;
     EditText passwordText;
 
+    String orderNumber, orderSource, orderAmount;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_nbkcardpay, container, false);
+       // view.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
         okButton = (CustormLoadingButton) view.findViewById(R.id.nbkcardpay_okbtn);
         cardNumberText = (TextView) view.findViewById(R.id.nbkcardpay_cardnumber_text);
         amountText = (TextView) findViewById(R.id.nbkcardpay_amount_text);
@@ -47,6 +51,12 @@ public class NBKCardpayFragment extends BaseFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        Bundle arg = getArguments();
+        if (arg != null) {
+            orderNumber = arg.getString("orderNumber");
+            orderSource = arg.getString("orderSource");
+            orderAmount = arg.getString("orderAmount");
+        }
     }
 
     @Override

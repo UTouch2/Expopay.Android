@@ -45,17 +45,17 @@ public class CompanyListAdapter extends BaseAdapter {
         CompanyEntity c = data.get(position);
         ViewHolder vh = null;
         if (null != convertView) {
-            vh = (ViewHolder) convertView.getTag(1);
+            vh = (ViewHolder) convertView.getTag();
         } else {
-           // convertView = LayoutInflater.from(context).inflate(R.layout.view_myactionbar, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.view_companylist_item, null);
             vh = new ViewHolder();
             vh.compantName = (TextView) convertView.findViewById(R.id.companylist_item_companyname);
-            convertView.setTag(1, vh);
+            convertView.setTag(vh);
         }
-        convertView.setTag(2, c);
         vh.compantName.setText(c.getCompanyName());
         return convertView;
     }
+
     private class ViewHolder {
         TextView compantName;
     }
