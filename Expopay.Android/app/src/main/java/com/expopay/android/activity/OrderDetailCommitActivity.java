@@ -6,10 +6,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
+import com.expopay.android.request.CustomerRequest;
 import com.expopay.android.view.CustormLoadingButton;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class OrderDetailCommitActivity extends BaseActivity {
 
@@ -54,7 +58,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
         llAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(OrderDetailCommitActivity.this, "地址", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -63,10 +67,42 @@ public class OrderDetailCommitActivity extends BaseActivity {
             public void onClick(View view) {
                 btnSubmit.showLoading("正在提交...");
 
-                Intent intent = new Intent(OrderDetailCommitActivity.this, OrderDetailCancelActivity.class);
+                Intent intent = new Intent(OrderDetailCommitActivity.this, OrderDetailActivity.class);
                 startActivity(intent);
             }
         });
+    }
+
+    private void commitOrderRequest(){
+        CustomerRequest request = new CustomerRequest("");
+        request.setEntity("");
+        request.setIRequestListener(new JsonRequestListener() {
+            @Override
+            public void onFilure(Exception e) {
+
+            }
+
+            @Override
+            public void onSuccess(Object o) {
+                JSONObject json = (JSONObject) o;
+                try {
+                    if(json.getJSONObject("header").getString("code").equals("0000")){
+
+                    }else{
+                        
+                    }
+                } catch (JSONException e) {
+
+                }
+            }
+
+            @Override
+            public void onProgressUpdate(int i, int i1) {
+
+            }
+        });
+        request.execute();
+        cancelRequest(request);
     }
 
     private void setTextView(){

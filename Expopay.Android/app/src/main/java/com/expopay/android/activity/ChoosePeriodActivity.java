@@ -86,7 +86,7 @@ public class ChoosePeriodActivity extends BaseActivity implements View.OnClickLi
                 break;
             default:
                 intent.putExtra("str_periods", str_periods);
-                setResult(1, intent);
+                setResult(RESULT_OK, intent);
                 finish();
                 break;
         }

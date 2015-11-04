@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FAFAFA">
@@ -8,11 +9,12 @@
         android:id="@+id/rlViewPage"
         android:layout_width="match_parent"
         android:layout_height="130dp">
-        <android.support.v4.view.ViewPager
+        <com.expopay.android.view.CustormViewPager
             android:id="@+id/mall_bannerpager"
             android:layout_width="match_parent"
+            app:duration="1000"
             android:layout_height="130dp">
-        </android.support.v4.view.ViewPager>
+        </com.expopay.android.view.CustormViewPager>
 
         <com.expopay.android.view.BannerFootView
             android:id="@+id/mall_bannerpager_footview"

@@ -2,12 +2,13 @@ package com.expopay.android.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.expopay.android.R;
 import com.expopay.android.adapter.listview.LogisticsAdapter;
@@ -35,7 +36,8 @@ public class OrderDetailActivity extends BaseActivity {
     private TextView orderTime;
     private TextView carrierCompany;
     private TextView carrierCode;
-    private CheckBox checkBox;
+    private Button btnContact;
+    private Button btnCancelOrder;
     private ListView lvLogistics;
     private LogisticsAdapter adapter;
 
@@ -57,11 +59,12 @@ public class OrderDetailActivity extends BaseActivity {
         orderTime = (TextView) findViewById(R.id.orderTime);
         carrierCompany = (TextView) findViewById(R.id.carrierCompany);
         carrierCode = (TextView) findViewById(R.id.carrierCode);
-        checkBox = (CheckBox) findViewById(R.id.checkBox);
+        btnCancelOrder = (Button) findViewById(R.id.btnCancelOrder);
+        btnContact = (Button) findViewById(R.id.btnContact);
         lvLogistics = (ListView) findViewById(R.id.lvLogistics);
-
         adapter = new LogisticsAdapter(this,testData());
         lvLogistics.setAdapter(adapter);
+        setListViewHeightBasedOnChildren(lvLogistics);
     }
 
 
@@ -76,11 +79,22 @@ public class OrderDetailActivity extends BaseActivity {
         llAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(OrderDetailActivity.this, "收获地址：", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        btnCancelOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        btnContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }
-
 
     private void setTextView(){
         productImg.setImageResource(R.mipmap.mall_mobile);
@@ -109,5 +123,30 @@ public class OrderDetailActivity extends BaseActivity {
             list.add(le);
         }
         return list;
+    }
+
+    //ListView嵌套到ScrollView中显示
+    public void setListViewHeightBasedOnChildren(ListView listView) {
+        // 获取ListView对应的Adapter
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) {
+            return;
+        }
+
+        int totalHeight = 0;
+        for (int i = 0, len = listAdapter.getCount(); i < len; i++) {
+            // listAdapter.getCount()返回数据项的数目
+            View listItem = listAdapter.getView(i, null, listView);
+            // 计算子项View 的宽高
+            listItem.measure(0, 0);
+            // 统计所有子项的总高度
+            totalHeight += listItem.getMeasuredHeight();
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight+ (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        // listView.getDividerHeight()获取子项间分隔符占用的高度
+        // params.height最后得到整个ListView完整显示需要的高度
+        listView.setLayoutParams(params);
     }
 }

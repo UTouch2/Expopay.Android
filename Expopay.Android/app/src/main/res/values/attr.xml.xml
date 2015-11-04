@@ -3,4 +3,7 @@
     <declare-styleable name="SquareLayout">
         <attr name="proportion" format="float"></attr>
     </declare-styleable>
+    <declare-styleable name="CustormViewPager">
+        <attr name="duration" format="integer"></attr>
+    </declare-styleable>
 </resources>

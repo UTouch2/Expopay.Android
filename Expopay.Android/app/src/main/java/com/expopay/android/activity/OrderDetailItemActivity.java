@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.expopay.android.R;
 
@@ -43,7 +42,7 @@ public class OrderDetailItemActivity extends BaseActivity {
         itemBlank.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(OrderDetailItemActivity.this, "����ȥ", Toast.LENGTH_SHORT).show();
+
                 finish();
             }
         });

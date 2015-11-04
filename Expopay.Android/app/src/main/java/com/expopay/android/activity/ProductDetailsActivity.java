@@ -55,14 +55,14 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
         //可以根据多个请求代码来作相应的操作
         switch (requestCode) {
             case 0:
-                if (resultCode == 0) {
+                if (resultCode == RESULT_OK) {
                     String str_colour = data.getExtras().getString("str_colour");
                     String str_g = data.getExtras().getString("str_g");
                     tvSelected.setText(str_colour+" " +str_g+ "非合约机");
                 }
                 break;
             case 1:
-                if (resultCode == 1) {
+                if (resultCode == RESULT_OK) {
                     String str_periods = data.getExtras().getString("str_periods");
                     tvStaging.setText(str_periods + "  (522+12)X12=5288");
                 }
@@ -84,7 +84,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                 startActivityForResult(intent,1);
                 break;
             case R.id.llDetail:
-                intent.setClass(ProductDetailsActivity.this, OrderDetailActivity.class);
+                intent.setClass(ProductDetailsActivity.this, OrderDetailCommitActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btnImmediatelyOrder:

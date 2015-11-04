@@ -9,10 +9,8 @@ import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.expopay.android.R;
 import com.expopay.android.view.CustormLoadingButton;
@@ -103,7 +101,6 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
                 rechange.setText("500");
                 break;
             case R.id.imgContacts:
-                Toast.makeText(this, "选择联系人...", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(Intent.ACTION_PICK);
                 i.setType("vnd.android.cursor.dir/phone");
                 startActivityForResult(i, 0);
@@ -116,10 +113,6 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
 //                    Intent intent = new Intent(RechargeTelephoneActivity.this,);
 //
 //                    startActivity(intent);
-
-                    Toast.makeText(this, "去充值..."+amount, Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(this, "请输入充值金额", Toast.LENGTH_SHORT).show();
                 }
                 break;
             default:
