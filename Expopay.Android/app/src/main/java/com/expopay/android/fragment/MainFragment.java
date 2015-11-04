@@ -13,6 +13,7 @@ import com.expopay.android.R;
 import com.expopay.android.activity.LoginByPasswordActivity;
 import com.expopay.android.activity.RechargeTelephoneActivity;
 import com.expopay.android.activity.WebActivity;
+import com.expopay.android.activity.WegQueryTransActivity;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
 import com.expopay.android.view.BannerFootView;
 
@@ -46,7 +47,8 @@ public class MainFragment extends BaseFragment {
         view.findViewById(R.id.main_power).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity(), WegQueryTransActivity.class);
+                startActivity(intent);
             }
         });
         view.findViewById(R.id.main_mobile).setOnClickListener(new View.OnClickListener() {
