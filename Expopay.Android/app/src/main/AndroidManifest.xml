@@ -77,11 +77,11 @@
         <activity
             android:name=".activity.ChoosePeriodActivity"
             android:label="南博卡"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
+            android:theme="@style/ActvTheme"></activity>
         <activity
             android:name=".activity.ChoosePropertiesActivity"
             android:label="南博卡"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
+            android:theme="@style/ActvTheme"></activity>
         <activity
             android:name=".activity.ChooseCityActivity"
             android:label="南博卡"></activity>

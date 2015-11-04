@@ -206,9 +206,10 @@
         android:id="@+id/btnSureInstallment"
         android:layout_alignParentBottom="true" />
 
-    <TextView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#0000"
         android:layout_alignParentTop="true"
         android:layout_above="@+id/linearLayout2" />
 

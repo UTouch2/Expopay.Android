@@ -54,6 +54,9 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
         charge300.setOnClickListener(this);
         charge500.setOnClickListener(this);
         btnRecharge.setOnClickListener(this);
+
+        setTabSelection(10);
+        rechange.setText("10");
     }
 
     @Override

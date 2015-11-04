@@ -10,7 +10,7 @@ import com.expopay.android.R;
 
 public class ChoosePropertiesActivity extends BaseActivity implements View.OnClickListener{
 
-    private static String str_colour = "黑色";
+    private static String str_colour = "白色";
     private static String str_g = "16G";
 
     private ImageButton imgBtnCancle;
@@ -45,12 +45,18 @@ public class ChoosePropertiesActivity extends BaseActivity implements View.OnCli
         g64.setOnClickListener(this);
         g128.setOnClickListener(this);
         btnSureStyle.setOnClickListener(this);
+
+        setColourSelection(2);
+        str_colour=colourWhite.getText().toString();
+        setGSelection(5);
+        str_g=g16.getText().toString();
     }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        statusBarCoverActivity();
         setContentView(R.layout.activity_choose_properties);
         assignViews();
     }

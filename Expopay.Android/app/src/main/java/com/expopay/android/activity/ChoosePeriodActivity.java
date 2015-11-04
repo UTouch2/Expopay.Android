@@ -44,11 +44,15 @@ public class ChoosePeriodActivity extends BaseActivity implements View.OnClickLi
         installment18.setOnClickListener(this);
         installment24.setOnClickListener(this);
         btnSureInstallment.setOnClickListener(this);
+
+        setTabSelection(12);
+        str_periods=installment12.getText().toString();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        statusBarCoverActivity();
         setContentView(R.layout.activity_choose_period);
         assignViews();
     }
