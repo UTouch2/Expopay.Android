@@ -17,6 +17,7 @@ import java.util.List;
  */
 public class ChooseCompanyActivity extends BaseActivity {
     private ListView listView;
+    List<CompanyEntity> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +26,14 @@ public class ChooseCompanyActivity extends BaseActivity {
         setContentView(R.layout.activity_weg_choosecompany);
         listView = (ListView) findViewById(R.id.choosecompany_listview);
         Intent intent = getIntent();
-        List<CompanyEntity> list = (List<CompanyEntity>) intent.getExtras()
+        list = (List<CompanyEntity>) intent.getExtras()
                 .getSerializable("list");
         CompanyListAdapter adepter = new CompanyListAdapter(this, list);
         listView.setAdapter(adepter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> a, View v, int i, long l) {
-                CompanyEntity companyEntity = (CompanyEntity) v.getTag(2);
+                CompanyEntity companyEntity = list.get(i);
                 Intent data = new Intent();
                 data.putExtra("CompanyEntity", companyEntity);
                 setResult(RESULT_OK, data);

@@ -101,7 +101,6 @@
         <activity
             android:name=".activity.MyCardsActivity"
             android:label="南博卡"></activity>
-
         <activity
             android:name=".activity.MyBillsActivity"
             android:label="南博卡"></activity>
@@ -111,7 +110,11 @@
         <activity
             android:name=".activity.MyAddressActivity"
             android:label="南博卡"></activity>
-
+        <activity
+            android:name=".activity.NBCardPayActivity"
+            android:label="南博卡"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/ActvTheme"></activity>
         <activity
             android:name=".activity.OrderDetailActivity"
             android:label="南博卡"></activity>
@@ -136,6 +139,10 @@
         <activity
             android:name=".activity.WegQueryTransActivity"
             android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.WegTransactionsActivity"
+            android:label="南博卡"
+            android:theme="@style/ActvTheme"></activity>
         <activity
             android:name=".activity.WebActivity"
             android:label="南博卡"></activity>

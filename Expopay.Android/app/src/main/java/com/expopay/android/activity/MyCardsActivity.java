@@ -85,18 +85,32 @@ public class MyCardsActivity extends BaseActivity {
                     loadingView.setMessage("数据解析异常");
                 }
             }
+
             @Override
             public void onProgressUpdate(int i, int j) {
 
             }
+
             @Override
             public void onFilure(Exception result) {
                 System.out.println(result);
                 loadingView.showRetry();
                 loadingView.setMessage("请求失败");
+                loadingView.dismiss();
+                adapter.setData(data);
+                adapter.notifyDataSetChanged();
             }
         });
         request.execute();
         cancelRequest(request);
+    }
+
+    private void testData() {
+        data = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            CardEntity e = new CardEntity();
+            e.setCardNumber("123456789" + i);
+            data.add(e);
+        }
     }
 }

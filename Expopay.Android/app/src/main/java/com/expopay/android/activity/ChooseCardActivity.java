@@ -20,7 +20,7 @@ import java.util.List;
 public class ChooseCardActivity extends BaseActivity {
     ListView mListView;
     List<CardEntity> cards = new ArrayList<>();
-
+    ChooseCardListAdapter adapter;
     CardEntity result;
 
     @Override
@@ -30,30 +30,23 @@ public class ChooseCardActivity extends BaseActivity {
         setContentView(R.layout.activity_choosecard);
         mListView = (ListView) findViewById(R.id.choosecard_listview);
         testData();
-        mListView.setAdapter(new ChooseCardListAdapter(this, cards));
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                result = cards.get(position);
-            }
-        });
+        adapter = new ChooseCardListAdapter(this, cards);
+        mListView.setAdapter(adapter);
     }
+
     public void closeOnclick(View v) {
         finish();
     }
 
     public void okOnclick(View v) {
+        result = (CardEntity) mListView.getTag();
         setResult(RESULT_OK, new Intent().putExtra("card", result));
         finish();
     }
-    private void getCards() {
-
-    }
-
     private void testData() {
         for (int i = 0; i < 2; i++) {
             CardEntity e = new CardEntity();
-            e.setCardNumber("123456789");
+            e.setCardNumber("123456789"+i);
             cards.add(e);
         }
     }
