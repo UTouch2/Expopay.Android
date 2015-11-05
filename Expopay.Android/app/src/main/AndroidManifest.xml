@@ -47,6 +47,11 @@
             android:name=".activity.AddressDetailsActivity"
             android:label="南博卡"></activity>
         <activity
+            android:name=".activity.AddCardActivity"
+            android:label="南博卡"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
+
+        <activity
             android:name=".activity.MainAcativity"
             android:label="南博卡"></activity>
 
@@ -56,6 +61,10 @@
         <activity
             android:name=".activity.CardChargeActivity"
             android:label="南博卡"></activity>
+        <activity
+            android:name=".activity.CardLossApplyActivity"
+            android:label="南博卡"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
         <activity
             android:name=".activity.ChangePasswordActivity"
             android:label="南博卡"></activity>
@@ -89,6 +98,7 @@
             android:name=".activity.ChooseCardActivity"
             android:label="南博卡"
             android:theme="@style/ActvTheme"></activity>
+
         <activity
             android:name=".activity.LoginByPasswordActivity"
             android:label="南博卡"
@@ -113,8 +123,8 @@
         <activity
             android:name=".activity.NBCardPayActivity"
             android:label="南博卡"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/ActvTheme"></activity>
+            android:theme="@style/ActvTheme"
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".activity.OrderDetailActivity"
             android:label="南博卡"></activity>
