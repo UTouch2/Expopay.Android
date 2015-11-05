@@ -30,6 +30,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
+            android:hint="请输入手机号码"
+            android:textSize="15sp"
             android:layout_toLeftOf="@+id/imgContacts"
             android:layout_toRightOf="@+id/tvlab"
             android:background="@null"

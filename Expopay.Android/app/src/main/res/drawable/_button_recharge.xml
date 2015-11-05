@@ -2,25 +2,25 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true" >
         <shape android:shape="rectangle">
-            <stroke android:width="1dip" android:color="#A0A0A0" />
+            <stroke android:width="1dip" android:color="#13A4F7" />
             <!-- 填充的颜色 -->
             <solid android:color="#FFFFFF" />
             <!-- 设置按钮的四个角为弧形,android:radius 弧形的半径 -->
-            <corners android:radius="0dip" />
+            <corners android:radius="5dip" />
         </shape>
     </item>
     <item android:state_focused="true" >
         <shape android:shape="rectangle">
-            <stroke android:width="1dip" android:color="#C0C0C0" />
+            <stroke android:width="1dip" android:color="#3FB0F6" />
             <solid android:color="#F8F8F8" />
-            <corners android:radius="0dip" />
+            <corners android:radius="5dip" />
         </shape>
     </item>
     <item >
         <shape android:shape="rectangle">
-            <stroke android:width="1dip" android:color="#C0C0C0" />
+            <stroke android:width="1dip" android:color="#3FB0F6" />
             <solid android:color="#F8F8F8" />
-            <corners android:radius="0dip" />
+            <corners android:radius="5dip" />
         </shape>
     </item>
 </selector>

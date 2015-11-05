@@ -102,5 +102,4 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
         detailProductName.setText("iPhone6S");
         detailAmount.setText("5288.00");
     }
-
 }

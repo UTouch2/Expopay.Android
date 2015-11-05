@@ -2,16 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
     tools:context="com.expopay.android.activity.ChoosePeriodActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
-        android:layout_marginRight="10dp"
+        android:padding="10dp"
         android:background="#FFFFFF"
         android:id="@+id/linearLayout2"
         android:layout_above="@+id/linearLayout3"
@@ -72,12 +69,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
-        android:layout_marginRight="10dp"
+        android:padding="10dp"
+        android:background="#fff"
         android:layout_above="@+id/textView"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView"
         android:id="@+id/linearLayout3">
         <TextView
             android:layout_width="wrap_content"
@@ -185,15 +179,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
         android:textColor="#666666"
+        android:padding="10dp"
+        android:background="#fff"
         android:text="合约说明：下单合约即生效，次日起30天后为结算日，逾期需加收服务费......"
         android:layout_above="@+id/btnSureInstallment"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:id="@+id/textView" />
 
     <Button
@@ -210,6 +200,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#0000"
+        android:onClick="blankOnClick"
         android:layout_alignParentTop="true"
         android:layout_above="@+id/linearLayout2" />
 

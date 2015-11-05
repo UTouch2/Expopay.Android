@@ -12,8 +12,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
+import com.expopay.android.request.OrderRequest;
 import com.expopay.android.view.CustormLoadingButton;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class RechargeTelephoneActivity extends BaseActivity implements View.OnClickListener{
 
@@ -111,8 +116,12 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
             case R.id.btnRecharge:
                 if(contacts != null) {
                     btnRecharge.showLoading("正在充值...");
-                    btnRecharge.showResult("充值失败",false);
                     String amount = rechange.getText().toString().trim();
+                    try {
+                        getOrder("123","1","","","","");
+                    } catch (JSONException e) {
+
+                    }
 //                    Intent intent = new Intent(RechargeTelephoneActivity.this,);
 //
 //                    startActivity(intent);
@@ -229,5 +238,43 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
             }
         }
         return result;
+    }
+
+    private void getOrder(String openId,
+                          String orderSource,
+                          String paymentMethod,
+                          String orerAmount,
+                          String publicUtilityType,
+                          String publicUtilityNum)throws JSONException{
+        OrderRequest request = new OrderRequest("");
+        request.setEntity(request.createCreateOrderParms(openId,
+                orderSource,
+                paymentMethod,
+                orerAmount,
+                publicUtilityType,
+                publicUtilityNum));
+        request.setIRequestListener(new JsonRequestListener() {
+            @Override
+            public void onFilure(Exception e) {
+
+            }
+
+            @Override
+            public void onSuccess(Object o) {
+                JSONObject object = (JSONObject) o;
+                try {
+                    if(object.getJSONObject("header").getString("code").equals("0000")){
+
+                    }
+                } catch (JSONException e) {
+
+                }
+            }
+
+            @Override
+            public void onProgressUpdate(int i, int i1) {
+
+            }
+        });
     }
 }

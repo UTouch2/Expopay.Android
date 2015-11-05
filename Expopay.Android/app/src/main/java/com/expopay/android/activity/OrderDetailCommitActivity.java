@@ -9,7 +9,8 @@ import android.widget.TextView;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
-import com.expopay.android.request.CustomerRequest;
+import com.expopay.android.application.MyApplication;
+import com.expopay.android.request.OrderRequest;
 import com.expopay.android.view.CustormLoadingButton;
 
 import org.json.JSONException;
@@ -73,9 +74,16 @@ public class OrderDetailCommitActivity extends BaseActivity {
         });
     }
 
-    private void commitOrderRequest(){
-        CustomerRequest request = new CustomerRequest("");
-        request.setEntity("");
+    private void getOrder(String openId,
+                          String orderSource,
+                          String paymentMethod,
+                          String orerAmount,
+                          String productId,
+                          String periodId,
+                          String addressId)throws JSONException{
+        OrderRequest request = new OrderRequest(MyApplication.HOST +"");
+        request.setEntity(request.createCreateOrderParms(openId, orderSource, paymentMethod, orerAmount, productId, periodId, addressId));
+        request.setOutTime(10 * 1000);
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
@@ -84,12 +92,10 @@ public class OrderDetailCommitActivity extends BaseActivity {
 
             @Override
             public void onSuccess(Object o) {
-                JSONObject json = (JSONObject) o;
                 try {
-                    if(json.getJSONObject("header").getString("code").equals("0000")){
+                    JSONObject object = (JSONObject) o;
+                    if (object.getJSONObject("header").getString("code").equals("0000")) {
 
-                    }else{
-                        
                     }
                 } catch (JSONException e) {
 

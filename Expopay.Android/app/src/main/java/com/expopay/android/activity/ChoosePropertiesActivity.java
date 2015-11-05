@@ -105,7 +105,14 @@ public class ChoosePropertiesActivity extends BaseActivity implements View.OnCli
     public void onBackPressed() {
         intent.putExtra("str_colour", str_colour);
         intent.putExtra("str_g", str_g);
-        setResult(0, intent);
+        setResult(RESULT_OK, intent);
+        finish();
+    }
+
+    public void propertiesBlankOnClick(View view){
+        intent.putExtra("str_colour", str_colour);
+        intent.putExtra("str_g", str_g);
+        setResult(RESULT_OK, intent);
         finish();
     }
 

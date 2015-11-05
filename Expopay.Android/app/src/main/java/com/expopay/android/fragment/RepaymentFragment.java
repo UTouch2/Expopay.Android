@@ -13,7 +13,7 @@ import com.expopay.android.R;
 import com.expopay.android.adapter.listview.BillRepaymentAdapter;
 import com.expopay.android.application.MyApplication;
 import com.expopay.android.model.BillRepaymentEntity;
-import com.expopay.android.request.CardRequest;
+import com.expopay.android.request.OrderRequest;
 import com.expopay.android.view.CustormLoadingView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -39,21 +39,21 @@ public class RepaymentFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_repayment, container, false);
         lvRepayment = (ListView) view.findViewById(R.id.lvRepayment);
         billRepayment_loading = (CustormLoadingView) view.findViewById(R.id.billRepayment_loading);
-        adapter = new BillRepaymentAdapter(getActivity().getApplicationContext(), new ArrayList<BillRepaymentEntity>());
+        adapter = new BillRepaymentAdapter(getActivity().getApplicationContext(), testData());
         lvRepayment.setAdapter(adapter);
-        try {
-            getBillRepayment("123456");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            getBillRepayment("123456");
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
         return view;
     }
 
     private void getBillRepayment(String openId) throws JSONException {
         billRepayment_loading.show();
-        CardRequest request = new CardRequest(MyApplication.HOST + "/system/version");
-        request.setEntity(request.createCardListParams(openId));
+        OrderRequest request = new OrderRequest(MyApplication.HOST + "");
+//        request.setEntity(request.createCreateOrderParms(openId));
         request.setOutTime(10 * 1000);
         request.setIRequestListener(new JsonRequestListener() {
             @Override

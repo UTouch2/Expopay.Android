@@ -12,7 +12,7 @@ import com.expopay.android.R;
 import com.expopay.android.adapter.listview.PeriodOrderAdapter;
 import com.expopay.android.application.MyApplication;
 import com.expopay.android.model.PeriodOrderEntity;
-import com.expopay.android.request.CardRequest;
+import com.expopay.android.request.OrderRequest;
 import com.expopay.android.view.CustormLoadingView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -38,7 +38,7 @@ public class PeriodOrderFragment extends Fragment {
         adapter = new PeriodOrderAdapter(getActivity().getApplicationContext(), new ArrayList<PeriodOrderEntity>());
         lvPeriodOrder.setAdapter(adapter);
         try {
-            getPeriodOrder("123456");
+            getPeriodOrder("123456","2","","");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -46,10 +46,11 @@ public class PeriodOrderFragment extends Fragment {
         return view;
     }
 
-    private void getPeriodOrder(String openId) throws JSONException {
+    private void getPeriodOrder(String openId,String orderSource,String pageIndex,
+                                String pageSize) throws JSONException {
         periodOrder_loading.show();
-        CardRequest request = new CardRequest(MyApplication.HOST + "/system/version");
-        request.setEntity(request.createCardListParams(openId));
+        OrderRequest request = new OrderRequest(MyApplication.HOST + "/system/version");
+        request.setEntity(request.createGetOrdersParms(openId,orderSource,pageIndex,pageSize));
         request.setOutTime(10 * 1000);
         request.setIRequestListener(new JsonRequestListener() {
             @Override
