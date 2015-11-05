@@ -3,14 +3,12 @@ package com.expopay.android.activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.expopay.android.R;
 
 public class OrderDetailItemActivity extends BaseActivity {
 
-    private LinearLayout itemBlank;
     private ImageView itemProductImg;
     private TextView itemProductName;
     private TextView itemOrderNumber;
@@ -20,7 +18,6 @@ public class OrderDetailItemActivity extends BaseActivity {
     private TextView itemOrderStatus;
 
     private void assignViews() {
-        itemBlank = (LinearLayout) findViewById(R.id.itemBlank);
         itemProductImg = (ImageView) findViewById(R.id.itemProductImg);
         itemProductName = (TextView) findViewById(R.id.itemProductName);
         itemOrderNumber = (TextView) findViewById(R.id.itemOrderNumber);
@@ -34,18 +31,11 @@ public class OrderDetailItemActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStatusColor();
+        statusBarCoverActivity();
         setContentView(R.layout.activity_order_detail_item);
 
         assignViews();
         setTextView();
-        itemBlank.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                finish();
-            }
-        });
     }
 
     private void setTextView(){
@@ -64,6 +54,10 @@ public class OrderDetailItemActivity extends BaseActivity {
     }
 
     public void btnOk(View view){
+        finish();
+    }
+
+    public void itemBlankOnClick(View view){
         finish();
     }
 

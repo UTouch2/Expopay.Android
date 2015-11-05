@@ -4,18 +4,15 @@
     android:layout_height="match_parent"
     tools:context="com.expopay.android.activity.OrderDetailItemActivity">
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/itemBlank"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#0000"
+        android:onClick="itemBlankOnClick"
         android:layout_above="@+id/relativeLayout"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+        android:layout_alignParentTop="true">
+    </FrameLayout>
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -31,12 +28,11 @@
             android:layout_height="wrap_content"
             android:text="详情" />
 
-        <ImageButton
+        <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
             android:background="#FFFFFF"
             android:onClick="btnCancel"
             android:src="@mipmap/mall_delete" />
