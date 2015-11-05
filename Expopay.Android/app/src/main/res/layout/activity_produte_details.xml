@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,12 +14,23 @@
         android:layout_alignParentTop="true"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/detailProductImg"
+        <RelativeLayout
+            android:id="@+id/product_ViewPage"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:adjustViewBounds="true"
-            android:src="@mipmap/mall_mobile" />
+            android:layout_height="160dp">
+
+            <com.expopay.android.view.CustormViewPager
+                android:id="@+id/product_bannerpager"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                app:duration="500"></com.expopay.android.view.CustormViewPager>
+
+            <com.expopay.android.view.BannerFootView
+                android:id="@+id/product_bannerpager_footview"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_alignParentBottom="true"></com.expopay.android.view.BannerFootView>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -152,9 +164,8 @@
         android:id="@+id/btnImmediatelyOrder"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/_button"
-        android:layout_alignParentBottom="true">
-    </com.expopay.android.view.CustormLoadingButton>
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/_button"></com.expopay.android.view.CustormLoadingButton>
 
     <TextView
         android:layout_width="match_parent"

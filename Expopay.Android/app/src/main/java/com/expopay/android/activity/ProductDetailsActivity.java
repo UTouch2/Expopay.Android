@@ -2,31 +2,42 @@ package com.expopay.android.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.kechong.lib.http.listener.JsonRequestListener;
+import com.android.kechong.lib.listener.AbsOnPageChangeListener;
 import com.expopay.android.R;
+import com.expopay.android.adapter.pager.BannerPagerAdapter;
+import com.expopay.android.application.MyApplication;
+import com.expopay.android.request.OrderRequest;
+import com.expopay.android.view.BannerFootView;
 import com.expopay.android.view.CustormLoadingButton;
+import com.expopay.android.view.CustormViewPager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ProductDetailsActivity extends BaseActivity implements View.OnClickListener{
 
     private RelativeLayout relativeLayoutProperties,relativeLayoutStage,llDetail;
     private CustormLoadingButton btnImmediatelyOrder;
-    private ImageView detailProductImg;
     private TextView detailProductName;
     private TextView detailAmount;
-
     private TextView tvSelected;
     private TextView tvStaging;
+
+    private CustormViewPager viewPager;
+    BannerFootView footView;
 
     private void assignViews() {
         relativeLayoutProperties = (RelativeLayout) findViewById(R.id.relativeLayoutProperties);
         relativeLayoutStage = (RelativeLayout) findViewById(R.id.relativeLayoutStage);
         llDetail = (RelativeLayout) findViewById(R.id.llDetail);
         btnImmediatelyOrder = (CustormLoadingButton) findViewById(R.id.btnImmediatelyOrder);
-        detailProductImg = (ImageView) findViewById(R.id.detailProductImg);
         detailProductName = (TextView) findViewById(R.id.detailProductName);
         detailAmount = (TextView) findViewById(R.id.detailAmount);
 
@@ -34,10 +45,38 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
         tvStaging = (TextView) findViewById(R.id.tvStaging);
 
         btnImmediatelyOrder.showNormal("立即下单");
+        btnImmediatelyOrder.setOnClickListener(this);
         relativeLayoutProperties.setOnClickListener(this);
         relativeLayoutStage.setOnClickListener(this);
         llDetail.setOnClickListener(this);
-        btnImmediatelyOrder.setOnClickListener(this);
+
+        //加载商品的ViewPage
+        viewPager = (CustormViewPager) findViewById(R.id.product_bannerpager);
+        viewPager.setAdapter(new BannerPagerAdapter(createViews()));
+        viewPager.setCurrentItem(100);
+        new Thread(){
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        Thread.sleep(3000l);
+                        handler.sendEmptyMessage(1);
+                    } catch (Exception e) {
+                    }
+                }
+            }
+        }.start();
+        footView = (BannerFootView) findViewById(R.id.product_bannerpager_footview);
+
+        viewPager.setAdapter(new BannerPagerAdapter(createViews()));
+        viewPager.setOnPageChangeListener(new AbsOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int i) {
+                footView.setSelectedIndex(createViews().length, i % createViews().length);
+            }
+        });
+        footView.setSelectedIndex(createViews().length, viewPager.getCurrentItem() % createViews().length);
+
     }
 
     @Override
@@ -88,18 +127,79 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                 startActivity(intent);
                 break;
             case R.id.btnImmediatelyOrder:
-                btnImmediatelyOrder.showLoading("正在下单...");
-                intent.setClass(ProductDetailsActivity.this, OrderDetailCommitActivity.class);
-                startActivity(intent);
+                try {
+                    getOrder(getUser().getOpenId(), "", "","","","","");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+//                intent.setClass(ProductDetailsActivity.this, OrderDetailCommitActivity.class);
+//                startActivity(intent);
                 break;
             default:
                 break;
         }
     }
 
+    private void getOrder(String openId, String orderSource, String paymentMethod, String orerAmount,
+                          String productId, String periodId, String addressId)throws JSONException {
+        btnImmediatelyOrder.showLoading("正在下单...");
+        OrderRequest request = new OrderRequest(MyApplication.HOST +"");
+        request.setEntity(request.createCreateOrderParms(openId, orderSource,
+                paymentMethod, orerAmount, productId, periodId, addressId));
+        request.setIRequestListener(new JsonRequestListener() {
+            @Override
+            public void onFilure(Exception e) {
+                btnImmediatelyOrder.showResult("网络请求失败", false);
+            }
+
+            @Override
+            public void onSuccess(Object o) {
+                try {
+                    JSONObject json = (JSONObject) o;
+                    if (json.getJSONObject("header").getString("code").equals("0000")) {
+                        btnImmediatelyOrder.showResult("下单成功", true);
+                    }else{
+                        btnImmediatelyOrder.showResult(json.getJSONObject("header").getString("desc"), false);
+                    }
+                } catch (JSONException e) {
+
+                }
+            }
+
+            @Override
+            public void onProgressUpdate(int i, int i1) {
+
+            }
+        });
+        request.execute();
+        cancelRequest(request);
+    }
+
     private void setTextView(){
-        detailProductImg.setImageResource(R.mipmap.mall_mobile);
         detailProductName.setText("iPhone6S");
         detailAmount.setText("5288.00");
     }
+
+    private View[] createViews() {
+        View[] views = new View[3];
+        ImageView view = new ImageView(this);
+        views[0] = view;
+        views[0].setBackgroundResource(R.mipmap.mall_banner01);
+        view = new ImageView(this);
+        views[1] = view;
+        views[1].setBackgroundResource(R.mipmap.mall_banner02);
+        view = new ImageView(this);
+        views[2] = view;
+        views[2].setBackgroundResource(R.mipmap.mall_banner03);
+        return views;
+    }
+
+    android.os.Handler handler = new android.os.Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            int startItem = viewPager.getCurrentItem()+1;
+            viewPager.setCurrentItem(startItem);
+        }
+    };
 }

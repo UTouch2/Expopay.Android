@@ -1,6 +1,5 @@
 package com.expopay.android.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -66,36 +65,36 @@ public class OrderDetailCommitActivity extends BaseActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnSubmit.showLoading("正在提交...");
-
-                Intent intent = new Intent(OrderDetailCommitActivity.this, OrderDetailActivity.class);
-                startActivity(intent);
+                String repaymentPeriod=commitRepaymentPeriod.getText().toString().trim();
+                try {
+                    getOrder(getUser().getOpenId(), "", repaymentPeriod,"","","","");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
 
-    private void getOrder(String openId,
-                          String orderSource,
-                          String paymentMethod,
-                          String orerAmount,
-                          String productId,
-                          String periodId,
-                          String addressId)throws JSONException{
+    private void getOrder(String openId, String orderSource, String paymentMethod, String orerAmount,
+                          String productId, String periodId, String addressId)throws JSONException{
+        btnSubmit.showLoading("正在提交...");
         OrderRequest request = new OrderRequest(MyApplication.HOST +"");
-        request.setEntity(request.createCreateOrderParms(openId, orderSource, paymentMethod, orerAmount, productId, periodId, addressId));
-        request.setOutTime(10 * 1000);
+        request.setEntity(request.createCreateOrderParms(openId, orderSource,
+                paymentMethod, orerAmount, productId, periodId, addressId));
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
-
+                btnSubmit.showResult("网络请求失败", false);
             }
 
             @Override
             public void onSuccess(Object o) {
                 try {
-                    JSONObject object = (JSONObject) o;
-                    if (object.getJSONObject("header").getString("code").equals("0000")) {
-
+                    JSONObject json = (JSONObject) o;
+                    if (json.getJSONObject("header").getString("code").equals("0000")) {
+                        btnSubmit.showResult("订单提交成功", true);
+                    }else{
+                        btnSubmit.showResult(json.getJSONObject("header").getString("desc"), false);
                     }
                 } catch (JSONException e) {
 
