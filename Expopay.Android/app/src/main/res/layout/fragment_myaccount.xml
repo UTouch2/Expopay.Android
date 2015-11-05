@@ -16,9 +16,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="15dp"
+            android:padding="10dp"
             android:text="1000.00"
-            android:textColor="#EA6A40" />
+            android:textColor="#EA6A40"
+            android:textSize="30dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -29,12 +30,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="默认卡：" />
+                android:text="默认卡："
+                android:textColor="#646464"
+                android:textSize="13sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="88888888888888888888888" />
+                android:text="88888888888888888888888"
+                android:textColor="#646464"
+                android:textSize="13sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -45,18 +50,23 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="距离下气还款还有" />
+                android:text="距离下气还款还有"
+                android:textColor="#646464"
+                android:textSize="13sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="20"
-                android:textColor="#EA6A40" />
+                android:textColor="#EA6A40"
+                android:textSize="13sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="天" />
+                android:text="天"
+                android:textColor="#646464"
+                android:textSize="13sp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -80,14 +90,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:text="4" />
+                android:padding="5dp"
+                android:text="0"
+                android:textColor="#646464" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:text="4" />
+                android:text="南博卡"
+                android:textColor="#898989"
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -102,12 +114,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4" />
+                android:padding="5dp"
+                android:text="0.00" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4" />
+                android:text="可用额度"
+                android:textColor="#898989"
+                android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -121,14 +136,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4" />
+                android:padding="5dp"
+                android:text="0.00"
+                android:textColor="#EA6A40" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4" />
+                android:text="下期应还"
+                android:textColor="#898989"
+                android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/myaccount_settings"
         android:layout_width="match_parent"
@@ -155,6 +175,7 @@
             android:layout_margin="3dp"
             android:layout_toRightOf="@id/account_settings_icon"
             android:text="个人中心"
+            android:textColor="#646464"
             android:textSize="14sp" />
 
         <ImageView
@@ -174,6 +195,7 @@
             android:layout_toRightOf="@id/account_settings_toicon"
             android:gravity="right" />
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/account_order"
         android:layout_width="match_parent"
@@ -200,6 +222,7 @@
             android:layout_margin="3dp"
             android:layout_toRightOf="@id/account_order_icon"
             android:text="我的订单"
+            android:textColor="#646464"
             android:textSize="14sp" />
 
         <ImageView
@@ -246,6 +269,7 @@
             android:layout_margin="3dp"
             android:layout_toRightOf="@id/account_bill_icon"
             android:text="我的账单"
+            android:textColor="#646464"
             android:textSize="14sp" />
 
         <ImageView
@@ -265,7 +289,6 @@
             android:layout_toRightOf="@id/account_bill_toicon"
             android:gravity="right" />
     </RelativeLayout>
-
 
 
     <RelativeLayout
@@ -294,6 +317,7 @@
             android:layout_margin="3dp"
             android:layout_toRightOf="@id/account_aboutme_icon"
             android:text="关于我们"
+            android:textColor="#646464"
             android:textSize="14sp" />
 
         <ImageView

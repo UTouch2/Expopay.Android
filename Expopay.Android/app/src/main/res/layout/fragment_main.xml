@@ -40,17 +40,17 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:adjustViewBounds="true"
-                android:src="@mipmap/main_service" />
+                android:src="@mipmap/main_service"  />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="11dp"
                 android:text="便民服务"
-                android:textColor="#6F6F6F"
-                android:textSize="14sp" />
+                android:textColor="#646464"
+                android:textSize="13sp" />
         </com.expopay.android.view.SquareLayout>
 
         <com.expopay.android.view.SquareLayout
@@ -64,17 +64,17 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:adjustViewBounds="true"
                 android:src="@mipmap/main_water" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="11dp"
                 android:text="缴纳水费"
-                android:textColor="#6F6F6F"
-                android:textSize="14sp" />
+                android:textColor="#646464"
+                android:textSize="13sp" />
         </com.expopay.android.view.SquareLayout>
 
         <com.expopay.android.view.SquareLayout
@@ -88,17 +88,17 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:adjustViewBounds="true"
                 android:src="@mipmap/main_power" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="11dp"
                 android:text="缴纳电费"
-                android:textColor="#6F6F6F"
-                android:textSize="14sp" />
+                android:textColor="#646464"
+                android:textSize="13sp" />
         </com.expopay.android.view.SquareLayout>
 
         <com.expopay.android.view.SquareLayout
@@ -112,17 +112,17 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:adjustViewBounds="true"
                 android:src="@mipmap/main_mobile" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="11dp"
                 android:text="话费充值"
-                android:textColor="#6F6F6F"
-                android:textSize="14sp" />
+                android:textColor="#646464"
+                android:textSize="13sp" />
         </com.expopay.android.view.SquareLayout>
     </LinearLayout>
 
@@ -143,17 +143,17 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:adjustViewBounds="true"
                 android:src="@mipmap/main_merchant" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="11dp"
                 android:text="附近网点"
-                android:textColor="#6F6F6F"
-                android:textSize="14sp" />
+                android:textColor="#646464"
+                android:textSize="13sp" />
         </com.expopay.android.view.SquareLayout>
 
         <com.expopay.android.view.SquareLayout
@@ -167,17 +167,17 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:adjustViewBounds="true"
                 android:src="@mipmap/main_buycard" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="11dp"
                 android:text="我要办卡"
-                android:textColor="#6F6F6F"
-                android:textSize="14sp" />
+                android:textColor="#646464"
+                android:textSize="13sp" />
         </com.expopay.android.view.SquareLayout>
 
         <com.expopay.android.view.SquareLayout
@@ -191,17 +191,17 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:adjustViewBounds="true"
                 android:src="@mipmap/main_callme" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="11dp"
                 android:text="联系我们"
-                android:textColor="#6F6F6F"
-                android:textSize="14sp" />
+                android:textColor="#646464"
+                android:textSize="13sp" />
         </com.expopay.android.view.SquareLayout>
 
         <com.expopay.android.view.SquareLayout
@@ -214,7 +214,7 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:adjustViewBounds="true" />
 
             <TextView
