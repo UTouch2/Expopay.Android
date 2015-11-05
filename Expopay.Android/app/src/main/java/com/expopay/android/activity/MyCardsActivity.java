@@ -97,6 +97,7 @@ public class MyCardsActivity extends BaseActivity {
                 loadingView.showRetry();
                 loadingView.setMessage("请求失败");
                 loadingView.dismiss();
+                testData();
                 adapter.setData(data);
                 adapter.notifyDataSetChanged();
             }
@@ -110,6 +111,9 @@ public class MyCardsActivity extends BaseActivity {
         for (int i = 0; i < 2; i++) {
             CardEntity e = new CardEntity();
             e.setCardNumber("123456789" + i);
+            e.setIsDefault("0");
+            e.setBalance("20");
+            e.setCardType("12345678");
             data.add(e);
         }
     }

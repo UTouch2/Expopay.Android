@@ -13,7 +13,8 @@ import com.expopay.android.R;
  */
 public class CardDetailsActivity extends BaseActivity {
     private Button incomeBtn, payoutBtn;
-    private String cardNumber,cardBalance;
+    private String cardNumber, cardBalance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,13 +37,13 @@ public class CardDetailsActivity extends BaseActivity {
         cardBalance = "12.00";
     }
 
-    private void setCurrentBtn(int i){
-        if(i == 0){
+    private void setCurrentBtn(int i) {
+        if (i == 0) {
             payoutBtn.setBackgroundColor(Color.parseColor("#959595"));
             payoutBtn.setTextColor(Color.parseColor("#ffffff"));
             incomeBtn.setBackgroundColor(Color.parseColor("#ffffff"));
             incomeBtn.setTextColor(Color.parseColor("#959595"));
-        }else if(i==1){
+        } else if (i == 1) {
             incomeBtn.setBackgroundColor(Color.parseColor("#959595"));
             incomeBtn.setTextColor(Color.parseColor("#ffffff"));
             payoutBtn.setBackgroundColor(Color.parseColor("#ffffff"));
@@ -51,11 +52,13 @@ public class CardDetailsActivity extends BaseActivity {
     }
 
     public void certificationOnclick(View v) {
-
+        Intent intent = new Intent(getApplicationContext(), CertificationActivity.class);
+        intent.putExtra("cardNumber", cardNumber);
+        startActivity(intent);
     }
 
     public void deleteOnclick(View v) {
-
+        
     }
 
     public void chargeOnclick(View v) {
