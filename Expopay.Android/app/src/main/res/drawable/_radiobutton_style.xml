@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@mipmap/radiobutton_pressed" android:state_checked="true"/>
-    <item android:drawable="@mipmap/radiobutton_normal" android:state_checked="false"/>
-    <item android:drawable="@mipmap/radiobutton_normal"/>
-
+    <item android:state_checked="true">
+        <bitmap android:gravity="fill" android:src="@mipmap/radiobutton_pressed"></bitmap>
+    </item>
+    <item android:state_checked="false">
+        <bitmap android:gravity="fill" android:src="@mipmap/radiobutton_normal"></bitmap>
+    </item>
+    <item>
+        <bitmap android:gravity="fill" android:src="@mipmap/radiobutton_normal"></bitmap>
+    </item>
 </selector>  
