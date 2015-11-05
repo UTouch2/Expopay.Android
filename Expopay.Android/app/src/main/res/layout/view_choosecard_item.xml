@@ -8,10 +8,9 @@
 
     <RadioButton
         android:id="@+id/choosecard_item_radio"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
         android:button="@drawable/_radiobutton_style"
-        android:buttonTint=""
         android:layout_margin="10dp" />
 
     <TextView
