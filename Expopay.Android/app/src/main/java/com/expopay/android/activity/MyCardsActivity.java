@@ -1,5 +1,6 @@
 package com.expopay.android.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -46,7 +47,8 @@ public class MyCardsActivity extends BaseActivity {
     }
 
     public void lossOnclick(View v) {
-
+        Intent intent = new Intent(getApplicationContext(), CardLossApplyActivity.class);
+        startActivity(intent);
     }
 
     @Override
