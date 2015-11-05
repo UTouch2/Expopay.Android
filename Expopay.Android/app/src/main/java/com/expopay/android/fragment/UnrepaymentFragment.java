@@ -38,14 +38,14 @@ public class UnrepaymentFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_unrepayment, container, false);
         lvUnRepayment = (ListView) view.findViewById(R.id.lvUnRepayment);
-        billUnrepayment_loading = (CustormLoadingView) view.findViewById(R.id.billUnrepayment_loading);
+//        billUnrepayment_loading = (CustormLoadingView) view.findViewById(R.id.billUnrepayment_loading);
         adapter = new BillUnrepaymentAdapter(getActivity().getApplicationContext(), testData());
         lvUnRepayment.setAdapter(adapter);
-        try {
-            getBillRepayment("123456");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            getBillRepayment("123456");
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
         return view;
     }

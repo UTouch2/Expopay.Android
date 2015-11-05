@@ -2,7 +2,6 @@ package com.expopay.android.fragment;
 
 import android.os.Bundle;
 import android.os.Message;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,7 @@ import com.expopay.android.adapter.gridview.MallProductAdapter;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
 import com.expopay.android.model.MallProductEntity;
 import com.expopay.android.view.BannerFootView;
+import com.expopay.android.view.CustormViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ import java.util.List;
  */
 public class MallFragment extends  BaseFragment {
 
-    private ViewPager viewPager;
+    private CustormViewPager viewPager;
     BannerFootView footView;
     private GridView myGridView;
     private MallProductAdapter adapter;
@@ -33,7 +33,7 @@ public class MallFragment extends  BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_mall,container,false);
 
-        viewPager = (ViewPager) view.findViewById(R.id.mall_bannerpager);
+        viewPager = (CustormViewPager) view.findViewById(R.id.mall_bannerpager);
         viewPager.setAdapter(new BannerPagerAdapter(createViews()));
         viewPager.setCurrentItem(100);
         new Thread(){

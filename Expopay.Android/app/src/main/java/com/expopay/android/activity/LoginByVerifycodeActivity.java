@@ -4,12 +4,10 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.android.kechong.lib.listener.AbsTextWatcher;
@@ -19,6 +17,7 @@ import com.expopay.android.adapter.pager.BannerPagerAdapter;
 import com.expopay.android.application.MyApplication;
 import com.expopay.android.request.CustomerRequest;
 import com.expopay.android.view.CustormLoadingButton;
+import com.expopay.android.view.CustormViewPager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,7 +26,7 @@ import org.json.JSONObject;
  * Created by misxu012 on 2015/10/20.
  */
 public class LoginByVerifycodeActivity extends BaseActivity {
-    private ViewPager viewPager;
+    private CustormViewPager viewPager;
     private EditText loginPhonenum;
     private EditText loginVercode;
     private Button btnSendVercode;
@@ -47,7 +46,7 @@ public class LoginByVerifycodeActivity extends BaseActivity {
         contentView = findViewById(R.id.login_contentview);
         contentView.setBackgroundDrawable(new BitmapDrawable
                 (BitmapUtil.readBitMap(getApplicationContext(), R.drawable.about_bg)));
-        viewPager = (ViewPager) findViewById(R.id.login_viewpager);
+        viewPager = (CustormViewPager) findViewById(R.id.login_viewpager);
         viewPager.setAdapter(new BannerPagerAdapter(createViews()));
         viewPager.setCurrentItem(100);
         loginPhonenum = (EditText) findViewById(R.id.login_phonenum);

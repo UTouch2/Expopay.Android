@@ -142,7 +142,13 @@ public class ChoosePeriodActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onBackPressed() {
         intent.putExtra("str_periods", str_periods);
-        setResult(1, intent);
+        setResult(RESULT_OK, intent);
+        finish();
+    }
+
+    public void blankOnClick(View view){
+        intent.putExtra("str_periods", str_periods);
+        setResult(RESULT_OK, intent);
         finish();
     }
 
