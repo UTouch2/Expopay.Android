@@ -17,6 +17,7 @@ public class CardDetailsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setStatusColor();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carddetails);
         incomeBtn = (Button) findViewById(R.id.carddetails_incomebtn);

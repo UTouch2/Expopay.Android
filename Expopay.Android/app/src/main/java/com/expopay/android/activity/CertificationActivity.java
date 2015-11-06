@@ -13,18 +13,17 @@ public class CertificationActivity extends BaseActivity {
     private EditText certificationName;
     private EditText certificationID;
 
-    private void assignViews() {
-        rlCard = (RelativeLayout) findViewById(R.id.rlCard);
-        certificationName = (EditText) findViewById(R.id.certificationName);
-        certificationID = (EditText) findViewById(R.id.certificationID);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_certification);
+        initView();
+    }
 
-        assignViews();
+    protected void initView() {
+        rlCard = (RelativeLayout) findViewById(R.id.rlCard);
+        certificationName = (EditText) findViewById(R.id.certificationName);
+        certificationID = (EditText) findViewById(R.id.certificationID);
     }
 
     public void btnBind(View view) {

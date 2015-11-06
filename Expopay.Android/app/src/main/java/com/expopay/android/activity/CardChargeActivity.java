@@ -22,6 +22,7 @@ public class CardChargeActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        statusBarCoverActivity();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cardcharge);
         amountText = (EditText) findViewById(R.id.cardcharge_amount_text);
