@@ -10,6 +10,7 @@ import com.expopay.android.R;
 import com.expopay.android.model.CardEntity;
 import com.expopay.android.model.CompanyEntity;
 import com.expopay.android.request.WegRequest;
+import com.expopay.android.view.CustormLoadingButton;
 import com.expopay.android.view.CustormLoadingView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -27,6 +28,7 @@ import java.util.List;
 public class WegQueryTransActivity extends BaseActivity {
     List<CompanyEntity> list;
     CustormLoadingView loadingView;
+    CustormLoadingButton loadingButton;
     TextView companyText;
 
     @Override
@@ -36,6 +38,15 @@ public class WegQueryTransActivity extends BaseActivity {
         setContentView(R.layout.activity_weg_querytransaction);
         companyText = (TextView) findViewById(R.id.weg_company_text);
         loadingView = (CustormLoadingView) findViewById(R.id.weg_loadingview);
+        loadingButton = (CustormLoadingButton) findViewById(R.id.weg_loadingbutton);
+
+        loadingButton.showNormal("查  询");
+        loadingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         try {
             getCompanyList("", "", "", "");
         } catch (JSONException e) {
@@ -43,10 +54,6 @@ public class WegQueryTransActivity extends BaseActivity {
         }
     }
 
-    public void okOnclick(View v) {
-        Intent intent = new Intent(getApplicationContext(), WegTransactionsActivity.class);
-        startActivity(intent);
-    }
 
     public void chooseCompanyOnclick(View v) {
         Intent intent = new Intent(getApplicationContext(), ChooseCompanyActivity.class);
@@ -86,6 +93,44 @@ public class WegQueryTransActivity extends BaseActivity {
                         }.getType());
                         companyText.setText(list.get(0).getCompanyName());
                         loadingView.dismiss();
+                    }
+                } catch (JSONException e) {
+                }
+            }
+
+            @Override
+            public void onProgressUpdate(int i, int i1) {
+
+            }
+        });
+        request.execute();
+        cancelRequest(request);
+    }
+
+
+    private void QueryAmount(String openId,
+                             String companyId, String publicUtilityNum) throws JSONException {
+        loadingButton.showLoading("正在查询···");
+        WegRequest request = new WegRequest("");
+        request.setEntity(request.createQueryAmountParam(openId, companyId, publicUtilityNum));
+        request.setIRequestListener(new JsonRequestListener() {
+            @Override
+            public void onFilure(Exception e) {
+                loadingButton.showResult("请求失败",false);
+                Intent intent = new Intent(getApplicationContext(), WegTransactionsActivity.class);
+
+                startActivity(intent);
+            }
+
+            @Override
+            public void onSuccess(Object result) {
+                JSONObject json = (JSONObject) result;
+                try {
+                    if (json.getJSONObject("header").getString("code")
+                            .equals("0000")) {
+                        loadingButton.showResult("",true);
+                        Intent intent = new Intent(getApplicationContext(), WegTransactionsActivity.class);
+                        startActivity(intent);
                     }
                 } catch (JSONException e) {
                 }

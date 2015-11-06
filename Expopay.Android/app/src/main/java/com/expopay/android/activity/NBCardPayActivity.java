@@ -23,4 +23,9 @@ public class NBCardPayActivity extends BaseActivity {
     public void closeOnclick(View v) {
         finish();
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }
