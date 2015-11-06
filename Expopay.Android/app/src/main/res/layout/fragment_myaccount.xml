@@ -160,7 +160,7 @@
 
         <ImageView
             android:id="@+id/account_settings_icon"
-            android:layout_width="20dp"
+            android:layout_width="15dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_margin="3dp"
@@ -207,7 +207,7 @@
 
         <ImageView
             android:id="@+id/account_order_icon"
-            android:layout_width="20dp"
+            android:layout_width="15dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_margin="3dp"
@@ -254,7 +254,7 @@
 
         <ImageView
             android:id="@+id/account_bill_icon"
-            android:layout_width="20dp"
+            android:layout_width="15dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_margin="3dp"
@@ -302,7 +302,7 @@
 
         <ImageView
             android:id="@+id/account_aboutme_icon"
-            android:layout_width="20dp"
+            android:layout_width="15dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_margin="3dp"

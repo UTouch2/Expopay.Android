@@ -147,11 +147,11 @@
 
     </LinearLayout>
 
-    <Button
+    <com.expopay.android.view.CustormLoadingButton
+        android:id="@+id/weg_loadingbutton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:onClick="okOnclick"
         android:text="确   定"
         android:textColor="#fff"
         android:textSize="14sp" />

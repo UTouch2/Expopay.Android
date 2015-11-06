@@ -6,8 +6,9 @@
     android:padding="15dp">
     <RadioButton
         android:id="@+id/mycards_item_radio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:button="@drawable/_radiobutton_style"
         android:layout_centerVertical="true" />
     <ImageView
         android:id="@+id/mycards_item_arrow"
