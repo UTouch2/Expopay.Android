@@ -44,6 +44,7 @@ public class MainFragment extends BaseFragment {
                     Intent intent = new Intent(getActivity(), WegQueryTransActivity.class);
                     intent.putExtra("type","1");
                     startActivity(intent);
+                    return;
                 }
                 Intent intent = new Intent(getActivity(), LoginByPasswordActivity.class);
                 startActivity(intent);
@@ -56,6 +57,7 @@ public class MainFragment extends BaseFragment {
                     Intent intent = new Intent(getActivity(), WegQueryTransActivity.class);
                     intent.putExtra("type","2");
                     startActivity(intent);
+                    return;
                 }
                 Intent intent = new Intent(getActivity(), LoginByPasswordActivity.class);
                 startActivity(intent);
@@ -67,6 +69,7 @@ public class MainFragment extends BaseFragment {
                 if (getUser().getOpenId() != null) {
                     Intent intent = new Intent(getActivity(), RechargeTelephoneActivity.class);
                     startActivity(intent);
+                    return;
                 }
                 Intent intent = new Intent(getActivity(), LoginByPasswordActivity.class);
                 startActivity(intent);
