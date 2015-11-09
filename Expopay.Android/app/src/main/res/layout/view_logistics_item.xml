@@ -14,13 +14,14 @@
             android:id="@+id/logistics_img"
             android:layout_width="10dp"
             android:layout_height="10dp"
+            android:scaleType="fitXY"
             android:src="@mipmap/logistics_finished" />
 
         <ImageView
             android:id="@+id/logistics_line"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_marginLeft="5dp"
+            android:scaleType="fitXY"
             android:src="@mipmap/logistics_line" />
     </LinearLayout>
 
@@ -28,6 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:orientation="vertical">
 
         <TextView
