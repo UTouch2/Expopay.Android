@@ -1,9 +1,6 @@
-package com.expopay.android.Dialog;
+package com.expopay.android.dialog;
 
 import android.content.Context;
-import android.util.TypedValue;
-
-import com.expopay.android.R;
 
 /**
  * Created by misxu012 on 2015/10/27.

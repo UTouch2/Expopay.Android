@@ -1,6 +1,5 @@
-package com.expopay.android.Dialog;
+package com.expopay.android.dialog;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.view.View;
