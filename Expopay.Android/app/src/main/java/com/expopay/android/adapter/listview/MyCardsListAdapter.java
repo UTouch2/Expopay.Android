@@ -15,7 +15,9 @@ import com.expopay.android.R;
 import com.expopay.android.activity.CardDetailsActivity;
 import com.expopay.android.model.CardEntity;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by misxu012 on 2015/10/22.
@@ -23,11 +25,12 @@ import java.util.List;
 public class MyCardsListAdapter extends BaseAdapter {
     Context context;
     List<CardEntity> data;
-
+    private Map<Integer, Boolean> status;
 
     public MyCardsListAdapter(Context context, List<CardEntity> data) {
         this.context = context;
         this.data = data;
+        this.status = new HashMap<>();
     }
 
     @Override
@@ -47,6 +50,7 @@ public class MyCardsListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View v, ViewGroup parent) {
+        final int index = i;
         final CardEntity card = data.get(i);
         ViewHodler vh = null;
         if (null == v) {
@@ -56,7 +60,7 @@ public class MyCardsListAdapter extends BaseAdapter {
             vh.cardBalanceText = (TextView) v.findViewById(R.id.mycards_item_balance);
             vh.isDefaultText = (TextView) v.findViewById(R.id.mycards_item_isdefault);
             vh.cardTypeText = (TextView) v.findViewById(R.id.mycards_item_cardtype);
-            vh.redadio = (RadioButton) v.findViewById(R.id.mycards_item_radio);
+            vh.radio = (RadioButton) v.findViewById(R.id.mycards_item_radio);
             v.setTag(vh);
         } else {
             vh = (ViewHodler) v.getTag();
@@ -66,11 +70,11 @@ public class MyCardsListAdapter extends BaseAdapter {
         Boolean isDefault = card.getIsDefault().equals("1");
         vh.isDefaultText.setVisibility(isDefault ? View.VISIBLE : View.GONE);
         vh.cardTypeText.setText(card.getCardType());
-        vh.redadio.setChecked(isDefault);
-        vh.redadio.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        vh.radio.setChecked(isDefault);
+        vh.radio.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
+                setRadioCheckd(index);
             }
         });
         v.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +85,10 @@ public class MyCardsListAdapter extends BaseAdapter {
                 context.startActivity(intent);
             }
         });
+        if (status.get(index) == null) {
+            status.put(index, vh.radio.isChecked());
+        }
+        vh.radio.setChecked(status.get(index));
         if (i % 2 == 0) {
             v.setBackgroundColor(Color.parseColor("#ffffff"));
         } else {
@@ -94,7 +102,7 @@ public class MyCardsListAdapter extends BaseAdapter {
         TextView cardBalanceText;
         TextView isDefaultText;
         TextView cardTypeText;
-        RadioButton redadio;
+        RadioButton radio;
     }
 
     public List<CardEntity> getData() {
@@ -103,5 +111,12 @@ public class MyCardsListAdapter extends BaseAdapter {
 
     public void setData(List<CardEntity> data) {
         this.data = data;
+    }
+    private void setRadioCheckd(int index) {
+        for (Integer key : status.keySet()) {
+            status.put(key, false);
+        }
+        status.put(index, true);
+        notifyDataSetChanged();
     }
 }

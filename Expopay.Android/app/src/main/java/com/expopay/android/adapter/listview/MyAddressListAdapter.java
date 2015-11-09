@@ -14,7 +14,9 @@ import com.expopay.android.R;
 import com.expopay.android.activity.AddressDetailsActivity;
 import com.expopay.android.model.AddressEntity;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by misxu012 on 2015/10/23.
@@ -22,10 +24,12 @@ import java.util.List;
 public class MyAddressListAdapter extends BaseAdapter {
     Context context;
     List<AddressEntity> data;
+    private Map<Integer, Boolean> status;
 
     public MyAddressListAdapter(Context context, List<AddressEntity> data) {
         this.context = context;
         this.data = data;
+        this.status = new HashMap<>();
     }
 
     @Override
@@ -45,7 +49,8 @@ public class MyAddressListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View v, ViewGroup parent) {
-        final AddressEntity address = data.get(i);
+        final int index = i;
+        final AddressEntity address = data.get(index);
         ViewHolder vh = null;
         if (v == null) {
             vh = new ViewHolder();
@@ -54,7 +59,7 @@ public class MyAddressListAdapter extends BaseAdapter {
             vh.nameText = (TextView) v.findViewById(R.id.address_item_name);
             vh.isDefaultText = (TextView) v.findViewById(R.id.address_item_isdefualt);
             vh.addressText = (TextView) v.findViewById(R.id.address_item_address);
-            vh.redadio = (RadioButton) v.findViewById(R.id.address_item_radio);
+            vh.radio = (RadioButton) v.findViewById(R.id.address_item_radio);
             v.setTag(vh);
         } else {
             vh = (ViewHolder) v.getTag();
@@ -63,14 +68,18 @@ public class MyAddressListAdapter extends BaseAdapter {
         vh.mobileText.setText(address.getMobile());
         vh.nameText.setText(address.getPersonName());
         vh.isDefaultText.setVisibility(!isDefault ? View.VISIBLE : View.GONE);
-        vh.redadio.setChecked(isDefault);
+        vh.radio.setChecked(isDefault);
         vh.addressText.setText(address.getProvinceName() + address.getCityName() + address.getDistrictName() + address.getAddress());
-        vh.redadio.setOnClickListener(new View.OnClickListener() {
+        vh.radio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                setRadioCheckd(index);
             }
         });
+        if (status.get(index) == null) {
+            status.put(index, vh.radio.isChecked());
+        }
+        vh.radio.setChecked(status.get(index));
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,10 +101,18 @@ public class MyAddressListAdapter extends BaseAdapter {
         TextView mobileText;
         TextView isDefaultText;
         TextView addressText;
-        RadioButton redadio;
+        RadioButton radio;
     }
 
     public void setData(List<AddressEntity> data) {
         this.data = data;
+    }
+
+    private void setRadioCheckd(int index) {
+        for (Integer key : status.keySet()) {
+            status.put(key, false);
+        }
+        status.put(index, true);
+        notifyDataSetChanged();
     }
 }
