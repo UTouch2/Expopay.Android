@@ -11,6 +11,7 @@ public class DialogFactory {
         MyDialog d = new MyDialog(context);
         d.setContent(content);
         d.setTitle(Title);
+
         return d;
     }
 }

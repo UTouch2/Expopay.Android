@@ -64,6 +64,7 @@ public class MyDialog extends Dialog {
 
     public MyDialog setTitle(String title) {
         titleTextView.setText(title);
+
         return this;
     }
 
