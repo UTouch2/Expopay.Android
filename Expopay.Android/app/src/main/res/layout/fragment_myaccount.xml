@@ -176,7 +176,7 @@
             android:layout_toRightOf="@id/account_settings_icon"
             android:text="个人中心"
             android:textColor="#646464"
-            android:textSize="14sp" />
+            android:textSize="13sp" />
 
         <ImageView
             android:id="@+id/account_settings_toicon"
@@ -223,7 +223,7 @@
             android:layout_toRightOf="@id/account_order_icon"
             android:text="我的订单"
             android:textColor="#646464"
-            android:textSize="14sp" />
+            android:textSize="13sp" />
 
         <ImageView
             android:id="@+id/account_order_toicon"
@@ -270,7 +270,7 @@
             android:layout_toRightOf="@id/account_bill_icon"
             android:text="我的账单"
             android:textColor="#646464"
-            android:textSize="14sp" />
+            android:textSize="13sp" />
 
         <ImageView
             android:id="@+id/account_bill_toicon"
@@ -318,7 +318,7 @@
             android:layout_toRightOf="@id/account_aboutme_icon"
             android:text="关于我们"
             android:textColor="#646464"
-            android:textSize="14sp" />
+            android:textSize="13sp" />
 
         <ImageView
             android:id="@+id/account_aboutme_toicon"

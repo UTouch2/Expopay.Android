@@ -143,8 +143,6 @@
                 android:singleLine="true"
                 android:textSize="14sp" />
         </RelativeLayout>
-
-
     </LinearLayout>
 
     <com.expopay.android.view.CustormLoadingButton
