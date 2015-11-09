@@ -5,7 +5,7 @@ package com.expopay.android.model;
  */
 public class UpdateAppEntity {
     private String versionCode;
-    private String[] updateexplain;
+    private String[] updateExplain;
 
     public UpdateAppEntity() {
     }
@@ -14,15 +14,16 @@ public class UpdateAppEntity {
         return versionCode;
     }
 
-    public String[] getUpdateexplain() {
-        return updateexplain;
-    }
 
     public void setVersionCode(String versionCode) {
         this.versionCode = versionCode;
     }
 
-    public void setUpdateexplain(String[] updateexplain) {
-        this.updateexplain = updateexplain;
+    public String[] getUpdateExplain() {
+        return updateExplain;
+    }
+
+    public void setUpdateExplain(String[] updateExplain) {
+        this.updateExplain = updateExplain;
     }
 }
