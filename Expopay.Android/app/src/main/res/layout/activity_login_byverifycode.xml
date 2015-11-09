@@ -31,9 +31,9 @@
             android:id="@+id/login_viewpager"
             android:layout_width="150dp"
             android:layout_height="70dp"
-            app:duration="800"
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            app:duration="800">
 
         </com.expopay.android.view.CustormViewPager>
 
@@ -55,7 +55,7 @@
                 android:textSize="11sp" />
 
             <EditText
-                android:id="@+id/login_phonenum"
+                android:id="@+id/login_mobiletext"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_centerVertical="true"
@@ -67,7 +67,7 @@
                 android:maxLength="11"
                 android:singleLine="true"
                 android:text=""
-                android:textColor="#aaaaaa"
+                android:textColor="#999999"
                 android:textSize="14sp" />
         </RelativeLayout>
 
@@ -108,7 +108,7 @@
                 android:lines="1"
                 android:maxLength="6"
                 android:singleLine="true"
-                android:textColor="#aaaaaa"
+                android:textColor="#999999"
                 android:textSize="14sp" />
         </RelativeLayout>
 
