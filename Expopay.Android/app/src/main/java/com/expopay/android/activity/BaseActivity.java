@@ -92,7 +92,7 @@ public class BaseActivity extends AbsFragmentActivity {
         });
     }
 
-    protected UserEntity getUser() {
+    public UserEntity getUser() {
         UserEntity user = new UserEntity();
         String openId = SharedRefUtil.getSharedPreference(this, "openId", "");
         String userName = SharedRefUtil.getSharedPreference(this, "userName", "");
@@ -103,7 +103,7 @@ public class BaseActivity extends AbsFragmentActivity {
         return user;
     }
 
-    protected void saveUser(UserEntity user) {
+    public void saveUser(UserEntity user) {
         String openId = user.getOpenId();
         String userName = user.getUserName();
         String password = user.getPassword();

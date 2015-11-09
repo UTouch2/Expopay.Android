@@ -32,7 +32,6 @@ public class LoginByPasswordActivity extends BaseActivity {
     private EditText login_phonenum;
     private EditText login_pwd;
     private CustormLoadingButton loginButton;
-
     private String userName, password;
 
     @Override

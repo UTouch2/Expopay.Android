@@ -12,8 +12,8 @@ import com.android.kechong.lib.http.RequestMethod;
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.android.kechong.lib.listener.AbsOnPageChangeListener;
 import com.android.kechong.lib.util.ApkUtil;
-import com.expopay.android.Dialog.DialogFactory;
-import com.expopay.android.Dialog.MyDialog;
+import com.expopay.android.dialog.DialogFactory;
+import com.expopay.android.dialog.MyDialog;
 import com.expopay.android.R;
 import com.expopay.android.adapter.pager.MainPagerAdepter;
 import com.expopay.android.application.MyApplication;
@@ -178,7 +178,7 @@ public class MainAcativity extends BaseActivity {
                         Gson gson = new Gson();
                         UpdateAppEntity e = gson.fromJson(json.getJSONObject("body").toString(), UpdateAppEntity.class);
                         final String newVercode = e.getVersionCode();
-                        final String[] details = e.getUpdateexplain();
+                        final String[] details = e.getUpdateExplain();
                         final int oldVercode = ApkUtil.findVersionCodeByName(
                                 getApplicationContext(),
                                 "com.expopay.android");
