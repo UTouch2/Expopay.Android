@@ -1,5 +1,6 @@
 package com.expopay.android.activity;
 
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.android.kechong.lib.listener.AbsTextWatcher;
@@ -119,8 +121,8 @@ public class LoginByVerifycodeActivity extends BaseActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String mobile = mobileText.getText().toString().trim();
-                String vercode = loginVercode.getText().toString().trim();
+                mobile = mobileText.getText().toString().trim();
+                vercode = loginVercode.getText().toString().trim();
                 try {
                     loginRequest(mobile, vercode, "", "");
                 } catch (Exception e) {
@@ -131,6 +133,8 @@ public class LoginByVerifycodeActivity extends BaseActivity {
     }
 
     public void passwordLoginOnclick(View view) {
+        Intent intent = new Intent(this, LoginByPasswordActivity.class);
+        startActivity(intent);
         finish();
     }
 
@@ -208,7 +212,7 @@ public class LoginByVerifycodeActivity extends BaseActivity {
     }
 
     private void sendVercode(String mobile) throws JSONException {
-        CustomerRequest re = new CustomerRequest(MyApplication.HOST + "");
+        CustomerRequest re = new CustomerRequest(MyApplication.HOST + "/system/sendcode");
         re.setEntity(re.createGetVerCodeParams(mobile));
         re.setOutTime(10000);
         re.setIRequestListener(new JsonRequestListener() {
@@ -216,12 +220,15 @@ public class LoginByVerifycodeActivity extends BaseActivity {
             public void onFilure(Exception e) {
                 System.out.print(e);
             }
+
             @Override
             public void onSuccess(Object o) {
                 JSONObject js = (JSONObject) o;
                 try {
                     if (js.getJSONObject("header").getString("code").equals("0000")) {
                         startTimer();
+                    } else {
+                        Toast.makeText(LoginByVerifycodeActivity.this, js.getJSONObject("header").getString("desc"), Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -239,7 +246,7 @@ public class LoginByVerifycodeActivity extends BaseActivity {
 
     private void loginRequest(String mobile,
                               String vercode, String userName, String loginPwd) throws Exception {
-        CustomerRequest re = new CustomerRequest(MyApplication.HOST + "/system/sendcode");
+        CustomerRequest re = new CustomerRequest(MyApplication.HOST + "/customer/login");
         re.setEntity(re.createLoginParams(mobile, vercode, userName, loginPwd));
         re.setOutTime(10000);
         re.setIRequestListener(new JsonRequestListener() {

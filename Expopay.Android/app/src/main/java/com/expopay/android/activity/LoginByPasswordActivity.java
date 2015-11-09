@@ -116,9 +116,14 @@ public class LoginByPasswordActivity extends BaseActivity {
 
     }
 
+    public void closeOnclick(View v) {
+        finish();
+    }
+
     public void messageOnclick(View v) {
         Intent intent = new Intent(this, LoginByVerifycodeActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void forgetPasswordOnclick(View v) {
@@ -161,7 +166,7 @@ public class LoginByPasswordActivity extends BaseActivity {
     private void loginRequest(String phoneNum,
                               String vercode, final String userName, String loginPwd) throws Exception {
         loginButton.showLoading("正在登录···");
-        CustomerRequest re = new CustomerRequest(MyApplication.HOST + "");
+        CustomerRequest re = new CustomerRequest(MyApplication.HOST + "/customer/login");
         re.setEntity(re.createLoginParams(phoneNum, vercode, userName, loginPwd));
         re.setOutTime(10000);
         re.setIRequestListener(new JsonRequestListener() {
@@ -176,13 +181,13 @@ public class LoginByPasswordActivity extends BaseActivity {
                         user.setUserName(userName);
                         user.setPassword(password);
                         saveUser(user);
-                        loginButton.showResult("登录成功",true);
+                        loginButton.showResult("登录成功", true);
                     } else {
-                        loginButton.showResult(json.getJSONObject("header").getString("desc"),false);
+                        loginButton.showResult(json.getJSONObject("header").getString("desc"), false);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    loginButton.showResult("数据解析异常",false);
+                    loginButton.showResult("数据解析异常", false);
                 }
             }
 
@@ -193,7 +198,7 @@ public class LoginByPasswordActivity extends BaseActivity {
 
             @Override
             public void onFilure(Exception e) {
-                loginButton.showResult("网络请求失败",false);
+                loginButton.showResult("网络请求失败", false);
             }
         });
         re.execute();
