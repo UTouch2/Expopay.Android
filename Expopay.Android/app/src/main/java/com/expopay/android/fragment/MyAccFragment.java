@@ -8,9 +8,6 @@ import android.view.ViewGroup;
 
 import com.android.kechong.lib.http.RequestMethod;
 import com.android.kechong.lib.http.listener.JsonRequestListener;
-import com.android.kechong.lib.util.ApkUtil;
-import com.expopay.android.Dialog.DialogFactory;
-import com.expopay.android.Dialog.MyDialog;
 import com.expopay.android.R;
 import com.expopay.android.activity.AboutActivity;
 import com.expopay.android.activity.MyBillsActivity;
@@ -18,7 +15,6 @@ import com.expopay.android.activity.MyCardsActivity;
 import com.expopay.android.activity.MyOrderActivity;
 import com.expopay.android.activity.SettingsActivity;
 import com.expopay.android.application.MyApplication;
-import com.expopay.android.model.UpdateAppEntity;
 import com.expopay.android.request.AppRequest;
 import com.google.gson.Gson;
 
