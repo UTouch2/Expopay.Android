@@ -21,6 +21,7 @@ import com.expopay.android.fragment.MainFragment;
 import com.expopay.android.fragment.MallFragment;
 import com.expopay.android.fragment.MyAccFragment;
 import com.expopay.android.model.UpdateAppEntity;
+import com.expopay.android.model.UserEntity;
 import com.expopay.android.request.AppRequest;
 import com.expopay.android.serivice.DownLoadService;
 import com.google.gson.Gson;
@@ -59,6 +60,16 @@ public class MainAcativity extends BaseActivity {
             getNewVersionCode();
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        UserEntity userEntity = getUser();
+        if (!userEntity.getOpenId().equals("") && userEntity.getUserName().equals("")) {
+            Intent intent = new Intent(this, PerfectAccountActivity.class);
+            startActivity(intent);
         }
     }
 
