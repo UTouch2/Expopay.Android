@@ -138,6 +138,10 @@ public class LoginByVerifycodeActivity extends BaseActivity {
         finish();
     }
 
+    public void closeOnclick(View v) {
+        finish();
+    }
+
     public void forgetPasswordOnclick(View view) {
         finish();
     }
