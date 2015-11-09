@@ -115,16 +115,11 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
                 break;
             case R.id.btnRecharge:
                 if(contacts != null) {
-                    btnRecharge.showLoading("正在充值...");
                     String amount = rechange.getText().toString().trim();
                     try {
                         getOrder("123","1","","","","");
                     } catch (JSONException e) {
-
                     }
-//                    Intent intent = new Intent(RechargeTelephoneActivity.this,);
-//
-//                    startActivity(intent);
                 }
                 break;
             default:
@@ -137,29 +132,36 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
         clearSelection();
         switch (index) {
             case 10:
-                // 当点击了按钮installment3时，改变控件的背景图片
                 charge10.setBackgroundColor(Color.parseColor("#07D97E"));
+                charge10.setTextColor(Color.WHITE);
                 break;
             case 20:
                 charge20.setBackgroundColor(Color.parseColor("#07D97E"));
+                charge20.setTextColor(Color.WHITE);
                 break;
             case 30:
                 charge30.setBackgroundColor(Color.parseColor("#07D97E"));
+                charge30.setTextColor(Color.WHITE);
                 break;
             case 50:
                 charge50.setBackgroundColor(Color.parseColor("#07D97E"));
+                charge50.setTextColor(Color.WHITE);
                 break;
             case 100:
                 charge100.setBackgroundColor(Color.parseColor("#07D97E"));
+                charge100.setTextColor(Color.WHITE);
                 break;
             case 200:
                 charge200.setBackgroundColor(Color.parseColor("#07D97E"));
+                charge200.setTextColor(Color.WHITE);
                 break;
             case 300:
                 charge300.setBackgroundColor(Color.parseColor("#07D97E"));
+                charge300.setTextColor(Color.WHITE);
                 break;
             case 500:
                 charge500.setBackgroundColor(Color.parseColor("#07D97E"));
+                charge500.setTextColor(Color.WHITE);
                 break;
             default:
                 break;
@@ -170,13 +172,21 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
     private void clearSelection() {
         rechange.setText("");
         charge10.setBackgroundColor(Color.parseColor("#F9F9F9"));
+        charge10.setTextColor(Color.parseColor("#666666"));
         charge20.setBackgroundColor(Color.parseColor("#F9F9F9"));
+        charge20.setTextColor(Color.parseColor("#666666"));
         charge30.setBackgroundColor(Color.parseColor("#F9F9F9"));
+        charge30.setTextColor(Color.parseColor("#666666"));
         charge50.setBackgroundColor(Color.parseColor("#F9F9F9"));
+        charge50.setTextColor(Color.parseColor("#666666"));
         charge100.setBackgroundColor(Color.parseColor("#F9F9F9"));
+        charge100.setTextColor(Color.parseColor("#666666"));
         charge200.setBackgroundColor(Color.parseColor("#F9F9F9"));
+        charge200.setTextColor(Color.parseColor("#666666"));
         charge300.setBackgroundColor(Color.parseColor("#F9F9F9"));
+        charge300.setTextColor(Color.parseColor("#666666"));
         charge500.setBackgroundColor(Color.parseColor("#F9F9F9"));
+        charge500.setTextColor(Color.parseColor("#666666"));
     }
 
     @Override
@@ -240,12 +250,9 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
         return result;
     }
 
-    private void getOrder(String openId,
-                          String orderSource,
-                          String paymentMethod,
-                          String orerAmount,
-                          String publicUtilityType,
-                          String publicUtilityNum)throws JSONException{
+    private void getOrder(String openId, String orderSource, String paymentMethod, String orerAmount,
+                          String publicUtilityType, String publicUtilityNum)throws JSONException{
+        btnRecharge.showLoading("正在充值...");
         OrderRequest request = new OrderRequest("");
         request.setEntity(request.createCreateOrderParms(openId,
                 orderSource,
@@ -256,15 +263,17 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
-
+                btnRecharge.showResult("网络请求成功", false);
             }
 
             @Override
             public void onSuccess(Object o) {
-                JSONObject object = (JSONObject) o;
                 try {
-                    if(object.getJSONObject("header").getString("code").equals("0000")){
-
+                    JSONObject json = (JSONObject) o;
+                    if(json.getJSONObject("header").getString("code").equals("0000")){
+                        btnRecharge.showResult("下单成功", true);
+                    }else{
+                        btnRecharge.showResult(json.getJSONObject("header").getString("desc"), false);
                     }
                 } catch (JSONException e) {
 
