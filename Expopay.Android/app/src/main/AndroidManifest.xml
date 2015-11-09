@@ -159,5 +159,7 @@
         <activity
             android:name=".activity.WebActivity"
             android:label="南博卡"></activity>
+
+        <service android:name=".serivice.DownLoadService"></service>
     </application>
 </manifest>
