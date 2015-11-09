@@ -4,10 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.expopay.android.Dialog.DialogFactory;
-import com.expopay.android.Dialog.MyDialog;
+import com.expopay.android.dialog.DialogFactory;
+import com.expopay.android.dialog.MyDialog;
 import com.expopay.android.R;
-import com.expopay.android.view.CustormLoadingButton;
 
 /**
  * Created by misxu012 on 2015/10/22.
