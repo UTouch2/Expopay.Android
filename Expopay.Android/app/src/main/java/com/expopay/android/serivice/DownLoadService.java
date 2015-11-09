@@ -16,6 +16,7 @@ import com.android.kechong.lib.http.listener.FileLoadRequestListener;
 import com.android.kechong.lib.util.ApkUtil;
 import com.android.kechong.lib.util.FileManager;
 import com.expopay.android.R;
+import com.expopay.android.application.MyApplication;
 import com.expopay.android.request.AppRequest;
 
 public class DownLoadService extends Service {
@@ -41,7 +42,7 @@ public class DownLoadService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        AppRequest request = new AppRequest("");
+        AppRequest request = new AppRequest(MyApplication.HOST+"/install/pay.apk");
         request.setRequestMethod(RequestMethod.GET);
         request.setIRequestListener(new FileLoadRequestListener(mSavePath) {
             @Override
@@ -87,7 +88,6 @@ public class DownLoadService extends Service {
             return DownLoadService.this;
         }
     }
-
     public void showCustomizeNotification() {
         notification.icon = R.drawable.icon;// 图标
         notification.tickerText = "南博卡更新";
