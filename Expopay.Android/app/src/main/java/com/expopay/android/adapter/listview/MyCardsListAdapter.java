@@ -82,6 +82,7 @@ public class MyCardsListAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Intent intent = new Intent(context.getApplicationContext(), CardDetailsActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("card",card);
                 context.startActivity(intent);
             }
         });
