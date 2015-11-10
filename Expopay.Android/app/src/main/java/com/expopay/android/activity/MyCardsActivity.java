@@ -54,6 +54,13 @@ public class MyCardsActivity extends BaseActivity {
                 }
             }
         });
+        loadingView.setAddOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AddCardActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void lossOnclick(View v) {
