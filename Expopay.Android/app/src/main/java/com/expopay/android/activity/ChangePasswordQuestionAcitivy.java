@@ -15,7 +15,6 @@ import org.json.JSONObject;
  */
 public class ChangePasswordQuestionAcitivy extends BaseActivity {
     private CustormLoadingButton okBtn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

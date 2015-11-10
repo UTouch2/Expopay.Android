@@ -18,6 +18,7 @@ import com.android.kechong.lib.util.BitmapUtil;
 import com.expopay.android.R;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
 import com.expopay.android.application.MyApplication;
+import com.expopay.android.model.UserEntity;
 import com.expopay.android.request.CustomerRequest;
 import com.expopay.android.view.CustormLoadingButton;
 import com.expopay.android.view.CustormViewPager;
@@ -86,6 +87,7 @@ public class LoginByVerifycodeActivity extends BaseActivity {
                 if (11 == mobile.length() && 6 == vercode.length()) {
                     loginBtn.setEnabled(true);
                     loginBtn.setBackgroundResource(R.drawable._button);
+                    loginBtn.showNormal("登录");
                 } else {
                     loginBtn.setEnabled(false);
                     loginBtn.setBackgroundResource(R.drawable._button_down);
@@ -101,6 +103,7 @@ public class LoginByVerifycodeActivity extends BaseActivity {
                 if (11 == mobile.length() && 6 == vercode.length()) {
                     loginBtn.setEnabled(true);
                     loginBtn.setBackgroundResource(R.drawable._button);
+                    loginBtn.showNormal("登录");
                 } else {
                     loginBtn.setEnabled(false);
                     loginBtn.setBackgroundResource(R.drawable._button_down);
@@ -130,6 +133,7 @@ public class LoginByVerifycodeActivity extends BaseActivity {
                 }
             }
         });
+        loginBtn.showNormal("登录");
     }
 
     public void passwordLoginOnclick(View view) {
@@ -250,21 +254,29 @@ public class LoginByVerifycodeActivity extends BaseActivity {
 
     private void loginRequest(String mobile,
                               String vercode, String userName, String loginPwd) throws Exception {
+        loginBtn.showLoading("正在验证···");
         CustomerRequest re = new CustomerRequest(MyApplication.HOST + "/customer/login");
         re.setEntity(re.createLoginParams(mobile, vercode, userName, loginPwd));
         re.setOutTime(10000);
         re.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
-
+                loginBtn.showResult("网络请求失败", false);
             }
 
             @Override
             public void onSuccess(Object o) {
-                JSONObject js = (JSONObject) o;
+                JSONObject json = (JSONObject) o;
                 try {
-                    js.getJSONObject("");
-
+                    if (json.getJSONObject("header").getString("code").equals("0000")) {
+                        UserEntity user = new UserEntity();
+                        user.setOpenId(json.getJSONObject("body").getString("openId"));
+                        saveUser(user);
+                        loginBtn.showResult("登录成功", true);
+                        finish();
+                    } else {
+                        loginBtn.showResult("", false);
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -278,6 +290,4 @@ public class LoginByVerifycodeActivity extends BaseActivity {
         re.execute();
         cancelRequest(re);
     }
-
-
 }

@@ -62,7 +62,7 @@ public class MyAddressActivity extends BaseActivity {
                         adapter.notifyDataSetChanged();
                         loadingView.dismiss();
                     } else {
-                        loadingView.setMessage(json.getJSONObject("header").getString("desc"));
+                        loadingView.setRetryMessage(json.getJSONObject("header").getString("desc"));
                     }
                 } catch (JSONException e) {
                 }

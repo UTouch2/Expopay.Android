@@ -23,6 +23,7 @@ import com.expopay.android.fragment.MyAccFragment;
 import com.expopay.android.model.UpdateAppEntity;
 import com.expopay.android.model.UserEntity;
 import com.expopay.android.request.AppRequest;
+import com.expopay.android.request.CustomerRequest;
 import com.expopay.android.serivice.DownLoadService;
 import com.google.gson.Gson;
 
@@ -66,10 +67,13 @@ public class MainAcativity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        UserEntity userEntity = getUser();
-        if (!userEntity.getOpenId().equals("") && userEntity.getUserName().equals("")) {
-            Intent intent = new Intent(this, PerfectAccountActivity.class);
-            startActivity(intent);
+        String openId = getUser().getOpenId();
+        try {
+            if (!openId.equals("")) {
+                getCustormer(openId);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 
@@ -173,6 +177,17 @@ public class MainAcativity extends BaseActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+    private void createUpdateDialog(String[] details) {
+        final MyDialog dialog = DialogFactory.createDialog(this, "更新提示", details);
+        dialog.setOkOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startService(new Intent(getApplicationContext(), DownLoadService.class));
+            }
+        });
+        dialog.show();
+    }
+
     private void getNewVersionCode() throws JSONException {
         AppRequest request = new AppRequest(MyApplication.HOST + "/system/version");
         request.setEntity(request.createVersionCodeParams());
@@ -219,14 +234,44 @@ public class MainAcativity extends BaseActivity {
         cancelRequest(request);
     }
 
-    private void createUpdateDialog(String[] details) {
-        final MyDialog dialog = DialogFactory.createDialog(this, "更新提示", details);
-        dialog.setOkOnclickListener(new View.OnClickListener() {
+    private void getCustormer(String openId) throws JSONException {
+        CustomerRequest request = new CustomerRequest(MyApplication.HOST + "/customer/customerinfo");
+        request.setEntity(request.createGetCustormerParams(openId));
+        request.setRequestMethod(RequestMethod.POST);
+        request.setOutTime(5 * 1000);
+        request.setIRequestListener(new JsonRequestListener() {
             @Override
-            public void onClick(View v) {
-                startService(new Intent(getApplicationContext(), DownLoadService.class));
+            public void onSuccess(Object result) {
+                JSONObject json = (JSONObject) result;
+                try {
+                    if (json.getJSONObject("header").getString("code")
+                            .equals("0000")) {
+                        // 成功
+                        Gson gson = new Gson();
+                        UserEntity userEntity = gson.fromJson(json.getJSONObject("body").toString(), UserEntity.class);
+                        saveUser(userEntity);
+                        if (!userEntity.getOpenId().equals("") && userEntity.getUserName().equals("")) {
+                            Intent intent = new Intent(getApplicationContext(), PerfectAccountActivity.class);
+                            startActivity(intent);
+                        }
+                    } else {
+                        // 失败
+                    }
+                } catch (JSONException e) {
+                    // 数据解析异常
+                }
+            }
+            @Override
+            public void onProgressUpdate(int i, int j) {
+
+            }
+
+            @Override
+            public void onFilure(Exception result) {
+                System.out.println(result);
             }
         });
-        dialog.show();
+        request.execute();
+        cancelRequest(request);
     }
 }

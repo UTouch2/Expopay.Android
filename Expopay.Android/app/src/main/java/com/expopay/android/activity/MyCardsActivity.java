@@ -44,6 +44,16 @@ public class MyCardsActivity extends BaseActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        loadingView.setRetryOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    getMyCards(getUser().getOpenId());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void lossOnclick(View v) {
@@ -58,7 +68,7 @@ public class MyCardsActivity extends BaseActivity {
 
     private void getMyCards(String openId) throws JSONException {
         loadingView.show();
-        CardRequest request = new CardRequest(MyApplication.HOST + "/system/version");
+        CardRequest request = new CardRequest(MyApplication.HOST + "/customer/cardList");
         request.setEntity(request.createCardListParams(openId));
         request.setOutTime(10 * 1000);
         request.setIRequestListener(new JsonRequestListener() {
@@ -70,21 +80,26 @@ public class MyCardsActivity extends BaseActivity {
                             .equals("0000")) {
                         // 成功
                         Gson gson = new Gson();
-                        List<CardEntity> list = gson.fromJson(json.getJSONObject("").toString(), new TypeToken<List<CardEntity>>() {
+                        List<CardEntity> list = gson.fromJson(json.getJSONObject("body").getJSONArray("records").toString(), new TypeToken<List<CardEntity>>() {
                         }.getType());
-                        adapter.setData(list);
-                        adapter.notifyDataSetChanged();
+                        if (list.size() == 0) {
+                            loadingView.setAddMessage("你还没有添加卡");
+                            loadingView.showAdd();
+                        } else {
+                            adapter.setData(list);
+                            adapter.notifyDataSetChanged();
+                        }
                         loadingView.dismiss();
                     } else {
                         // 失败
                         loadingView.showRetry();
-                        loadingView.setMessage(json.getJSONObject("header").getString("desc"));
+                        loadingView.setRetryMessage(json.getJSONObject("header").getString("desc"));
                     }
                 } catch (JSONException e) {
                     // 数据解析异常
                     // 失败
                     loadingView.showRetry();
-                    loadingView.setMessage("数据解析异常");
+                    loadingView.setRetryMessage("数据解析异常");
                 }
             }
 
@@ -97,26 +112,10 @@ public class MyCardsActivity extends BaseActivity {
             public void onFilure(Exception result) {
                 System.out.println(result);
                 loadingView.showRetry();
-                loadingView.setMessage("请求失败");
-                loadingView.dismiss();
-                testData();
-                adapter.setData(data);
-                adapter.notifyDataSetChanged();
+                loadingView.setRetryMessage("请求失败");
             }
         });
         request.execute();
         cancelRequest(request);
-    }
-
-    private void testData() {
-        data = new ArrayList<>();
-        for (int i = 0; i < 2; i++) {
-            CardEntity e = new CardEntity();
-            e.setCardNumber("123456789" + i);
-            e.setIsDefault("0");
-            e.setBalance("20");
-            e.setCardType("12345678");
-            data.add(e);
-        }
     }
 }

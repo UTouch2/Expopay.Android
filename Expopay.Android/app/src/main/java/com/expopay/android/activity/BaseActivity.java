@@ -73,7 +73,7 @@ public class BaseActivity extends AbsFragmentActivity {
         }
     }
 
-    private void initCustomActionBar() {
+    void initCustomActionBar() {
         final ActionBar actionBar = getActionBar();
         if (actionBar == null) {
             return;
@@ -97,9 +97,28 @@ public class BaseActivity extends AbsFragmentActivity {
         String openId = SharedRefUtil.getSharedPreference(this, "openId", "");
         String userName = SharedRefUtil.getSharedPreference(this, "userName", "");
         String password = SharedRefUtil.getSharedPreference(this, "password", "");
+        String mobile = SharedRefUtil.getSharedPreference(this, "mobile", "");
+        String userType = SharedRefUtil.getSharedPreference(this, "userType", "");
+        String nickname = SharedRefUtil.getSharedPreference(this, "nickname", "");
+        String certificationStatus = SharedRefUtil.getSharedPreference(this, "certificationStatus", "");
+        String personName = SharedRefUtil.getSharedPreference(this, "personName", "");
+        String personId = SharedRefUtil.getSharedPreference(this, "personId", "");
+        String defCardNumber = SharedRefUtil.getSharedPreference(this, "defCardNumber", "");
+        String companyName = SharedRefUtil.getSharedPreference(this, "companyName", "");
+        String payStatus = SharedRefUtil.getSharedPreference(this, "payStatus", "");
+
         user.setOpenId(openId);
         user.setUserName(userName);
         user.setPassword(password);
+        user.setMobile(mobile);
+        user.setUserType(userType);
+        user.setNickname(nickname);
+        user.setCertificationStatus(certificationStatus);
+        user.setPersonId(personId);
+        user.setPersonName(personName);
+        user.setDefCardNumber(defCardNumber);
+        user.setCompanyName(companyName);
+        user.setPayStatus(payStatus);
         return user;
     }
 
@@ -107,8 +126,50 @@ public class BaseActivity extends AbsFragmentActivity {
         String openId = user.getOpenId();
         String userName = user.getUserName();
         String password = user.getPassword();
-        SharedRefUtil.setSharedPreference(this, "openId", openId);
-        SharedRefUtil.setSharedPreference(this, "userName", userName);
-        SharedRefUtil.setSharedPreference(this, "password", password);
+        String mobile = user.getMobile();
+        String userType = user.getUserType();
+        String nickname = user.getNickname();
+        String certificationStatus = user.getCertificationStatus();
+        String personName = user.getPersonName();
+        String personId = user.getPersonId();
+        String defCardNumber = user.getDefCardNumber();
+        String companyName = user.getCompanyName();
+        String payStatus = user.getPayStatus();
+        if (openId != null) {
+            SharedRefUtil.setSharedPreference(this, "openId", openId);
+        }
+        if (userName != null) {
+            SharedRefUtil.setSharedPreference(this, "userName", userName);
+        }
+        if (password != null) {
+            SharedRefUtil.setSharedPreference(this, "password", password);
+        }
+        if (mobile != null) {
+            SharedRefUtil.setSharedPreference(this, "mobile", mobile);
+        }
+        if (userType != null) {
+            SharedRefUtil.setSharedPreference(this, "userType", userType);
+        }
+        if (nickname != null) {
+            SharedRefUtil.setSharedPreference(this, "nickname", nickname);
+        }
+        if (personName != null) {
+            SharedRefUtil.setSharedPreference(this, "personName", personName);
+        }
+        if (certificationStatus != null) {
+            SharedRefUtil.setSharedPreference(this, "certificationStatus", certificationStatus);
+        }
+        if (personId != null) {
+            SharedRefUtil.setSharedPreference(this, "personId", personId);
+        }
+        if (defCardNumber != null) {
+            SharedRefUtil.setSharedPreference(this, "defCardNumber", defCardNumber);
+        }
+        if (companyName != null) {
+            SharedRefUtil.setSharedPreference(this, "companyName", companyName);
+        }
+        if (payStatus != null) {
+            SharedRefUtil.setSharedPreference(this, "payStatus", payStatus);
+        }
     }
 }

@@ -28,8 +28,8 @@ public class ChooseQuestionActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         statusBarCoverActivity();
         setContentView(R.layout.activity_choosecard);
+        questionEntities =(List<PasswordQuestionEntity>)getIntent().getSerializableExtra("questions");
         mListView = (ListView) findViewById(R.id.choosecard_listview);
-        testData();
         adapter = new ChooseQuestionListAdapter(this, questionEntities);
         mListView.setAdapter(adapter);
     }
@@ -42,14 +42,5 @@ public class ChooseQuestionActivity extends BaseActivity {
         result = (PasswordQuestionEntity) mListView.getTag();
         setResult(RESULT_OK, new Intent().putExtra("question", result));
         finish();
-    }
-
-    private void testData() {
-        for (int i = 0; i < 2; i++) {
-            PasswordQuestionEntity e = new PasswordQuestionEntity();
-            e.setSecuQuestion("123456789" + i);
-            e.setSecuQuestionId("" + i);
-            questionEntities.add(e);
-        }
     }
 }
