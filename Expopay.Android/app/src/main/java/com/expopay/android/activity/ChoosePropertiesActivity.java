@@ -161,17 +161,17 @@ public class ChoosePropertiesActivity extends BaseActivity implements View.OnCli
 
     //清除掉所有的手机颜色选中状态
     private void clearColourSelection() {
-        colourBlack.setBackgroundResource(R.mipmap.mall_unoutline);
-        colourWhite.setBackgroundResource(R.mipmap.mall_unoutline);
-        colourGolden.setBackgroundResource(R.mipmap.mall_unoutline);
-        colourGoldPink.setBackgroundResource(R.mipmap.mall_unoutline);
+        colourBlack.setBackgroundResource(R.drawable._button_selectproduct);
+        colourWhite.setBackgroundResource(R.drawable._button_selectproduct);
+        colourGolden.setBackgroundResource(R.drawable._button_selectproduct);
+        colourGoldPink.setBackgroundResource(R.drawable._button_selectproduct);
     }
 
     //清除掉所有的手机内存选中状态
     private void clearGSelection() {
-        g16.setBackgroundResource(R.mipmap.mall_unoutline);
-        g64.setBackgroundResource(R.mipmap.mall_unoutline);
-        g128.setBackgroundResource(R.mipmap.mall_unoutline);
+        g16.setBackgroundResource(R.drawable._button_selectproduct);
+        g64.setBackgroundResource(R.drawable._button_selectproduct);
+        g128.setBackgroundResource(R.drawable._button_selectproduct);
     }
 
 }

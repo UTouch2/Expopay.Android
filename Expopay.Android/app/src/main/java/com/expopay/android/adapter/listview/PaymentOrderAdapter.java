@@ -39,7 +39,7 @@ public class PaymentOrderAdapter extends BaseAdapter {
     @Override
     public Object getItem(int i) {
         //获取数据集中与指定索引对应的数据项
-        return i;
+        return data.get(i);
     }
 
     @Override

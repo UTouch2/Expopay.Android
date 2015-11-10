@@ -35,7 +35,7 @@ public class LogisticsAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int i) {
-        return i;
+        return data.get(i);
     }
 
     @Override
@@ -58,7 +58,13 @@ public class LogisticsAdapter extends BaseAdapter {
         }else {
             holder = (ViewHolder) view.getTag();
         }
-        holder.logistics_img.setImageResource(R.mipmap.logistics_unfinished);
+
+        if(0 == i){
+            holder.logistics_img.setImageResource(R.mipmap.logistics_unfinished);
+        }
+        if(data.size()-1 == i){
+            holder.logistics_line.setVisibility(View.INVISIBLE);
+        }
         holder.logisticsStatus.setText(entity.getLogistics());
         holder.logisticsTime.setText(entity.getOrderTime());
 

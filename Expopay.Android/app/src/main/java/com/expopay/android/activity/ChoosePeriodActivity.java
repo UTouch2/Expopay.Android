@@ -130,13 +130,13 @@ public class ChoosePeriodActivity extends BaseActivity implements View.OnClickLi
 
     //清除掉所有的选中状态
     private void clearSelection() {
-        installment3.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment6.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment9.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment12.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment15.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment18.setBackgroundResource(R.mipmap.mall_unoutline);
-        installment24.setBackgroundResource(R.mipmap.mall_unoutline);
+        installment3.setBackgroundResource(R.drawable._button_selectproduct);
+        installment6.setBackgroundResource(R.drawable._button_selectproduct);
+        installment9.setBackgroundResource(R.drawable._button_selectproduct);
+        installment12.setBackgroundResource(R.drawable._button_selectproduct);
+        installment15.setBackgroundResource(R.drawable._button_selectproduct);
+        installment18.setBackgroundResource(R.drawable._button_selectproduct);
+        installment24.setBackgroundResource(R.drawable._button_selectproduct);
     }
 
     @Override
