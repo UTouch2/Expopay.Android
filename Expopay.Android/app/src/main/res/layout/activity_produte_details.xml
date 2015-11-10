@@ -164,13 +164,15 @@
             </RelativeLayout>
         </LinearLayout>
 
-        <com.expopay.android.view.CustormLoadingButton
+        <Button
             android:id="@+id/btnImmediatelyOrder"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:text="立即下单"
+            android:textColor="#fff"
             android:layout_below="@+id/tvBlank"
             android:background="@drawable/_button">
-        </com.expopay.android.view.CustormLoadingButton>
+        </Button>
 
         <TextView
             android:id="@+id/tvBlank"
