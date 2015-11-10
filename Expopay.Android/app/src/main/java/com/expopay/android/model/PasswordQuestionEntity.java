@@ -1,9 +1,11 @@
 package com.expopay.android.model;
 
+import java.io.Serializable;
+
 /**
  * Created by misxu012 on 2015/10/21.
  */
-public class PasswordQuestionEntity {
+public class PasswordQuestionEntity implements Serializable {
     private String secuQuestionId;
     private String secuQuestion;
     public PasswordQuestionEntity() {
