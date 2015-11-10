@@ -39,11 +39,6 @@ public class MyCardsActivity extends BaseActivity {
         loadingView = (CustormLoadingView) findViewById(R.id.mycards_loading);
         adapter = new MyCardsListAdapter(getApplicationContext(), new ArrayList<CardEntity>());
         listView.setAdapter(adapter);
-        try {
-            getMyCards(getUser().getOpenId());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
         loadingView.setRetryOnclickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,6 +56,14 @@ public class MyCardsActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
+        rightButtton.setImageResource(R.mipmap.mycards_add);
+        rightButtton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AddCardActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void lossOnclick(View v) {
@@ -71,10 +74,16 @@ public class MyCardsActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        try {
+            getMyCards(getUser().getOpenId());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     private void getMyCards(String openId) throws JSONException {
         loadingView.show();
+        loadingView.showLoading();
         CardRequest request = new CardRequest(MyApplication.HOST + "/customer/cardList");
         request.setEntity(request.createCardListParams(openId));
         request.setOutTime(10 * 1000);
@@ -95,8 +104,9 @@ public class MyCardsActivity extends BaseActivity {
                         } else {
                             adapter.setData(list);
                             adapter.notifyDataSetChanged();
+                            loadingView.dismiss();
                         }
-                        loadingView.dismiss();
+
                     } else {
                         // 失败
                         loadingView.showRetry();
