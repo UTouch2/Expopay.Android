@@ -36,24 +36,23 @@ public class PaymentOrderFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_payment_order, container, false);
-
         lvPaymentOrder = (ListView) view.findViewById(R.id.lvPaymentOrder);
         paymentOrder_loading = (CustormLoadingView) view.findViewById(R.id.paymentOrder_loading);
         adapter = new PaymentOrderAdapter(getActivity().getApplicationContext(), new ArrayList<PaymentOrderEntity>());
         lvPaymentOrder.setAdapter(adapter);
         try {
-            getPaymentOrder("123456","1","","");
+            getPaymentOrder("123456", "1", "", "");
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return view;
     }
 
-    private void getPaymentOrder(String openId,String orderSource,String pageIndex,
+    private void getPaymentOrder(String openId, String orderSource, String pageIndex,
                                  String pageSize) throws JSONException {
         paymentOrder_loading.show();
         OrderRequest request = new OrderRequest(MyApplication.HOST + "");
-        request.setEntity(request.createGetOrdersParms(openId,orderSource,pageIndex,pageSize));
+        request.setEntity(request.createGetOrdersParms(openId, orderSource, pageIndex, pageSize));
         request.setOutTime(10 * 1000);
         request.setIRequestListener(new JsonRequestListener() {
             @Override
@@ -72,13 +71,13 @@ public class PaymentOrderFragment extends Fragment {
                     } else {
                         // 失败
                         paymentOrder_loading.showRetry();
-                        paymentOrder_loading.setMessage(json.getJSONObject("header").getString("desc"));
+                        paymentOrder_loading.setRetryMessage(json.getJSONObject("header").getString("desc"));
                     }
                 } catch (JSONException e) {
                     // 数据解析异常
                     // 失败
                     paymentOrder_loading.showRetry();
-                    paymentOrder_loading.setMessage("数据解析异常");
+                    paymentOrder_loading.setRetryMessage("数据解析异常");
                 }
             }
 
@@ -91,7 +90,7 @@ public class PaymentOrderFragment extends Fragment {
             public void onFilure(Exception result) {
                 System.out.println(result);
                 paymentOrder_loading.showRetry();
-                paymentOrder_loading.setMessage("请求失败");
+                paymentOrder_loading.setRetryMessage("请求失败");
             }
         });
         request.execute();

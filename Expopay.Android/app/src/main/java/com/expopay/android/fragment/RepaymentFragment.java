@@ -72,13 +72,13 @@ public class RepaymentFragment extends Fragment {
                     } else {
                         // 失败
                         billRepayment_loading.showRetry();
-                        billRepayment_loading.setMessage(json.getJSONObject("header").getString("desc"));
+                        billRepayment_loading.setRetryMessage(json.getJSONObject("header").getString("desc"));
                     }
                 } catch (JSONException e) {
                     // 数据解析异常
                     // 失败
                     billRepayment_loading.showRetry();
-                    billRepayment_loading.setMessage("数据解析异常");
+                    billRepayment_loading.setRetryMessage("数据解析异常");
                 }
             }
 
@@ -91,7 +91,7 @@ public class RepaymentFragment extends Fragment {
             public void onFilure(Exception result) {
                 System.out.println(result);
                 billRepayment_loading.showRetry();
-                billRepayment_loading.setMessage("请求失败");
+                billRepayment_loading.setRetryMessage("请求失败");
             }
         });
         request.execute();

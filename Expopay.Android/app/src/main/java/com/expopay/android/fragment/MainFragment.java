@@ -40,9 +40,9 @@ public class MainFragment extends BaseFragment {
         view.findViewById(R.id.main_water).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getUser().getOpenId() != null) {
+                if (!"".equals(getUser().getOpenId())) {
                     Intent intent = new Intent(getActivity(), WegQueryTransActivity.class);
-                    intent.putExtra("type","1");
+                    intent.putExtra("type", "1");
                     startActivity(intent);
                     return;
                 }
@@ -53,9 +53,9 @@ public class MainFragment extends BaseFragment {
         view.findViewById(R.id.main_power).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getUser().getOpenId() != null) {
+                if (!"".equals(getUser().getOpenId())) {
                     Intent intent = new Intent(getActivity(), WegQueryTransActivity.class);
-                    intent.putExtra("type","2");
+                    intent.putExtra("type", "2");
                     startActivity(intent);
                     return;
                 }
@@ -66,7 +66,7 @@ public class MainFragment extends BaseFragment {
         view.findViewById(R.id.main_mobile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getUser().getOpenId() != null) {
+                if (!"".equals(getUser().getOpenId())) {
                     Intent intent = new Intent(getActivity(), RechargeTelephoneActivity.class);
                     startActivity(intent);
                     return;

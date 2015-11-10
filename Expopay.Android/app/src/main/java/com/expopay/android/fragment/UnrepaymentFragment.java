@@ -72,13 +72,13 @@ public class UnrepaymentFragment extends Fragment {
                     } else {
                         // 失败
                         billUnrepayment_loading.showRetry();
-                        billUnrepayment_loading.setMessage(json.getJSONObject("header").getString("desc"));
+                        billUnrepayment_loading.setRetryMessage(json.getJSONObject("header").getString("desc"));
                     }
                 } catch (JSONException e) {
                     // 数据解析异常
                     // 失败
                     billUnrepayment_loading.showRetry();
-                    billUnrepayment_loading.setMessage("数据解析异常");
+                    billUnrepayment_loading.setRetryMessage("数据解析异常");
                 }
             }
 
@@ -91,7 +91,7 @@ public class UnrepaymentFragment extends Fragment {
             public void onFilure(Exception result) {
                 System.out.println(result);
                 billUnrepayment_loading.showRetry();
-                billUnrepayment_loading.setMessage("请求失败");
+                billUnrepayment_loading.setRetryMessage("请求失败");
             }
         });
         request.execute();
