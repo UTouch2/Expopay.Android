@@ -20,7 +20,7 @@
             android:src="@mipmap/cardcharge_editclose" />
 
         <TextView
-            android:id="@+id/loadingview_msg"
+            android:id="@+id/loadingview_retrymsg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="加载失败" />ddd
@@ -38,6 +38,38 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/loadingview_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_margin="5dp"
+            android:src="@mipmap/cardcharge_editclose" />
+
+        <TextView
+            android:id="@+id/loadingview_addmsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当前没有" />ddd
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="，" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="去添加"
+            android:textColor="#23A4F7" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/loadingview_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,6 +82,7 @@
             android:layout_height="25dp" />
 
         <TextView
+            android:id="@+id/loadingview_loadingmsg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
