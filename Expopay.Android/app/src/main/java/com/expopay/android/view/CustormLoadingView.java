@@ -15,7 +15,7 @@ import com.expopay.android.R;
 public class CustormLoadingView extends FrameLayout {
     View loadingView, retryView, addView;
     TextView retryMsgText, loadingMsgText, addMsgText;
-    OnClickListener retryOnclickListener;
+    OnClickListener retryOnclickListener, addOnclickListener;
 
     public CustormLoadingView(Context context) {
         super(context);
@@ -45,10 +45,16 @@ public class CustormLoadingView extends FrameLayout {
         retryView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadingView.setVisibility(VISIBLE);
-                retryView.setVisibility(GONE);
                 if (null != retryOnclickListener) {
                     retryOnclickListener.onClick(v);
+                }
+            }
+        });
+        addView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (null != addOnclickListener) {
+                    addOnclickListener.onClick(v);
                 }
             }
         });
