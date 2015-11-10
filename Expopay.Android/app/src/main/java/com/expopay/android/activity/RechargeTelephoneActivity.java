@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
@@ -58,7 +59,6 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
         charge200.setOnClickListener(this);
         charge300.setOnClickListener(this);
         charge500.setOnClickListener(this);
-        btnRecharge.setOnClickListener(this);
 
         setTabSelection(10);
         rechange.setText("10");
@@ -71,6 +71,22 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
         setContentView(R.layout.activity_recharge_telephone);
 
         assignViews();
+
+        btnRecharge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(11 == contacts.length()) {
+                    String amount = rechange.getText().toString().trim();
+                    try {
+                        getOrder("123","1","","","","");
+                    } catch (JSONException e) {
+                    }
+                }
+                else {
+                    Toast.makeText(RechargeTelephoneActivity.this, "请输入正确的电话号码", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     @Override
@@ -112,15 +128,6 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
                 Intent i = new Intent(Intent.ACTION_PICK);
                 i.setType("vnd.android.cursor.dir/phone");
                 startActivityForResult(i, 0);
-                break;
-            case R.id.btnRecharge:
-                if(contacts != null) {
-                    String amount = rechange.getText().toString().trim();
-                    try {
-                        getOrder("123","1","","","","");
-                    } catch (JSONException e) {
-                    }
-                }
                 break;
             default:
                 break;

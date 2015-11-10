@@ -2,9 +2,11 @@ package com.expopay.android.activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
@@ -28,6 +30,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
     private TextView commitConsignee;
     private TextView commitConsigneeMobile;
     private TextView commitConsigneeAddress;
+    private CheckBox checkBox;
     private CustormLoadingButton btnSubmit;
 
     private void assignViews() {
@@ -42,6 +45,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
         commitConsignee = (TextView) findViewById(R.id.commitConsignee);
         commitConsigneeMobile = (TextView) findViewById(R.id.commitConsigneeMobile);
         commitConsigneeAddress = (TextView) findViewById(R.id.commitConsigneeAddress);
+        checkBox = (CheckBox) findViewById(R.id.checkBox);
         btnSubmit = (CustormLoadingButton) findViewById(R.id.btnSubmit);
         btnSubmit.showNormal("提交订单");
     }
@@ -65,20 +69,25 @@ public class OrderDetailCommitActivity extends BaseActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String repaymentPeriod=commitRepaymentPeriod.getText().toString().trim();
-                try {
-                    getOrder(getUser().getOpenId(), "", repaymentPeriod,"","","","");
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                String repaymentPeriod = commitRepaymentPeriod.getText().toString().trim();
+
+                if (checkBox.isChecked()) {
+                    try {
+                        getOrder(getUser().getOpenId(), "", repaymentPeriod, "", "", "", "");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    Toast.makeText(OrderDetailCommitActivity.this, "您未同意《南博卡分期协议》", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
     private void getOrder(String openId, String orderSource, String paymentMethod, String orerAmount,
-                          String productId, String periodId, String addressId)throws JSONException{
+                          String productId, String periodId, String addressId) throws JSONException {
         btnSubmit.showLoading("正在提交...");
-        OrderRequest request = new OrderRequest(MyApplication.HOST +"");
+        OrderRequest request = new OrderRequest(MyApplication.HOST + "");
         request.setEntity(request.createCreateOrderParms(openId, orderSource,
                 paymentMethod, orerAmount, productId, periodId, addressId));
         request.setIRequestListener(new JsonRequestListener() {
@@ -93,7 +102,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
                     JSONObject json = (JSONObject) o;
                     if (json.getJSONObject("header").getString("code").equals("0000")) {
                         btnSubmit.showResult("订单提交成功", true);
-                    }else{
+                    } else {
                         btnSubmit.showResult(json.getJSONObject("header").getString("desc"), false);
                     }
                 } catch (JSONException e) {
@@ -110,7 +119,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
         cancelRequest(request);
     }
 
-    private void setTextView(){
+    private void setTextView() {
         commitProductImg.setImageResource(R.mipmap.mall_mobile);
         commitProductName.setText("iPhone6S");
         commitOrderAmount.setText("5200.00");

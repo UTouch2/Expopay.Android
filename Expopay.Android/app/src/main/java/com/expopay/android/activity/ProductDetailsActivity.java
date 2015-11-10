@@ -4,27 +4,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.android.kechong.lib.listener.AbsOnPageChangeListener;
 import com.expopay.android.R;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
-import com.expopay.android.application.MyApplication;
-import com.expopay.android.request.OrderRequest;
 import com.expopay.android.view.BannerFootView;
-import com.expopay.android.view.CustormLoadingButton;
 import com.expopay.android.view.CustormViewPager;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class ProductDetailsActivity extends BaseActivity implements View.OnClickListener{
 
     private RelativeLayout relativeLayoutProperties,relativeLayoutStage,llDetail;
-    private CustormLoadingButton btnImmediatelyOrder;
+    private Button btnImmediatelyOrder;
     private TextView detailProductName;
     private TextView detailAmount;
     private TextView tvSelected;
@@ -37,14 +31,14 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
         relativeLayoutProperties = (RelativeLayout) findViewById(R.id.relativeLayoutProperties);
         relativeLayoutStage = (RelativeLayout) findViewById(R.id.relativeLayoutStage);
         llDetail = (RelativeLayout) findViewById(R.id.llDetail);
-        btnImmediatelyOrder = (CustormLoadingButton) findViewById(R.id.btnImmediatelyOrder);
+        btnImmediatelyOrder = (Button) findViewById(R.id.btnImmediatelyOrder);
         detailProductName = (TextView) findViewById(R.id.detailProductName);
         detailAmount = (TextView) findViewById(R.id.detailAmount);
 
         tvSelected = (TextView) findViewById(R.id.tvSelected);
         tvStaging = (TextView) findViewById(R.id.tvStaging);
 
-        btnImmediatelyOrder.showNormal("立即下单");
+//        btnImmediatelyOrder.showNormal("立即下单");
         btnImmediatelyOrder.setOnClickListener(this);
         relativeLayoutProperties.setOnClickListener(this);
         relativeLayoutStage.setOnClickListener(this);
@@ -127,53 +121,53 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                 startActivity(intent);
                 break;
             case R.id.btnImmediatelyOrder:
-                try {
-                    getOrder(getUser().getOpenId(), "", "","","","","");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-//                intent.setClass(ProductDetailsActivity.this, OrderDetailCommitActivity.class);
-//                startActivity(intent);
+//                try {
+//                    getOrder(getUser().getOpenId(), "", "","","","","");
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+                intent.setClass(ProductDetailsActivity.this, OrderDetailCommitActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;
         }
     }
 
-    private void getOrder(String openId, String orderSource, String paymentMethod, String orerAmount,
-                          String productId, String periodId, String addressId)throws JSONException {
-        btnImmediatelyOrder.showLoading("正在下单...");
-        OrderRequest request = new OrderRequest(MyApplication.HOST +"");
-        request.setEntity(request.createCreateOrderParms(openId, orderSource,
-                paymentMethod, orerAmount, productId, periodId, addressId));
-        request.setIRequestListener(new JsonRequestListener() {
-            @Override
-            public void onFilure(Exception e) {
-                btnImmediatelyOrder.showResult("网络请求失败", false);
-            }
-
-            @Override
-            public void onSuccess(Object o) {
-                try {
-                    JSONObject json = (JSONObject) o;
-                    if (json.getJSONObject("header").getString("code").equals("0000")) {
-                        btnImmediatelyOrder.showResult("下单成功", true);
-                    }else{
-                        btnImmediatelyOrder.showResult(json.getJSONObject("header").getString("desc"), false);
-                    }
-                } catch (JSONException e) {
-
-                }
-            }
-
-            @Override
-            public void onProgressUpdate(int i, int i1) {
-
-            }
-        });
-        request.execute();
-        cancelRequest(request);
-    }
+//    private void getOrder(String openId, String orderSource, String paymentMethod, String orerAmount,
+//                          String productId, String periodId, String addressId)throws JSONException {
+//        btnImmediatelyOrder.showLoading("正在下单...");
+//        OrderRequest request = new OrderRequest(MyApplication.HOST +"");
+//        request.setEntity(request.createCreateOrderParms(openId, orderSource,
+//                paymentMethod, orerAmount, productId, periodId, addressId));
+//        request.setIRequestListener(new JsonRequestListener() {
+//            @Override
+//            public void onFilure(Exception e) {
+//                btnImmediatelyOrder.showResult("网络请求失败", false);
+//            }
+//
+//            @Override
+//            public void onSuccess(Object o) {
+//                try {
+//                    JSONObject json = (JSONObject) o;
+//                    if (json.getJSONObject("header").getString("code").equals("0000")) {
+//                        btnImmediatelyOrder.showResult("下单成功", true);
+//                    }else{
+//                        btnImmediatelyOrder.showResult(json.getJSONObject("header").getString("desc"), false);
+//                    }
+//                } catch (JSONException e) {
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onProgressUpdate(int i, int i1) {
+//
+//            }
+//        });
+//        request.execute();
+//        cancelRequest(request);
+//    }
 
     private void setTextView(){
         detailProductName.setText("iPhone6S");
