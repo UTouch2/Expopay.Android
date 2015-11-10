@@ -10,7 +10,6 @@ public class CardEntity implements Serializable{
     private String cardNumber;
     private String cardType;
     private String isDefault;
-
     private String balance;
     public CardEntity() {
     }
