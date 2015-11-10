@@ -13,9 +13,10 @@ import com.expopay.android.R;
  * Created by misxu012 on 2015/10/27.
  */
 public class CustormLoadingView extends FrameLayout {
-    View loadingView, retryView;
-    TextView msgText;
+    View loadingView, retryView, addView;
+    TextView retryMsgText, loadingMsgText, addMsgText;
     OnClickListener retryOnclickListener;
+
     public CustormLoadingView(Context context) {
         super(context);
         init();
@@ -35,7 +36,12 @@ public class CustormLoadingView extends FrameLayout {
         View v = LayoutInflater.from(getContext()).inflate(R.layout.view_loading, null, false);
         loadingView = v.findViewById(R.id.loadingview_loading);
         retryView = v.findViewById(R.id.loadingview_retry);
-        msgText = (TextView) v.findViewById(R.id.loadingview_msg);
+        addView = findViewById(R.id.loadingview_add);
+
+        retryMsgText = (TextView) v.findViewById(R.id.loadingview_retrymsg);
+        loadingMsgText = (TextView) v.findViewById(R.id.loadingview_loadingmsg);
+        addMsgText = (TextView) v.findViewById(R.id.loadingview_addmsg);
+
         retryView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,8 +55,16 @@ public class CustormLoadingView extends FrameLayout {
         addView(v);
     }
 
-    public void setMessage(String msg) {
-        msgText.setText(msg);
+    public void setLoadingMessage(String msg) {
+        loadingMsgText.setText(msg);
+    }
+
+    public void setRetryMessage(String msg) {
+        retryMsgText.setText(msg);
+    }
+
+    public void setAddMessage(String msg) {
+        addMsgText.setText(msg);
     }
 
     public void dismiss() {
@@ -64,6 +78,19 @@ public class CustormLoadingView extends FrameLayout {
     public void showRetry() {
         loadingView.setVisibility(GONE);
         retryView.setVisibility(VISIBLE);
+        addView.setVisibility(GONE);
+    }
+
+    public void showLoading() {
+        loadingView.setVisibility(VISIBLE);
+        retryView.setVisibility(GONE);
+        addView.setVisibility(GONE);
+    }
+
+    public void showAdd() {
+        loadingView.setVisibility(GONE);
+        retryView.setVisibility(GONE);
+        addView.setVisibility(VISIBLE);
     }
 
     public void setRetryOnclickListener(OnClickListener l) {

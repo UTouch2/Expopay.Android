@@ -26,7 +26,6 @@ public class CustormViewPager extends ViewPager {
 
     public CustormViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
-
         TypedArray t = context.obtainStyledAttributes(attrs, R.styleable.CustormViewPager);
         duration = t.getInt(R.styleable.CustormViewPager_duration, 1000);
         t.recycle();
@@ -67,13 +66,11 @@ public class CustormViewPager extends ViewPager {
 
         @Override
         public void startScroll(int startX, int startY, int dx, int dy, int duration) {
-            // Ignore received duration, use fixed one instead
             super.startScroll(startX, startY, dx, dy, mDuration);
         }
 
         @Override
         public void startScroll(int startX, int startY, int dx, int dy) {
-            // Ignore received duration, use fixed one instead
             super.startScroll(startX, startY, dx, dy, mDuration);
         }
 

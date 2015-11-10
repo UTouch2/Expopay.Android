@@ -60,7 +60,7 @@ public class CustormLoadingButton extends FrameLayout {
         view.findViewById(R.id.loadingbutton_top).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (onClickListener != null){
+                if (onClickListener != null) {
                     onClickListener.onClick(v);
                 }
             }
@@ -81,7 +81,7 @@ public class CustormLoadingButton extends FrameLayout {
 
     public void showLoading(String text) {
         int index = viewPager.getCurrentItem();
-        if (status ==0) {
+        if (status == 0) {
             viewPager.setCurrentItem(index + 1);
             status = 1;
         }
@@ -97,7 +97,7 @@ public class CustormLoadingButton extends FrameLayout {
         if (isSuccess) {
             resultIcon.setImageResource(R.mipmap.loadingbutton_resultok);
         } else {
-            resultIcon.setImageResource(R.mipmap.loadingbutton_resultok);
+            resultIcon.setImageResource(R.mipmap.loadingbutton_resultfail);
         }
         resultTextView.setText(text);
     }
