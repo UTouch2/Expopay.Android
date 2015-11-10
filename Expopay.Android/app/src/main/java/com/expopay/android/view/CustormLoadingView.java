@@ -36,7 +36,7 @@ public class CustormLoadingView extends FrameLayout {
         View v = LayoutInflater.from(getContext()).inflate(R.layout.view_loading, null, false);
         loadingView = v.findViewById(R.id.loadingview_loading);
         retryView = v.findViewById(R.id.loadingview_retry);
-        addView = findViewById(R.id.loadingview_add);
+        addView = v.findViewById(R.id.loadingview_add);
 
         retryMsgText = (TextView) v.findViewById(R.id.loadingview_retrymsg);
         loadingMsgText = (TextView) v.findViewById(R.id.loadingview_loadingmsg);
@@ -101,5 +101,9 @@ public class CustormLoadingView extends FrameLayout {
 
     public void setRetryOnclickListener(OnClickListener l) {
         retryOnclickListener = l;
+    }
+
+    public void setAddOnclickListener(OnClickListener addOnclickListener) {
+        this.addOnclickListener = addOnclickListener;
     }
 }
