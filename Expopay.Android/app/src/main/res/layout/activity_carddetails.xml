@@ -1,89 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
     android:clipToPadding="true"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical">
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:background="#F8F8F8"
-        android:orientation="vertical"
-        android:padding="15dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="卡号："
-                android:textColor="#4E4E4E"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="88888888888888888"
-                android:textColor="#4E4E4E"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#FF5055"
-                android:padding="5dp"
-                android:text="企业福利卡"
-                android:textColor="#fff"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="130dp"
+            android:background="#F8F8F8"
+            android:orientation="vertical"
+            android:padding="15dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="certificationOnclick"
-                android:orientation="vertical"
-                android:padding="5dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="去实名制"
-                    android:textColor="#969696" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="#969696" />
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="30dp"
-                android:layout_alignParentRight="true"
-                android:adjustViewBounds="true"
-                android:onClick="deleteOnclick"
-                android:padding="5dp"
-                android:src="@mipmap/carddetails_deletecard" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
@@ -91,123 +28,202 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="金额："
-                    android:textColor="#E85B2D"
+                    android:text="卡号："
+                    android:textColor="#4E4E4E"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/carddetails_cardnumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="88888888888888888"
+                    android:textColor="#4E4E4E"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/carddetails_cardtype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#FF5055"
+                    android:text="企业福利卡"
+                    android:textColor="#fff"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="certificationOnclick"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="去实名制"
+                        android:textColor="#969696" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#969696" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:adjustViewBounds="true"
+                    android:onClick="deleteOnclick"
+                    android:padding="5dp"
+                    android:src="@mipmap/carddetails_deletecard" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="金额："
+                        android:textColor="#E85B2D"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/carddetails_balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="100.00"
+                        android:textColor="#E85B2D"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:adjustViewBounds="true"
+                    android:onClick="chargeOnclick"
+                    android:padding="5dp"
+                    android:src="@mipmap/carddetails_charge" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#BCBCBC"
+            android:orientation="horizontal"
+            android:paddingBottom="0.5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1"
+                android:background="#fff"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/carddetails_payout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="60.00"
+                    android:textColor="#E75B2A"
                     android:textSize="14sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="100.00"
-                    android:textColor="#E85B2D"
+                    android:text="支出"
+                    android:textColor="#959595"
                     android:textSize="14sp" />
-
             </LinearLayout>
 
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="30dp"
-                android:layout_alignParentRight="true"
-                android:adjustViewBounds="true"
-                android:onClick="chargeOnclick"
-                android:padding="5dp"
-                android:src="@mipmap/carddetails_charge" />
-        </RelativeLayout>
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#fff"
+                android:gravity="center"
+                android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#BCBCBC"
-        android:orientation="horizontal"
-        android:paddingBottom="0.5dp">
+                <TextView
+                    android:id="@+id/carddetails_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="60.00"
+                    android:textColor="#00D94A"
+                    android:textSize="14sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="0.5dp"
-            android:layout_weight="1"
-            android:background="#fff"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="60.00"
-                android:textColor="#E75B2A"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="支出"
-                android:textColor="#959595"
-                android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="收入"
+                    android:textColor="#959595"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#fff"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_height="60dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="5dp"
+            android:background="#BCBCBC"
+            android:orientation="horizontal"
+            android:paddingBottom="0.5dp"
+            android:paddingTop="0.5dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="60.00"
-                android:textColor="#00D94A"
-                android:textSize="14sp" />
+            <Button
+                android:id="@+id/carddetails_payoutbtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="0.5dp"
+                android:layout_weight="1"
+                android:background="#959595"
+                android:text="消费记录"
+                android:textColor="#fff"
+                android:textSize="14sp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="支出"
+            </Button>
+
+            <Button
+                android:id="@+id/carddetails_incomebtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#fff"
+                android:text="充值记录"
                 android:textColor="#959595"
-                android:textSize="14sp" />
+                android:textSize="14sp">
+
+            </Button>
         </LinearLayout>
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="5dp"
-        android:background="#BCBCBC"
-        android:orientation="horizontal"
-        android:paddingBottom="0.5dp"
-        android:paddingTop="0.5dp">
-
-        <Button
-            android:id="@+id/carddetails_payoutbtn"
+        <android.support.v4.view.ViewPager
+            android:id="@+id/carddetails_viewpager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="0.5dp"
-            android:layout_weight="1"
-            android:background="#959595"
-            android:text="消费记录"
-            android:textColor="#fff"
-            android:textSize="14sp">
-
-        </Button>
-
-        <Button
-            android:id="@+id/carddetails_incomebtn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#fff"
-            android:text="充值记录"
-            android:textColor="#959595"
-            android:textSize="14sp">
-
-        </Button>
+            android:layout_height="match_parent"></android.support.v4.view.ViewPager>
     </LinearLayout>
-
-    <android.support.v4.view.ViewPager
+    <com.expopay.android.view.CustormLoadingView
+        android:id="@+id/carddetails_loadingview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
-</LinearLayout>
+        android:layout_height="match_parent">
+    </com.expopay.android.view.CustormLoadingView>
+</RelativeLayout>

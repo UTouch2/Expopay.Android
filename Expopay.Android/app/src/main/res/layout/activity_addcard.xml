@@ -1,5 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-</LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp">
+
+            <ImageView
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:adjustViewBounds="true"
+                android:src="@mipmap/login_top" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="南博卡安全设置"
+            android:textColor="#c6c6c6"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16sp"
+            android:gravity="center"
+            android:text="我们一直努力的提高南博卡的安全性"
+            android:textColor="#7d7d7d"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="2dp"
+            android:layout_margin="10dp"
+            android:adjustViewBounds="true"
+            android:background="#E85A2A" />
+
+        <EditText
+            android:id="@+id/addcard_cardnumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:background="#00000000"
+            android:hint="请输入南博卡卡号"
+            android:inputType="number"
+            android:lines="1"
+            android:maxLength="19"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="#999999"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_phonenum"
+            android:layout_marginBottom="20dp"
+            android:src="@mipmap/login_line" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/addcard_cardpassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="#00000000"
+                android:hint="请输入南博卡密码"
+                android:inputType="number"
+                android:lines="1"
+                android:maxLength="6"
+                android:singleLine="true"
+                android:textColor="#999999"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:adjustViewBounds="true"
+                android:padding="5dp" />
+        </RelativeLayout>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_pwd"
+            android:layout_marginBottom="20dp"
+            android:src="@mipmap/login_line" />
+    </LinearLayout>
+
+    <com.expopay.android.view.CustormLoadingButton
+        android:id="@+id/addcard_ok"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/_button"></com.expopay.android.view.CustormLoadingButton>
+</RelativeLayout>
