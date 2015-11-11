@@ -67,8 +67,7 @@
             android:theme="@style/ActvTheme"></activity>
         <activity
             android:name=".activity.CardLossApplyActivity"
-            android:label="南博卡"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
+            android:label="南博卡"></activity>
         <activity
             android:name=".activity.ChangePasswordActivity"
             android:label="南博卡"></activity>
@@ -116,9 +115,6 @@
             android:label="南博卡"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
 
-        <activity
-            android:name=".activity.LossOfCardActivity"
-            android:label="南博卡"></activity>
         <activity
             android:name=".activity.MyCardsActivity"
             android:label="南博卡"></activity>
