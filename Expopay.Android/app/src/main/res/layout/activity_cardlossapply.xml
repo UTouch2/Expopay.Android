@@ -30,31 +30,31 @@
             android:textColorHint="#EA663A"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/llCardPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:background="#F9F9F9"
-        android:layout_below="@+id/llCardNumber"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="密码："
-            android:textColor="#ACACAC"
-            android:textSize="15sp"/>
-        <EditText
-            android:id="@+id/etCardPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:background="@null"
-            android:textSize="15sp"
-            android:textColor="#ACACAC"
-            android:password="true"
-            android:hint="请输入密码"/>
-    </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:id="@+id/llCardPassword"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:padding="20dp"-->
+        <!--android:background="#F9F9F9"-->
+        <!--android:layout_below="@+id/llCardNumber"-->
+        <!--android:orientation="horizontal">-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="密码："-->
+            <!--android:textColor="#ACACAC"-->
+            <!--android:textSize="15sp"/>-->
+        <!--<EditText-->
+            <!--android:id="@+id/etCardPassword"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:background="@null"-->
+            <!--android:textSize="15sp"-->
+            <!--android:textColor="#ACACAC"-->
+            <!--android:password="true"-->
+            <!--android:hint="请输入密码"/>-->
+    <!--</LinearLayout>-->
 
     <LinearLayout
         android:id="@+id/llLossCardReason"
@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:padding="20dp"
         android:background="#FFFFFF"
-        android:layout_below="@+id/llCardPassword"
+        android:layout_below="@+id/llCardNumber"
         android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
