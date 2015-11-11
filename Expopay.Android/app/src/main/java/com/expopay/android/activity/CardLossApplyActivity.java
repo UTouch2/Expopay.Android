@@ -23,7 +23,7 @@ public class CardLossApplyActivity extends BaseActivity {
         setContentView(R.layout.activity_cardlossapply);
 
         etCardNumber = (EditText) findViewById(R.id.etCardNumber);
-        etCardPassword = (EditText) findViewById(R.id.etCardPassword);
+//        etCardPassword = (EditText) findViewById(R.id.etCardPassword);
         etLossCardReason = (EditText) findViewById(R.id.etLossCardReason);
 
         btnSubmitOnClick = (CustormLoadingButton) findViewById(R.id.btnSubmitOnClick);

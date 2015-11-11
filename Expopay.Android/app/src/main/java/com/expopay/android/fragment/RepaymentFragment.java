@@ -41,19 +41,24 @@ public class RepaymentFragment extends BaseFragment {
         billRepayment_loading = (CustormLoadingView) view.findViewById(R.id.billRepayment_loading);
         adapter = new BillRepaymentAdapter(getActivity().getApplicationContext(), testData());
         lvRepayment.setAdapter(adapter);
-//        try {
-//            getBillRepayment("123456");
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            getBillRepayment("123456","","","","","");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         return view;
     }
 
-    private void getBillRepayment(String openId) throws JSONException {
+    private void getBillRepayment(String openId,
+                                  String orderSource,
+                                  String paymentMethod,
+                                  String orerAmount,
+                                  String publicUtilityType,
+                                  String publicUtilityNum) throws JSONException {
         billRepayment_loading.show();
         OrderRequest request = new OrderRequest(MyApplication.HOST + "");
-        //request.setEntity(request.createCreateOrderParms(openId));
+        request.setEntity(request.createCreateOrderParms(openId,"","","","",""));
         request.setOutTime(10 * 1000);
         request.setIRequestListener(new JsonRequestListener() {
             @Override
@@ -95,7 +100,7 @@ public class RepaymentFragment extends BaseFragment {
             }
         });
         request.execute();
-//        cancelRequest(request);
+        cancelRequest(request);
     }
 
     private List<BillRepaymentEntity> testData() {

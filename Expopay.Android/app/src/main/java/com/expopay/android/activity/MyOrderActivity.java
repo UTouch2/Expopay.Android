@@ -1,7 +1,5 @@
 package com.expopay.android.activity;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,9 +13,6 @@ import com.expopay.android.fragment.PaymentOrderFragment;
 import com.expopay.android.fragment.PeriodOrderFragment;
 
 public class MyOrderActivity extends BaseActivity {
-
-    private PeriodOrderFragment periodOrderFragment;
-    private PaymentOrderFragment paymentOrderFragment;
 
     private Button periodOrderBtn;
     private Button paymentOrderBtn;

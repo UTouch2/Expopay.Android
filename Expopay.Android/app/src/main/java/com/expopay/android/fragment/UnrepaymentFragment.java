@@ -13,7 +13,7 @@ import com.expopay.android.R;
 import com.expopay.android.adapter.listview.BillUnrepaymentAdapter;
 import com.expopay.android.application.MyApplication;
 import com.expopay.android.model.BillUnrepaymentEntity;
-import com.expopay.android.request.CardRequest;
+import com.expopay.android.request.OrderRequest;
 import com.expopay.android.view.CustormLoadingView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -50,10 +50,15 @@ public class UnrepaymentFragment extends BaseFragment {
         return view;
     }
 
-    private void getBillRepayment(String openId) throws JSONException {
+    private void getBillRepayment(String openId,
+                                  String orderSource,
+                                  String paymentMethod,
+                                  String orerAmount,
+                                  String publicUtilityType,
+                                  String publicUtilityNum) throws JSONException {
         billUnrepayment_loading.show();
-        CardRequest request = new CardRequest(MyApplication.HOST + "/system/version");
-        request.setEntity(request.createCardListParams(openId));
+        OrderRequest request = new OrderRequest(MyApplication.HOST + "");
+        request.setEntity(request.createCreateOrderParms(openId, "", "", "", "", ""));
         request.setOutTime(10 * 1000);
         request.setIRequestListener(new JsonRequestListener() {
             @Override
@@ -95,7 +100,7 @@ public class UnrepaymentFragment extends BaseFragment {
             }
         });
         request.execute();
-//        cancelRequest(request);
+        cancelRequest(request);
     }
 
     private List<BillUnrepaymentEntity> testData() {
