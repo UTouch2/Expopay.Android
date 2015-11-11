@@ -2,6 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
     tools:context="com.expopay.android.activity.CertificationActivity">
 
     <RelativeLayout
@@ -9,17 +12,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
+        android:background="@drawable/_rectangle_bg"
         android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="卡号："
+            android:text="卡   号："
+            android:textSize="15sp"
+            android:textColor="#888888"
             android:id="@+id/textView4" />
         <TextView
             android:id="@+id/certificationCard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="6666666666666666："
+            android:textColor="#BDBDBD"
+            android:textSize="15sp"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/textView4" />
         <ImageView
@@ -40,52 +48,63 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="姓名："/>
+            android:layout_gravity="center_vertical"
+            android:textColor="#888888"
+            android:textSize="15sp"
+            android:text="姓   名："/>
         <EditText
             android:id="@+id/certificationName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_gravity="center_vertical"
+            android:textColor="#888888"
+            android:textSize="15sp"
             android:text="克里斯"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:background="#FFFFFF"
         android:padding="20dp"
         android:layout_below="@+id/llname"
         android:id="@+id/linearLayout11">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="#888888"
+            android:textSize="15sp"
             android:text="身份证："/>
         <EditText
             android:id="@+id/certificationID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@null"
+            android:layout_gravity="center_vertical"
+            android:textColor="#888888"
+            android:textSize="15sp"
             android:text="23456789987656789"/>
     </LinearLayout>
 
-    <Button
+    <com.expopay.android.view.CustormLoadingButton
+        android:id="@+id/btnBind"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:background="@drawable/_button"
-        android:padding="20dp"
         android:text="绑定"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:onClick="btnBind"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentBottom="true" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
+        android:textColor="#BDBDBD"
+        android:textSize="13sp"
         android:text="*请输入你的真实有效身份，一确保可能发生的挂失服务。"
         android:id="@+id/textView5"
-        android:layout_below="@+id/linearLayout11"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/linearLayout11" />
 
 </RelativeLayout>
