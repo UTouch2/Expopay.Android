@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -45,7 +47,7 @@
                 <TextView
                     android:id="@+id/address_city_text"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@id/address_city_btn"
                     android:layout_toRightOf="@id/address_city_label"
@@ -76,7 +78,6 @@
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/address_address_label"
                     android:background="#00000000"
-                    android:inputType="number"
                     android:lines="1"
                     android:maxLength="11"
                     android:singleLine="true"
@@ -139,7 +140,6 @@
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/address_name_label"
                     android:background="#00000000"
-                    android:inputType="number"
                     android:lines="1"
                     android:maxLength="11"
                     android:singleLine="true"
@@ -180,10 +180,10 @@
         </LinearLayout>
 
         <com.expopay.android.view.CustormLoadingButton
+            android:id="@+id/address_ok"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/_button"
             android:layout_alignParentBottom="true"
-            android:text="保  存" />
+            android:background="@drawable/_button" />
     </RelativeLayout>
 </LinearLayout>
