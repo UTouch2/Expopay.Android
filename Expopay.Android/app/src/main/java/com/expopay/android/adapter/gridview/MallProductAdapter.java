@@ -48,7 +48,7 @@ public class MallProductAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final MallProductEntity entity = data.get(position);
-        ViewHolder holder = null;
+        final ViewHolder holder;
         //如果缓存convertView为空，则需要创建View
         if (convertView == null) {
             holder = new ViewHolder();
@@ -70,6 +70,8 @@ public class MallProductAdapter extends BaseAdapter{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ProductDetailsActivity.class);
+                intent.putExtra("productName",holder.productName.getText().toString().trim());
+                intent.putExtra("orderAmount",holder.orderAmount.getText().toString().trim());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }

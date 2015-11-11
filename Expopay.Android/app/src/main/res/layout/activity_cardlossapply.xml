@@ -1,7 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_weight="1">
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true">
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/llCardNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:padding="20dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="卡号："
+            android:textSize="15sp"
+            android:textColor="#EA663A"/>
+        <EditText
+            android:id="@+id/etCardNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:hint="请输入卡号"
+            android:textSize="15sp"
+            android:background="@null"
+            android:textColor="#EA663A"
+            android:textColorHint="#EA663A"/>
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/llCardPassword"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:padding="20dp"-->
+        <!--android:background="#F9F9F9"-->
+        <!--android:layout_below="@+id/llCardNumber"-->
+        <!--android:orientation="horizontal">-->
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="密码："-->
+            <!--android:textColor="#ACACAC"-->
+            <!--android:textSize="15sp"/>-->
+        <!--<EditText-->
+            <!--android:id="@+id/etCardPassword"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:background="@null"-->
+            <!--android:textSize="15sp"-->
+            <!--android:textColor="#ACACAC"-->
+            <!--android:password="true"-->
+            <!--android:hint="请输入密码"/>-->
+    <!--</LinearLayout>-->
+
+    <LinearLayout
+        android:id="@+id/llLossCardReason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:background="#FFFFFF"
+        android:layout_below="@+id/llCardNumber"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="原因："
+            android:textSize="15sp"
+            android:textColor="#ACACAC"/>
+        <EditText
+            android:id="@+id/etLossCardReason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@null"
+            android:textSize="15sp"
+            android:textColor="#ACACAC"
+            android:hint="请输入原因"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_below="@+id/llLossCardReason"
+        android:text="*密码为南博卡背部涂层覆盖处或是您自行更改的密码。"
+        android:textColor="#BEBEBE"
+        android:textSize="13sp"/>
+
+    <com.expopay.android.view.CustormLoadingButton
+        android:id="@+id/btnSubmitOnClick"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/_button"
+        android:onClick="btnSubmitOnClick"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>

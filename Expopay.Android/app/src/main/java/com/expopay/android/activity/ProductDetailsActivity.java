@@ -121,12 +121,11 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                 startActivity(intent);
                 break;
             case R.id.btnImmediatelyOrder:
-//                try {
-//                    getOrder(getUser().getOpenId(), "", "","","","","");
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
                 intent.setClass(ProductDetailsActivity.this, OrderDetailCommitActivity.class);
+                intent.putExtra("detailProductName", detailProductName.getText().toString().trim());
+                intent.putExtra("detailAmount",detailAmount.getText().toString().trim());
+                intent.putExtra("tvSelected",tvSelected.getText().toString().trim());
+                intent.putExtra("tvStaging",tvStaging.getText().toString().trim());
                 startActivity(intent);
                 break;
             default:
@@ -134,44 +133,10 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
         }
     }
 
-//    private void getOrder(String openId, String orderSource, String paymentMethod, String orerAmount,
-//                          String productId, String periodId, String addressId)throws JSONException {
-//        btnImmediatelyOrder.showLoading("正在下单...");
-//        OrderRequest request = new OrderRequest(MyApplication.HOST +"");
-//        request.setEntity(request.createCreateOrderParms(openId, orderSource,
-//                paymentMethod, orerAmount, productId, periodId, addressId));
-//        request.setIRequestListener(new JsonRequestListener() {
-//            @Override
-//            public void onFilure(Exception e) {
-//                btnImmediatelyOrder.showResult("网络请求失败", false);
-//            }
-//
-//            @Override
-//            public void onSuccess(Object o) {
-//                try {
-//                    JSONObject json = (JSONObject) o;
-//                    if (json.getJSONObject("header").getString("code").equals("0000")) {
-//                        btnImmediatelyOrder.showResult("下单成功", true);
-//                    }else{
-//                        btnImmediatelyOrder.showResult(json.getJSONObject("header").getString("desc"), false);
-//                    }
-//                } catch (JSONException e) {
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onProgressUpdate(int i, int i1) {
-//
-//            }
-//        });
-//        request.execute();
-//        cancelRequest(request);
-//    }
-
     private void setTextView(){
-        detailProductName.setText("iPhone6S");
-        detailAmount.setText("5288.00");
+        Intent intent = getIntent();
+        detailProductName.setText(intent.getStringExtra("productName"));
+        detailAmount.setText(intent.getStringExtra("orderAmount"));
     }
 
     private View[] createViews() {

@@ -1,5 +1,6 @@
 package com.expopay.android.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -23,7 +24,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
     private TextView commitProductName;
     private TextView commitOrderAmount;
     private TextView commitProperties;
-    private TextView commitRepaymentPeriod;
+//    private TextView commitRepaymentPeriod;
     private TextView commitServiceAmount;
     private TextView commitPeriodAmount;
     private LinearLayout llAddress;
@@ -38,7 +39,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
         commitProductName = (TextView) findViewById(R.id.commitProductName);
         commitOrderAmount = (TextView) findViewById(R.id.commitOrderAmount);
         commitProperties = (TextView) findViewById(R.id.commitProperties);
-        commitRepaymentPeriod = (TextView) findViewById(R.id.commitRepaymentPeriod);
+//        commitRepaymentPeriod = (TextView) findViewById(R.id.commitRepaymentPeriod);
         commitServiceAmount = (TextView) findViewById(R.id.commitServiceAmount);
         commitPeriodAmount = (TextView) findViewById(R.id.commitPeriodAmount);
         llAddress = (LinearLayout) findViewById(R.id.llAddress);
@@ -69,7 +70,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String repaymentPeriod = commitRepaymentPeriod.getText().toString().trim();
+                String repaymentPeriod = commitServiceAmount.getText().toString().trim();
 
                 if (checkBox.isChecked()) {
                     try {
@@ -120,12 +121,13 @@ public class OrderDetailCommitActivity extends BaseActivity {
     }
 
     private void setTextView() {
+        Intent intent = getIntent();
         commitProductImg.setImageResource(R.mipmap.mall_mobile);
-        commitProductName.setText("iPhone6S");
-        commitOrderAmount.setText("5200.00");
-        commitProperties.setText("白色 32G");
-        commitRepaymentPeriod.setText("12期");
-        commitServiceAmount.setText("（440+30）x" + 12 + "=" + (440 + 30) * 12);
+        commitProductName.setText(intent.getStringExtra("detailProductName"));
+        commitOrderAmount.setText(intent.getStringExtra("detailAmount"));
+        commitProperties.setText(intent.getStringExtra("tvSelected"));
+//        commitRepaymentPeriod.setText("12期");
+        commitServiceAmount.setText(intent.getStringExtra("tvStaging"));
         commitPeriodAmount.setText("每期应还款" + 470 + " ");
         commitConsignee.setText("收货人");
         commitConsigneeMobile.setText("13600000000");
