@@ -14,13 +14,15 @@ import java.util.Map;
  * Created by misxu012 on 2015/10/20.
  */
 public class CardRequest extends Request {
-    public CardRequest(String url){
+    public CardRequest(String url) {
         setRequestMethod(RequestMethod.POST);
         setOutTime(10 * 1000);
         setUrl(url);
     }
+
     /**
      * 删除卡参数
+     *
      * @return
      * @throws JSONException
      */
@@ -42,12 +44,14 @@ public class CardRequest extends Request {
         map.put("data", main.toString());
         return map;
     }
+
     /**
      * 添加卡参数
+     *
      * @return
      * @throws JSONException
      */
-    public Map<String, String> createAddCardParams( String openId, String cardNumber,String password)
+    public Map<String, String> createAddCardParams(String openId, String cardNumber, String password)
             throws JSONException {
         JSONObject header = new JSONObject();
         header.put("openid", openId);
@@ -69,13 +73,14 @@ public class CardRequest extends Request {
 
     /**
      * 卡挂失参数
+     *
      * @param openId
      * @param cardNumber
      * @param reason
      * @return
      * @throws JSONException
      */
-    public Map<String, String> createCardLossApplyParams( String openId, String cardNumber,String reason)
+    public Map<String, String> createCardLossApplyParams(String openId, String cardNumber, String reason)
             throws JSONException {
         JSONObject header = new JSONObject();
         header.put("openid", openId);
@@ -97,11 +102,12 @@ public class CardRequest extends Request {
 
     /**
      * 卡列表
+     *
      * @param openId
      * @return
      * @throws JSONException
      */
-    public Map<String, String> createCardListParams( String openId)
+    public Map<String, String> createCardListParams(String openId)
             throws JSONException {
         JSONObject header = new JSONObject();
         header.put("openid", openId);
@@ -120,7 +126,8 @@ public class CardRequest extends Request {
     }
 
     /**
-     *卡实名
+     * 卡实名
+     *
      * @param openId
      * @param cardNumber
      * @param personId
@@ -128,7 +135,7 @@ public class CardRequest extends Request {
      * @return
      * @throws JSONException
      */
-    public Map<String, String> createCertificationApplyParams( String openId, String cardNumber,String personId,String personName)
+    public Map<String, String> createCertificationApplyParams(String openId, String cardNumber, String personId, String personName)
             throws JSONException {
         JSONObject header = new JSONObject();
         header.put("openid", openId);
@@ -151,6 +158,7 @@ public class CardRequest extends Request {
 
     /**
      * 卡详情
+     *
      * @param openId
      * @param cardNum
      * @return
@@ -177,6 +185,7 @@ public class CardRequest extends Request {
 
     /**
      * 卡详情
+     *
      * @param openId
      * @param cardNum
      * @return

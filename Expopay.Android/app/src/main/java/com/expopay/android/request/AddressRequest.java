@@ -15,13 +15,15 @@ import java.util.Map;
  */
 public class AddressRequest extends Request {
 
-    public AddressRequest(String url){
+    public AddressRequest(String url) {
         setRequestMethod(RequestMethod.POST);
         setOutTime(10 * 1000);
         setUrl(url);
     }
+
     /**
      * 获取收货地址列表
+     *
      * @param openId
      * @return
      * @throws JSONException
@@ -50,24 +52,20 @@ public class AddressRequest extends Request {
      * @param openId
      * @param personName
      * @param mobile
-     * @param provinceNum
-     * @param cityNum
      * @param districtNum
-     * @param street
      * @param address
-     * @param ZipCode
+     * @param zipCode
      * @param isDefault
      * @return
      * @throws JSONException
      */
-    public Map<String, String> createAddAddressParams(String openId, String personName,
+    public Map<String, String> createAddAddressParams(String openId,
+                                                      String addressId,
+                                                      String personName,
                                                       String mobile,
-                                                      String provinceNum,
-                                                      String cityNum,
                                                       String districtNum,
-                                                      String street,
                                                       String address,
-                                                      String ZipCode,
+                                                      String zipCode,
                                                       String isDefault
     ) throws JSONException {
         JSONObject data = new JSONObject();
@@ -78,12 +76,10 @@ public class AddressRequest extends Request {
         JSONObject body = new JSONObject();
         body.put("personName", personName);
         body.put("mobile", mobile);
-        body.put("provinceNum", provinceNum);
-        body.put("cityNum", cityNum);
+        body.put("addressId", addressId);
         body.put("districtNum", districtNum);
-        body.put("street", street);
         body.put("address", address);
-        body.put("ZipCode", ZipCode);
+        body.put("zipCode", zipCode);
         body.put("isDefault", isDefault);
 
         String signHead = MD5Util.GetMD5Code(body.toString());

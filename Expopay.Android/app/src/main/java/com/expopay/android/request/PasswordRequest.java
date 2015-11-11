@@ -144,6 +144,28 @@ public class PasswordRequest extends Request {
         map.put("data", data.toString());
         return map;
     }
+    public Map<String, String> createChangeCardPasswordParams(String openId, String cardNumber,String payPwd,
+                                                             String newPayPwd) throws JSONException {
+        JSONObject data = new JSONObject();
+        JSONObject header = new JSONObject();
+        header.put("openId", openId);
+        header.put("action", "");
+        header.put("machineNumber", "android");
+        JSONObject body = new JSONObject();
+        body.put("oldPwd",payPwd);
+        body.put("newPwd",newPayPwd);
+        body.put("cardNumber",cardNumber);
+
+        String signHead = MD5Util.GetMD5Code(body.toString());
+        String signTail = MD5Util.getTail(openId);
+        header.put("sign", signHead + signTail);
+
+        data.put("header", header);
+        data.put("body", body);
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("data", data.toString());
+        return map;
+    }
     /**
      * 修改密保问题
      * @param openId
