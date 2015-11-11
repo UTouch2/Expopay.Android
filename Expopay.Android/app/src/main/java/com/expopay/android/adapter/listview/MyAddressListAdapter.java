@@ -85,6 +85,7 @@ public class MyAddressListAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Intent intent = new Intent(context.getApplicationContext(), AddressDetailsActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("address",address);
                 context.startActivity(intent);
             }
         });
