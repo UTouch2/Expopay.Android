@@ -1,16 +1,20 @@
 package com.expopay.android.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 /**
  * Created by misxu012 on 2015/10/15.
  */
-public class CardEntity implements Serializable{
+public class CardEntity implements Serializable {
 
     private String cardNumber;
     private String cardType;
     private String isDefault;
+    @SerializedName("cardBalance")
     private String balance;
+
     public CardEntity() {
     }
 

@@ -16,6 +16,15 @@ public class AddressEntity implements Serializable {
     private String address;
     private String ZipCode;
     private String isDefault;
+    private String districtNum;
+
+    public String getDistrictNum() {
+        return districtNum;
+    }
+
+    public void setDistrictNum(String districtNum) {
+        this.districtNum = districtNum;
+    }
 
     public AddressEntity() {
     }
