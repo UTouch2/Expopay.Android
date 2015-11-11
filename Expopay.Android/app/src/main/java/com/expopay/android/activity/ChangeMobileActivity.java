@@ -7,10 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.android.kechong.lib.listener.AbsTextWatcher;
 import com.expopay.android.R;
+import com.expopay.android.application.MyApplication;
 import com.expopay.android.request.CustomerRequest;
 import com.expopay.android.view.CustormLoadingButton;
 
@@ -25,9 +27,7 @@ import java.util.TimerTask;
  */
 public class ChangeMobileActivity extends BaseActivity {
     private String openId, mobile, code;
-
     private EditText phoneNumEditText, vercodeEditText;
-
     private CustormLoadingButton okBtn;
     private TextView timeoutText;
     private Button getVercodeBtn;
@@ -46,9 +46,7 @@ public class ChangeMobileActivity extends BaseActivity {
         okBtn = (CustormLoadingButton) findViewById(R.id.changecardpassword_ok);
 
         getVercodeBtn.setEnabled(false);
-        timeoutText.setVisibility(View.GONE);
         okBtn.setEnabled(false);
-        getVercodeBtn.setVisibility(View.GONE);
         okBtn.setBackgroundResource(R.drawable._button_down);
 
         phoneNumEditText.addTextChangedListener(new AbsTextWatcher() {
@@ -58,10 +56,8 @@ public class ChangeMobileActivity extends BaseActivity {
                 // 如果输入等于11位获取按钮可用
                 if (str.toString().trim().length() == 11) {
                     getVercodeBtn.setEnabled(true);
-                    getVercodeBtn.setVisibility(View.VISIBLE);
                 } else {
                     getVercodeBtn.setEnabled(false);
-                    getVercodeBtn.setVisibility(View.GONE);
                 }
             }
         });
@@ -84,7 +80,7 @@ public class ChangeMobileActivity extends BaseActivity {
             public void onClick(View v) {
                 mobile = phoneNumEditText.getText().toString().trim();
                 try {
-                    setgetVercodeBtn(mobile);
+                    sendVercode(mobile);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -93,71 +89,13 @@ public class ChangeMobileActivity extends BaseActivity {
     }
 
     public void changeMobileOnclick(View view) {
-        openId = "";
         try {
+            mobile = phoneNumEditText.getText().toString().trim();
             code = vercodeEditText.getText().toString().trim();
-            changeMobileRequest(openId, mobile, code);
+            changeMobileRequest(getUser().getOpenId(), mobile, code);
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
-
-
-    private void changeMobileRequest(String openId, String mobile, String code) throws JSONException {
-        CustomerRequest request = new CustomerRequest("");
-        request.setEntity(request.createChangeMobileParams(openId, mobile, code));
-        request.setIRequestListener(new JsonRequestListener() {
-            @Override
-            public void onFilure(Exception e) {
-
-            }
-
-            @Override
-            public void onSuccess(Object o) {
-
-            }
-
-            @Override
-            public void onProgressUpdate(int i, int i1) {
-
-            }
-        });
-        request.execute();
-        cancelRequest(request);
-    }
-
-    private void setgetVercodeBtn(String mobile) throws JSONException {
-        CustomerRequest request = new CustomerRequest("");
-        request.setEntity(request.createGetVerCodeParams(""));
-        request.setIRequestListener(new JsonRequestListener() {
-            @Override
-            public void onFilure(Exception e) {
-
-            }
-
-            @Override
-            public void onSuccess(Object o) {
-                JSONObject json = (JSONObject) o;
-                try {
-                    if (json.getJSONObject("header").getString("code")
-                            .equals("0000")) {
-                        // 获取成功则启动倒计时
-                        startTimer();
-                    } else {
-
-                    }
-                } catch (JSONException e) {
-
-                }
-            }
-
-            @Override
-            public void onProgressUpdate(int i, int i1) {
-
-            }
-        });
-        request.execute();
-        cancelRequest(request);
     }
 
     public void startTimer() {
@@ -196,4 +134,67 @@ public class ChangeMobileActivity extends BaseActivity {
             }
         }
     };
+
+    private void changeMobileRequest(String openId, String mobile, String code) throws JSONException {
+        okBtn.showLoading("");
+        CustomerRequest request = new CustomerRequest(MyApplication.HOST + "/customer/resetmobile");
+        request.setEntity(request.createChangeMobileParams(openId, mobile, code));
+        request.setIRequestListener(new JsonRequestListener() {
+            @Override
+            public void onFilure(Exception e) {
+                okBtn.showResult("", false);
+            }
+            @Override
+            public void onSuccess(Object o) {
+                JSONObject json = (JSONObject) o;
+                try {
+                    if (json.getJSONObject("header").getString("code")
+                            .equals("0000")) {
+                    }
+                } catch (JSONException e) {
+                    okBtn.showLoading("");
+                }
+            }
+
+            @Override
+            public void onProgressUpdate(int i, int i1) {
+
+            }
+        });
+        request.execute();
+        cancelRequest(request);
+    }
+
+    private void sendVercode(String mobile) throws JSONException {
+        CustomerRequest re = new CustomerRequest(MyApplication.HOST + "/system/sendcode");
+        re.setEntity(re.createGetVerCodeParams(mobile));
+        re.setOutTime(10000);
+        re.setIRequestListener(new JsonRequestListener() {
+            @Override
+            public void onFilure(Exception e) {
+                System.out.print(e);
+            }
+
+            @Override
+            public void onSuccess(Object o) {
+                JSONObject js = (JSONObject) o;
+                try {
+                    if (js.getJSONObject("header").getString("code").equals("0000")) {
+                        startTimer();
+                    } else {
+                        Toast.makeText(getApplicationContext(), js.getJSONObject("header").getString("desc"), Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onProgressUpdate(int i, int i1) {
+
+            }
+        });
+        re.execute();
+        cancelRequest(re);
+    }
 }
