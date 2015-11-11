@@ -4,21 +4,24 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
 
 import com.expopay.android.R;
+import com.expopay.android.adapter.pager.MainPagerAdepter;
 import com.expopay.android.fragment.PaymentOrderFragment;
 import com.expopay.android.fragment.PeriodOrderFragment;
 
-public class MyOrderActivity extends BaseActivity implements View.OnClickListener {
+public class MyOrderActivity extends BaseActivity {
 
     private PeriodOrderFragment periodOrderFragment;
     private PaymentOrderFragment paymentOrderFragment;
-    private FragmentManager fragmentManager;
 
-    private Button btnPeriodOrder;
-    private Button btnPaymentOrders;
+    private Button periodOrderBtn;
+    private Button paymentOrderBtn;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,34 +29,31 @@ public class MyOrderActivity extends BaseActivity implements View.OnClickListene
         setStatusColor();
         setContentView(R.layout.activity_my_order);
         // 初始化布局元素
-        assignViews();
-        fragmentManager = getFragmentManager();
+        initView();
         // 第一次启动时选中第0个tab
         setTabSelection(0);
     }
 
-    private void assignViews() {
-        btnPeriodOrder = (Button) findViewById(R.id.btn_installmentOrders);
-        btnPaymentOrders = (Button) findViewById(R.id.btn_paymentOrders);
-        btnPeriodOrder.setOnClickListener(this);
-        btnPaymentOrders.setOnClickListener(this);
+    @Override
+    protected void initView() {
+        periodOrderBtn = (Button) findViewById(R.id.btn_installmentOrders);
+        paymentOrderBtn = (Button) findViewById(R.id.btn_paymentOrders);
+        viewPager = (ViewPager) findViewById(R.id.myorder_viewpager);
+        periodOrderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setTabSelection(0);
+            }
+        });
+        paymentOrderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setTabSelection(1);
+            }
+        });
+        viewPager.setAdapter(new MainPagerAdepter(getSupportFragmentManager(), new Fragment[]{new PeriodOrderFragment(), new PaymentOrderFragment()}));
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_installmentOrders:
-                // 当点击了分期订单tab时，选中第1个tab
-                setTabSelection(0);
-                break;
-            case R.id.btn_paymentOrders:
-                // 当点击了缴费订单tab时，选中第2个tab
-                setTabSelection(1);
-                break;
-            default:
-                break;
-        }
-    }
 
     /**
      * 根据传入的index参数来设置选中的tab页。
@@ -61,63 +61,23 @@ public class MyOrderActivity extends BaseActivity implements View.OnClickListene
     private void setTabSelection(int index) {
         // 每次选中之前先清楚掉上次的选中状态
         clearSelection();
-        // 开启一个Fragment事务
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        // 先隐藏掉所有的Fragment，以防止有多个Fragment显示在界面上的情况
-        hideFragments(transaction);
-        switch (index) {
-            case 0:
-                // 当点击了消息tab时，改变控件的背景颜色和文字颜色
-                btnPeriodOrder.setBackgroundColor(Color.parseColor("#BCBCBC"));
-                btnPeriodOrder.setTextColor(Color.WHITE);
-                if (paymentOrderFragment == null) {
-                    // 如果paymentOrderFragment为空，则创建一个并添加到界面上
-                    periodOrderFragment = new PeriodOrderFragment();
-                    transaction.add(R.id.order_content, periodOrderFragment);
-                } else {
-                    // 如果MessageFragment不为空，则直接将它显示出来
-                    transaction.show(periodOrderFragment);
-                }
-                break;
-            default:
-                // 当点击了设置tab时，改变控件的背景颜色和文字颜色
-                btnPaymentOrders.setBackgroundColor(Color.parseColor("#BCBCBC"));
-                btnPaymentOrders.setTextColor(Color.WHITE);
-                if (paymentOrderFragment == null) {
-                    // 如果installmentOrderFragment为空，则创建一个并添加到界面上
-                    paymentOrderFragment = new PaymentOrderFragment();
-                    transaction.add(R.id.order_content, paymentOrderFragment);
-                } else {
-                    // 如果installmentOrderFragment不为空，则直接将它显示出来
-                    transaction.show(paymentOrderFragment);
-                }
-                break;
+        if (index == 0) {
+            periodOrderBtn.setBackgroundColor(Color.parseColor("#BCBCBC"));
+            periodOrderBtn.setTextColor(Color.WHITE);
+        } else {
+            paymentOrderBtn.setBackgroundColor(Color.parseColor("#BCBCBC"));
+            paymentOrderBtn.setTextColor(Color.WHITE);
         }
-        transaction.commit();
+        viewPager.setCurrentItem(index);
     }
 
     /**
      * 清除掉所有的选中状态。
      */
     private void clearSelection() {
-        btnPeriodOrder.setBackgroundColor(Color.WHITE);
-        btnPeriodOrder.setTextColor(Color.parseColor("#666666"));
-        btnPaymentOrders.setBackgroundColor(Color.WHITE);
-        btnPaymentOrders.setTextColor(Color.parseColor("#666666"));
+        periodOrderBtn.setBackgroundColor(Color.WHITE);
+        periodOrderBtn.setTextColor(Color.parseColor("#666666"));
+        paymentOrderBtn.setBackgroundColor(Color.WHITE);
+        paymentOrderBtn.setTextColor(Color.parseColor("#666666"));
     }
-
-    /**
-     * 将所有的Fragment都置为隐藏状态。
-     *
-     * @param transaction 用于对Fragment执行操作的事务
-     */
-    private void hideFragments(FragmentTransaction transaction) {
-        if (periodOrderFragment != null) {
-            transaction.hide(periodOrderFragment);
-        }
-        if (paymentOrderFragment != null) {
-            transaction.hide(paymentOrderFragment);
-        }
-    }
-
 }

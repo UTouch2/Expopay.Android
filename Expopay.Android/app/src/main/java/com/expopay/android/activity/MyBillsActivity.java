@@ -1,9 +1,9 @@
 package com.expopay.android.activity;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.Button;
 
@@ -34,7 +34,7 @@ public class MyBillsActivity extends BaseActivity implements View.OnClickListene
         setContentView(R.layout.activity_my_bills);
 
         assignViews();
-        fragmentManager = getFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         setTabSelection(0);
     }
 
