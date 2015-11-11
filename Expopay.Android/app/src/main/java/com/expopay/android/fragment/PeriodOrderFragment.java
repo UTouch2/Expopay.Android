@@ -23,7 +23,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PeriodOrderFragment extends Fragment {
+public class PeriodOrderFragment extends BaseFragment {
 
     private ListView lvPeriodOrder;
     private CustormLoadingView periodOrder_loading;
@@ -92,22 +92,6 @@ public class PeriodOrderFragment extends Fragment {
             }
         });
         request.execute();
-//        cancelRequest(request);
+        cancelRequest(request);
     }
-
-    private List<PeriodOrderEntity> testData(){
-        List<PeriodOrderEntity> list = new ArrayList<PeriodOrderEntity>();
-        for(int i = 0;i<10;i++){
-            PeriodOrderEntity po = new PeriodOrderEntity();
-            po.setProductName("iPhone6S4G"+i);
-            po.setOrderAmount("5200.00");
-            po.setProperties("yu");
-            po.setRepaymentPeriod("12期");
-            po.setOrderTime("2015-09-26");
-            po.setOrderStatus("未完成");
-            list.add(po);
-        }
-        return list ;
-    }
-
 }

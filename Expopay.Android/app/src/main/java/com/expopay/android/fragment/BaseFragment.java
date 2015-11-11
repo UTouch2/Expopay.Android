@@ -23,7 +23,6 @@ public abstract class BaseFragment extends AbsFragment {
 
     public UserEntity getUser() {
         if(getActivity() instanceof BaseActivity){
-
             return ((BaseActivity)getActivity()).getUser();
         }
         return  new UserEntity();

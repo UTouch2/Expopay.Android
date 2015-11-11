@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class RepaymentFragment extends Fragment {
+public class RepaymentFragment extends BaseFragment {
 
     private ListView lvRepayment;
     private CustormLoadingView billRepayment_loading;
@@ -53,7 +53,7 @@ public class RepaymentFragment extends Fragment {
     private void getBillRepayment(String openId) throws JSONException {
         billRepayment_loading.show();
         OrderRequest request = new OrderRequest(MyApplication.HOST + "");
-//        request.setEntity(request.createCreateOrderParms(openId));
+        //request.setEntity(request.createCreateOrderParms(openId));
         request.setOutTime(10 * 1000);
         request.setIRequestListener(new JsonRequestListener() {
             @Override

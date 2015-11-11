@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UnrepaymentFragment extends Fragment {
+public class UnrepaymentFragment extends BaseFragment {
 
     private ListView lvUnRepayment;
     private CustormLoadingView billUnrepayment_loading;
