@@ -1,6 +1,8 @@
 package com.expopay.android.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
@@ -37,16 +39,48 @@ public class MyAddressActivity extends BaseActivity {
         loadingView = (CustormLoadingView) findViewById(R.id.myaddress_loadingview);
         adapter = new MyAddressListAdapter(this, new ArrayList<AddressEntity>());
         listView.setAdapter(adapter);
+        loadingView.setRetryOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    getAddress(getUser().getOpenId());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        loadingView.setAddOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AddressDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
+        rightButtton.setImageResource(R.mipmap.mycards_add);
+        rightButtton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AddressDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
+        try {
+            getAddress(getUser().getOpenId());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
-
     private void getAddress(String openId) throws JSONException {
-        AddressRequest request = new AddressRequest(MyApplication.HOST + "");
+        loadingView.show();
+        loadingView.showLoading();
+        AddressRequest request = new AddressRequest(MyApplication.HOST + "/customer/addresses");
         request.setEntity(request.createGetAddressesParams(openId));
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
-
+                loadingView.showRetry();
+                loadingView.setRetryMessage("网络请求失败");
             }
 
             @Override
@@ -55,16 +89,24 @@ public class MyAddressActivity extends BaseActivity {
                 try {
                     if (json.getJSONObject("header").getString("code").equals("0000")) {
                         Gson gson = new Gson();
-                        List<AddressEntity> list = gson.fromJson(json.getJSONObject("body").getJSONArray("").toString(),
+                        List<AddressEntity> list = gson.fromJson(json.getJSONObject("body").getJSONArray("records").toString(),
                                 new TypeToken<List<AddressEntity>>() {
                                 }.getType());
-                        adapter.setData(list);
-                        adapter.notifyDataSetChanged();
-                        loadingView.dismiss();
+                        if (list.size() == 0) {
+                            loadingView.showAdd();
+                            loadingView.setAddMessage("当前还没有添加收货地址");
+                        } else {
+                            adapter.setData(list);
+                            adapter.notifyDataSetChanged();
+                            loadingView.dismiss();
+                        }
                     } else {
+                        loadingView.showRetry();
                         loadingView.setRetryMessage(json.getJSONObject("header").getString("desc"));
                     }
                 } catch (JSONException e) {
+                    loadingView.showRetry();
+                    loadingView.setRetryMessage("参数解析错误");
                 }
             }
 

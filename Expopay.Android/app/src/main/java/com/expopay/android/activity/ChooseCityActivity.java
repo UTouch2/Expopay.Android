@@ -1,5 +1,6 @@
 package com.expopay.android.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,6 +22,7 @@ import java.util.List;
 public class ChooseCityActivity extends BaseActivity {
     ListView pListview, cListview, dListview;
     List<CityEntity> pList, cList, dList;
+    CityEntity choosedCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,12 @@ public class ChooseCityActivity extends BaseActivity {
                 dListview.setAdapter(new CityListAdapter(getApplicationContext(), dList));
             }
         });
+        dListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                choosedCity = dList.get(position);
+            }
+        });
     }
 
     public void closeOnclick(View v) {
@@ -52,42 +60,7 @@ public class ChooseCityActivity extends BaseActivity {
     }
 
     public void okOnclick(View v) {
+        setResult(RESULT_OK, new Intent().putExtra("city", choosedCity));
         finish();
-    }
-
-    private List<CityEntity> testPData() {
-        List<CityEntity> list = new ArrayList<CityEntity>();
-        for (int i = 0; i < 10; i++) {
-            CityEntity c = new CityEntity();
-            c.setId(1);
-            c.setName("北京市");
-            c.setLevel(1);
-            list.add(c);
-        }
-        return list;
-    }
-
-    private List<CityEntity> testCData() {
-        List<CityEntity> list = new ArrayList<CityEntity>();
-        for (int i = 0; i < 10; i++) {
-            CityEntity c = new CityEntity();
-            c.setId(1);
-            c.setName("北京市");
-            c.setLevel(2);
-            list.add(c);
-        }
-        return list;
-    }
-
-    private List<CityEntity> testDData() {
-        List<CityEntity> list = new ArrayList<CityEntity>();
-        for (int i = 0; i < 10; i++) {
-            CityEntity c = new CityEntity();
-            c.setId(1);
-            c.setName("朝阳区");
-            c.setLevel(3);
-            list.add(c);
-        }
-        return list;
     }
 }

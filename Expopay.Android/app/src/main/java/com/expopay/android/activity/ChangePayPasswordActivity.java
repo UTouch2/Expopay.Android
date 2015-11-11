@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
+import com.expopay.android.application.MyApplication;
 import com.expopay.android.request.PasswordRequest;
 import com.expopay.android.view.CustormLoadingButton;
 
@@ -67,14 +68,13 @@ public class ChangePayPasswordActivity extends BaseActivity {
     private void changePayPasswoedRequest(String openId, String loginPwd,
                                           String newLoginPwd) throws JSONException {
         okBtn.showLoading("正在加载···");
-        PasswordRequest request = new PasswordRequest("");
+        PasswordRequest request = new PasswordRequest(MyApplication.HOST+"/customer/resetpaypwd");
         request.setEntity(request.createChangePayPasswordParams(openId, loginPwd, newLoginPwd));
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
                 okBtn.showResult("网络请求失败", false);
             }
-
             @Override
             public void onSuccess(Object result) {
                 JSONObject json = (JSONObject) result;
@@ -88,7 +88,6 @@ public class ChangePayPasswordActivity extends BaseActivity {
                 } catch (JSONException e) {
                 }
             }
-
             @Override
             public void onProgressUpdate(int i, int i1) {
 

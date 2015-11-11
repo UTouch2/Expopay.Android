@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
@@ -123,12 +124,12 @@ public class CardDetailsActivity extends BaseActivity {
     }
 
     private void deleteCardRequest(String openId, String cardNum) throws JSONException {
-        CardRequest request = new CardRequest(MyApplication.HOST + "");
+        CardRequest request = new CardRequest(MyApplication.HOST + "/customer/deletecard");
         request.setEntity(request.createDeleteCardParams(openId, cardNum));
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
-
+                System.out.print(e);
             }
 
             @Override
@@ -138,7 +139,8 @@ public class CardDetailsActivity extends BaseActivity {
                     if (json.getJSONObject("header").getString("code")
                             .equals("0000")) {
                         // 成功
-
+                        Toast.makeText(getApplicationContext(),"删除成功",Toast.LENGTH_LONG).show();
+                        finish();
                     } else {
                     }
                 } catch (JSONException e) {
@@ -165,7 +167,6 @@ public class CardDetailsActivity extends BaseActivity {
                 loadingView.showRetry();
                 loadingView.setRetryMessage("网络请求失败");
             }
-
             @Override
             public void onSuccess(Object o) {
                 JSONObject json = (JSONObject) o;

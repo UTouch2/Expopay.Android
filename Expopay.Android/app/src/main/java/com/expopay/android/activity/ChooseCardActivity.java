@@ -29,7 +29,7 @@ public class ChooseCardActivity extends BaseActivity {
         statusBarCoverActivity();
         setContentView(R.layout.activity_choosecard);
         mListView = (ListView) findViewById(R.id.choosecard_listview);
-        testData();
+        cards = (List<CardEntity>) getIntent().getSerializableExtra("cards");
         adapter = new ChooseCardListAdapter(this, cards);
         mListView.setAdapter(adapter);
     }
@@ -42,12 +42,5 @@ public class ChooseCardActivity extends BaseActivity {
         result = (CardEntity) mListView.getTag();
         setResult(RESULT_OK, new Intent().putExtra("card", result));
         finish();
-    }
-    private void testData() {
-        for (int i = 0; i < 2; i++) {
-            CardEntity e = new CardEntity();
-            e.setCardNumber("123456789"+i);
-            cards.add(e);
-        }
     }
 }
