@@ -1,6 +1,9 @@
 package com.expopay.android.view;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -25,6 +28,8 @@ public class CustormLoadingButton extends FrameLayout {
     private BannerPagerAdapter adapter;
     private ViewPager viewPager;
     private int status = 0;//0，是normal，1是loading，2是result
+    private String normalText;
+    private OnLoadingButtonListener onLoadingButtonListener;
 
     public CustormLoadingButton(Context context) {
         super(context);
@@ -61,16 +66,33 @@ public class CustormLoadingButton extends FrameLayout {
             @Override
             public void onClick(View v) {
                 if (onClickListener != null) {
-                    onClickListener.onClick(v);
+                    if (status == 0) {
+                        onClickListener.onClick(v);
+                    }
                 }
             }
         });
-
         addView(view);
     }
 
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (msg.what == 0) {
+                if (onLoadingButtonListener != null) {
+                    onLoadingButtonListener.onSuccessResult();
+                }
+            } else {
+                if (onLoadingButtonListener != null) {
+                    onLoadingButtonListener.onFailureResult();
+                }
+            }
+        }
+    };
 
     public void showNormal(String text) {
+        normalText = text;
         int index = viewPager.getCurrentItem();
         if (status == 2) {
             viewPager.setCurrentItem(index + 1);
@@ -88,7 +110,7 @@ public class CustormLoadingButton extends FrameLayout {
         loadingTextView.setText(text);
     }
 
-    public void showResult(String text, boolean isSuccess) {
+    public void showResult(String text, final boolean isSuccess) {
         int index = viewPager.getCurrentItem();
         if (status == 1) {
             viewPager.setCurrentItem(index + 1);
@@ -99,11 +121,33 @@ public class CustormLoadingButton extends FrameLayout {
         } else {
             resultIcon.setImageResource(R.mipmap.loadingbutton_resultfail);
         }
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                try {
+                    Thread.sleep(2000l);
+                    handler.sendEmptyMessage(isSuccess ? 0 : 1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
         resultTextView.setText(text);
     }
 
     @Override
     public void setOnClickListener(OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
+    }
+
+    public void setOnLoadingButtonListener(OnLoadingButtonListener onLoadingButtonListener) {
+        this.onLoadingButtonListener = onLoadingButtonListener;
+    }
+
+    public static interface OnLoadingButtonListener {
+        void onSuccessResult();
+
+        void onFailureResult();
     }
 }
