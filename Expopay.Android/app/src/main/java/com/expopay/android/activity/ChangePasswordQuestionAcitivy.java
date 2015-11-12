@@ -73,12 +73,12 @@ public class ChangePasswordQuestionAcitivy extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0) {
             if (resultCode == RESULT_OK) {
-                oldQuestion = passwordQuestionEntities.get(0);
+                oldQuestion = (PasswordQuestionEntity) data.getSerializableExtra("question");
                 oldQuestionText.setText(oldQuestion.getSecuQuestion());
             }
         } else if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-                newQuestion = passwordQuestionEntities.get(0);
+                newQuestion = (PasswordQuestionEntity) data.getSerializableExtra("question");
                 newQuestionText.setText(newQuestion.getSecuQuestion());
             }
         }
