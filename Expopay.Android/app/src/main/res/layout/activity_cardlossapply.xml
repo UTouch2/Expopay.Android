@@ -16,15 +16,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="卡号："
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:textColor="#EA663A"/>
         <EditText
-            android:id="@+id/etCardNumber"
+            android:id="@+id/cardLossApply_cardNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:hint="请输入卡号"
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:background="@null"
             android:textColor="#EA663A"
             android:textColorHint="#EA663A"/>
@@ -43,14 +43,14 @@
             <!--android:layout_height="wrap_content"-->
             <!--android:text="密码："-->
             <!--android:textColor="#ACACAC"-->
-            <!--android:textSize="15sp"/>-->
+            <!--android:textSize="13sp"/>-->
         <!--<EditText-->
-            <!--android:id="@+id/etCardPassword"-->
+            <!--android:id="@+id/cardLossApply_cardPassword"-->
             <!--android:layout_width="wrap_content"-->
             <!--android:layout_height="wrap_content"-->
             <!--android:layout_marginLeft="10dp"-->
             <!--android:background="@null"-->
-            <!--android:textSize="15sp"-->
+            <!--android:textSize="13sp"-->
             <!--android:textColor="#ACACAC"-->
             <!--android:password="true"-->
             <!--android:hint="请输入密码"/>-->
@@ -68,15 +68,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="原因："
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:textColor="#ACACAC"/>
         <EditText
-            android:id="@+id/etLossCardReason"
+            android:id="@+id/cardLossApply_lossCardReason"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:background="@null"
-            android:textSize="15sp"
+            android:textSize="13sp"
             android:textColor="#ACACAC"
             android:hint="请输入原因"/>
     </LinearLayout>
@@ -88,7 +88,7 @@
         android:layout_below="@+id/llLossCardReason"
         android:text="*密码为南博卡背部涂层覆盖处或是您自行更改的密码。"
         android:textColor="#BEBEBE"
-        android:textSize="13sp"/>
+        android:textSize="12sp"/>
 
     <com.expopay.android.view.CustormLoadingButton
         android:id="@+id/btnSubmitOnClick"

@@ -32,8 +32,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:textSize="15dp"
-                    android:textColor="#666666"
+                    android:textSize="13sp"
+                    android:textColor="#676767"
                     android:text="Apple iPhone 6S" />
 
                 <TextView
@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="￥5288.00"
-                    android:textSize="15dp"
+                    android:textSize="13sp"
                     android:textColor="#E85D2E" />
             </RelativeLayout>
 
@@ -56,7 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:textColor="#999999"
                     android:text="白色 16G x1" />
 
@@ -65,8 +65,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:textSize="15dp"
-                    android:textColor="#666666"
+                    android:textSize="12sp"
+                    android:textColor="#676767"
                     android:text="12期" />
             </RelativeLayout>
 
@@ -80,7 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:textColor="#999999"
                     android:text="2015年9月30日" />
 
@@ -90,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="待审核"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:textColor="#7DE161" />
             </RelativeLayout>
         </LinearLayout>

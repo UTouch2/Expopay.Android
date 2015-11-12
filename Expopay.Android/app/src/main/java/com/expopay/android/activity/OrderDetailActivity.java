@@ -72,6 +72,7 @@ public class OrderDetailActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusColor();
+        setTitle("订单详情");
         setContentView(R.layout.activity_order_detail);
 
         assignViews();

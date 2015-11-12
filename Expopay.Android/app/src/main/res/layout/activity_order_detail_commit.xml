@@ -31,14 +31,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="收件人："
-                    android:textColor="#666666"/>
+                    android:textSize="13sp"
+                    android:textColor="#969696"/>
 
                 <TextView
                     android:id="@+id/commitConsignee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="克里斯"
-                    android:textColor="#666666"/>
+                    android:textSize="13sp"
+                    android:textColor="#969696"/>
 
                 <ImageView
                     android:layout_width="15dp"
@@ -51,7 +53,8 @@
                     android:id="@+id/commitConsigneeMobile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#666666"
+                    android:textSize="13sp"
+                    android:textColor="#969696"
                     android:text="13666666666" />
             </LinearLayout>
 
@@ -72,6 +75,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#EFA38D"
+                    android:textSize="13sp"
                     android:text="云南省昆明市五华区海源中路1088号和成国际A座25楼" />
 
             </LinearLayout>
@@ -113,7 +117,8 @@
                 android:id="@+id/commitProductName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#666666"
+                android:textSize="13sp"
+                android:textColor="#8D8D8D"
                 android:text="Apple iPhone 6S 移动联通电信4G手机" />
 
             <LinearLayout
@@ -125,7 +130,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#666666"
+                    android:textSize="13sp"
+                    android:textColor="#8D8D8D"
                     android:text="已选" />
 
                 <TextView
@@ -134,7 +140,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:text="金色 64G 非合约机"
-                    android:textColor="#666666" />
+                    android:textSize="13sp"
+                    android:textColor="#969696" />
             </LinearLayout>
 
             <RelativeLayout
@@ -148,6 +155,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="￥5288.00"
+                    android:textSize="13sp"
                     android:textColor="#F1987A" />
 
                 <TextView
@@ -157,7 +165,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:text="x1"
-                    android:textColor="#666666"/>
+                    android:textSize="13sp"
+                    android:textColor="#969696"/>
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
@@ -175,7 +184,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#666666"
+            android:textSize="13sp"
+            android:textColor="#8D8D8D"
             android:text="分期" />
 
         <LinearLayout
@@ -195,7 +205,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:text="(522+12)x12=5288"
-                    android:textColor="#666666" />
+                    android:textSize="13sp"
+                    android:textColor="#969696" />
             </LinearLayout>
 
             <TextView
@@ -205,7 +216,8 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
                 android:text="每期应还款534元"
-                android:textColor="#666666" />
+                android:textSize="13sp"
+                android:textColor="#969696" />
         </LinearLayout>
     </LinearLayout>
 
@@ -225,8 +237,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:text="我同意《南博卡分期协议》"
-            android:textColor="#666666"
-            android:textSize="15dp"
+            android:textSize="13sp"
+            android:textColor="#969696"
             style="@style/CustomCheckboxTheme"/>
 
         <!--<LinearLayout-->

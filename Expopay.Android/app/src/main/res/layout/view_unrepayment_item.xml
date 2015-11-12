@@ -29,14 +29,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#666666"
-                android:textSize="15dp"
+                android:textSize="13sp"
                 android:text="Apple Iphone"/>
             <TextView
                 android:id="@+id/unrepaymentPro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#666666"
-                android:textSize="12dp"
+                android:textSize="12sp"
                 android:text="白色 16G"/>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -46,20 +46,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="本期应还："
-                    android:textSize="15dp"
+                    android:textSize="13sp"
                     android:textColor="#E85D2C"/>
                 <TextView
                     android:id="@+id/unrepaymentBillAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="440+30"
-                    android:textSize="15dp"
+                    android:textSize="13sp"
                     android:textColor="#E85D2C"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="(违约金)"
-                    android:textSize="15dp"
+                    android:textSize="13sp"
                     android:textColor="#666666"/>
             </LinearLayout>
             <LinearLayout
@@ -70,21 +70,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#666666"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:text="还款日期："/>
                 <TextView
                     android:id="@+id/unrepaymentTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#666666"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:text="2014-12-12"/>
                 <TextView
                     android:id="@+id/unrepaymentOverdueDays"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#F5081D"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:text="逾期3天"/>
             </LinearLayout>
             <LinearLayout
@@ -95,14 +95,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#666666"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:text="消费时间："/>
                 <TextView
                     android:id="@+id/unrepaymentOrderTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#666666"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:text="2014-12-12"/>
             </LinearLayout>
         </LinearLayout>
@@ -119,6 +119,7 @@
                 android:gravity="center"
                 android:layout_gravity="center_horizontal"
                 android:text="还款"
+                android:textSize="12sp"
                 android:textColor="#65BDF7"/>
             <TextView
                 android:id="@+id/unrepaymentPeriod"
@@ -127,6 +128,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_gravity="center_horizontal"
                 android:text="剩余10期"
+                android:textSize="12sp"
                 android:textColor="#B1B1B1"/>
         </LinearLayout>
 

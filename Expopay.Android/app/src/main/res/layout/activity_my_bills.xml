@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="总额度"
+            android:textSize="15sp"
             android:textColor="#666666" />
 
         <TextView
@@ -52,6 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:textSize="13sp"
                 android:text="600.00" />
 
             <TextView
@@ -60,6 +62,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
                 android:text="本期应还"
+                android:textSize="13sp"
                 android:textColor="#666666" />
         </LinearLayout>
 
@@ -76,6 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:textSize="13sp"
                 android:text="400.00" />
 
             <TextView
@@ -84,6 +88,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
                 android:text="待还款总额"
+                android:textSize="13sp"
                 android:textColor="#666666" />
         </LinearLayout>
     </LinearLayout>
@@ -137,7 +142,7 @@
                 android:background="#FFFFFF"
                 android:text="待还款"
                 android:textColor="#666666"
-                android:textSize="15dp" />
+                android:textSize="15sp" />
 
             <Button
                 android:id="@+id/btn_repayment"
@@ -147,7 +152,7 @@
                 android:background="#FFFFFF"
                 android:text="已还款"
                 android:textColor="#666666"
-                android:textSize="15dp" />
+                android:textSize="15sp" />
         </LinearLayout>
 
         <ImageView
@@ -156,11 +161,11 @@
             android:src="@mipmap/mall_ogistics_line" />
     </LinearLayout>
 
-    <RelativeLayout
+    <android.support.v4.view.ViewPager
         android:id="@+id/bill_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/linearLayout15">
-    </RelativeLayout>
+    </android.support.v4.view.ViewPager>
 
 </RelativeLayout>

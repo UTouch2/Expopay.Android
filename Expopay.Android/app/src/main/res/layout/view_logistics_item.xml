@@ -36,12 +36,16 @@
             android:id="@+id/logisticsStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#727272"
+            android:textSize="13sp"
             android:text="【昆明市】正在配送中，李师傅13900003325" />
 
         <TextView
             android:id="@+id/logisticsTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#727272"
+            android:textSize="13sp"
             android:text="2015年10月05日   09:10:00" />
 
     </LinearLayout>

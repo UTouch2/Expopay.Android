@@ -35,7 +35,8 @@
                     android:id="@+id/colourName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#666666"
+                    android:textColor="#828282"
+                    android:textSize="13sp"
                     android:layout_marginRight="5dp"
                     android:layout_alignParentLeft="true"
                     android:layout_toLeftOf="@+id/imgBtnCancle"
@@ -60,6 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="￥5288.00"
+                    android:textSize="13sp"
                     android:textColor="#EC784F" />
             </LinearLayout>
         </LinearLayout>
@@ -93,7 +95,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textSize="15dp"
+                    android:textSize="13sp"
+                    android:textColor="#828282"
                     android:text="颜色" />
 
                 <LinearLayout
@@ -108,8 +111,8 @@
                         android:layout_height="40dp"
                         android:background="@mipmap/mall_unoutline"
                         android:layout_weight="1"
-                        android:textColor="#666666"
-                        android:textSize="15dp"
+                        android:textColor="#828282"
+                        android:textSize="12sp"
                         android:text="黑色" />
 
                     <Button
@@ -119,8 +122,8 @@
                         android:layout_weight="1"
                         android:background="@mipmap/mall_unoutline"
                         android:layout_marginLeft="5dp"
-                        android:textColor="#666666"
-                        android:textSize="15dp"
+                        android:textColor="#828282"
+                        android:textSize="12sp"
                         android:text="白色" />
 
                     <Button
@@ -130,8 +133,8 @@
                         android:layout_weight="1"
                         android:background="@mipmap/mall_unoutline"
                         android:layout_marginLeft="5dp"
-                        android:textColor="#666666"
-                        android:textSize="15dp"
+                        android:textColor="#828282"
+                        android:textSize="12sp"
                         android:text="金色" />
 
                     <Button
@@ -141,8 +144,8 @@
                         android:layout_weight="1"
                         android:background="@mipmap/mall_unoutline"
                         android:layout_marginLeft="5dp"
-                        android:textColor="#666666"
-                        android:textSize="15dp"
+                        android:textColor="#828282"
+                        android:textSize="12sp"
                         android:text="金粉色" />
                 </LinearLayout>
             </LinearLayout>
@@ -157,7 +160,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:textSize="15dp"
+                    android:textColor="#828282"
+                    android:textSize="13sp"
                     android:text="容量"/>
 
                 <LinearLayout
@@ -172,8 +176,8 @@
                         android:layout_height="40dp"
                         android:layout_weight="1"
                         android:background="@mipmap/mall_unoutline"
-                        android:textColor="#666666"
-                        android:textSize="15dp"
+                        android:textColor="#828282"
+                        android:textSize="12sp"
                         android:text="16G" />
 
                     <Button
@@ -183,8 +187,8 @@
                         android:layout_weight="1"
                         android:background="@mipmap/mall_unoutline"
                         android:layout_marginLeft="5dp"
-                        android:textColor="#666666"
-                        android:textSize="15dp"
+                        android:textColor="#828282"
+                        android:textSize="12sp"
                         android:text="64G" />
 
                     <Button
@@ -194,8 +198,8 @@
                         android:layout_weight="1"
                         android:background="@mipmap/mall_unoutline"
                         android:layout_marginLeft="5dp"
-                        android:textColor="#666666"
-                        android:textSize="15dp"
+                        android:textColor="#828282"
+                        android:textSize="12sp"
                         android:text="128G" />
 
                     <TextView
@@ -204,6 +208,8 @@
                         android:layout_weight="1"
                         android:gravity="center_horizontal"
                         android:layout_marginLeft="5dp"
+                        android:textColor="#828282"
+                        android:textSize="12sp"
                         android:text="" />
                 </LinearLayout>
             </LinearLayout>

@@ -31,10 +31,11 @@
                     android:id="@+id/installmentName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#666666"
+                    android:textColor="#919191"
                     android:layout_toLeftOf="@+id/ibCancle"
                     android:layout_alignParentLeft="true"
                     android:layout_marginRight="5dp"
+                    android:textSize="13sp"
                     android:text="Apple iPhone 6S 移动联通电信4G手机"/>
                 <ImageButton
                     android:id="@+id/ibCancle"
@@ -53,12 +54,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="￥5288.00"
+                    android:textSize="13sp"
                     android:textColor="#EC784F"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="(522+12)x12"
+                    android:textSize="13sp"
                     android:textColor="#EC784F"/>
 
             </LinearLayout>
@@ -78,8 +81,8 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:layout_marginTop="10dp"
-            android:textColor="#666666"
-            android:textSize="15dp"
+            android:textColor="#878787"
+            android:textSize="13sp"
             android:text="分期"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -96,8 +99,8 @@
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:background="@drawable/_button_selectproduct"
-                    android:textColor="#666666"
-                    android:textSize="15dp"
+                    android:textColor="#878787"
+                    android:textSize="12sp"
                     android:text="3期"/>
                 <Button
                     android:id="@+id/installment6"
@@ -106,8 +109,8 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="5dp"
                     android:text="6期"
-                    android:textSize="15dp"
-                    android:textColor="#666666"
+                    android:textSize="12sp"
+                    android:textColor="#878787"
                     android:background="@drawable/_button_selectproduct"/>
                 <Button
                     android:id="@+id/installment9"
@@ -116,8 +119,8 @@
                     android:layout_weight="1"
                     android:background="@mipmap/mall_unoutline"
                     android:layout_marginLeft="5dp"
-                    android:textColor="#666666"
-                    android:textSize="15dp"
+                    android:textColor="#878787"
+                    android:textSize="12sp"
                     android:text="9期"/>
                 <Button
                     android:id="@+id/installment12"
@@ -126,8 +129,8 @@
                     android:layout_weight="1"
                     android:background="@mipmap/mall_unoutline"
                     android:layout_marginLeft="5dp"
-                    android:textColor="#666666"
-                    android:textSize="15dp"
+                    android:textColor="#878787"
+                    android:textSize="12sp"
                     android:text="12期"/>
             </LinearLayout>
             <LinearLayout
@@ -141,8 +144,8 @@
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:background="@mipmap/mall_unoutline"
-                    android:textColor="#666666"
-                    android:textSize="15dp"
+                    android:textColor="#878787"
+                    android:textSize="12sp"
                     android:text="15期"/>
                 <Button
                     android:id="@+id/installment18"
@@ -151,8 +154,8 @@
                     android:layout_weight="1"
                     android:background="@mipmap/mall_unoutline"
                     android:layout_marginLeft="5dp"
-                    android:textColor="#666666"
-                    android:textSize="15dp"
+                    android:textColor="#878787"
+                    android:textSize="12sp"
                     android:text="18期"/>
                 <Button
                     android:id="@+id/installment24"
@@ -161,8 +164,8 @@
                     android:layout_weight="1"
                     android:background="@mipmap/mall_unoutline"
                     android:layout_marginLeft="5dp"
-                    android:textColor="#666666"
-                    android:textSize="15dp"
+                    android:textColor="#878787"
+                    android:textSize="12sp"
                     android:text="24期"/>
                 <TextView
                     android:layout_width="0dp"
@@ -171,7 +174,7 @@
                     android:layout_marginLeft="5dp"
                     android:gravity="center_horizontal"
                     android:text=""
-                    android:textSize="15dp"/>
+                    android:textSize="12sp"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -179,7 +182,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#666666"
+        android:textColor="#858585"
+        android:textSize="13sp"
         android:paddingTop="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"

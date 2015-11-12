@@ -77,6 +77,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusColor();
+        setTitle("商品详情");
         setContentView(R.layout.activity_produte_details);
 
         assignViews();

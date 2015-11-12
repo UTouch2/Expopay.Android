@@ -45,7 +45,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:text="iPhone"
-                        android:textColor="#666666" />
+                        android:textColor="#646464"
+                        android:textSize="13sp"/>
 
                     <TextView
                         android:id="@+id/orderAmount"
@@ -53,6 +54,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="￥5288.80"
+                        android:textSize="13sp"
                         android:textColor="#EB7851" />
                 </RelativeLayout>
 
@@ -67,7 +69,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:text="白色 16G x1"
-                        android:textColor="#666666" />
+                        android:textColor="#989898"
+                        android:textSize="12sp"/>
 
                     <TextView
                         android:id="@+id/orderStatus"
@@ -75,7 +78,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:text="已完成"
-                        android:textColor="#94E57C" />
+                        android:textColor="#94E57C"
+                        android:textSize="13sp"/>
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
@@ -95,7 +99,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="分期"
-                android:textColor="#666666" />
+                android:textColor="#989898"
+                android:textSize="13sp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -113,7 +118,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="30dp"
                         android:text="12期 "
-                        android:textColor="#666666" />
+                        android:textColor="#989898"
+                        android:textSize="13sp"/>
 
                     <TextView
                         android:id="@+id/serviceAmount"
@@ -121,7 +127,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:text="(522+12)x12=5288"
-                        android:textColor="#666666" />
+                        android:textColor="#989898"
+                        android:textSize="13sp"/>
                 </LinearLayout>
 
                 <TextView
@@ -131,7 +138,8 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="10dp"
                     android:text="每期应还款534元"
-                    android:textColor="#666666" />
+                    android:textColor="#989898"
+                    android:textSize="13sp"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -161,7 +169,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="收件人："
-                        android:textColor="#666666" />
+                        android:textColor="#959595"
+                        android:textSize="13sp"/>
 
                     <TextView
                         android:id="@+id/consigneeName"
@@ -169,7 +178,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:text="克里斯"
-                        android:textColor="#666666" />
+                        android:textColor="#959595"
+                        android:textSize="13sp"/>
 
                     <ImageView
                         android:layout_width="15dp"
@@ -183,7 +193,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:text="13666666666"
-                        android:textColor="#666666" />
+                        android:textColor="#959595"
+                        android:textSize="13sp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -203,7 +214,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:text="云南省昆明市五华区海源中路1088号和成国际A座25楼"
-                        android:textColor="#EFA48E" />
+                        android:textColor="#EFA48E"
+                        android:textSize="13sp"/>
 
                 </LinearLayout>
             </LinearLayout>
@@ -233,7 +245,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="物流信息"
-                android:textSize="15dp" />
+                android:textSize="13sp"
+                android:textColor="#5C5C5C"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -267,7 +280,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/_button_order"
                 android:text="取消订单"
-                android:textSize="15dp" />
+                android:textSize="13sp"
+                android:textColor="#C1C1C1"/>
 
             <Button
                 android:id="@+id/btnContact"
@@ -276,7 +290,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/_button_order"
                 android:text="联系售后"
-                android:textSize="15dp" />
+                android:textColor="#C1C1C1"
+                android:textSize="13sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -298,14 +313,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="订单编号："
-                    android:textColor="#666666" />
+                    android:textColor="#727272"
+                    android:textSize="12sp"/>
 
                 <TextView
                     android:id="@+id/orderNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1234567890"
-                    android:textColor="#666666" />
+                    android:textColor="#727272"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -318,14 +335,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="交易流水号："
-                    android:textColor="#666666" />
+                    android:textColor="#727272"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/transcationCode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="9876543456789"
-                    android:textColor="#666666" />
+                    android:textColor="#727272"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -338,14 +357,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="交易时间："
-                    android:textColor="#666666" />
+                    android:textColor="#727272"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/orderTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2015-09-26  00:00:00"
-                    android:textColor="#666666" />
+                    android:textColor="#727272"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -358,14 +379,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="承运公司："
-                    android:textColor="#666666" />
+                    android:textColor="#727272"
+                    android:textSize="12sp"/>
 
                 <TextView
                     android:id="@+id/carrierCompany"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="顺丰快递"
-                    android:textColor="#666666" />
+                    android:textColor="#727272"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -378,14 +401,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="承运单号："
-                    android:textColor="#666666" />
+                    android:textColor="#727272"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/carrierCode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="65456789098"
-                    android:textColor="#666666" />
+                    android:textColor="#727272"
+                    android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
