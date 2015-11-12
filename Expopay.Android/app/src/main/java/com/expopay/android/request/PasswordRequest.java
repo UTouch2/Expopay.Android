@@ -177,7 +177,7 @@ public class PasswordRequest extends Request {
      * @return
      * @throws JSONException
      */
-    public Map<String, String> createChangePasswordQuestionParams(String openId, String userName,
+    public Map<String, String> createChangePasswordQuestionParams(String openId,
                                                           String secuQuestionId,
                                                           String secuAnswer,
                                                           String newSecuQuestionId, String newSecuAnswer) throws JSONException {
@@ -187,7 +187,6 @@ public class PasswordRequest extends Request {
         header.put("action", "");
         header.put("machineNumber", "android");
         JSONObject body = new JSONObject();
-        body.put("userName",userName);
         body.put("secuQuestionId",secuQuestionId);
         body.put("secuAnswer",secuAnswer);
         body.put("newSecuQuestionId",newSecuQuestionId);
