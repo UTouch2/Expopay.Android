@@ -8,12 +8,12 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#FFFFFF"
-        android:padding="10dp"
         android:layout_above="@+id/linearLayout4"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <ImageView
             android:layout_width="100dp"
@@ -35,49 +35,50 @@
                     android:id="@+id/colourName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#828282"
-                    android:textSize="13sp"
-                    android:layout_marginRight="5dp"
                     android:layout_alignParentLeft="true"
+                    android:layout_marginRight="5dp"
                     android:layout_toLeftOf="@+id/imgBtnCancle"
-                    android:text="Apple iPhone 6S 移动联通电信4G手机"/>
+                    android:text="Apple iPhone 6S 移动联通电信4G手机"
+                    android:textColor="#828282"
+                    android:textSize="13sp" />
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/imgBtnCancle"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:background="#FFFFFF"
                     android:layout_alignParentRight="true"
+                    android:background="#FFFFFF"
+                    android:onClick="cancelPropertiesOnClick"
                     android:src="@mipmap/mall_delete" />
             </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="￥5288.00"
-                    android:textSize="13sp"
-                    android:textColor="#EC784F" />
+                    android:textColor="#EC784F"
+                    android:textSize="13sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/btnSureStyle"
+        android:background="#F7F7F7"
         android:orientation="horizontal"
-        android:paddingBottom="20dp"
-        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        android:background="#F7F7F7"
-        android:layout_above="@+id/btnSureStyle"
-        android:id="@+id/linearLayout4">
+        android:paddingTop="10dp">
 
 
         <LinearLayout
@@ -94,124 +95,38 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:textSize="13sp"
+                    android:layout_marginTop="15dp"
+                    android:text="颜色"
                     android:textColor="#828282"
-                    android:text="颜色" />
+                    android:textSize="13sp" />
 
-                <LinearLayout
+                <GridView
+                    android:id="@+id/colourGridView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/colourBlack"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:background="@mipmap/mall_unoutline"
-                        android:layout_weight="1"
-                        android:textColor="#828282"
-                        android:textSize="12sp"
-                        android:text="黑色" />
-
-                    <Button
-                        android:id="@+id/colourWhite"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:background="@mipmap/mall_unoutline"
-                        android:layout_marginLeft="5dp"
-                        android:textColor="#828282"
-                        android:textSize="12sp"
-                        android:text="白色" />
-
-                    <Button
-                        android:id="@+id/colourGolden"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:background="@mipmap/mall_unoutline"
-                        android:layout_marginLeft="5dp"
-                        android:textColor="#828282"
-                        android:textSize="12sp"
-                        android:text="金色" />
-
-                    <Button
-                        android:id="@+id/colourGoldPink"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:background="@mipmap/mall_unoutline"
-                        android:layout_marginLeft="5dp"
-                        android:textColor="#828282"
-                        android:textSize="12sp"
-                        android:text="金粉色" />
-                </LinearLayout>
+                    android:numColumns="4"></GridView>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="15dp"
+                    android:text="容量"
                     android:textColor="#828282"
-                    android:textSize="13sp"
-                    android:text="容量"/>
+                    android:textSize="13sp" />
 
-                <LinearLayout
+                <GridView
+                    android:id="@+id/contentGridView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/g16"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:background="@mipmap/mall_unoutline"
-                        android:textColor="#828282"
-                        android:textSize="12sp"
-                        android:text="16G" />
-
-                    <Button
-                        android:id="@+id/g64"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:background="@mipmap/mall_unoutline"
-                        android:layout_marginLeft="5dp"
-                        android:textColor="#828282"
-                        android:textSize="12sp"
-                        android:text="64G" />
-
-                    <Button
-                        android:id="@+id/g128"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:background="@mipmap/mall_unoutline"
-                        android:layout_marginLeft="5dp"
-                        android:textColor="#828282"
-                        android:textSize="12sp"
-                        android:text="128G" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:layout_marginLeft="5dp"
-                        android:textColor="#828282"
-                        android:textSize="12sp"
-                        android:text="" />
-                </LinearLayout>
+                    android:layout_marginBottom="5dp"
+                    android:numColumns="4"></GridView>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -222,6 +137,7 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:background="@drawable/_button"
+        android:onClick="okPropertiesOnclick"
         android:text="确定"
         android:textColor="#FFFFFF"
         android:textSize="15dp" />
@@ -229,9 +145,9 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="propertiesBlankOnClick"
-        android:background="#0000"
+        android:layout_above="@id/linearLayout2"
         android:layout_alignParentTop="true"
-        android:layout_above="@id/linearLayout2"/>
+        android:background="#0000"
+        android:onClick="propertiesBlankOnClick" />
 
 </RelativeLayout>
