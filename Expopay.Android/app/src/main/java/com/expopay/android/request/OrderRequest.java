@@ -149,7 +149,7 @@ public class OrderRequest extends Request {
         header.put("machineNumber", "android");
         JSONObject body = new JSONObject();
         body.put("pageIndex", pageIndex);
-        body.put("orderType", orderType);
+        body.put("orderSource", orderType);
         body.put("pageSize", pageSize);
 
         String signHead = MD5Util.GetMD5Code(body.toString());
