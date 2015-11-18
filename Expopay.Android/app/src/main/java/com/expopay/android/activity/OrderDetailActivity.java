@@ -120,7 +120,7 @@ public class OrderDetailActivity extends BaseActivity {
         List<OrderDetailsEntity> list = new ArrayList<OrderDetailsEntity>();
         for (int i = 0; i <10 ; i++){
             OrderDetailsEntity le = new OrderDetailsEntity();
-            //le.setLogistics("【昆明市】正在配送中，李师傅13900003325  2015年10月05日   09:10:00");
+//            le.setLogistics("【昆明市】正在配送中，李师傅13900003325  2015年10月05日   09:10:00");
             list.add(le);
         }
         return list;

@@ -1,6 +1,8 @@
 package com.expopay.android.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -123,7 +125,12 @@ public class OrderDetailCommitActivity extends BaseActivity {
 
     private void setTextView() {
         Intent intent = getIntent();
-        commitProductImg.setImageResource(R.mipmap.mall_mobile);
+        if(getIntent() !=null)
+        {
+            byte[] bis=getIntent().getByteArrayExtra("bitmap");
+            Bitmap bitmap= BitmapFactory.decodeByteArray(bis, 0, bis.length);
+            commitProductImg.setImageBitmap(bitmap);
+        }
         commitProductName.setText(intent.getStringExtra("detailProductName"));
         commitOrderAmount.setText(intent.getStringExtra("detailAmount"));
         commitProperties.setText(intent.getStringExtra("tvSelected"));

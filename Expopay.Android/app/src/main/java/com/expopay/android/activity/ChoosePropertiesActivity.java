@@ -52,38 +52,38 @@ public class ChoosePropertiesActivity extends BaseActivity {
         contentGridView.setAdapter(adapterContent);
     }
 
-    protected void selectOk() {
-        Intent intent = new Intent();
-        PropertiesEntity str_colour = (PropertiesEntity)colourGridView.getTag();
-        PropertiesEntity str_g = (PropertiesEntity)contentGridView.getTag();
-        intent.putExtra("str_colour", str_colour);
-        intent.putExtra("str_g", str_g);
-        setResult(RESULT_OK, intent);
+    @Override
+    public void onBackPressed() {
         finish();
     }
 
-    @Override
-    public void onBackPressed() {
-        selectOk();
-    }
-
     public void propertiesBlankOnClick(View view) {
-        selectOk();
+        finish();
     }
 
     public void cancelPropertiesOnClick(View view) {
-        selectOk();
+        finish();
     }
 
     public void okPropertiesOnclick(View view) {
-        selectOk();
+        Intent intent = new Intent();
+        PropertiesEntity str_colour = (PropertiesEntity)colourGridView.getTag();
+        PropertiesEntity str_g = (PropertiesEntity)contentGridView.getTag();
+        if(null == str_colour || null == str_g){
+            Toast.makeText(this, "请选择颜色和容量", Toast.LENGTH_SHORT).show();
+        }else{
+            intent.putExtra("str_colour", str_colour);
+            intent.putExtra("str_g", str_g);
+            setResult(RESULT_OK, intent);
+            finish();
+        }
     }
 
     private List<PropertiesEntity> colourData() {
         List<PropertiesEntity> list = new ArrayList<PropertiesEntity>();
         for (int i = 0; i < 6; i++) {
             PropertiesEntity mp = new PropertiesEntity();
-            mp.setProperties("金色" + i);
+            mp.setProperties(i+"金色");
             list.add(mp);
         }
         return list;
@@ -91,9 +91,9 @@ public class ChoosePropertiesActivity extends BaseActivity {
 
     private List<PropertiesEntity> contentData() {
         List<PropertiesEntity> list = new ArrayList<PropertiesEntity>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 1; i < 4; i++) {
             PropertiesEntity mp = new PropertiesEntity();
-            mp.setProperties("64G" + i);
+            mp.setProperties(i + "G");
             list.add(mp);
         }
         return list;

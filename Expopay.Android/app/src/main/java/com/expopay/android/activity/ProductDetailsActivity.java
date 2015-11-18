@@ -28,7 +28,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
     private TextView tvStaging;
     private ImageView imgblowe;
 
-    private static byte[] bis;
+    private byte[] bis;
     private Bitmap bitmap;
 
     private CustormViewPager viewPager;
@@ -114,7 +114,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                 break;
             case 1:
                 if (resultCode == RESULT_OK) {
-                    String str_periods = data.getExtras().getString("str_periods");
+                    String str_periods = ((PropertiesEntity)data.getExtras().getSerializable("str_periods")).getProperties();
                     tvStaging.setText(str_periods);
                 }
                 break;
@@ -146,6 +146,7 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
                 break;
             case R.id.btnImmediatelyOrder:
                 intent.setClass(ProductDetailsActivity.this, OrderDetailCommitActivity.class);
+                intent.putExtra("bitmap", bis);
                 intent.putExtra("detailProductName", detailProductName.getText().toString().trim());
                 intent.putExtra("detailAmount",detailAmount.getText().toString().trim());
                 intent.putExtra("tvSelected",tvSelected.getText().toString().trim());

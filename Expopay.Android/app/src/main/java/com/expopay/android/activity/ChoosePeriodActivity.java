@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.expopay.android.R;
 import com.expopay.android.adapter.gridview.PropertiesAdapter;
@@ -20,12 +21,9 @@ public class ChoosePeriodActivity extends BaseActivity {
 
     private GridView myGridView;
     private PropertiesAdapter adapter;
-    private static String str_periods;
 
     private ImageView img;
     private TextView productname,productamount;
-
-    Intent intent = new Intent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,39 +45,39 @@ public class ChoosePeriodActivity extends BaseActivity {
 
         myGridView = (GridView) findViewById(R.id.buttonGridView);
         adapter = new PropertiesAdapter(this, testData());
-        adapter.setPosition(2);
         myGridView.setAdapter(adapter);
-    }
-
-    protected void selected() {
-        super.onPause();
-        intent.putExtra("str_periods", str_periods);
-        setResult(RESULT_OK, intent);
-        finish();
     }
 
     @Override
     public void onBackPressed() {
-        selected();
+        finish();
     }
 
     public void blankOnClick(View view) {
-        selected();
+        finish();
     }
 
     public void cancelOnClick(View view) {
-        selected();
+        finish();
     }
 
     public void periodOkOnclick(View view) {
-        selected();
+        Intent intent = new Intent();
+        PropertiesEntity str_periods = (PropertiesEntity)myGridView.getTag();
+        if(null == str_periods) {
+            Toast.makeText(this, "请选择期数", Toast.LENGTH_SHORT).show();
+        }else {
+            intent.putExtra("str_periods", str_periods);
+            setResult(RESULT_OK, intent);
+            finish();
+        }
     }
 
     private List<PropertiesEntity> testData() {
         List<PropertiesEntity> list = new ArrayList<PropertiesEntity>();
         for (int i = 0; i < 7; i++) {
             PropertiesEntity mp = new PropertiesEntity();
-            mp.setProperties("按钮" + i);
+            mp.setProperties(i + "期");
             list.add(mp);
         }
         return list;
