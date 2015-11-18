@@ -68,11 +68,11 @@ public class BillRepaymentAdapter extends BaseAdapter {
 //        holder.repaymentImg.setImageResource(entity.getProductImg());
         holder.remainingTime.setText(entity.getRemainingDays());
         holder.repaymentProductName.setText(entity.getProductName());
-        holder.repaymentPro.setText(entity.getPro());
+       // holder.repaymentPro.setText(entity.getPro());
         holder.repaymentBillAmount.setText(entity.getOverdueAmount());
         holder.repaymentTime.setText(entity.getRepaymentTime());
         holder.repaymentOrderTime.setText(entity.getOrderTime());
-        holder.repaymentOverdueDays.setText(entity.getOverdueDays());
+       // holder.repaymentOverdueDays.setText(entity.getOverdueDays());
 
         if (position % 2 == 0) {
             view.setBackgroundColor(Color.parseColor("#ffffff"));

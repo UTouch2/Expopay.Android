@@ -65,7 +65,7 @@ public class LogisticsAdapter extends BaseAdapter {
         if(data.size()-1 == i){
             holder.logistics_line.setVisibility(View.INVISIBLE);
         }
-        holder.logisticsStatus.setText(entity.getLogistics());
+      //  holder.logisticsStatus.setText(entity.getLogistics());
         holder.logisticsTime.setText(entity.getOrderTime());
 
         return view;

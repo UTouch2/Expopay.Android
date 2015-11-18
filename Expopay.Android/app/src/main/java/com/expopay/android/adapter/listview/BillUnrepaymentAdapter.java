@@ -68,7 +68,7 @@ public class BillUnrepaymentAdapter extends BaseAdapter {
         }
 //        holder.unrepaymentImg.setImageResource(entity.getProductImg());
         holder.unrepaymentProductName.setText(entity.getProductName());
-        holder.unrepaymentPro.setText(entity.getPro());
+        //holder.unrepaymentPro.setText(entity.getPro());
         holder.unrepaymentBillAmount.setText(entity.getOverdueAmount());
         holder.unrepaymentTime.setText(entity.getRepaymentTime());
         holder.unrepaymentOrderTime.setText(entity.getOrderTime());
