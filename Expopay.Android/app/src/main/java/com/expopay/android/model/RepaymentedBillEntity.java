@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by NB-MIS-100002 on 2015/10/26.
  */
-public class BillRepaymentEntity implements Serializable {
+public class RepaymentedBillEntity implements Serializable {
     private String billId;
     private String repaymentNumber;
     private String productName;
@@ -16,7 +16,7 @@ public class BillRepaymentEntity implements Serializable {
     private String repaymentTime;
     private String repaymentPeriod;
 
-    public BillRepaymentEntity() {
+    public RepaymentedBillEntity() {
     }
 
     public String getRepaymentNumber() {

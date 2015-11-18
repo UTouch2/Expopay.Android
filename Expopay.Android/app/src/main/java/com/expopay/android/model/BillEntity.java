@@ -10,8 +10,8 @@ public class BillEntity implements Serializable {
     String billAmount;
     String repaymentAmt;
     String creditLimitAmt;
-    List<BillUnrepaymentEntity> repaymentBills;
-    List<BillRepaymentEntity> repaymentedBills;
+    List<RepaymentBillEntity> repaymentBills;
+    List<RepaymentedBillEntity> repaymentedBills;
 
     public BillEntity() {
     }
@@ -40,19 +40,19 @@ public class BillEntity implements Serializable {
         this.creditLimitAmt = creditLimitAmt;
     }
 
-    public List<BillUnrepaymentEntity> getRepaymentBills() {
+    public List<RepaymentBillEntity> getRepaymentBills() {
         return repaymentBills;
     }
 
-    public void setRepaymentBills(List<BillUnrepaymentEntity> repaymentBills) {
+    public void setRepaymentBills(List<RepaymentBillEntity> repaymentBills) {
         this.repaymentBills = repaymentBills;
     }
 
-    public List<BillRepaymentEntity> getRepaymentedBills() {
+    public List<RepaymentedBillEntity> getRepaymentedBills() {
         return repaymentedBills;
     }
 
-    public void setRepaymentedBills(List<BillRepaymentEntity> repaymentedBills) {
+    public void setRepaymentedBills(List<RepaymentedBillEntity> repaymentedBills) {
         this.repaymentedBills = repaymentedBills;
     }
 }
