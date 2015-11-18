@@ -50,6 +50,8 @@
                     android:id="@+id/detailProductName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textColor="#838383"
                     android:text="Apple iPhone 6S 移动联通电信4G手机" />
 
                 <TextView
@@ -57,7 +59,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="正品行货  全国联保"
-                    android:textColor="#666666" />
+                    android:textSize="13sp"
+                    android:textColor="#ACACAC" />
 
                 <TextView
                     android:id="@+id/detailAmount"
@@ -65,6 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="￥5288.00"
+                    android:textSize="13sp"
                     android:textColor="#ED8662" />
             </LinearLayout>
 
@@ -82,7 +86,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="已选"
-                    android:textColor="#666666" />
+                    android:textSize="13sp"
+                    android:textColor="#838383" />
 
                 <TextView
                     android:id="@+id/tvSelected"
@@ -93,7 +98,8 @@
                     android:layout_toEndOf="@+id/tv"
                     android:layout_toRightOf="@+id/tv"
                     android:text="金色 64G 非合约机"
-                    android:textColor="#666666" />
+                    android:textSize="13sp"
+                    android:textColor="#ACACAC" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -118,7 +124,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="分期"
-                    android:textColor="#666666" />
+                    android:textSize="13sp"
+                    android:textColor="#838383" />
 
                 <TextView
                     android:id="@+id/tvStaging"
@@ -129,7 +136,8 @@
                     android:layout_toEndOf="@+id/tv1"
                     android:layout_toRightOf="@+id/tv1"
                     android:text="12期 (522+12)X12=5288"
-                    android:textColor="#666666" />
+                    android:textSize="13sp"
+                    android:textColor="#ACACAC" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -153,7 +161,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:text="详情"
-                    android:textColor="#666666" />
+                    android:textSize="13sp"
+                    android:textColor="#838383" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -182,6 +191,7 @@
             android:background="#f9f9f9" />
 
         <ImageView
+            android:id="@+id/imgblowe"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_below="@+id/btnImmediatelyOrder"/>

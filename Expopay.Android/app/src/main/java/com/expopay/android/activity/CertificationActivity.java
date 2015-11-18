@@ -27,6 +27,7 @@ public class CertificationActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusColor();
+        setTitle("实名认证");
         setContentView(R.layout.activity_certification);
         initView();
 

@@ -48,6 +48,7 @@ public class OrderDetailCancelActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusColor();
+        setTitle("订单详情");
         setContentView(R.layout.activity_order_detail_cancel);
 
         assignViews();

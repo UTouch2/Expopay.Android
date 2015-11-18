@@ -25,7 +25,7 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:adjustViewBounds="true"
-                android:src="@mipmap/mall_mobile" />
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/text1_grid_item"
@@ -34,7 +34,7 @@
                 android:layout_below="@id/image_grid_item"
                 android:layout_marginTop="5dp"
                 android:text="Apple iPhone 6S"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:textColor="#5C5C5C" />
 
             <LinearLayout
@@ -48,7 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="售价："
-                    android:textSize="12sp"
+                    android:textSize="13sp"
                     android:textColor="#9C9C9C" />
 
                 <TextView
@@ -56,7 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="$5288.00"
-                    android:textSize="12sp"
+                    android:textSize="13sp"
                     android:textColor="#9C9C9C" />
 
             </LinearLayout>

@@ -39,7 +39,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:textColor="#666666"
+                    android:textColor="#5C5C5C"
+                    android:textSize="13sp"
                     android:text="iPhone"/>
 
                 <TextView
@@ -48,6 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="￥5288.00"
+                    android:textSize="13sp"
                     android:textColor="#E96537" />
             </RelativeLayout>
 
@@ -61,7 +63,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:textColor="#666666"
+                    android:textColor="#838383"
+                    android:textSize="12sp"
                     android:text="白色 16G x1"/>
 
                 <TextView
@@ -70,6 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="已取消"
+                    android:textSize="13sp"
                     android:textColor="#F4191A"/>
             </RelativeLayout>
         </LinearLayout>
@@ -88,7 +92,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#666666"
+            android:textColor="#838383"
+            android:textSize="13sp"
             android:text="分期"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -104,14 +109,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:text="12期 "
-                    android:textColor="#666666"/>
+                    android:textSize="13sp"
+                    android:textColor="#838383"/>
                 <TextView
                     android:id="@+id/cancelServiceAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="(522+12)x12=5288"
-                    android:textColor="#666666"/>
+                    android:textColor="#838383"
+                    android:textSize="13sp"/>
             </LinearLayout>
             <TextView
                 android:id="@+id/cancelPeriodAmount"
@@ -120,7 +127,8 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
                 android:text="每期应还款534元"
-                android:textColor="#666666"/>
+                android:textColor="#838383"
+                android:textSize="13sp"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -146,13 +154,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#666666"
+                    android:textColor="#969696"
+                    android:textSize="13sp"
                     android:text="收件人："/>
                 <TextView
                     android:id="@+id/cancelConsignee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#666666"
+                    android:textColor="#969696"
+                    android:textSize="13sp"
                     android:layout_marginLeft="5dp"
                     android:text="克里斯"/>
                 <ImageView
@@ -164,7 +174,8 @@
                     android:id="@+id/cancelConsigneeMobile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#666666"
+                    android:textColor="#969696"
+                    android:textSize="13sp"
                     android:layout_marginLeft="5dp"
                     android:text="13666666666"/>
             </LinearLayout>
@@ -183,6 +194,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#ED906F"
+                    android:textSize="13sp"
                     android:text="云南省昆明市五华区海源中路1088号和成国际A座25楼"/>
 
             </LinearLayout>
@@ -211,13 +223,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#666666"
+                android:textColor="#727272"
+                android:textSize="12sp"
                 android:text="订单编号："/>
             <TextView
                 android:id="@+id/cancelOrderNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#666666"
+                android:textColor="#727272"
+                android:textSize="12sp"
                 android:text="1234567890"/>
         </LinearLayout>
         <LinearLayout
@@ -228,13 +242,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#666666"
+                android:textColor="#727272"
+                android:textSize="12sp"
                 android:text="交易流水号："/>
             <TextView
                 android:id="@+id/cancelTranscationCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#666666"
+                android:textColor="#727272"
+                android:textSize="12sp"
                 android:text="9876543456789"/>
         </LinearLayout>
         <LinearLayout
@@ -245,13 +261,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#666666"
+                android:textColor="#727272"
+                android:textSize="12sp"
                 android:text="交易时间："/>
             <TextView
                 android:id="@+id/cancelOrderTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#666666"
+                android:textColor="#727272"
+                android:textSize="12sp"
                 android:text="2015-09-26  00:00:00"/>
         </LinearLayout>
         <LinearLayout
@@ -262,13 +280,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#666666"
+                android:textColor="#727272"
+                android:textSize="12sp"
                 android:text="承运公司："/>
             <TextView
                 android:id="@+id/cancelCarrierCompany"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#666666"
+                android:textColor="#727272"
+                android:textSize="12sp"
                 android:text="顺丰快递"/>
         </LinearLayout>
         <LinearLayout
@@ -279,13 +299,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#666666"
+                android:textColor="#727272"
+                android:textSize="12sp"
                 android:text="承运单号："/>
             <TextView
                 android:id="@+id/cancelCarrierCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#666666"
+                android:textColor="#727272"
+                android:textSize="12sp"
                 android:text="65456789098"/>
         </LinearLayout>
     </LinearLayout>

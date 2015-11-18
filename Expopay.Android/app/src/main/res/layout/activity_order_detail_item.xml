@@ -26,7 +26,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="详情" />
+            android:text="详情"
+            android:textColor="#4E4E4E"
+            android:textSize="13sp"/>
 
         <ImageView
             android:layout_width="25dp"
@@ -69,7 +71,9 @@
                 android:id="@+id/itemProductName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="电费订单" />
+                android:text="电费订单"
+                android:textColor="#4E4E4E"
+                android:textSize="13sp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -80,14 +84,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#666666"
+                    android:textColor="#7B7B7B"
+                    android:textSize="12sp"
                     android:text="订单编号：" />
 
                 <TextView
                     android:id="@+id/itemOrderNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#666666"
+                    android:textColor="#7B7B7B"
+                    android:textSize="12sp"
                     android:text="2134567889999" />
             </LinearLayout>
 
@@ -100,14 +106,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#666666"
+                    android:textColor="#7B7B7B"
+                    android:textSize="12sp"
                     android:text="交易流水号：" />
 
                 <TextView
                     android:id="@+id/itemTranscationCode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#666666"
+                    android:textColor="#7B7B7B"
+                    android:textSize="12sp"
                     android:text="67889999" />
             </LinearLayout>
 
@@ -120,14 +128,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#666666"
+                    android:textColor="#7B7B7B"
+                    android:textSize="12sp"
                     android:text="支付流水号：" />
 
                 <TextView
                     android:id="@+id/itemPayCode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#666666"
+                    android:textColor="#7B7B7B"
+                    android:textSize="12sp"
                     android:text="287889999" />
             </LinearLayout>
         </LinearLayout>
@@ -151,14 +161,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#666666"
+                android:textColor="#7B7B7B"
+                android:textSize="12sp"
                 android:text="交易时间：" />
 
             <TextView
                 android:id="@+id/itemOrderTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#666666"
+                android:textColor="#7B7B7B"
+                android:textSize="12sp"
                 android:text="2015-09-26" />
         </LinearLayout>
 
@@ -171,13 +183,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="交易状态：" />
+                android:text="交易状态："
+                android:textColor="#7B7B7B"
+                android:textSize="12sp"/>
 
             <TextView
                 android:id="@+id/itemOrderStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="完成"
+                android:textSize="12sp"
                 android:textColor="#39ADF7" />
         </LinearLayout>
     </LinearLayout>
