@@ -18,15 +18,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="总额度"
-            android:textSize="15sp"
-            android:textColor="#666666" />
+            android:textColor="#666666"
+            android:textSize="15sp" />
 
         <TextView
+            android:id="@+id/mybills_creditamount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"
-            android:text="8000.00"
+            android:text="0.00"
             android:textColor="#E96336"
             android:textSize="20sp" />
     </LinearLayout>
@@ -50,11 +51,12 @@
             android:padding="10dp">
 
             <TextView
+                android:id="@+id/mybills_billamount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:textSize="13sp"
-                android:text="600.00" />
+                android:text="600.00"
+                android:textSize="13sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -62,8 +64,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
                 android:text="本期应还"
-                android:textSize="13sp"
-                android:textColor="#666666" />
+                android:textColor="#666666"
+                android:textSize="13sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -76,11 +78,12 @@
             android:padding="10dp">
 
             <TextView
+                android:id="@+id/mybills_repaymentamount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:textSize="13sp"
-                android:text="400.00" />
+                android:text="400.00"
+                android:textSize="13sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -88,8 +91,8 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
                 android:text="待还款总额"
-                android:textSize="13sp"
-                android:textColor="#666666" />
+                android:textColor="#666666"
+                android:textSize="13sp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -135,7 +138,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_unrepayment"
+                android:id="@+id/mybills_repayment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -145,7 +148,7 @@
                 android:textSize="15sp" />
 
             <Button
-                android:id="@+id/btn_repayment"
+                android:id="@+id/mybills_repaymented"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -165,7 +168,6 @@
         android:id="@+id/bill_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/linearLayout15">
-    </android.support.v4.view.ViewPager>
+        android:layout_below="@+id/linearLayout15"></android.support.v4.view.ViewPager>
 
 </RelativeLayout>
