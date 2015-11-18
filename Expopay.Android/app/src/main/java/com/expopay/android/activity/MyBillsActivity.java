@@ -111,7 +111,7 @@ public class MyBillsActivity extends BaseActivity {
                         BillEntity bills = gson.fromJson(json.getJSONObject("body").toString(),
                                 new TypeToken<BillEntity>() {
                                 }.getType());
-
+                        setBill(bills);
                     }
                 } catch (JSONException e) {
 
@@ -141,5 +141,4 @@ public class MyBillsActivity extends BaseActivity {
         a.setArguments(bb);
         viewPager.setAdapter(new MainPagerAdepter(getSupportFragmentManager(), new Fragment[]{a, b}));
     }
-
 }
