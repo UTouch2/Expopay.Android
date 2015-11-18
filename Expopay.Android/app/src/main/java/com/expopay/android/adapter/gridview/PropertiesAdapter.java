@@ -20,16 +20,6 @@ public class PropertiesAdapter extends BaseAdapter {
     private Context context;
     private Map<Integer,Boolean> map;
 
-    private static String str;
-    public String getStr() {
-        return str;
-    }
-
-    public void setStr(String str) {
-        this.str = str;
-    }
-
-
     public PropertiesAdapter(Context context, List<PropertiesEntity> data) {
         this.data = data;
         this.inflater = LayoutInflater.from(context);
@@ -55,26 +45,26 @@ public class PropertiesAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         final PropertiesEntity entity = data.get(position);
+        final ViewGroup vg = parent;
+
         final ViewHolder holder;
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.view_button_item, null);
             holder.button = (Button) convertView.findViewById(R.id.buttonItem);
+            holder.button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    setPosition(position);
+                    vg.setTag(entity);
+                }
+            });
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+
         holder.button.setText(entity.getProperties());
-        holder.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                for(Integer key:map.keySet()){
-                    map.put(key,false);
-                }
-                map.put(position,true);
-                notifyDataSetChanged();
-            }
-        });
         if(!map.containsKey(position)){
             map.put(position,false);
         }
@@ -90,10 +80,26 @@ public class PropertiesAdapter extends BaseAdapter {
 
     private void setChecked(Button button, boolean checked) {
         if (checked) {
-            setStr(button.getText().toString().trim());
             button.setBackgroundResource(R.mipmap.mall_outline);
         }else{
             button.setBackgroundResource(R.drawable._button_selectproduct);
         }
+    }
+
+    public List<PropertiesEntity> getData() {
+        return data;
+    }
+
+    public void setData(List<PropertiesEntity> data) {
+        this.data = data;
+    }
+
+
+    public void setPosition(int position){
+        for(Integer key:map.keySet()){
+            map.put(key,false);
+        }
+        map.put(position, true);
+        notifyDataSetChanged();
     }
 }

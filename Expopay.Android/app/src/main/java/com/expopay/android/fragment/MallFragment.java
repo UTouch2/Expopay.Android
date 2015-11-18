@@ -33,6 +33,11 @@ public class MallFragment extends  BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_mall,container,false);
 
+//        if (android.os.Build.VERSION.SDK_INT > 9) {
+//            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//            StrictMode.setThreadPolicy(policy);
+//        }
+
         viewPager = (CustormViewPager) view.findViewById(R.id.mall_bannerpager);
         viewPager.setAdapter(new BannerPagerAdapter(createViews()));
         viewPager.setCurrentItem(100);

@@ -2,6 +2,10 @@ package com.expopay.android.adapter.gridview;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +17,12 @@ import com.expopay.android.R;
 import com.expopay.android.activity.ProductDetailsActivity;
 import com.expopay.android.model.MallProductEntity;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -62,7 +72,7 @@ public class MallProductAdapter extends BaseAdapter{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-//        holder.productImg.setBackgroundResource(entity.getProductImg());
+//        holder.productImg.setImageBitmap(returnBitMap("http://p1.so.qhimg.com/t0110fcac150d39c481.jpg"));//entity.getProductImg()
         holder.productName.setText(entity.getProductName());
         holder.orderAmount.setText(entity.getOrderAmount());
 
@@ -70,6 +80,13 @@ public class MallProductAdapter extends BaseAdapter{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ProductDetailsActivity.class);
+
+                Bitmap bmp=((BitmapDrawable)holder.productImg.getDrawable()).getBitmap();
+                ByteArrayOutputStream baos=new ByteArrayOutputStream();
+                bmp.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                byte [] bitmapByte =baos.toByteArray();
+                intent.putExtra("bitmap", bitmapByte);
+
                 intent.putExtra("productName",holder.productName.getText().toString().trim());
                 intent.putExtra("orderAmount",holder.orderAmount.getText().toString().trim());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -84,5 +101,28 @@ public class MallProductAdapter extends BaseAdapter{
         public ImageView productImg;
         public TextView productName;
         public TextView orderAmount;
+    }
+
+    public static Bitmap returnBitMap(String url) {
+        Log.i("returnBitMap", "url=" + url);
+        URL myFileUrl = null;
+        Bitmap bitmap = null;
+        try {
+            myFileUrl = new URL(url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        try {
+            HttpURLConnection conn = (HttpURLConnection) myFileUrl.openConnection();
+            conn.setDoInput(true);
+            conn.connect();
+
+            InputStream is = conn.getInputStream();
+            bitmap = BitmapFactory.decodeStream(is);
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bitmap;
     }
 }

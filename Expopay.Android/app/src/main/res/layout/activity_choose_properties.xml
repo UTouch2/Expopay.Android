@@ -16,10 +16,10 @@
         android:padding="10dp">
 
         <ImageView
+            android:id="@+id/choose_properties_img"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_gravity="center_vertical"
-            android:src="@mipmap/mall_mobile" />
+            android:layout_gravity="center_vertical" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/colourName"
+                    android:id="@+id/choose_properties_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -59,6 +59,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/choose_properties_mount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="￥5288.00"

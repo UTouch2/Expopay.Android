@@ -1,6 +1,8 @@
 package com.expopay.android.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import com.android.kechong.lib.listener.AbsOnPageChangeListener;
 import com.expopay.android.R;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
+import com.expopay.android.model.PropertiesEntity;
 import com.expopay.android.view.BannerFootView;
 import com.expopay.android.view.CustormViewPager;
 
@@ -23,6 +26,10 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
     private TextView detailAmount;
     private TextView tvSelected;
     private TextView tvStaging;
+    private ImageView imgblowe;
+
+    private static byte[] bis;
+    private Bitmap bitmap;
 
     private CustormViewPager viewPager;
     BannerFootView footView;
@@ -38,7 +45,14 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
         tvSelected = (TextView) findViewById(R.id.tvSelected);
         tvStaging = (TextView) findViewById(R.id.tvStaging);
 
-//        btnImmediatelyOrder.showNormal("立即下单");
+        imgblowe = (ImageView) findViewById(R.id.imgblowe);
+        if(getIntent() !=null)
+        {
+            bis=getIntent().getByteArrayExtra("bitmap");
+            bitmap= BitmapFactory.decodeByteArray(bis, 0, bis.length);
+            imgblowe.setImageBitmap(bitmap);
+        }
+
         btnImmediatelyOrder.setOnClickListener(this);
         relativeLayoutProperties.setOnClickListener(this);
         relativeLayoutStage.setOnClickListener(this);
@@ -82,6 +96,9 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
 
         assignViews();
         setTextView();
+
+        bis=getIntent().getByteArrayExtra("bitmap");
+        bitmap= BitmapFactory.decodeByteArray(bis, 0, bis.length);
     }
 
     @Override
@@ -90,15 +107,15 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
         switch (requestCode) {
             case 0:
                 if (resultCode == RESULT_OK) {
-                    String str_colour = data.getExtras().getString("str_colour");
-                    String str_g = data.getExtras().getString("str_g");
-                    tvSelected.setText(str_colour+" " +str_g+ "非合约机");
+                    String str_colour = ((PropertiesEntity)data.getExtras().getSerializable("str_colour")).getProperties();
+                    String str_g = ((PropertiesEntity)data.getExtras().getSerializable("str_g")).getProperties();
+                    tvSelected.setText(str_colour+"  " +str_g);
                 }
                 break;
             case 1:
                 if (resultCode == RESULT_OK) {
                     String str_periods = data.getExtras().getString("str_periods");
-                    tvStaging.setText(str_periods + "  (522+12)X12=5288");
+                    tvStaging.setText(str_periods);
                 }
                 break;
             default:
@@ -111,10 +128,16 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
         switch (v.getId()) {
             case R.id.relativeLayoutProperties:
                 intent.setClass(ProductDetailsActivity.this, ChoosePropertiesActivity.class);
+                intent.putExtra("bitmap",bis);
+                intent.putExtra("detailProductName", detailProductName.getText());
+                intent.putExtra("detailAmount", detailAmount.getText());
                 startActivityForResult(intent,0);
                 break;
             case R.id.relativeLayoutStage:
                 intent.setClass(ProductDetailsActivity.this, ChoosePeriodActivity.class);
+                intent.putExtra("bitmap", bis);
+                intent.putExtra("detailProductName", detailProductName.getText());
+                intent.putExtra("detailAmount", detailAmount.getText());
                 startActivityForResult(intent,1);
                 break;
             case R.id.llDetail:

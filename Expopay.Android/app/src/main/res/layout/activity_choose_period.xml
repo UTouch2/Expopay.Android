@@ -15,10 +15,11 @@
         android:padding="10dp">
 
         <ImageView
+            android:id="@+id/choose_period_img"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_gravity="center_vertical"
-            android:src="@mipmap/mall_mobile" />
+            android:adjustViewBounds="true"
+            android:layout_gravity="center_vertical" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -31,7 +32,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/installmentName"
+                    android:id="@+id/choose_period_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -58,19 +59,20 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/choose_period_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="￥5288.00"
                     android:textColor="#EC784F"
                     android:textSize="13sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="(522+12)x12"
-                    android:textColor="#EC784F"
-                    android:textSize="13sp" />
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:text="(522+12)x12"-->
+                    <!--android:textColor="#EC784F"-->
+                    <!--android:textSize="13sp" />-->
 
             </LinearLayout>
         </LinearLayout>
@@ -103,7 +105,7 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/btnSureInstallment"
         android:background="#F7F7F7"
