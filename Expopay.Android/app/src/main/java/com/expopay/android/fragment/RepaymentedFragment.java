@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
-import com.expopay.android.adapter.listview.BillRepaymentAdapter;
+import com.expopay.android.adapter.listview.RepaymentedBillAdapter;
 import com.expopay.android.application.MyApplication;
 import com.expopay.android.model.RepaymentedBillEntity;
 import com.expopay.android.request.OrderRequest;
@@ -31,7 +31,7 @@ public class RepaymentedFragment extends BaseFragment {
 
     private ListView lvRepayment;
     private CustormLoadingView billRepayment_loading;
-    private BillRepaymentAdapter adapter;
+    private RepaymentedBillAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,7 +39,7 @@ public class RepaymentedFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_repaymented, container, false);
         lvRepayment = (ListView) view.findViewById(R.id.lvRepayment);
         billRepayment_loading = (CustormLoadingView) view.findViewById(R.id.billRepayment_loading);
-        adapter = new BillRepaymentAdapter(getActivity().getApplicationContext(), testData());
+        adapter = new RepaymentedBillAdapter(getActivity().getApplicationContext(), testData());
         lvRepayment.setAdapter(adapter);
         try {
             getBillRepayment(getUser().getOpenId(),"", "", "", "", "");

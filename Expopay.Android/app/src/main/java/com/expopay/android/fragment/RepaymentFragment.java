@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
-import com.expopay.android.adapter.listview.BillUnrepaymentAdapter;
+import com.expopay.android.adapter.listview.RepaymentBillAdapter;
 import com.expopay.android.application.MyApplication;
 import com.expopay.android.model.RepaymentBillEntity;
 import com.expopay.android.request.OrderRequest;
@@ -31,7 +31,7 @@ public class RepaymentFragment extends BaseFragment {
 
     private ListView lvUnRepayment;
     private CustormLoadingView billUnrepayment_loading;
-    private BillUnrepaymentAdapter adapter;
+    private RepaymentBillAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,7 +39,7 @@ public class RepaymentFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_repayment, container, false);
         lvUnRepayment = (ListView) view.findViewById(R.id.lvUnRepayment);
 //        billUnrepayment_loading = (CustormLoadingView) view.findViewById(R.id.billUnrepayment_loading);
-        adapter = new BillUnrepaymentAdapter(getActivity().getApplicationContext(), testData());
+        adapter = new RepaymentBillAdapter(getActivity().getApplicationContext(), testData());
         lvUnRepayment.setAdapter(adapter);
 //        try {
 //            getBillRepayment("123456");
