@@ -1,6 +1,7 @@
 package com.expopay.android.fragment;
 
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -9,7 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.android.kechong.lib.listener.AbsOnPageChangeListener;
+import com.android.kechong.lib.util.LocationUtil;
 import com.expopay.android.R;
+import com.expopay.android.activity.BuyCardActivity;
 import com.expopay.android.activity.LoginByPasswordActivity;
 import com.expopay.android.activity.RechargeTelephoneActivity;
 import com.expopay.android.activity.WebActivity;
@@ -31,9 +34,17 @@ public class MainFragment extends BaseFragment {
         view.findViewById(R.id.main_service).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                double lat = -1.0;
+                double lng = -1.0;
+                Location location = LocationUtil.getLocation(getActivity());
                 Intent intent = new Intent(getActivity(), WebActivity.class);
-                intent.putExtra("url", "http://www.baidu.com");
-                intent.putExtra("title", "便民服务");
+                intent.putExtra("title", "生活服务");
+                if (location != null) {
+                    lat = location.getLatitude();
+                    lng = location.getLongitude();
+                }
+                intent.putExtra("url", "http://m.expopay.cn/baidulocation/index?lat=" + lat
+                        + "&lon=" + lng);
                 startActivity(intent);
             }
         });
@@ -42,7 +53,7 @@ public class MainFragment extends BaseFragment {
             public void onClick(View v) {
                 if (!"".equals(getUser().getOpenId())) {
                     Intent intent = new Intent(getActivity(), WegQueryTransActivity.class);
-                    intent.putExtra("type", "1");
+                    intent.putExtra("type", "0");
                     startActivity(intent);
                     return;
                 }
@@ -55,7 +66,7 @@ public class MainFragment extends BaseFragment {
             public void onClick(View v) {
                 if (!"".equals(getUser().getOpenId())) {
                     Intent intent = new Intent(getActivity(), WegQueryTransActivity.class);
-                    intent.putExtra("type", "2");
+                    intent.putExtra("type", "1");
                     startActivity(intent);
                     return;
                 }
@@ -78,13 +89,27 @@ public class MainFragment extends BaseFragment {
         view.findViewById(R.id.main_merchant).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Location location = LocationUtil.getLocation(getActivity());
+                Intent intent = new Intent(getActivity(), WebActivity.class);
+                intent.putExtra("title", "附近网点");
+                if (location != null) {
+                    double lat = location.getLatitude();
+                    double lng = location.getLongitude();
 
+                    intent.putExtra("url",
+                            "http://wx.expopay.cn/info/appmap?latitude=" + lat
+                                    + "&longitude=" + lng);
+                } else {
+                    intent.putExtra("url", "http:/wx.expopay.cn/info/appmap");
+                }
+                startActivity(intent);
             }
         });
         view.findViewById(R.id.main_buycard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getActivity(), BuyCardActivity.class);
+                startActivity(intent);
             }
         });
         view.findViewById(R.id.main_callme).setOnClickListener(new View.OnClickListener() {
