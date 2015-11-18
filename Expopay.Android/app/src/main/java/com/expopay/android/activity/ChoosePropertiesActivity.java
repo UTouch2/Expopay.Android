@@ -56,9 +56,6 @@ public class ChoosePropertiesActivity extends BaseActivity {
         Intent intent = new Intent();
         PropertiesEntity str_colour = (PropertiesEntity)colourGridView.getTag();
         PropertiesEntity str_g = (PropertiesEntity)contentGridView.getTag();
-        if() {
-            Toast.makeText(this, "请选择颜色和容量", Toast.LENGTH_SHORT).show();
-        }
         intent.putExtra("str_colour", str_colour);
         intent.putExtra("str_g", str_g);
         setResult(RESULT_OK, intent);
