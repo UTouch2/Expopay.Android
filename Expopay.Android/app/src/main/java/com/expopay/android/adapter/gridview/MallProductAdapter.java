@@ -28,13 +28,13 @@ import java.util.List;
 /**
  * Created by NB-MIS-100002 on 2015/10/22.
  */
-public class MallProductAdapter extends BaseAdapter{
+public class MallProductAdapter extends BaseAdapter {
 
-    private LayoutInflater inflater ;
-    private List<MallProductEntity> data ;
+    private LayoutInflater inflater;
+    private List<MallProductEntity> data;
     private Context context;
 
-    public MallProductAdapter(Context context,List<MallProductEntity> data){
+    public MallProductAdapter(Context context, List<MallProductEntity> data) {
         this.data = data;
         this.inflater = LayoutInflater.from(context);
         this.context = context;
@@ -73,22 +73,22 @@ public class MallProductAdapter extends BaseAdapter{
             holder = (ViewHolder) convertView.getTag();
         }
 //        holder.productImg.setImageBitmap(returnBitMap("http://p1.so.qhimg.com/t0110fcac150d39c481.jpg"));//entity.getProductImg()
-        holder.productName.setText(entity.getProductName());
-        holder.orderAmount.setText(entity.getOrderAmount());
+        //holder.productName.setText(entity.getProductName());
+        //  holder.orderAmount.setText(entity.getOrderAmount());
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ProductDetailsActivity.class);
 
-                Bitmap bmp=((BitmapDrawable)holder.productImg.getDrawable()).getBitmap();
-                ByteArrayOutputStream baos=new ByteArrayOutputStream();
+                Bitmap bmp = ((BitmapDrawable) holder.productImg.getDrawable()).getBitmap();
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 bmp.compress(Bitmap.CompressFormat.PNG, 100, baos);
-                byte [] bitmapByte =baos.toByteArray();
+                byte[] bitmapByte = baos.toByteArray();
                 intent.putExtra("bitmap", bitmapByte);
 
-                intent.putExtra("productName",holder.productName.getText().toString().trim());
-                intent.putExtra("orderAmount",holder.orderAmount.getText().toString().trim());
+                intent.putExtra("productName", holder.productName.getText().toString().trim());
+                intent.putExtra("orderAmount", holder.orderAmount.getText().toString().trim());
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
@@ -96,6 +96,7 @@ public class MallProductAdapter extends BaseAdapter{
 
         return convertView;
     }
+
     //ViewHolder静态类
     static class ViewHolder {
         public ImageView productImg;
