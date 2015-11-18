@@ -14,14 +14,17 @@ public class BillUnrepaymentEntity implements Serializable {
     private String orderTime;
     private String repaymentTime;
     private String overdueDays;
-    private String pro;
+    private String repaymentNumber;
 
-    public String getPro() {
-        return pro;
+    public BillUnrepaymentEntity() {
     }
 
-    public void setPro(String pro) {
-        this.pro = pro;
+    public String getRepaymentNumber() {
+        return repaymentNumber;
+    }
+
+    public void setRepaymentNumber(String repaymentNumber) {
+        this.repaymentNumber = repaymentNumber;
     }
 
     public String getRepaymentPeriod() {

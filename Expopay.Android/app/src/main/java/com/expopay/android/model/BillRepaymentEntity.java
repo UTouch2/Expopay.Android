@@ -5,8 +5,9 @@ import java.io.Serializable;
 /**
  * Created by NB-MIS-100002 on 2015/10/26.
  */
-public class BillRepaymentEntity implements Serializable{
+public class BillRepaymentEntity implements Serializable {
     private String billId;
+    private String repaymentNumber;
     private String productName;
     private String remainingDays;
     private String billAmount;
@@ -14,23 +15,16 @@ public class BillRepaymentEntity implements Serializable{
     private String orderTime;
     private String repaymentTime;
     private String repaymentPeriod;
-    private String overdueDays;
-    private String pro;
 
-    public String getPro() {
-        return pro;
+    public BillRepaymentEntity() {
     }
 
-    public void setPro(String pro) {
-        this.pro = pro;
+    public String getRepaymentNumber() {
+        return repaymentNumber;
     }
 
-    public String getOverdueDays() {
-        return overdueDays;
-    }
-
-    public void setOverdueDays(String overdueDays) {
-        this.overdueDays = overdueDays;
+    public void setRepaymentNumber(String repaymentNumber) {
+        this.repaymentNumber = repaymentNumber;
     }
 
     public String getBillAmount() {
