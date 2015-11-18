@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.expopay.android.R;
+import com.expopay.android.adapter.gridview.PropertiesAdapter;
 import com.expopay.android.model.PropertiesEntity;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import java.util.List;
 public class ChoosePeriodActivity extends BaseActivity {
 
     private GridView myGridView;
-    private PeriodAdapter adapter;
+    private PropertiesAdapter adapter;
     private static String str_periods;
 
     private ImageView img;
@@ -45,14 +46,13 @@ public class ChoosePeriodActivity extends BaseActivity {
         productamount.setText(getIntent().getStringExtra("detailAmount"));
 
         myGridView = (GridView) findViewById(R.id.buttonGridView);
-        adapter = new PeriodAdapter(this, testData());
+        adapter = new PropertiesAdapter(this, testData());
         adapter.setPosition(2);
         myGridView.setAdapter(adapter);
     }
 
     protected void selected() {
         super.onPause();
-        str_periods = adapter.getStr();
         intent.putExtra("str_periods", str_periods);
         setResult(RESULT_OK, intent);
         finish();
