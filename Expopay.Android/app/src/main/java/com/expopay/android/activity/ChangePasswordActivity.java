@@ -1,6 +1,8 @@
 package com.expopay.android.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
@@ -34,6 +36,7 @@ public class ChangePasswordActivity extends BaseActivity {
         loginPwdText = (EditText) findViewById(R.id.changepassword_oldpsd);
         newLoginPwdText = (EditText) findViewById(R.id.changepassword_newpsd);
         showPsdImageView = (ImageView) findViewById(R.id.changepassword_showpsd_btn);
+        okBtn.showNormal("确定");
         okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,8 +49,21 @@ public class ChangePasswordActivity extends BaseActivity {
                 }
             }
         });
+        okBtn.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
+            @Override
+            public void onSuccessResult() {
+                finish();
+            }
+
+            @Override
+            public void onFailureResult() {
+                okBtn.showNormal("12345");
+                okBtn.setBackgroundResource(R.drawable._button);
+            }
+        });
         showPsdImageView.setOnClickListener(new View.OnClickListener() {
             boolean flag = true;
+
             @Override
             public void onClick(View v) {
                 if (flag) {
@@ -63,13 +79,15 @@ public class ChangePasswordActivity extends BaseActivity {
     private void changePasswoedRequest(String openId, String loginPwd,
                                        String newLoginPwd) throws JSONException {
         okBtn.showLoading("正在加载···");
-        PasswordRequest request = new PasswordRequest(MyApplication.HOST+"/customer/resetloginpwd");
+        PasswordRequest request = new PasswordRequest(MyApplication.HOST + "/customer/resetloginpwd");
         request.setEntity(request.createChangePasswordParams(openId, loginPwd, newLoginPwd));
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
                 okBtn.showResult("网络请求失败", false);
+                okBtn.setBackgroundColor(Color.parseColor("#ff0000"));
             }
+
             @Override
             public void onSuccess(Object result) {
                 JSONObject json = (JSONObject) result;
@@ -79,10 +97,14 @@ public class ChangePasswordActivity extends BaseActivity {
                         okBtn.showResult("修改成功", true);
                     } else {
                         okBtn.showResult(json.getJSONObject("header").getString("desc"), false);
+                        okBtn.setBackgroundColor(Color.parseColor("#ff0000"));
                     }
                 } catch (JSONException e) {
+                    okBtn.showResult("参数解析错误", false);
+                    okBtn.setBackgroundColor(Color.parseColor("#ff0000"));
                 }
             }
+
             @Override
             public void onProgressUpdate(int i, int i1) {
 

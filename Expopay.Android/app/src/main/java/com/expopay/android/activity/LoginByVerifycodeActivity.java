@@ -77,7 +77,6 @@ public class LoginByVerifycodeActivity extends BaseActivity {
             }
         }.start();
         loginBtn.setEnabled(false);
-        loginBtn.setBackgroundResource(R.drawable._button_down);
         mobileText.addTextChangedListener(new AbsTextWatcher() {
             @Override
             public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
@@ -86,11 +85,8 @@ public class LoginByVerifycodeActivity extends BaseActivity {
                 vercode = loginVercode.getText().toString().trim();
                 if (11 == mobile.length() && 6 == vercode.length()) {
                     loginBtn.setEnabled(true);
-                    loginBtn.setBackgroundResource(R.drawable._button);
-                    loginBtn.showNormal("登录");
                 } else {
                     loginBtn.setEnabled(false);
-                    loginBtn.setBackgroundResource(R.drawable._button_down);
                 }
             }
         });
@@ -103,7 +99,6 @@ public class LoginByVerifycodeActivity extends BaseActivity {
                 if (11 == mobile.length() && 6 == vercode.length()) {
                     loginBtn.setEnabled(true);
                     loginBtn.setBackgroundResource(R.drawable._button);
-                    loginBtn.showNormal("登录");
                 } else {
                     loginBtn.setEnabled(false);
                     loginBtn.setBackgroundResource(R.drawable._button_down);

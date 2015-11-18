@@ -3,10 +3,12 @@ package com.expopay.android.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
+import com.expopay.android.application.MyApplication;
 import com.expopay.android.model.CardEntity;
 import com.expopay.android.model.CompanyEntity;
 import com.expopay.android.request.WegRequest;
@@ -30,6 +32,8 @@ public class WegQueryTransActivity extends BaseActivity {
     CustormLoadingView loadingView;
     CustormLoadingButton loadingButton;
     TextView companyText;
+    EditText barcodeText;
+    CompanyEntity current;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,16 +43,21 @@ public class WegQueryTransActivity extends BaseActivity {
         companyText = (TextView) findViewById(R.id.weg_company_text);
         loadingView = (CustormLoadingView) findViewById(R.id.weg_loadingview);
         loadingButton = (CustormLoadingButton) findViewById(R.id.weg_loadingbutton);
+        barcodeText = (EditText) findViewById(R.id.weg_barcode_edit);
 
         loadingButton.showNormal("查  询");
         loadingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                try {
+                    QueryAmount(getUser().getOpenId(), current.getCompanyId(), current.getPublicParamName(), barcodeText.getText().toString().trim());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         });
         try {
-            getCompanyList("", "", "", "");
+            getCompanyList(getUser().getOpenId(), "0", "530000", "530100");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -65,21 +74,20 @@ public class WegQueryTransActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-
+            current = (CompanyEntity) data.getSerializableExtra("CompanyEntity");
+            companyText.setText(current.getCompanyName());
         }
     }
 
     private void getCompanyList(String openId,
                                 String type, String provinceCode, String cityId) throws JSONException {
-        WegRequest request = new WegRequest("");
+        WegRequest request = new WegRequest(MyApplication.HOST + "/ecommerce/publicutilitycompaines");
         request.setEntity(request.createGetCompanyParam(openId,
                 type, provinceCode, cityId));
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
-                testData();
-                companyText.setText(list.get(0).getCompanyName());
-                loadingView.dismiss();
+
             }
 
             @Override
@@ -89,9 +97,10 @@ public class WegQueryTransActivity extends BaseActivity {
                     if (json.getJSONObject("header").getString("code")
                             .equals("0000")) {
                         Gson gson = new Gson();
-                        list = gson.fromJson(json.getJSONObject("").toString(), new TypeToken<List<CompanyEntity>>() {
+                        list = gson.fromJson(json.getJSONObject("body").getJSONArray("records").toString(), new TypeToken<List<CompanyEntity>>() {
                         }.getType());
-                        companyText.setText(list.get(0).getCompanyName());
+                        current = list.get(0);
+                        companyText.setText(current.getCompanyName());
                         loadingView.dismiss();
                     }
                 } catch (JSONException e) {
@@ -109,16 +118,15 @@ public class WegQueryTransActivity extends BaseActivity {
 
 
     private void QueryAmount(String openId,
-                             String companyId, String publicUtilityNum) throws JSONException {
+                             String companyId, String publicParamName, String publicParamValue) throws JSONException {
         loadingButton.showLoading("正在查询···");
-        WegRequest request = new WegRequest("");
-        request.setEntity(request.createQueryAmountParam(openId, companyId, publicUtilityNum));
+        WegRequest request = new WegRequest(MyApplication.HOST + "/ecommerce/querypublicutilityamt");
+        request.setEntity(request.createQueryAmountParam(openId, companyId, publicParamName,publicParamValue));
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
-                loadingButton.showResult("请求失败",false);
+                loadingButton.showResult("请求失败", false);
                 Intent intent = new Intent(getApplicationContext(), WegTransactionsActivity.class);
-
                 startActivity(intent);
             }
 
@@ -128,7 +136,7 @@ public class WegQueryTransActivity extends BaseActivity {
                 try {
                     if (json.getJSONObject("header").getString("code")
                             .equals("0000")) {
-                        loadingButton.showResult("",true);
+                        loadingButton.showResult("", true);
                         Intent intent = new Intent(getApplicationContext(), WegTransactionsActivity.class);
                         startActivity(intent);
                     }
