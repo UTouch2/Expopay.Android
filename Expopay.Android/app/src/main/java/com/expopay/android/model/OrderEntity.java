@@ -6,16 +6,20 @@ package com.expopay.android.model;
 public class OrderEntity {
 
     private String orderNumber;
-    private String productImg;
-    private String productName;
-    private String productQutity;
     private String orderAmount;
-    private String repaymentPeriod;
-    private String properties;
     private String orderStatus;
     private String orderTime;
+    private String payResult;
 
     public OrderEntity() {
+    }
+
+    public String getPayResult() {
+        return payResult;
+    }
+
+    public void setPayResult(String payResult) {
+        this.payResult = payResult;
     }
 
     public String getOrderNumber() {
@@ -26,52 +30,12 @@ public class OrderEntity {
         this.orderNumber = orderNumber;
     }
 
-    public String getProductImg() {
-        return productImg;
-    }
-
-    public void setProductImg(String productImg) {
-        this.productImg = productImg;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public String getProductQutity() {
-        return productQutity;
-    }
-
-    public void setProductQutity(String productQutity) {
-        this.productQutity = productQutity;
-    }
-
     public String getOrderAmount() {
         return orderAmount;
     }
 
     public void setOrderAmount(String orderAmount) {
         this.orderAmount = orderAmount;
-    }
-
-    public String getRepaymentPeriod() {
-        return repaymentPeriod;
-    }
-
-    public void setRepaymentPeriod(String repaymentPeriod) {
-        this.repaymentPeriod = repaymentPeriod;
-    }
-
-    public String getProperties() {
-        return properties;
-    }
-
-    public void setProperties(String properties) {
-        this.properties = properties;
     }
 
     public String getOrderStatus() {
