@@ -10,9 +10,9 @@ import android.widget.ListView;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
-import com.expopay.android.adapter.listview.BillRepaymentAdapter;
+import com.expopay.android.adapter.listview.BillUnrepaymentAdapter;
 import com.expopay.android.application.MyApplication;
-import com.expopay.android.model.BillRepaymentEntity;
+import com.expopay.android.model.BillUnrepaymentEntity;
 import com.expopay.android.request.OrderRequest;
 import com.expopay.android.view.CustormLoadingView;
 import com.google.gson.Gson;
@@ -29,23 +29,23 @@ import java.util.List;
  */
 public class RepaymentFragment extends BaseFragment {
 
-    private ListView lvRepayment;
-    private CustormLoadingView billRepayment_loading;
-    private BillRepaymentAdapter adapter;
+    private ListView lvUnRepayment;
+    private CustormLoadingView billUnrepayment_loading;
+    private BillUnrepaymentAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_repayment, container, false);
-        lvRepayment = (ListView) view.findViewById(R.id.lvRepayment);
-        billRepayment_loading = (CustormLoadingView) view.findViewById(R.id.billRepayment_loading);
-        adapter = new BillRepaymentAdapter(getActivity().getApplicationContext(), testData());
-        lvRepayment.setAdapter(adapter);
-        try {
-            getBillRepayment("123456","","","","","");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        View view = inflater.inflate(R.layout.fragment_unrepayment, container, false);
+        lvUnRepayment = (ListView) view.findViewById(R.id.lvUnRepayment);
+//        billUnrepayment_loading = (CustormLoadingView) view.findViewById(R.id.billUnrepayment_loading);
+        adapter = new BillUnrepaymentAdapter(getActivity().getApplicationContext(), testData());
+        lvUnRepayment.setAdapter(adapter);
+//        try {
+//            getBillRepayment("123456");
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
         return view;
     }
@@ -56,9 +56,9 @@ public class RepaymentFragment extends BaseFragment {
                                   String orerAmount,
                                   String publicUtilityType,
                                   String publicUtilityNum) throws JSONException {
-        billRepayment_loading.show();
+        billUnrepayment_loading.show();
         OrderRequest request = new OrderRequest(MyApplication.HOST + "");
-        request.setEntity(request.createCreateOrderParms(openId,"","","","",""));
+        request.setEntity(request.createCreateOrderParms(openId, "", "", "", "", ""));
         request.setOutTime(10 * 1000);
         request.setIRequestListener(new JsonRequestListener() {
             @Override
@@ -69,21 +69,21 @@ public class RepaymentFragment extends BaseFragment {
                             .equals("0000")) {
                         // 成功
                         Gson gson = new Gson();
-                        List<BillRepaymentEntity> list = gson.fromJson(json.getJSONObject("").toString(), new TypeToken<List<BillRepaymentEntity>>() {
+                        List<BillUnrepaymentEntity> list = gson.fromJson(json.getJSONObject("").toString(), new TypeToken<List<BillUnrepaymentEntity>>() {
                         }.getType());
                         adapter.setData(list);
                         adapter.notifyDataSetChanged();
-                        billRepayment_loading.dismiss();
+                        billUnrepayment_loading.dismiss();
                     } else {
                         // 失败
-                        billRepayment_loading.showRetry();
-                        billRepayment_loading.setRetryMessage(json.getJSONObject("header").getString("desc"));
+                        billUnrepayment_loading.showRetry();
+                        billUnrepayment_loading.setRetryMessage(json.getJSONObject("header").getString("desc"));
                     }
                 } catch (JSONException e) {
                     // 数据解析异常
                     // 失败
-                    billRepayment_loading.showRetry();
-                    billRepayment_loading.setRetryMessage("数据解析异常");
+                    billUnrepayment_loading.showRetry();
+                    billUnrepayment_loading.setRetryMessage("数据解析异常");
                 }
             }
 
@@ -95,26 +95,25 @@ public class RepaymentFragment extends BaseFragment {
             @Override
             public void onFilure(Exception result) {
                 System.out.println(result);
-                billRepayment_loading.showRetry();
-                billRepayment_loading.setRetryMessage("请求失败");
+                billUnrepayment_loading.showRetry();
+                billUnrepayment_loading.setRetryMessage("请求失败");
             }
         });
         request.execute();
         cancelRequest(request);
     }
 
-    private List<BillRepaymentEntity> testData() {
-        List<BillRepaymentEntity> list = new ArrayList<BillRepaymentEntity>();
+    private List<BillUnrepaymentEntity> testData() {
+        List<BillUnrepaymentEntity> list = new ArrayList<BillUnrepaymentEntity>();
         for (int i = 0; i < 20; i++) {
-            BillRepaymentEntity br = new BillRepaymentEntity();
-            br.setRemainingDays("10月16日");
-            br.setProductName("iPHone");
-            br.setPro("金粉色32G");
+            BillUnrepaymentEntity br = new BillUnrepaymentEntity();
+            br.setOverdueDays("逾期6天");
+            br.setProductName("iPHone6S");
+            //br.setPro("土豪金64G");
             br.setOverdueAmount("440+30");
-            br.setRepaymentTime("2020年10月30日");
-            br.setOrderTime("2018年10月30日");
-            br.setRepaymentPeriod("剩余8期");
-            br.setOverdueDays("逾期5天");
+            br.setRepaymentTime("2015年10月30日");
+            br.setOrderTime("2015年10月10日");
+            br.setRepaymentPeriod("剩余10期");
             list.add(br);
         }
         return list;
