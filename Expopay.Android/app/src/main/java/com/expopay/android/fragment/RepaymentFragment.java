@@ -12,7 +12,7 @@ import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
 import com.expopay.android.adapter.listview.BillUnrepaymentAdapter;
 import com.expopay.android.application.MyApplication;
-import com.expopay.android.model.BillUnrepaymentEntity;
+import com.expopay.android.model.RepaymentBillEntity;
 import com.expopay.android.request.OrderRequest;
 import com.expopay.android.view.CustormLoadingView;
 import com.google.gson.Gson;
@@ -69,7 +69,7 @@ public class RepaymentFragment extends BaseFragment {
                             .equals("0000")) {
                         // 成功
                         Gson gson = new Gson();
-                        List<BillUnrepaymentEntity> list = gson.fromJson(json.getJSONObject("").toString(), new TypeToken<List<BillUnrepaymentEntity>>() {
+                        List<RepaymentBillEntity> list = gson.fromJson(json.getJSONObject("").toString(), new TypeToken<List<RepaymentBillEntity>>() {
                         }.getType());
                         adapter.setData(list);
                         adapter.notifyDataSetChanged();
@@ -103,10 +103,10 @@ public class RepaymentFragment extends BaseFragment {
         cancelRequest(request);
     }
 
-    private List<BillUnrepaymentEntity> testData() {
-        List<BillUnrepaymentEntity> list = new ArrayList<BillUnrepaymentEntity>();
+    private List<RepaymentBillEntity> testData() {
+        List<RepaymentBillEntity> list = new ArrayList<RepaymentBillEntity>();
         for (int i = 0; i < 20; i++) {
-            BillUnrepaymentEntity br = new BillUnrepaymentEntity();
+            RepaymentBillEntity br = new RepaymentBillEntity();
             br.setOverdueDays("逾期6天");
             br.setProductName("iPHone6S");
             //br.setPro("土豪金64G");

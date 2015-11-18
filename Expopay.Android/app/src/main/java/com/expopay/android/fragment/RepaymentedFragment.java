@@ -12,7 +12,7 @@ import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
 import com.expopay.android.adapter.listview.BillRepaymentAdapter;
 import com.expopay.android.application.MyApplication;
-import com.expopay.android.model.BillRepaymentEntity;
+import com.expopay.android.model.RepaymentedBillEntity;
 import com.expopay.android.request.OrderRequest;
 import com.expopay.android.view.CustormLoadingView;
 import com.google.gson.Gson;
@@ -69,7 +69,7 @@ public class RepaymentedFragment extends BaseFragment {
                             .equals("0000")) {
                         // 成功
                         Gson gson = new Gson();
-                        List<BillRepaymentEntity> list = gson.fromJson(json.getJSONObject("").toString(), new TypeToken<List<BillRepaymentEntity>>() {
+                        List<RepaymentedBillEntity> list = gson.fromJson(json.getJSONObject("").toString(), new TypeToken<List<RepaymentedBillEntity>>() {
                         }.getType());
                         adapter.setData(list);
                         adapter.notifyDataSetChanged();
@@ -103,10 +103,10 @@ public class RepaymentedFragment extends BaseFragment {
         cancelRequest(request);
     }
 
-    private List<BillRepaymentEntity> testData() {
-        List<BillRepaymentEntity> list = new ArrayList<BillRepaymentEntity>();
+    private List<RepaymentedBillEntity> testData() {
+        List<RepaymentedBillEntity> list = new ArrayList<RepaymentedBillEntity>();
         for (int i = 0; i < 20; i++) {
-            BillRepaymentEntity br = new BillRepaymentEntity();
+            RepaymentedBillEntity br = new RepaymentedBillEntity();
             br.setRemainingDays("10月16日");
             br.setProductName("iPHone");
             //br.setPro("金粉色32G");
