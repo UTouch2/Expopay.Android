@@ -36,7 +36,7 @@ public class RepaymentFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_unrepayment, container, false);
+        View view = inflater.inflate(R.layout.fragment_repayment, container, false);
         lvUnRepayment = (ListView) view.findViewById(R.id.lvUnRepayment);
 //        billUnrepayment_loading = (CustormLoadingView) view.findViewById(R.id.billUnrepayment_loading);
         adapter = new BillUnrepaymentAdapter(getActivity().getApplicationContext(), testData());
