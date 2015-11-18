@@ -2,19 +2,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.expopay.android.fragment.UnrepaymentFragment">
+    tools:context="com.expopay.android.fragment.RepaymentedFragment">
 
     <ListView
-        android:id="@+id/lvUnRepayment"
+        android:id="@+id/lvRepayment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none"
         android:divider="#AAAAAA">
     </ListView>
 
-    <!--<com.expopay.android.view.CustormLoadingView-->
-        <!--android:id="@+id/billUnrepayment_loading"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
-    <!--</com.expopay.android.view.CustormLoadingView>-->
+    <com.expopay.android.view.CustormLoadingView
+        android:id="@+id/billRepayment_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.expopay.android.view.CustormLoadingView>
 </RelativeLayout>

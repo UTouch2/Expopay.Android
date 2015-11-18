@@ -5,16 +5,16 @@
     tools:context="com.expopay.android.fragment.RepaymentFragment">
 
     <ListView
-        android:id="@+id/lvRepayment"
+        android:id="@+id/lvUnRepayment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none"
         android:divider="#AAAAAA">
     </ListView>
 
-    <com.expopay.android.view.CustormLoadingView
-        android:id="@+id/billRepayment_loading"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </com.expopay.android.view.CustormLoadingView>
+    <!--<com.expopay.android.view.CustormLoadingView-->
+        <!--android:id="@+id/billUnrepayment_loading"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+    <!--</com.expopay.android.view.CustormLoadingView>-->
 </RelativeLayout>
