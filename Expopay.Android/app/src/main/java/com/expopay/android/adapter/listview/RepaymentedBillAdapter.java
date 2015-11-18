@@ -10,20 +10,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.expopay.android.R;
-import com.expopay.android.model.BillRepaymentEntity;
+import com.expopay.android.model.RepaymentedBillEntity;
 
 import java.util.List;
 
 /**
  * Created by NB-MIS-100002 on 2015/10/26.
  */
-public class BillRepaymentAdapter extends BaseAdapter {
+public class RepaymentedBillAdapter extends BaseAdapter {
 
     private LayoutInflater mInflater;
-    private List<BillRepaymentEntity> data ;
+    private List<RepaymentedBillEntity> data ;
     private Context context;
 
-    public BillRepaymentAdapter(Context context,List<BillRepaymentEntity> data) {
+    public RepaymentedBillAdapter(Context context, List<RepaymentedBillEntity> data) {
         this.data = data;
         //根据context上下文加载布局
         this.mInflater = LayoutInflater.from(context);
@@ -46,7 +46,7 @@ public class BillRepaymentAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        final BillRepaymentEntity entity = data.get(position);
+        final RepaymentedBillEntity entity = data.get(position);
         ViewHolder holder = null;
         if (view == null) {
             holder = new ViewHolder();
@@ -94,11 +94,11 @@ public class BillRepaymentAdapter extends BaseAdapter {
         public TextView repaymentOverdueDays;
     }
 
-    public List<BillRepaymentEntity> getData() {
+    public List<RepaymentedBillEntity> getData() {
         return data;
     }
 
-    public void setData(List<BillRepaymentEntity> data) {
+    public void setData(List<RepaymentedBillEntity> data) {
         this.data = data;
     }
 }
