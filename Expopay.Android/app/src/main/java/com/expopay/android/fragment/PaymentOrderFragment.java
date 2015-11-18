@@ -32,7 +32,7 @@ public class PaymentOrderFragment extends BaseFragment {
     private ListView lvPaymentOrder;
     private CustormLoadingView paymentOrder_loading;
     private PaymentOrderAdapter adapter;
-
+    private int pageIndex = 0, pageSize =10;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_payment_order, container, false);
@@ -41,7 +41,7 @@ public class PaymentOrderFragment extends BaseFragment {
         adapter = new PaymentOrderAdapter(getActivity().getApplicationContext(), new ArrayList<PaymentOrderEntity>());
         lvPaymentOrder.setAdapter(adapter);
         try {
-            getPaymentOrder("123456", "1", "", "");
+            getPaymentOrder(getUser().getOpenId(), "1", pageIndex + "", pageSize + "");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -51,7 +51,7 @@ public class PaymentOrderFragment extends BaseFragment {
     private void getPaymentOrder(String openId, String orderSource, String pageIndex,
                                  String pageSize) throws JSONException {
         paymentOrder_loading.show();
-        OrderRequest request = new OrderRequest(MyApplication.HOST + "");
+        OrderRequest request = new OrderRequest(MyApplication.HOST + "/order/orderlist");
         request.setEntity(request.createGetOrdersParms(openId, orderSource, pageIndex, pageSize));
         request.setOutTime(10 * 1000);
         request.setIRequestListener(new JsonRequestListener() {
@@ -63,7 +63,7 @@ public class PaymentOrderFragment extends BaseFragment {
                             .equals("0000")) {
                         // 成功
                         Gson gson = new Gson();
-                        List<PaymentOrderEntity> list = gson.fromJson(json.getJSONObject("").toString(), new TypeToken<List<PaymentOrderEntity>>() {
+                        List<PaymentOrderEntity> list = gson.fromJson(json.getJSONObject("body").getJSONArray("records").toString(), new TypeToken<List<PaymentOrderEntity>>() {
                         }.getType());
                         adapter.setData(list);
                         adapter.notifyDataSetChanged();
@@ -94,14 +94,14 @@ public class PaymentOrderFragment extends BaseFragment {
             }
         });
         request.execute();
-//        cancelRequest(request);
+        cancelRequest(request);
     }
 
     private List<PaymentOrderEntity> testData() {
         List<PaymentOrderEntity> list = new ArrayList<PaymentOrderEntity>();
         for (int i = 0; i < 20; i++) {
             PaymentOrderEntity po = new PaymentOrderEntity();
-            po.setProductName("水电煤");
+           // po.setProductName("水电煤");
             po.setOrderAmount("18.00");
             po.setOrderTime("2015-10-26");
             po.setOrderStatus("未完成");

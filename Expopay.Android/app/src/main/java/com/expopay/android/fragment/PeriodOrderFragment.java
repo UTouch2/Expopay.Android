@@ -29,6 +29,8 @@ public class PeriodOrderFragment extends BaseFragment {
     private CustormLoadingView periodOrder_loading;
     private PeriodOrderAdapter adapter;
 
+    private int pageIndex = 0, pageSize = 10;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_period_order, container, false);
@@ -38,7 +40,7 @@ public class PeriodOrderFragment extends BaseFragment {
         adapter = new PeriodOrderAdapter(getActivity().getApplicationContext(), new ArrayList<PeriodOrderEntity>());
         lvPeriodOrder.setAdapter(adapter);
         try {
-            getPeriodOrder("123456","2","","");
+            getPeriodOrder(getUser().getOpenId(), "2", pageIndex + "", pageSize + "");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -46,11 +48,11 @@ public class PeriodOrderFragment extends BaseFragment {
         return view;
     }
 
-    private void getPeriodOrder(String openId,String orderSource,String pageIndex,
+    private void getPeriodOrder(String openId, String orderSource, String pageIndex,
                                 String pageSize) throws JSONException {
         periodOrder_loading.show();
-        OrderRequest request = new OrderRequest(MyApplication.HOST + "/system/version");
-        request.setEntity(request.createGetOrdersParms(openId,orderSource,pageIndex,pageSize));
+        OrderRequest request = new OrderRequest(MyApplication.HOST + "/order/orderlist");
+        request.setEntity(request.createGetOrdersParms(openId, orderSource, pageIndex, pageSize));
         request.setOutTime(10 * 1000);
         request.setIRequestListener(new JsonRequestListener() {
             @Override
@@ -61,7 +63,7 @@ public class PeriodOrderFragment extends BaseFragment {
                             .equals("0000")) {
                         // 成功
                         Gson gson = new Gson();
-                        List<PeriodOrderEntity> list = gson.fromJson(json.getJSONObject("").toString(), new TypeToken<List<PeriodOrderEntity>>() {
+                        List<PeriodOrderEntity> list = gson.fromJson(json.getJSONObject("body").getJSONArray("records").toString(), new TypeToken<List<PeriodOrderEntity>>() {
                         }.getType());
                         adapter.setData(list);
                         adapter.notifyDataSetChanged();
