@@ -69,7 +69,7 @@ public class PaymentOrderAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 //        holder.productImg.setImageResource(entity.getProductImg());
-        holder.productName.setText(entity.getProductName());
+       // holder.productName.setText(entity.getProductName());
         holder.orderAmount.setText(entity.getOrderAmount());
         holder.orderTime.setText(entity.getOrderTime());
         holder.orderStatus.setText(entity.getOrderStatus());

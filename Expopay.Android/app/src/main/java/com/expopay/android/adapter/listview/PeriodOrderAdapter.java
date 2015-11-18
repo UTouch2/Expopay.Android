@@ -71,9 +71,9 @@ public class PeriodOrderAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         //holder.productImg.setBackgroundResource((Integer) data);
-        holder.productName.setText(entity.getProductName());
+        //  holder.productName.setText(entity.getProductName());
         holder.orderAmount.setText(entity.getOrderAmount());
-        holder.properties.setText(entity.getProperties());
+        // holder.properties.setText(entity.getProperties());
         holder.repaymentPeriod.setText(entity.getRepaymentPeriod());
         holder.orderTime.setText(entity.getOrderTime());
         holder.orderStatus.setText(entity.getOrderStatus());
@@ -95,6 +95,7 @@ public class PeriodOrderAdapter extends BaseAdapter {
 
         return convertView;
     }
+
     //ViewHolder静态类
     static class ViewHolder {
         public ImageView productImg;
