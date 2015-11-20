@@ -8,23 +8,24 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 
 import com.expopay.android.R;
-import com.expopay.android.model.PropertiesEntity;
+import com.expopay.android.model.ProductPeroidEntity;
+import com.expopay.android.model.ProductPropertyEntity;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PropertiesAdapter extends BaseAdapter {
+public class ChoosePeriodAdapter extends BaseAdapter {
     private LayoutInflater inflater;
-    private List<PropertiesEntity> data;
+    private List<ProductPeroidEntity> data;
     private Context context;
-    private Map<Integer,Boolean> map;
+    private Map<Integer, Boolean> map;
 
-    public PropertiesAdapter(Context context, List<PropertiesEntity> data) {
+    public ChoosePeriodAdapter(Context context, List<ProductPeroidEntity> data) {
         this.data = data;
         this.inflater = LayoutInflater.from(context);
         this.context = context;
-        this.map =new HashMap<>();
+        this.map = new HashMap<>();
     }
 
     @Override
@@ -44,7 +45,7 @@ public class PropertiesAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        final PropertiesEntity entity = data.get(position);
+        final ProductPeroidEntity entity = data.get(position);
         final ViewGroup vg = parent;
 
         final ViewHolder holder;
@@ -64,9 +65,9 @@ public class PropertiesAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.button.setText(entity.getProperties());
-        if(!map.containsKey(position)){
-            map.put(position,false);
+        holder.button.setText(entity.getPeriod());
+        if (!map.containsKey(position)) {
+            map.put(position, false);
         }
         setChecked(holder.button, map.get(position));
 
@@ -81,23 +82,23 @@ public class PropertiesAdapter extends BaseAdapter {
     private void setChecked(Button button, boolean checked) {
         if (checked) {
             button.setBackgroundResource(R.mipmap.mall_outline);
-        }else{
+        } else {
             button.setBackgroundResource(R.drawable._button_selectproduct);
         }
     }
 
-    public List<PropertiesEntity> getData() {
+    public List<ProductPeroidEntity> getData() {
         return data;
     }
 
-    public void setData(List<PropertiesEntity> data) {
+    public void setData(List<ProductPeroidEntity> data) {
         this.data = data;
     }
 
 
-    public void setPosition(int position){
-        for(Integer key:map.keySet()){
-            map.put(key,false);
+    public void setPosition(int position) {
+        for (Integer key : map.keySet()) {
+            map.put(key, false);
         }
         map.put(position, true);
         notifyDataSetChanged();

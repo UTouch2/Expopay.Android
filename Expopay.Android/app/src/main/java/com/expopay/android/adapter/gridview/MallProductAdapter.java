@@ -13,6 +13,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.kechong.lib.http.Request;
+import com.android.kechong.lib.http.RequestMethod;
+import com.android.kechong.lib.http.listener.BitmapRequestListener;
 import com.expopay.android.R;
 import com.expopay.android.activity.ProductDetailsActivity;
 import com.expopay.android.model.MallProductEntity;
@@ -72,29 +75,35 @@ public class MallProductAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-//        holder.productImg.setImageBitmap(returnBitMap("http://p1.so.qhimg.com/t0110fcac150d39c481.jpg"));//entity.getProductImg()
-        //holder.productName.setText(entity.getProductName());
-        //  holder.orderAmount.setText(entity.getOrderAmount());
-
-        convertView.setOnClickListener(new View.OnClickListener() {
+        holder.productName.setText(entity.getProductName());
+        holder.orderAmount.setText(entity.getProductPrice());
+        Request request = new Request(entity.getProductImg(), RequestMethod.GET);
+        request.setIRequestListener(new BitmapRequestListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, ProductDetailsActivity.class);
+            public void onFilure(Exception e) {
 
-                Bitmap bmp = ((BitmapDrawable) holder.productImg.getDrawable()).getBitmap();
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bmp.compress(Bitmap.CompressFormat.PNG, 100, baos);
-                byte[] bitmapByte = baos.toByteArray();
-                intent.putExtra("bitmap", bitmapByte);
+            }
 
-                intent.putExtra("productName", holder.productName.getText().toString().trim());
-                intent.putExtra("orderAmount", holder.orderAmount.getText().toString().trim());
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
+            @Override
+            public void onSuccess(Object o) {
+                holder.productImg.setImageBitmap((Bitmap) o);
+            }
+
+            @Override
+            public void onProgressUpdate(int i, int i1) {
+
             }
         });
-
+        request.execute();
         return convertView;
+    }
+
+    public List<MallProductEntity> getData() {
+        return data;
+    }
+
+    public void setData(List<MallProductEntity> data) {
+        this.data = data;
     }
 
     //ViewHolder静态类
@@ -102,28 +111,5 @@ public class MallProductAdapter extends BaseAdapter {
         public ImageView productImg;
         public TextView productName;
         public TextView orderAmount;
-    }
-
-    public static Bitmap returnBitMap(String url) {
-        Log.i("returnBitMap", "url=" + url);
-        URL myFileUrl = null;
-        Bitmap bitmap = null;
-        try {
-            myFileUrl = new URL(url);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        try {
-            HttpURLConnection conn = (HttpURLConnection) myFileUrl.openConnection();
-            conn.setDoInput(true);
-            conn.connect();
-
-            InputStream is = conn.getInputStream();
-            bitmap = BitmapFactory.decodeStream(is);
-            is.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return bitmap;
     }
 }
