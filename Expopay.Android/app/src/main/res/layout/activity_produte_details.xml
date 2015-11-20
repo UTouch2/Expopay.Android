@@ -2,198 +2,180 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="none"
     android:clipToPadding="true"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:scrollbars="none">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF">
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp">
+
+            <com.expopay.android.view.CustormViewPager
+                android:id="@+id/product_bannerpager"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                app:duration="500"></com.expopay.android.view.CustormViewPager>
+
+            <com.expopay.android.view.BannerFootView
+                android:id="@+id/product_bannerpager_footview"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_alignParentBottom="true"></com.expopay.android.view.BannerFootView>
+        </RelativeLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:orientation="vertical">
+            android:background="#f9f9f9"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp">
 
-            <RelativeLayout
-                android:id="@+id/product_ViewPage"
-                android:layout_width="match_parent"
-                android:layout_height="160dp">
-
-                <com.expopay.android.view.CustormViewPager
-                    android:id="@+id/product_bannerpager"
-                    android:layout_width="match_parent"
-                    android:layout_height="160dp"
-                    app:duration="500"></com.expopay.android.view.CustormViewPager>
-
-                <com.expopay.android.view.BannerFootView
-                    android:id="@+id/product_bannerpager_footview"
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_alignParentBottom="true"></com.expopay.android.view.BannerFootView>
-            </RelativeLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/productdetails_productname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#f9f9f9"
-                android:orientation="vertical"
-                android:paddingBottom="10dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:paddingTop="10dp">
+                android:text="Apple iPhone 6S 移动联通电信4G手机"
+                android:textColor="#838383"
+                android:textSize="13sp" />
 
-                <TextView
-                    android:id="@+id/detailProductName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="13sp"
-                    android:textColor="#838383"
-                    android:text="Apple iPhone 6S 移动联通电信4G手机" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="正品行货  全国联保"
-                    android:textSize="13sp"
-                    android:textColor="#ACACAC" />
-
-                <TextView
-                    android:id="@+id/detailAmount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="￥5288.00"
-                    android:textSize="13sp"
-                    android:textColor="#ED8662" />
-            </LinearLayout>
-
-            <RelativeLayout
-                android:id="@+id/relativeLayoutProperties"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/_rectangle_bg"
-                android:orientation="horizontal"
-                android:padding="20dp">
+                android:layout_marginTop="5dp"
+                android:text="正品行货  全国联保"
+                android:textColor="#ACACAC"
+                android:textSize="13sp" />
 
-                <TextView
-                    android:id="@+id/tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="已选"
-                    android:textSize="13sp"
-                    android:textColor="#838383" />
-
-                <TextView
-                    android:id="@+id/tvSelected"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="20dp"
-                    android:layout_toEndOf="@+id/tv"
-                    android:layout_toRightOf="@+id/tv"
-                    android:text="金色 64G 非合约机"
-                    android:textSize="13sp"
-                    android:textColor="#ACACAC" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="15dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/mall_more" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/relativeLayoutStage"
+            <TextView
+                android:id="@+id/productdetails_productprice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/_rectangle_bg2"
-                android:orientation="horizontal"
-                android:padding="20dp">
-
-                <TextView
-                    android:id="@+id/tv1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="分期"
-                    android:textSize="13sp"
-                    android:textColor="#838383" />
-
-                <TextView
-                    android:id="@+id/tvStaging"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="20dp"
-                    android:layout_toEndOf="@+id/tv1"
-                    android:layout_toRightOf="@+id/tv1"
-                    android:text="12期 (522+12)X12=5288"
-                    android:textSize="13sp"
-                    android:textColor="#ACACAC" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="15dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/mall_more" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/llDetail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/_rectangle_bg"
-                android:orientation="horizontal"
-                android:padding="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="left"
-                    android:text="详情"
-                    android:textSize="13sp"
-                    android:textColor="#838383" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="15dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/mall_more" />
-            </RelativeLayout>
+                android:layout_marginTop="5dp"
+                android:text="￥5288.00"
+                android:textColor="#ED8662"
+                android:textSize="13sp" />
         </LinearLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/_rectangle_bg"
+            android:onClick="chooseColorOnclick"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/productdtails_properts_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="已选"
+                android:textColor="#838383"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/productdetails_productproperties"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toEndOf="@id/productdtails_properts_label"
+                android:layout_toRightOf="@id/productdtails_properts_label"
+                android:text="金色 64G 非合约机"
+                android:textColor="#ACACAC"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/mall_more" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/_rectangle_bg2"
+            android:onClick="chooseMemoryOnclick"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/productdtails_peroid_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="分期"
+                android:textColor="#838383"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/productdetails_productperoids"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toEndOf="@id/productdtails_peroid_label"
+                android:layout_toRightOf="@id/productdtails_peroid_label"
+                android:text="12期 (522+12)X12=5288"
+                android:textColor="#ACACAC"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/mall_more" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/_rectangle_bg"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="详情"
+                android:textColor="#838383"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/mall_more" />
+        </RelativeLayout>
+
         <Button
-            android:id="@+id/btnImmediatelyOrder"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/_button"
             android:text="立即下单"
-            android:textColor="#fff"
-            android:layout_below="@+id/tvBlank"
-            android:background="@drawable/_button">
-        </Button>
-
-        <TextView
-            android:id="@+id/tvBlank"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_below="@+id/linearLayout9"
-            android:background="#f9f9f9" />
+            android:textColor="#fff"></Button>
 
         <ImageView
             android:id="@+id/imgblowe"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_below="@+id/btnImmediatelyOrder"/>
-    </RelativeLayout>
+            android:layout_height="100dp" />
+    </LinearLayout>
 </ScrollView>
