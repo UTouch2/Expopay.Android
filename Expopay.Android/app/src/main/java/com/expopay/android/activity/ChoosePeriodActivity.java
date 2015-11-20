@@ -1,8 +1,6 @@
 package com.expopay.android.activity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.GridView;
@@ -11,19 +9,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.expopay.android.R;
-import com.expopay.android.adapter.gridview.PropertiesAdapter;
-import com.expopay.android.model.PropertiesEntity;
+import com.expopay.android.adapter.gridview.ChoosePeriodAdapter;
+import com.expopay.android.adapter.gridview.ChoosePropertiesAdapter;
+import com.expopay.android.model.ProductPeroidEntity;
+import com.expopay.android.model.ProductPropertyEntity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ChoosePeriodActivity extends BaseActivity {
 
     private GridView myGridView;
-    private PropertiesAdapter adapter;
+    private ChoosePeriodAdapter adapter;
 
     private ImageView img;
-    private TextView productname,productamount;
+    private TextView productname, productamount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,17 +33,13 @@ public class ChoosePeriodActivity extends BaseActivity {
         img = (ImageView) findViewById(R.id.choose_period_img);
         productname = (TextView) findViewById(R.id.choose_period_name);
         productamount = (TextView) findViewById(R.id.choose_period_amount);
-        if(getIntent() !=null)
-        {
-            byte[] bis=getIntent().getByteArrayExtra("bitmap");
-            Bitmap bitmap= BitmapFactory.decodeByteArray(bis, 0, bis.length);
-            img.setImageBitmap(bitmap);
-        }
+
         productname.setText(getIntent().getStringExtra("detailProductName"));
         productamount.setText(getIntent().getStringExtra("detailAmount"));
 
+        List<ProductPeroidEntity> periods = (List<ProductPeroidEntity>) getIntent().getSerializableExtra("periods");
         myGridView = (GridView) findViewById(R.id.buttonGridView);
-        adapter = new PropertiesAdapter(this, testData());
+        adapter = new ChoosePeriodAdapter(this, periods);
         myGridView.setAdapter(adapter);
     }
 
@@ -63,23 +58,13 @@ public class ChoosePeriodActivity extends BaseActivity {
 
     public void periodOkOnclick(View view) {
         Intent intent = new Intent();
-        PropertiesEntity str_periods = (PropertiesEntity)myGridView.getTag();
-        if(null == str_periods) {
+        ProductPropertyEntity periods = (ProductPropertyEntity) myGridView.getTag();
+        if (null == periods) {
             Toast.makeText(this, "请选择期数", Toast.LENGTH_SHORT).show();
-        }else {
-            intent.putExtra("str_periods", str_periods);
+        } else {
+            intent.putExtra("periods", periods);
             setResult(RESULT_OK, intent);
             finish();
         }
-    }
-
-    private List<PropertiesEntity> testData() {
-        List<PropertiesEntity> list = new ArrayList<PropertiesEntity>();
-        for (int i = 0; i < 7; i++) {
-            PropertiesEntity mp = new PropertiesEntity();
-            mp.setProperties(i + "期");
-            list.add(mp);
-        }
-        return list;
     }
 }

@@ -20,12 +20,15 @@ import com.expopay.android.application.MyApplication;
 import com.expopay.android.fragment.MainFragment;
 import com.expopay.android.fragment.MallFragment;
 import com.expopay.android.fragment.MyAccFragment;
+import com.expopay.android.model.MallProductEntity;
+import com.expopay.android.model.MessageEntity;
 import com.expopay.android.model.UpdateAppEntity;
 import com.expopay.android.model.UserEntity;
 import com.expopay.android.request.AppRequest;
 import com.expopay.android.request.CustomerRequest;
 import com.expopay.android.serivice.DownLoadService;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -59,6 +62,7 @@ public class MainAcativity extends BaseActivity {
         initView();
         try {
             getNewVersionCode();
+            getMessagesRequest(getUser().getOpenId(),"0","10");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -261,6 +265,7 @@ public class MainAcativity extends BaseActivity {
                     // 数据解析异常
                 }
             }
+
             @Override
             public void onProgressUpdate(int i, int j) {
 
@@ -269,6 +274,38 @@ public class MainAcativity extends BaseActivity {
             @Override
             public void onFilure(Exception result) {
                 System.out.println(result);
+            }
+        });
+        request.execute();
+        cancelRequest(request);
+    }
+
+    private void getMessagesRequest(String openId, String pageIndex, String pageSize) throws JSONException {
+        CustomerRequest request = new CustomerRequest(MyApplication.HOST + "/customer/message");
+        request.setEntity(request.createGetMessagesParams(openId, pageIndex, pageSize));
+        request.setIRequestListener(new JsonRequestListener() {
+            @Override
+            public void onFilure(Exception e) {
+
+            }
+            @Override
+            public void onSuccess(Object o) {
+                JSONObject json = (JSONObject) o;
+                try {
+                    if (json.getJSONObject("header").getString("code").equals("0000")) {
+                        Gson gson = new Gson();
+                        List<MessageEntity> messageEntities = gson.fromJson(json.getJSONObject("body").getJSONArray("records").toString(),
+                                new TypeToken<List<MessageEntity>>() {
+                                }.getType());
+                    }
+                } catch (Exception e) {
+
+                }
+            }
+
+            @Override
+            public void onProgressUpdate(int i, int i1) {
+
             }
         });
         request.execute();

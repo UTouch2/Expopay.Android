@@ -11,71 +11,63 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.android.kechong.lib.listener.AbsOnPageChangeListener;
 import com.expopay.android.R;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
+import com.expopay.android.application.MyApplication;
+import com.expopay.android.model.MallProductEntity;
+import com.expopay.android.model.ProductDetailsEntity;
+import com.expopay.android.model.ProductPeroidEntity;
+import com.expopay.android.model.ProductPropertyEntity;
 import com.expopay.android.model.PropertiesEntity;
+import com.expopay.android.request.ProductRequest;
 import com.expopay.android.view.BannerFootView;
 import com.expopay.android.view.CustormViewPager;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-public class ProductDetailsActivity extends BaseActivity implements View.OnClickListener{
+import org.json.JSONException;
+import org.json.JSONObject;
 
-    private RelativeLayout relativeLayoutProperties,relativeLayoutStage,llDetail;
-    private Button btnImmediatelyOrder;
-    private TextView detailProductName;
-    private TextView detailAmount;
-    private TextView tvSelected;
-    private TextView tvStaging;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ProductDetailsActivity extends BaseActivity {
+
+    private TextView productNameText;
+    private TextView productPriceText;
+    private TextView propertisText;
+    private TextView periodText;
     private ImageView imgblowe;
-
-    private byte[] bis;
-    private Bitmap bitmap;
-
     private CustormViewPager viewPager;
     BannerFootView footView;
+    //商品组所有的商品
+    private List<ProductDetailsEntity> productDetails;
+    //当前商品
+    private ProductDetailsEntity productEntity;
+    //内存和颜色等属性规格
+    private List<ProductPropertyEntity> colors, memorys;
+    private ProductPropertyEntity color, memory;
+    //分期书，和选择的分期书
+    private List<ProductPeroidEntity> peroids;
+    private ProductPeroidEntity peroid;
 
-    private void assignViews() {
-        relativeLayoutProperties = (RelativeLayout) findViewById(R.id.relativeLayoutProperties);
-        relativeLayoutStage = (RelativeLayout) findViewById(R.id.relativeLayoutStage);
-        llDetail = (RelativeLayout) findViewById(R.id.llDetail);
-        btnImmediatelyOrder = (Button) findViewById(R.id.btnImmediatelyOrder);
-        detailProductName = (TextView) findViewById(R.id.detailProductName);
-        detailAmount = (TextView) findViewById(R.id.detailAmount);
+    protected void initView() {
+        productNameText = (TextView) findViewById(R.id.productdetails_productname);
+        productPriceText = (TextView) findViewById(R.id.productdetails_productprice);
 
-        tvSelected = (TextView) findViewById(R.id.tvSelected);
-        tvStaging = (TextView) findViewById(R.id.tvStaging);
+        propertisText = (TextView) findViewById(R.id.productdetails_productproperties);
+        periodText = (TextView) findViewById(R.id.productdetails_productperoids);
 
         imgblowe = (ImageView) findViewById(R.id.imgblowe);
-        if(getIntent() !=null)
-        {
-            bis=getIntent().getByteArrayExtra("bitmap");
-            bitmap= BitmapFactory.decodeByteArray(bis, 0, bis.length);
-            imgblowe.setImageBitmap(bitmap);
-        }
 
-        btnImmediatelyOrder.setOnClickListener(this);
-        relativeLayoutProperties.setOnClickListener(this);
-        relativeLayoutStage.setOnClickListener(this);
-        llDetail.setOnClickListener(this);
-
-        //加载商品的ViewPage
         viewPager = (CustormViewPager) findViewById(R.id.product_bannerpager);
         viewPager.setAdapter(new BannerPagerAdapter(createViews()));
         viewPager.setCurrentItem(100);
-        new Thread(){
-            @Override
-            public void run() {
-                while (true) {
-                    try {
-                        Thread.sleep(3000l);
-                        handler.sendEmptyMessage(1);
-                    } catch (Exception e) {
-                    }
-                }
-            }
-        }.start();
-        footView = (BannerFootView) findViewById(R.id.product_bannerpager_footview);
 
+        footView = (BannerFootView) findViewById(R.id.product_bannerpager_footview);
         viewPager.setAdapter(new BannerPagerAdapter(createViews()));
         viewPager.setOnPageChangeListener(new AbsOnPageChangeListener() {
             @Override
@@ -84,7 +76,6 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
             }
         });
         footView.setSelectedIndex(createViews().length, viewPager.getCurrentItem() % createViews().length);
-
     }
 
     @Override
@@ -93,12 +84,26 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
         setStatusColor();
         setTitle("商品详情");
         setContentView(R.layout.activity_produte_details);
+        initView();
+        MallProductEntity entity = (MallProductEntity) getIntent().getSerializableExtra("entity");
+        try {
+            getProductDetailsRequest(entity.getProductId());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
-        assignViews();
-        setTextView();
+    public void chooseColorOnclick(View v) {
+        Intent intent = new Intent(this, ChoosePropertiesActivity.class);
+        intent.putExtra("colors", (Serializable) colors);
+        intent.putExtra("memorys", (Serializable) memorys);
+        startActivityForResult(intent, 0);
+    }
 
-        bis=getIntent().getByteArrayExtra("bitmap");
-        bitmap= BitmapFactory.decodeByteArray(bis, 0, bis.length);
+    public void chooseMemoryOnclick(View v) {
+        Intent intent = new Intent(this, ChoosePeriodActivity.class);
+        intent.putExtra("peroids", (Serializable) peroids);
+        startActivityForResult(intent, 1);
     }
 
     @Override
@@ -107,62 +112,27 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
         switch (requestCode) {
             case 0:
                 if (resultCode == RESULT_OK) {
-                    String str_colour = ((PropertiesEntity)data.getExtras().getSerializable("str_colour")).getProperties();
-                    String str_g = ((PropertiesEntity)data.getExtras().getSerializable("str_g")).getProperties();
-                    tvSelected.setText(str_colour+"  " +str_g);
+                    color = ((ProductPropertyEntity) data.getExtras().getSerializable("color"));
+                    memory = ((ProductPropertyEntity) data.getExtras().getSerializable("memory"));
+                    getProductByProperties(productDetails, color, memory);
+                    peroids = productEntity.getProductPeriods();
+                    peroid = peroids.get(0);
+                    propertisText.setText(color.getPropertyValue() + "  " + memory.getPropertyValue());
+                    periodText.setText(peroid.getPeriod());
+                    productNameText.setText(productEntity.getProductName());
+                    productPriceText.setText(productEntity.getProductPrice());
                 }
                 break;
             case 1:
                 if (resultCode == RESULT_OK) {
-                    String str_periods = ((PropertiesEntity)data.getExtras().getSerializable("str_periods")).getProperties();
-                    tvStaging.setText(str_periods);
+                    peroid = ((ProductPeroidEntity) data.getExtras().getSerializable("periods"));
+                    periodText.setText(peroid.getPeriod());
                 }
                 break;
             default:
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        Intent intent = new Intent();
-        switch (v.getId()) {
-            case R.id.relativeLayoutProperties:
-                intent.setClass(ProductDetailsActivity.this, ChoosePropertiesActivity.class);
-                intent.putExtra("bitmap",bis);
-                intent.putExtra("detailProductName", detailProductName.getText());
-                intent.putExtra("detailAmount", detailAmount.getText());
-                startActivityForResult(intent,0);
-                break;
-            case R.id.relativeLayoutStage:
-                intent.setClass(ProductDetailsActivity.this, ChoosePeriodActivity.class);
-                intent.putExtra("bitmap", bis);
-                intent.putExtra("detailProductName", detailProductName.getText());
-                intent.putExtra("detailAmount", detailAmount.getText());
-                startActivityForResult(intent,1);
-                break;
-            case R.id.llDetail:
-                intent.setClass(ProductDetailsActivity.this, OrderDetailActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.btnImmediatelyOrder:
-                intent.setClass(ProductDetailsActivity.this, OrderDetailCommitActivity.class);
-                intent.putExtra("bitmap", bis);
-                intent.putExtra("detailProductName", detailProductName.getText().toString().trim());
-                intent.putExtra("detailAmount",detailAmount.getText().toString().trim());
-                intent.putExtra("tvSelected",tvSelected.getText().toString().trim());
-                intent.putExtra("tvStaging",tvStaging.getText().toString().trim());
-                startActivity(intent);
-                break;
-            default:
-                break;
-        }
-    }
-
-    private void setTextView(){
-        Intent intent = getIntent();
-        detailProductName.setText(intent.getStringExtra("productName"));
-        detailAmount.setText(intent.getStringExtra("orderAmount"));
-    }
 
     private View[] createViews() {
         View[] views = new View[3];
@@ -182,8 +152,116 @@ public class ProductDetailsActivity extends BaseActivity implements View.OnClick
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            int startItem = viewPager.getCurrentItem()+1;
+            int startItem = viewPager.getCurrentItem() + 1;
             viewPager.setCurrentItem(startItem);
         }
     };
+
+    private void getProductDetailsRequest(String productId) throws JSONException {
+        ProductRequest request = new ProductRequest(MyApplication.HOST + "/product/productdetail");
+        request.setEntity(request.createProductDetailsParams(productId));
+        request.setIRequestListener(new JsonRequestListener() {
+            @Override
+            public void onFilure(Exception e) {
+
+            }
+
+            @Override
+            public void onSuccess(Object o) {
+                JSONObject json = (JSONObject) o;
+                try {
+                    if (json.getJSONObject("header").getString("code").equals("0000")) {
+                        Gson gson = new Gson();
+                        productDetails = gson.fromJson(json.getJSONObject("body").getJSONArray("records").toString(),
+                                new TypeToken<List<ProductDetailsEntity>>() {
+                                }.getType());
+                        parseData(productDetails);
+                        color = colors.get(0);
+                        memory = memorys.get(0);
+                        getProductByProperties(productDetails, color, memory);
+                        peroids = productEntity.getProductPeriods();
+                        peroid = peroids.get(0);
+                        propertisText.setText(color.getPropertyValue() + "  " + memory.getPropertyValue());
+                        periodText.setText(peroid.getPeriod());
+                        productNameText.setText(productEntity.getProductName());
+                        productPriceText.setText(productEntity.getProductPrice());
+                    }
+                } catch (Exception e) {
+
+                }
+            }
+
+            @Override
+            public void onProgressUpdate(int i, int i1) {
+
+            }
+        });
+        request.execute();
+        cancelRequest(request);
+    }
+
+    /**
+     * 计算总的颜色和内存的规格
+     *
+     * @param data
+     */
+    private void parseData(List<ProductDetailsEntity> data) {
+        colors = new ArrayList<>();
+        memorys = new ArrayList<>();
+        for (ProductDetailsEntity entity : data) {
+            if (entity.getPropertyName1().equals("颜色")) {
+                ProductPropertyEntity color = new ProductPropertyEntity();
+                color.setPropertyId(entity.getPropertyId1());
+                color.setPropertyName(entity.getPropertyName1());
+                color.setPropertyValue(entity.getPropertyValue1());
+
+                ProductPropertyEntity memory = new ProductPropertyEntity();
+                memory.setPropertyId(entity.getPropertyId2());
+                memory.setPropertyName(entity.getPropertyName2());
+                memory.setPropertyValue(entity.getPropertyValue2());
+                if (!colors.contains(color)) {
+                    colors.add(color);
+                }
+                if (memorys.contains(memory)) {
+                    memorys.add(memory);
+                }
+            } else if (entity.getPropertyName1().equals("内存")) {
+                ProductPropertyEntity color = new ProductPropertyEntity();
+                color.setPropertyId(entity.getPropertyId2());
+                color.setPropertyName(entity.getPropertyName2());
+                color.setPropertyValue(entity.getPropertyValue2());
+
+                ProductPropertyEntity memory = new ProductPropertyEntity();
+                memory.setPropertyId(entity.getPropertyId1());
+                memory.setPropertyName(entity.getPropertyName1());
+                memory.setPropertyValue(entity.getPropertyValue1());
+
+                if (!colors.contains(color)) {
+                    colors.add(color);
+                }
+                if (memorys.contains(memory)) {
+                    memorys.add(memory);
+                }
+            }
+        }
+    }
+
+    /**
+     * 根据舒心找到对应的商品
+     *
+     * @param data
+     * @param color
+     * @param memory
+     * @return
+     */
+    private void getProductByProperties(List<ProductDetailsEntity> data, ProductPropertyEntity color, ProductPropertyEntity memory) {
+        for (ProductDetailsEntity entity : data) {
+            if (entity.getPropertyId1().equals(color.getPropertyId()) && entity.getPropertyId2().equals(memory.getPropertyId())) {
+                productEntity = entity;
+            }
+            if (entity.getPropertyId2().equals(color.getPropertyId()) && entity.getPropertyId1().equals(memory.getPropertyId())) {
+                productEntity = entity;
+            }
+        }
+    }
 }
