@@ -12,6 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout6"
         android:background="@drawable/_rectangle_bg2"
         android:orientation="horizontal"
         android:padding="10dp">
@@ -31,16 +33,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="收件人："
-                    android:textSize="13sp"
-                    android:textColor="#969696"/>
+                    android:textColor="#959595"
+                    android:textSize="13sp"/>
 
                 <TextView
-                    android:id="@+id/commitConsignee"
+                    android:id="@+id/orderDetailCommit_receiver"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
                     android:text="克里斯"
-                    android:textSize="13sp"
-                    android:textColor="#969696"/>
+                    android:textColor="#959595"
+                    android:textSize="13sp"/>
 
                 <ImageView
                     android:layout_width="15dp"
@@ -49,19 +52,19 @@
                     android:src="@mipmap/mall_phone" />
 
                 <TextView
-                    android:layout_marginLeft="5dp"
-                    android:id="@+id/commitConsigneeMobile"
+                    android:id="@+id/orderDetailCommit_receiverMobile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="13sp"
-                    android:textColor="#969696"
-                    android:text="13666666666" />
+                    android:layout_marginLeft="5dp"
+                    android:text="13666666666"
+                    android:textColor="#959595"
+                    android:textSize="13sp"/>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -70,13 +73,13 @@
                     android:src="@mipmap/mall_address" />
 
                 <TextView
-                    android:layout_marginLeft="5dp"
-                    android:id="@+id/commitConsigneeAddress"
+                    android:id="@+id/orderDetailCommit_receiverAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#EFA38D"
-                    android:textSize="13sp"
-                    android:text="云南省昆明市五华区海源中路1088号和成国际A座25楼" />
+                    android:layout_marginLeft="5dp"
+                    android:text="云南省昆明市五华区海源中路1088号和成国际A座25楼"
+                    android:textColor="#EFA48E"
+                    android:textSize="13sp"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -114,7 +117,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/commitProductName"
+                android:id="@+id/orderDetailCommit_productName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
@@ -135,13 +138,23 @@
                     android:text="已选" />
 
                 <TextView
-                    android:id="@+id/commitProperties"
+                    android:id="@+id/orderDetailCommit_propertyName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
-                    android:text="金色 64G 非合约机"
+                    android:text="金色"
                     android:textSize="13sp"
                     android:textColor="#969696" />
+
+                <TextView
+                    android:id="@+id/orderDetailCommit_propertyValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="16G"
+                    android:textColor="#989898"
+                    android:textSize="12sp"/>
+
             </LinearLayout>
 
             <RelativeLayout
@@ -159,6 +172,7 @@
                     android:textColor="#F1987A" />
 
                 <TextView
+                    android:id="@+id/orderDetailCommit_productQutity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -200,17 +214,25 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/commitServiceAmount"
+                    android:id="@+id/orderDetailCommit_repaymentPeriod"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
+                    android:text="12期"
+                    android:textSize="13sp"
+                    android:textColor="#969696" />
+                <TextView
+                    android:id="@+id/orderDetailCommit_serviceAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:text="(522+12)x12=5288"
                     android:textSize="13sp"
                     android:textColor="#969696" />
             </LinearLayout>
 
             <TextView
-                android:id="@+id/commitPeriodAmount"
+                android:id="@+id/orderDetailCommit_periodAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
@@ -232,7 +254,7 @@
         android:orientation="horizontal">
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/orderDetailCommit_checkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -257,9 +279,10 @@
     </LinearLayout>
 
     <com.expopay.android.view.CustormLoadingButton
+        android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:id="@+id/btnSubmit"
+        android:onClick="submitOnclick"
         android:background="@drawable/_button"
         android:layout_alignParentBottom="true">
     </com.expopay.android.view.CustormLoadingButton>

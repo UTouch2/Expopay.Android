@@ -3,15 +3,12 @@ package com.expopay.android.activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.expopay.android.R;
-import com.expopay.android.adapter.listview.LogisticsAdapter;
 import com.expopay.android.model.OrderDetailsEntity;
 
 import java.util.ArrayList;
@@ -19,53 +16,48 @@ import java.util.List;
 
 public class OrderDetailActivity extends BaseActivity {
 
-    private LinearLayout llAddress;
-    private TextView consigneeName;
-    private TextView consigneeMobile;
-    private TextView consigneeAddress;
     private ImageView productImg;
     private TextView productName;
-    private TextView properties;
-    private TextView orderAmount;
+    private TextView productPrice;
+    private TextView propertyName;
+    private TextView propertyValue;
+    private TextView productQutity;
+    private TextView orderStatus;
     private TextView repaymentPeriod;
     private TextView serviceAmount;
-    private TextView cancelPeriodAmount;
-    private TextView orderStatus;
+    private TextView periodAmount;
+    private TextView receiver;
+    private TextView receiverMobile;
+    private TextView receiverAddress;
+    private ListView expressRecords;
     private TextView orderNumber;
     private TextView transcationCode;
     private TextView orderTime;
-    private TextView carrierCompany;
-    private TextView carrierCode;
-    private Button btnContact;
-    private Button btnCancelOrder;
-    private ListView lvLogistics;
-    private LogisticsAdapter adapter;
+    private TextView expressCompany;
+    private TextView expressNumber;
 
-    private void assignViews() {
-        llAddress = (LinearLayout) findViewById(R.id.llAddress);
-        consigneeName = (TextView) findViewById(R.id.consigneeName);
-        consigneeMobile = (TextView) findViewById(R.id.consigneeMobile);
-        consigneeAddress = (TextView) findViewById(R.id.consigneeAddress);
-        productImg = (ImageView) findViewById(R.id.productImg);
-        productName = (TextView) findViewById(R.id.productName);
-        properties = (TextView) findViewById(R.id.properties);
-        orderAmount = (TextView) findViewById(R.id.orderAmount);
-        repaymentPeriod = (TextView) findViewById(R.id.repaymentPeriod);
-        serviceAmount = (TextView) findViewById(R.id.serviceAmount);
-        cancelPeriodAmount = (TextView) findViewById(R.id.periodAmount);
-        orderStatus = (TextView) findViewById(R.id.orderStatus);
-        orderNumber = (TextView) findViewById(R.id.orderNumber);
-        transcationCode = (TextView) findViewById(R.id.transcationCode);
-        orderTime = (TextView) findViewById(R.id.orderTime);
-        carrierCompany = (TextView) findViewById(R.id.carrierCompany);
-        carrierCode = (TextView) findViewById(R.id.carrierCode);
-        btnCancelOrder = (Button) findViewById(R.id.btnCancelOrder);
-        btnContact = (Button) findViewById(R.id.btnContact);
-        lvLogistics = (ListView) findViewById(R.id.lvLogistics);
-        adapter = new LogisticsAdapter(this,testData());
-        lvLogistics.setAdapter(adapter);
-        setListViewHeightBasedOnChildren(lvLogistics);
+    private void initViews() {
+        productImg = (ImageView) findViewById(R.id.orderDetail_productImg);
+        productName = (TextView) findViewById(R.id.orderDetail_productName);
+        productPrice = (TextView) findViewById(R.id.orderDetail_productPrice);
+        propertyName = (TextView) findViewById(R.id.orderDetail_propertyName);
+        propertyValue = (TextView) findViewById(R.id.orderDetail_propertyValue);
+        productQutity = (TextView) findViewById(R.id.orderDetail_productQutity);
+        orderStatus = (TextView) findViewById(R.id.orderDetail_orderStatus);
+        repaymentPeriod = (TextView) findViewById(R.id.orderDetail_repaymentPeriod);
+        serviceAmount = (TextView) findViewById(R.id.orderDetail_serviceAmount);
+        periodAmount = (TextView) findViewById(R.id.orderDetail_periodAmount);
+        receiver = (TextView) findViewById(R.id.orderDetail_receiver);
+        receiverMobile = (TextView) findViewById(R.id.orderDetail_receiverMobile);
+        receiverAddress = (TextView) findViewById(R.id.orderDetail_receiverAddress);
+        expressRecords = (ListView) findViewById(R.id.orderDetail_expressRecords);
+        orderNumber = (TextView) findViewById(R.id.orderDetail_orderNumber);
+        transcationCode = (TextView) findViewById(R.id.orderDetail_transcationCode);
+        orderTime = (TextView) findViewById(R.id.orderDetail_orderTime);
+        expressCompany = (TextView) findViewById(R.id.orderDetail_expressCompany);
+        expressNumber = (TextView) findViewById(R.id.orderDetail_expressNumber);
     }
+
 
 
     @Override
@@ -74,46 +66,7 @@ public class OrderDetailActivity extends BaseActivity {
         setStatusColor();
         setTitle("订单详情");
         setContentView(R.layout.activity_order_detail);
-
-        assignViews();
-        setTextView();
-        llAddress.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-        btnCancelOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-        btnContact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-    }
-
-    private void setTextView(){
-        productImg.setImageResource(R.mipmap.mall_mobile);
-        productName.setText("iPhone6S");
-        properties.setText("白色");
-        orderAmount.setText("5200");
-        repaymentPeriod.setText("12期");
-        serviceAmount.setText("12元");
-        cancelPeriodAmount.setText("每期还款470元");
-        consigneeName.setText("克里斯");
-        consigneeMobile.setText("13600000000");
-        consigneeAddress.setText("云南省昆明市五华区海源中路1088号和成国际A座25楼");
-        orderStatus.setText("已完成");
-        orderNumber.setText("1234567890");
-        transcationCode.setText("交易流水号:678839903987484");
-        orderTime.setText("交易时间：2015-09-26  00:00:00");
-        carrierCompany.setText("顺丰快递");
-        carrierCode.setText("888888888888");
+        initViews();
     }
 
     private List<OrderDetailsEntity> testData(){
@@ -149,5 +102,13 @@ public class OrderDetailActivity extends BaseActivity {
         // listView.getDividerHeight()获取子项间分隔符占用的高度
         // params.height最后得到整个ListView完整显示需要的高度
         listView.setLayoutParams(params);
+    }
+
+    public void cancelOrderOnclick(View view){
+
+    }
+
+    public void contactOnclick(View view){
+
     }
 }

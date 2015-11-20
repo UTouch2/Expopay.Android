@@ -9,22 +9,22 @@ import com.expopay.android.R;
 
 public class OrderDetailItemActivity extends BaseActivity {
 
-    private ImageView itemProductImg;
-    private TextView itemProductName;
-    private TextView itemOrderNumber;
-    private TextView itemTranscationCode;
-    private TextView itemPayCode;
-    private TextView itemOrderTime;
-    private TextView itemOrderStatus;
+    private ImageView productImg;
+    private TextView productName;
+    private TextView orderNumber;
+    private TextView transcationCode;
+    private TextView payCode;
+    private TextView orderTime;
+    private TextView orderStatus;
 
-    private void assignViews() {
-        itemProductImg = (ImageView) findViewById(R.id.itemProductImg);
-        itemProductName = (TextView) findViewById(R.id.itemProductName);
-        itemOrderNumber = (TextView) findViewById(R.id.itemOrderNumber);
-        itemTranscationCode = (TextView) findViewById(R.id.itemTranscationCode);
-        itemPayCode = (TextView) findViewById(R.id.itemPayCode);
-        itemOrderTime = (TextView) findViewById(R.id.itemOrderTime);
-        itemOrderStatus = (TextView) findViewById(R.id.itemOrderStatus);
+    private void initViews() {
+        productImg = (ImageView) findViewById(R.id.orderDetailItem_ProductImg);
+        productName = (TextView) findViewById(R.id.orderDetailItem_ProductName);
+        orderNumber = (TextView) findViewById(R.id.orderDetailItem_OrderNumber);
+        transcationCode = (TextView) findViewById(R.id.orderDetailItem_transcationCode);
+        payCode = (TextView) findViewById(R.id.orderDetailItem_payCode);
+        orderTime = (TextView) findViewById(R.id.orderDetailItem_orderTime);
+        orderStatus = (TextView) findViewById(R.id.orderDetailItem_orderStatus);
     }
 
 
@@ -33,27 +33,14 @@ public class OrderDetailItemActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         statusBarCoverActivity();
         setContentView(R.layout.activity_order_detail_item);
-
-        assignViews();
-        setTextView();
+        initViews();
     }
 
-    private void setTextView(){
-        itemProductImg.setImageResource(R.mipmap.mall_mobile);
-        itemProductName.setText("iPhone6S");
-        itemOrderNumber.setText("1234567890");
-        itemTranscationCode.setText("交易流水号:678839903987484");
-        itemPayCode.setText("支付流水号：23456787655678");
-        itemOrderTime.setText("交易时间：2015-09-26  00:00:00");
-        itemOrderStatus.setText("未完成");
-
-    }
-
-    public void btnCancel(View view){
+    public void cancelOrderItemOnclick(View view){
         finish();
     }
 
-    public void btnOk(View view){
+    public void OkOnclick(View view){
         finish();
     }
 

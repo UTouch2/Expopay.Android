@@ -1,8 +1,5 @@
 package com.expopay.android.activity;
 
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -22,35 +19,38 @@ import org.json.JSONObject;
 
 public class OrderDetailCommitActivity extends BaseActivity {
 
-    private ImageView commitProductImg;
-    private TextView commitProductName;
-    private TextView commitOrderAmount;
-    private TextView commitProperties;
-//    private TextView commitRepaymentPeriod;
-    private TextView commitServiceAmount;
-    private TextView commitPeriodAmount;
     private LinearLayout llAddress;
-    private TextView commitConsignee;
-    private TextView commitConsigneeMobile;
-    private TextView commitConsigneeAddress;
+    private TextView orderDetailCommitReceiver;
+    private TextView orderDetailCommitReceiverMobile;
+    private TextView orderDetailCommitReceiverAddress;
+    private LinearLayout linearLayout2;
+    private ImageView commitProductImg;
+    private TextView orderDetailCommitProductName;
+    private TextView orderDetailCommitPropertyName;
+    private TextView orderDetailCommitPropertyValue;
+    private TextView commitOrderAmount;
+    private TextView orderDetailCommitProductQutity;
+    private TextView orderDetailCommitRepaymentPeriod;
+    private TextView commitPeriodAmount;
     private CheckBox checkBox;
     private CustormLoadingButton btnSubmit;
 
-    private void assignViews() {
-        commitProductImg = (ImageView) findViewById(R.id.commitProductImg);
-        commitProductName = (TextView) findViewById(R.id.commitProductName);
-        commitOrderAmount = (TextView) findViewById(R.id.commitOrderAmount);
-        commitProperties = (TextView) findViewById(R.id.commitProperties);
-//        commitRepaymentPeriod = (TextView) findViewById(R.id.commitRepaymentPeriod);
-        commitServiceAmount = (TextView) findViewById(R.id.commitServiceAmount);
-        commitPeriodAmount = (TextView) findViewById(R.id.commitPeriodAmount);
+    private void initViews() {
         llAddress = (LinearLayout) findViewById(R.id.llAddress);
-        commitConsignee = (TextView) findViewById(R.id.commitConsignee);
-        commitConsigneeMobile = (TextView) findViewById(R.id.commitConsigneeMobile);
-        commitConsigneeAddress = (TextView) findViewById(R.id.commitConsigneeAddress);
+        orderDetailCommitReceiver = (TextView) findViewById(R.id.orderDetailCommit_receiver);
+        orderDetailCommitReceiverMobile = (TextView) findViewById(R.id.orderDetailCommit_receiverMobile);
+        orderDetailCommitReceiverAddress = (TextView) findViewById(R.id.orderDetailCommit_receiverAddress);
+        linearLayout2 = (LinearLayout) findViewById(R.id.linearLayout2);
+        commitProductImg = (ImageView) findViewById(R.id.commitProductImg);
+        orderDetailCommitProductName = (TextView) findViewById(R.id.orderDetailCommit_productName);
+        orderDetailCommitPropertyName = (TextView) findViewById(R.id.orderDetailCommit_propertyName);
+        orderDetailCommitPropertyValue = (TextView) findViewById(R.id.orderDetailCommit_propertyValue);
+        commitOrderAmount = (TextView) findViewById(R.id.commitOrderAmount);
+        orderDetailCommitProductQutity = (TextView) findViewById(R.id.orderDetailCommit_productQutity);
+        orderDetailCommitRepaymentPeriod = (TextView) findViewById(R.id.orderDetailCommit_repaymentPeriod);
+        commitPeriodAmount = (TextView) findViewById(R.id.commitPeriodAmount);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
         btnSubmit = (CustormLoadingButton) findViewById(R.id.btnSubmit);
-        btnSubmit.showNormal("提交订单");
     }
 
 
@@ -61,8 +61,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
         setTitle("订单详情");
         setContentView(R.layout.activity_order_detail_commit);
 
-        assignViews();
-        setTextView();
+        initViews();
         llAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,22 +69,19 @@ public class OrderDetailCommitActivity extends BaseActivity {
             }
         });
 
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String repaymentPeriod = commitServiceAmount.getText().toString().trim();
+    }
 
-                if (checkBox.isChecked()) {
-                    try {
-                        getOrder(getUser().getOpenId(), "", repaymentPeriod, "", "", "", "");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    Toast.makeText(OrderDetailCommitActivity.this, "您未同意《南博卡分期协议》", Toast.LENGTH_SHORT).show();
-                }
+
+    public void submitOnclick(View view){
+        if (checkBox.isChecked()) {
+            try {
+                getOrder(getUser().getOpenId(), "", "", "", "", "", "");
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-        });
+        } else {
+            Toast.makeText(OrderDetailCommitActivity.this, "您未同意《南博卡分期协议》", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void getOrder(String openId, String orderSource, String paymentMethod, String orerAmount,
@@ -122,24 +118,4 @@ public class OrderDetailCommitActivity extends BaseActivity {
         request.execute();
         cancelRequest(request);
     }
-
-    private void setTextView() {
-        Intent intent = getIntent();
-        if(getIntent() !=null)
-        {
-            byte[] bis=getIntent().getByteArrayExtra("bitmap");
-            Bitmap bitmap= BitmapFactory.decodeByteArray(bis, 0, bis.length);
-            commitProductImg.setImageBitmap(bitmap);
-        }
-        commitProductName.setText(intent.getStringExtra("detailProductName"));
-        commitOrderAmount.setText(intent.getStringExtra("detailAmount"));
-        commitProperties.setText(intent.getStringExtra("tvSelected"));
-//        commitRepaymentPeriod.setText("12期");
-        commitServiceAmount.setText(intent.getStringExtra("tvStaging"));
-        commitPeriodAmount.setText("每期应还款" + 470 + " ");
-        commitConsignee.setText("收货人");
-        commitConsigneeMobile.setText("13600000000");
-        commitConsigneeAddress.setText("云南省昆明市五华区海源中路1088号和成国际A座25楼");
-    }
-
 }
