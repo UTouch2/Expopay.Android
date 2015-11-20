@@ -1,6 +1,7 @@
 package com.expopay.android.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by NB-MIS-100002 on 2015/10/22.
@@ -10,7 +11,7 @@ public class MallProductEntity implements Serializable {
     private String productPrice;
     private String productImg;
     private String productName;
-    private String productType;
+    private List<ProductPeroidEntity> productPeriods;
 
     public MallProductEntity() {
     }
@@ -21,14 +22,6 @@ public class MallProductEntity implements Serializable {
 
     public void setProductId(String productId) {
         this.productId = productId;
-    }
-
-    public String getProductPrice() {
-        return productPrice;
-    }
-
-    public void setProductPrice(String productPrice) {
-        this.productPrice = productPrice;
     }
 
     public String getProductImg() {
@@ -47,11 +40,19 @@ public class MallProductEntity implements Serializable {
         this.productName = productName;
     }
 
-    public String getProductType() {
-        return productType;
+    public List<ProductPeroidEntity> getProductPeriods() {
+        return productPeriods;
     }
 
-    public void setProductType(String productType) {
-        this.productType = productType;
+    public void setProductPeriods(List<ProductPeroidEntity> productPeriods) {
+        this.productPeriods = productPeriods;
+    }
+
+    public String getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(String productPrice) {
+        this.productPrice = productPrice;
     }
 }

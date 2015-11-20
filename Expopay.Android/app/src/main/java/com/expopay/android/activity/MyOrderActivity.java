@@ -33,8 +33,8 @@ public class MyOrderActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        periodOrderBtn = (Button) findViewById(R.id.btn_installmentOrders);
-        paymentOrderBtn = (Button) findViewById(R.id.btn_paymentOrders);
+        periodOrderBtn = (Button) findViewById(R.id.myorder_period);
+        paymentOrderBtn = (Button) findViewById(R.id.myorder_payment);
         viewPager = (ViewPager) findViewById(R.id.myorder_viewpager);
         viewPager.setOnPageChangeListener(new AbsOnPageChangeListener() {
             @Override
