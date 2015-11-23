@@ -26,15 +26,13 @@
             android:orientation="vertical"
             android:paddingTop="10dp">
 
-            <Button
+            <com.expopay.android.view.CustormLoadingButton
                 android:id="@+id/wegtransaction_ok"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_alignParentBottom="true"
-                android:onClick="okOnclick"
-                android:text="充 值"
-                android:textColor="#fff"
-                android:textSize="14sp" />
+                android:background="@drawable/_button"
+                android:onClick="okOnclick" />
 
             <RelativeLayout
                 android:id="@+id/wegtransaction_top"

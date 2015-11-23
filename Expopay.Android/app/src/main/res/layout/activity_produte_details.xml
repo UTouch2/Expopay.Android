@@ -44,15 +44,14 @@
                 android:id="@+id/productdetails_productname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Apple iPhone 6S 移动联通电信4G手机"
                 android:textColor="#838383"
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/productdetails_productad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="正品行货  全国联保"
                 android:textColor="#ACACAC"
                 android:textSize="13sp" />
 
@@ -61,7 +60,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="￥5288.00"
                 android:textColor="#ED8662"
                 android:textSize="13sp" />
         </LinearLayout>
@@ -91,7 +89,6 @@
                 android:layout_marginLeft="20dp"
                 android:layout_toEndOf="@id/productdtails_properts_label"
                 android:layout_toRightOf="@id/productdtails_properts_label"
-                android:text="金色 64G 非合约机"
                 android:textColor="#ACACAC"
                 android:textSize="13sp" />
 
@@ -129,7 +126,6 @@
                 android:layout_marginLeft="20dp"
                 android:layout_toEndOf="@id/productdtails_peroid_label"
                 android:layout_toRightOf="@id/productdtails_peroid_label"
-                android:text="12期 (522+12)X12=5288"
                 android:textColor="#ACACAC"
                 android:textSize="13sp" />
 

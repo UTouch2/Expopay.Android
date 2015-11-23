@@ -98,51 +98,6 @@
                 android:singleLine="true"
                 android:textSize="14sp" />
         </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="#fefefe"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:id="@+id/weg_mobile_lable"
-                android:layout_width="80dp"
-                android:layout_height="40dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
-                android:gravity="center_vertical"
-                android:padding="5dp"
-                android:text="手机号码" />
-
-            <RelativeLayout
-                android:id="@+id/weg_mobile_image"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_alignParentRight="true"
-                android:onClick="barcodeOnclick">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_centerInParent="true"
-                    android:adjustViewBounds="true" />
-            </RelativeLayout>
-
-            <EditText
-                android:id="@+id/weg_mobile_edit"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/weg_mobile_image"
-                android:layout_toRightOf="@id/weg_mobile_lable"
-                android:background="#00000000"
-                android:ems="10"
-                android:hint="请输入手机号码"
-                android:inputType="number"
-                android:singleLine="true"
-                android:textSize="14sp" />
-        </RelativeLayout>
     </LinearLayout>
 
     <com.expopay.android.view.CustormLoadingButton

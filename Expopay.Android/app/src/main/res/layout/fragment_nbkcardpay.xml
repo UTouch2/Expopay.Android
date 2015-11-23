@@ -44,7 +44,6 @@
             android:id="@+id/nbkcardpay_amount_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="88888888888"
             android:textColor="#4F4F4F"
             android:textSize="14sp" />
     </LinearLayout>
@@ -107,7 +106,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="888888888888888888"
                     android:textColor="#4F4F4F"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -133,7 +131,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:text="88888888888"
             android:textColor="#4F4F4F"
             android:textSize="14sp" />
     </LinearLayout>
