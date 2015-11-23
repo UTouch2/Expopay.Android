@@ -20,37 +20,35 @@ import org.json.JSONObject;
 public class OrderDetailCommitActivity extends BaseActivity {
 
     private LinearLayout llAddress;
-    private TextView orderDetailCommitReceiver;
-    private TextView orderDetailCommitReceiverMobile;
-    private TextView orderDetailCommitReceiverAddress;
-    private LinearLayout linearLayout2;
+    private TextView receiverText;
+    private TextView receiverMobileText;
+    private TextView receiverAddressText;
     private ImageView commitProductImg;
-    private TextView orderDetailCommitProductName;
-    private TextView orderDetailCommitPropertyName;
-    private TextView orderDetailCommitPropertyValue;
-    private TextView commitOrderAmount;
-    private TextView orderDetailCommitProductQutity;
-    private TextView orderDetailCommitRepaymentPeriod;
-    private TextView commitPeriodAmount;
+    private TextView productNameText;
+    private TextView propertyNameText;
+    private TextView propertyValueText;
+    private TextView orderAmountText;
+    private TextView oproductQutityText;
+    private TextView repaymentPeriodText;
+    private TextView periodAmountText;
     private CheckBox checkBox;
     private CustormLoadingButton btnSubmit;
 
     protected void initView() {
         llAddress = (LinearLayout) findViewById(R.id.llAddress);
-        orderDetailCommitReceiver = (TextView) findViewById(R.id.orderDetailCommit_receiver);
-        orderDetailCommitReceiverMobile = (TextView) findViewById(R.id.orderDetailCommit_receiverMobile);
-        orderDetailCommitReceiverAddress = (TextView) findViewById(R.id.orderDetailCommit_receiverAddress);
-        linearLayout2 = (LinearLayout) findViewById(R.id.linearLayout2);
-        commitProductImg = (ImageView) findViewById(R.id.commitProductImg);
-        orderDetailCommitProductName = (TextView) findViewById(R.id.orderDetailCommit_productName);
-        orderDetailCommitPropertyName = (TextView) findViewById(R.id.orderDetailCommit_propertyName);
-        orderDetailCommitPropertyValue = (TextView) findViewById(R.id.orderDetailCommit_propertyValue);
-        commitOrderAmount = (TextView) findViewById(R.id.commitOrderAmount);
-        orderDetailCommitProductQutity = (TextView) findViewById(R.id.orderDetailCommit_productQutity);
-        orderDetailCommitRepaymentPeriod = (TextView) findViewById(R.id.orderDetailCommit_repaymentPeriod);
-        commitPeriodAmount = (TextView) findViewById(R.id.commitPeriodAmount);
-        checkBox = (CheckBox) findViewById(R.id.checkBox);
-        btnSubmit = (CustormLoadingButton) findViewById(R.id.btnSubmit);
+        receiverText = (TextView) findViewById(R.id.orderDetailCommit_receiver);
+        receiverMobileText = (TextView) findViewById(R.id.orderDetailCommit_receiverMobile);
+        receiverAddressText = (TextView) findViewById(R.id.orderDetailCommit_receiverAddress);
+        commitProductImg = (ImageView) findViewById(R.id.orderDetailCommit_productImg);
+        productNameText = (TextView) findViewById(R.id.orderDetailCommit_productName);
+        propertyNameText = (TextView) findViewById(R.id.orderDetailCommit_propertyName);
+        propertyValueText = (TextView) findViewById(R.id.orderDetailCommit_propertyValue);
+        orderAmountText = (TextView) findViewById(R.id.orderDetailCommit_orderAmount);
+        oproductQutityText = (TextView) findViewById(R.id.orderDetailCommit_productQutity);
+        repaymentPeriodText = (TextView) findViewById(R.id.orderDetailCommit_repaymentPeriod);
+        periodAmountText = (TextView) findViewById(R.id.orderDetailCommit_periodAmount);
+        checkBox = (CheckBox) findViewById(R.id.orderDetailCommit_checkBox);
+        btnSubmit = (CustormLoadingButton) findViewById(R.id.orderDetailCommit_submitBtn);
     }
 
 
