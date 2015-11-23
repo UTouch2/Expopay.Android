@@ -1,9 +1,11 @@
 package com.expopay.android.model;
 
+import java.io.Serializable;
+
 /**
  * Created by misxu012 on 2015/10/15.
  */
-public class OrderEntity {
+public class OrderEntity implements Serializable{
 
     private String orderNumber;
     private String orderAmount;

@@ -14,6 +14,7 @@ public class CardEntity implements Serializable {
     private String isDefault;
     @SerializedName("cardBalance")
     private String balance;
+    private String hasPwd;
 
     public CardEntity() {
     }
@@ -48,5 +49,13 @@ public class CardEntity implements Serializable {
 
     public void setIsDefault(String isDefault) {
         this.isDefault = isDefault;
+    }
+
+    public String getHasPwd() {
+        return hasPwd;
+    }
+
+    public void setHasPwd(String hasPwd) {
+        this.hasPwd = hasPwd;
     }
 }

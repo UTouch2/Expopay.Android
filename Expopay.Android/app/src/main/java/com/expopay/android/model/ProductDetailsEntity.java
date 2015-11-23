@@ -13,6 +13,7 @@ public class ProductDetailsEntity implements Serializable {
     private List<ProductImageEntity> productImgs;
     private String productImg;
     private String productType;
+    private String productAd;
     private String propertyId1;
     private String propertyId2;
     private String propertyName1;
@@ -127,5 +128,13 @@ public class ProductDetailsEntity implements Serializable {
 
     public void setProductPeriods(List<ProductPeroidEntity> productPeriods) {
         this.productPeriods = productPeriods;
+    }
+
+    public String getProductAd() {
+        return productAd;
+    }
+
+    public void setProductAd(String productAd) {
+        this.productAd = productAd;
     }
 }

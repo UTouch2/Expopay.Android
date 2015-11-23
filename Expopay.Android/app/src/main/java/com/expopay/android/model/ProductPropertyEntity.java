@@ -36,4 +36,25 @@ public class ProductPropertyEntity implements Serializable {
     public void setPropertyValue(String propertyValue) {
         this.propertyValue = propertyValue;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ProductPropertyEntity that = (ProductPropertyEntity) o;
+
+        if (!propertyId.equals(that.propertyId)) return false;
+        if (!propertyName.equals(that.propertyName)) return false;
+        return propertyValue.equals(that.propertyValue);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = propertyId.hashCode();
+        result = 31 * result + propertyName.hashCode();
+        result = 31 * result + propertyValue.hashCode();
+        return result;
+    }
 }
