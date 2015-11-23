@@ -262,12 +262,12 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
                           String publicUtilityType, String publicUtilityNum)throws JSONException{
         btnRecharge.showLoading("正在充值...");
         OrderRequest request = new OrderRequest("");
-        request.setEntity(request.createCreateOrderParms(openId,
-                orderSource,
-                paymentMethod,
-                orerAmount,
-                publicUtilityType,
-                publicUtilityNum));
+//        request.setEntity(request.createCreateOrderParms(openId,
+//                orderSource,
+//                paymentMethod,
+//                orerAmount,
+//                publicUtilityType,
+//                publicUtilityNum));
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {

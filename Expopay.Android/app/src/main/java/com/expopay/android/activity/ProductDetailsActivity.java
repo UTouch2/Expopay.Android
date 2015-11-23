@@ -1,14 +1,10 @@
 package com.expopay.android.activity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
@@ -20,7 +16,6 @@ import com.expopay.android.model.MallProductEntity;
 import com.expopay.android.model.ProductDetailsEntity;
 import com.expopay.android.model.ProductPeroidEntity;
 import com.expopay.android.model.ProductPropertyEntity;
-import com.expopay.android.model.PropertiesEntity;
 import com.expopay.android.request.ProductRequest;
 import com.expopay.android.view.BannerFootView;
 import com.expopay.android.view.CustormViewPager;
@@ -163,8 +158,9 @@ public class ProductDetailsActivity extends BaseActivity {
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
-
+                System.out.print(e);
             }
+
 
             @Override
             public void onSuccess(Object o) {
@@ -187,7 +183,7 @@ public class ProductDetailsActivity extends BaseActivity {
                         productPriceText.setText(productEntity.getProductPrice());
                     }
                 } catch (Exception e) {
-
+                    System.out.print(e);
                 }
             }
 
@@ -222,7 +218,7 @@ public class ProductDetailsActivity extends BaseActivity {
                 if (!colors.contains(color)) {
                     colors.add(color);
                 }
-                if (memorys.contains(memory)) {
+                if (!memorys.contains(memory)) {
                     memorys.add(memory);
                 }
             } else if (entity.getPropertyName1().equals("内存")) {

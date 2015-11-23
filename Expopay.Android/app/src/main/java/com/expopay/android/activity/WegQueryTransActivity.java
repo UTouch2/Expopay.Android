@@ -118,10 +118,10 @@ public class WegQueryTransActivity extends BaseActivity {
 
 
     private void QueryAmount(String openId,
-                             String companyId, String publicParamName, String publicParamValue) throws JSONException {
+                             String companyId, String publicParamName, final String publicParamValue) throws JSONException {
         loadingButton.showLoading("正在查询···");
         WegRequest request = new WegRequest(MyApplication.HOST + "/ecommerce/querypublicutilityamt");
-        request.setEntity(request.createQueryAmountParam(openId, companyId, publicParamName,publicParamValue));
+        request.setEntity(request.createQueryAmountParam(openId, companyId, publicParamName, publicParamValue));
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
@@ -137,7 +137,10 @@ public class WegQueryTransActivity extends BaseActivity {
                     if (json.getJSONObject("header").getString("code")
                             .equals("0000")) {
                         loadingButton.showResult("", true);
+                        current.setPublicParamValue(publicParamValue);
                         Intent intent = new Intent(getApplicationContext(), WegTransactionsActivity.class);
+                        intent.putExtra("amount", json.getJSONObject("body").getString("amount"));
+                        intent.putExtra("company", current);
                         startActivity(intent);
                     }
                 } catch (JSONException e) {

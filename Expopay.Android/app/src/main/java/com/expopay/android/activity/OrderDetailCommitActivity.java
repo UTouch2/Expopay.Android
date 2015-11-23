@@ -62,7 +62,6 @@ public class OrderDetailCommitActivity extends BaseActivity {
         setContentView(R.layout.activity_order_detail_commit);
 
         assignViews();
-        setTextView();
         llAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,25 +120,6 @@ public class OrderDetailCommitActivity extends BaseActivity {
         });
         request.execute();
         cancelRequest(request);
-    }
-
-    private void setTextView() {
-        Intent intent = getIntent();
-        if(getIntent() !=null)
-        {
-            byte[] bis=getIntent().getByteArrayExtra("bitmap");
-            Bitmap bitmap= BitmapFactory.decodeByteArray(bis, 0, bis.length);
-            commitProductImg.setImageBitmap(bitmap);
-        }
-        commitProductName.setText(intent.getStringExtra("detailProductName"));
-        commitOrderAmount.setText(intent.getStringExtra("detailAmount"));
-        commitProperties.setText(intent.getStringExtra("tvSelected"));
-//        commitRepaymentPeriod.setText("12期");
-        commitServiceAmount.setText(intent.getStringExtra("tvStaging"));
-        commitPeriodAmount.setText("每期应还款" + 470 + " ");
-        commitConsignee.setText("收货人");
-        commitConsigneeMobile.setText("13600000000");
-        commitConsigneeAddress.setText("云南省昆明市五华区海源中路1088号和成国际A座25楼");
     }
 
 }
