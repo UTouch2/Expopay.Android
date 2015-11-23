@@ -36,7 +36,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:background="#FFFFFF"
-            android:onClick="btnCancel"
+            android:onClick="cancelOrderItemOnclick"
             android:scaleType="fitXY"
             android:src="@mipmap/mall_delete" />
     </RelativeLayout>
@@ -51,7 +51,7 @@
         android:layout_alignParentStart="true">
 
         <ImageView
-            android:id="@+id/itemProductImg"
+            android:id="@+id/orderDetailItem_ProductImg"
             android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
             android:padding="10dp">
 
             <TextView
-                android:id="@+id/itemProductName"
+                android:id="@+id/orderDetailItem_ProductName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="电费订单"
@@ -89,7 +89,7 @@
                     android:text="订单编号：" />
 
                 <TextView
-                    android:id="@+id/itemOrderNumber"
+                    android:id="@+id/orderDetailItem_OrderNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#7B7B7B"
@@ -111,7 +111,7 @@
                     android:text="交易流水号：" />
 
                 <TextView
-                    android:id="@+id/itemTranscationCode"
+                    android:id="@+id/orderDetailItem_transcationCode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#7B7B7B"
@@ -133,7 +133,7 @@
                     android:text="支付流水号：" />
 
                 <TextView
-                    android:id="@+id/itemPayCode"
+                    android:id="@+id/orderDetailItem_payCode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#7B7B7B"
@@ -166,8 +166,8 @@
                 android:text="交易时间：" />
 
             <TextView
-                android:id="@+id/itemOrderTime"
-                android:layout_width="match_parent"
+                android:id="@+id/orderDetailItem_orderTime"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#7B7B7B"
                 android:textSize="12sp"
@@ -188,8 +188,8 @@
                 android:textSize="12sp"/>
 
             <TextView
-                android:id="@+id/itemOrderStatus"
-                android:layout_width="match_parent"
+                android:id="@+id/orderDetailItem_orderStatus"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="完成"
                 android:textSize="12sp"
@@ -202,6 +202,6 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:onClick="btnOk"
+        android:onClick="OkOnclick"
         android:src="@mipmap/mall_ok" />
 </RelativeLayout>

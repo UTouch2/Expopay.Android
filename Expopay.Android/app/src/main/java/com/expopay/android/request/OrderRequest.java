@@ -14,11 +14,12 @@ import java.util.Map;
  * Created by misxu012 on 2015/10/21.
  */
 public class OrderRequest extends Request {
-    public OrderRequest(String url){
+    public OrderRequest(String url) {
         setRequestMethod(RequestMethod.POST);
         setOutTime(10 * 1000);
         setUrl(url);
     }
+
     /**
      * 创建卡订单
      *
@@ -53,6 +54,7 @@ public class OrderRequest extends Request {
         map.put("data", data.toString());
         return map;
     }
+
     public Map<String, String> createGetBillsParams(String openId
     ) throws JSONException {
         JSONObject data = new JSONObject();
@@ -72,6 +74,7 @@ public class OrderRequest extends Request {
         map.put("data", data.toString());
         return map;
     }
+
     /**
      * 创建卡订单
      *
@@ -80,11 +83,14 @@ public class OrderRequest extends Request {
      * @throws JSONException
      */
     public Map<String, String> createCreateOrderParms(String openId,
-                                                 String orderSource,
-                                                 String paymentMethod,
-                                                 String orerAmount,
-                                                 String publicUtilityType,
-                                                 String publicUtilityNum
+                                                      String orderSource,
+                                                      String paymentMethod,
+                                                      String orderAmount,
+                                                      String publicCompanyID,
+                                                      String publicParamName,
+                                                      String publicParamValue,
+                                                      String publicParamText
+
     ) throws JSONException {
         JSONObject data = new JSONObject();
         JSONObject header = new JSONObject();
@@ -94,9 +100,11 @@ public class OrderRequest extends Request {
         JSONObject body = new JSONObject();
         body.put("paymentMethod", paymentMethod);
         body.put("orderSource", orderSource);
-        body.put("orerAmount", orerAmount);
-        body.put("publicUtilityType", publicUtilityType);
-        body.put("publicUtilityNum", publicUtilityNum);
+        body.put("orderAmount", orderAmount);
+        body.put("publicCompanyID", publicCompanyID);
+        body.put("publicParamName", publicParamName);
+        body.put("publicParamValue", publicParamValue);
+        body.put("publicParamText", publicParamText);
         String signHead = MD5Util.GetMD5Code(body.toString());
         String signTail = MD5Util.getTail(openId);
         header.put("sign", signHead + signTail);
@@ -110,17 +118,18 @@ public class OrderRequest extends Request {
 
     /**
      * 创建卡订单
+     *
      * @param openId
      * @return
      * @throws JSONException
      */
     public Map<String, String> createCreateOrderParms(String openId,
-                                                 String orderSource,
-                                                 String paymentMethod,
-                                                 String orerAmount,
-                                                 String productId,
-                                                 String periodId,
-                                                 String addressId
+                                                      String orderSource,
+                                                      String paymentMethod,
+                                                      String orderAmount,
+                                                      String productId,
+                                                      String periodId,
+                                                      String addressId
     ) throws JSONException {
         JSONObject data = new JSONObject();
         JSONObject header = new JSONObject();
@@ -130,7 +139,7 @@ public class OrderRequest extends Request {
         JSONObject body = new JSONObject();
         body.put("paymentMethod", paymentMethod);
         body.put("orderSource", orderSource);
-        body.put("orerAmount", orerAmount);
+        body.put("orderAmount", orderAmount);
         body.put("productId", productId);
         body.put("periodId", periodId);
         body.put("addressId", addressId);
@@ -147,7 +156,6 @@ public class OrderRequest extends Request {
     }
 
     /**
-     *
      * @param openId
      * @param orderType
      * @param pageIndex
@@ -156,9 +164,9 @@ public class OrderRequest extends Request {
      * @throws JSONException
      */
     public Map<String, String> createGetOrdersParms(String openId,
-                                                 String orderType,
-                                                 String pageIndex,
-                                                 String pageSize
+                                                    String orderType,
+                                                    String pageIndex,
+                                                    String pageSize
     ) throws JSONException {
         JSONObject data = new JSONObject();
         JSONObject header = new JSONObject();
@@ -183,6 +191,7 @@ public class OrderRequest extends Request {
 
     /**
      * 订单详情
+     *
      * @param openId
      * @param orderNumber
      * @param orderType
@@ -190,8 +199,8 @@ public class OrderRequest extends Request {
      * @throws JSONException
      */
     public Map<String, String> createOrderDetailsParms(String openId,
-                                                    String orderNumber,
-                                                    String orderType
+                                                       String orderNumber,
+                                                       String orderType
     ) throws JSONException {
         JSONObject data = new JSONObject();
         JSONObject header = new JSONObject();
@@ -215,6 +224,7 @@ public class OrderRequest extends Request {
 
     /**
      * 取消订单
+     *
      * @param openId
      * @param orderNumber
      * @param cancelReason
@@ -222,8 +232,8 @@ public class OrderRequest extends Request {
      * @throws JSONException
      */
     public Map<String, String> createCancelOrderParms(String openId,
-                                                       String orderNumber,
-                                                       String cancelReason
+                                                      String orderNumber,
+                                                      String cancelReason
     ) throws JSONException {
         JSONObject data = new JSONObject();
         JSONObject header = new JSONObject();

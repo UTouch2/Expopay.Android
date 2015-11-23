@@ -13,14 +13,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/btn_installmentOrders"
+            android:id="@+id/myorder_period"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="分期订单"
             android:textSize="15sp"/>
         <Button
-            android:id="@+id/btn_paymentOrders"
+            android:id="@+id/myorder_payment"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
