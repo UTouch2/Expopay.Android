@@ -58,7 +58,7 @@ public class RepaymentFragment extends BaseFragment {
                                   String publicUtilityNum) throws JSONException {
         billUnrepayment_loading.show();
         OrderRequest request = new OrderRequest(MyApplication.HOST + "");
-        request.setEntity(request.createCreateOrderParms(openId, "", "", "", "", ""));
+        //request.setEntity(request.createCreateOrderParms(openId, "", "", "", "", ""));
         request.setOutTime(10 * 1000);
         request.setIRequestListener(new JsonRequestListener() {
             @Override

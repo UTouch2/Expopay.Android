@@ -42,7 +42,7 @@ public class RepaymentedFragment extends BaseFragment {
         adapter = new RepaymentedBillAdapter(getActivity().getApplicationContext(), testData());
         lvRepayment.setAdapter(adapter);
         try {
-            getBillRepayment(getUser().getOpenId(),"", "", "", "", "");
+            getBillRepayment(getUser().getOpenId(), "", "", "", "", "");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -58,7 +58,7 @@ public class RepaymentedFragment extends BaseFragment {
                                   String publicUtilityNum) throws JSONException {
         billRepayment_loading.show();
         OrderRequest request = new OrderRequest(MyApplication.HOST + "");
-        request.setEntity(request.createCreateOrderParms(openId, orderSource, paymentMethod, orerAmount, publicUtilityType, publicUtilityNum));
+        //  request.setEntity(request.createCreateOrderParms(openId, orderSource, paymentMethod, orerAmount, publicUtilityType, publicUtilityNum));
         request.setOutTime(10 * 1000);
         request.setIRequestListener(new JsonRequestListener() {
             @Override
