@@ -18,7 +18,7 @@ public class NBKCardPayUtil {
      */
     public static void nbkCardPay(Activity activity, String orderNumer, String orderSource, String orderAmount) {
         Intent intent = new Intent(activity, NBCardPayActivity.class);
-        intent.putExtra("orderNumer", orderNumer);
+        intent.putExtra("orderNumber", orderNumer);
         intent.putExtra("orderSource", orderSource);
         intent.putExtra("orderAmount", orderAmount);
         activity.startActivityForResult(intent, PAY_REQUEST_CODE);
