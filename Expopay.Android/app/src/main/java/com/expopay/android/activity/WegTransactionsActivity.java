@@ -3,7 +3,6 @@ package com.expopay.android.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ListView;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
@@ -11,6 +10,7 @@ import com.expopay.android.application.MyApplication;
 import com.expopay.android.model.CompanyEntity;
 import com.expopay.android.request.OrderRequest;
 import com.expopay.android.utils.NBKCardPayUtil;
+import com.expopay.android.view.CustormLoadingButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,12 +22,27 @@ public class WegTransactionsActivity extends BaseActivity {
     String orderNumber, orderSource, orderAmount;
 
     private CompanyEntity companyEntity;
+    private CustormLoadingButton wegtransactionOk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         statusBarCoverActivity();
         setContentView(R.layout.activity_wegtransaction);
+        wegtransactionOk = (CustormLoadingButton) findViewById(R.id.wegtransaction_ok);
+        wegtransactionOk.showNormal("缴费");
+        wegtransactionOk.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
+            @Override
+            public void onSuccessResult() {
+                finish();
+            }
+
+            @Override
+            public void onFailureResult() {
+                wegtransactionOk.showNormal("缴费");
+            }
+        });
+
         companyEntity = (CompanyEntity) getIntent().getSerializableExtra("company");
         orderSource = "1";
         orderAmount = getIntent().getStringExtra("amount");

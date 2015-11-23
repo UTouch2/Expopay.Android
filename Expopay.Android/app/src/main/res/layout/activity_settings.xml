@@ -79,7 +79,7 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="企业认证："
-                android:textColor="#3c3c3c"
+                android:textColor="#EA6A3E"
                 android:textSize="13sp" />
 
             <TextView
@@ -87,7 +87,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="paulxu"
-                android:textColor="#3c3c3c"
+                android:textColor="#EA6A3E"
                 android:textSize="13sp" />
         </LinearLayout>
 
@@ -291,7 +291,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="exitOnclick"
-            android:background="@drawable/_button"
+            android:background="#ED4545"
             android:textColor="#fff"
             android:text="退出登录" />
     </LinearLayout>

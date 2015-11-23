@@ -31,6 +31,7 @@ public class ChangePayPasswordActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusColor();
+        setTitle("更改支付密码");
         setContentView(R.layout.activity_changepassword);
         okBtn = (CustormLoadingButton) findViewById(R.id.changecardpassword_ok);
         loginPwdText = (EditText) findViewById(R.id.changepassword_oldpsd);
@@ -38,6 +39,18 @@ public class ChangePayPasswordActivity extends BaseActivity {
         showPsdImageView = (ImageView) findViewById(R.id.changepassword_showpsd_btn);
         noteText = (TextView) findViewById(R.id.changecardpassword_note);
         noteText.setText("支付密码用于南博卡支付时适用的安全密码");
+        okBtn.showNormal("确认修改");
+        okBtn.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
+            @Override
+            public void onSuccessResult() {
+                finish();
+            }
+
+            @Override
+            public void onFailureResult() {
+                okBtn.showNormal("确认修改");
+            }
+        });
         okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

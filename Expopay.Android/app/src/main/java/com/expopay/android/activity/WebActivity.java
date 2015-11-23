@@ -1,6 +1,5 @@
 package com.expopay.android.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.JavascriptInterface;
 
@@ -12,6 +11,7 @@ public class WebActivity extends BaseWebActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusColor();
+        setTitle("便民服务");
         addJavascriptInterface(new MyJavascriptInterace());
     }
 

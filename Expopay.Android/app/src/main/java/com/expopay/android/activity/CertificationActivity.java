@@ -21,6 +21,17 @@ public class CertificationActivity extends BaseActivity {
         certificationID = (EditText) findViewById(R.id.certificationID);
         btnBind = (CustormLoadingButton) findViewById(R.id.btnBind);
         btnBind.showNormal("绑定");
+        btnBind.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
+            @Override
+            public void onSuccessResult() {
+                finish();
+            }
+
+            @Override
+            public void onFailureResult() {
+                btnBind.showNormal("绑定");
+            }
+        });
     }
 
     @Override

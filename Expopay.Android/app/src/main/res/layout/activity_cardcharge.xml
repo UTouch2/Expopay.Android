@@ -127,6 +127,7 @@
             </RelativeLayout>
 
             <com.expopay.android.view.CustormLoadingButton
+                android:id="@+id/cardchargeBtn"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/_button"

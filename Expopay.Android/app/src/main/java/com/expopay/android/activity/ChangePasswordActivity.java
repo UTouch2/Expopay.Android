@@ -2,7 +2,6 @@ package com.expopay.android.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.ColorRes;
 import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
@@ -31,12 +30,24 @@ public class ChangePasswordActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusColor();
+        setTitle("更改登录密码");
         setContentView(R.layout.activity_changepassword);
         okBtn = (CustormLoadingButton) findViewById(R.id.changecardpassword_ok);
         loginPwdText = (EditText) findViewById(R.id.changepassword_oldpsd);
         newLoginPwdText = (EditText) findViewById(R.id.changepassword_newpsd);
         showPsdImageView = (ImageView) findViewById(R.id.changepassword_showpsd_btn);
-        okBtn.showNormal("确定");
+        okBtn.showNormal("确定修改");
+        okBtn.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
+            @Override
+            public void onSuccessResult() {
+                finish();
+            }
+
+            @Override
+            public void onFailureResult() {
+                okBtn.showNormal("确定修改");
+            }
+        });
         okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -40,9 +40,22 @@ public class ChangePasswordQuestionAcitivy extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusColor();
+        setTitle("更改密保问题");
         setContentView(R.layout.activity_changepasswordquestion);
         loadingView = (CustormLoadingView) findViewById(R.id.changepasswordquestion_loadingview);
         okBtn = (CustormLoadingButton) findViewById(R.id.changepasswordquestion_ok);
+        okBtn.showNormal("确认修改");
+        okBtn.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
+            @Override
+            public void onSuccessResult() {
+                finish();
+            }
+
+            @Override
+            public void onFailureResult() {
+                okBtn.showNormal("确认修改");
+            }
+        });
 
         oldQuestionText = (TextView) findViewById(R.id.changepasswordquestion_oldpsdq);
         newQuestionText = (TextView) findViewById(R.id.changepasswordquestion_newpsdq);

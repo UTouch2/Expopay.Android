@@ -58,6 +58,17 @@ public class PerfectAccountActivity extends BaseActivity {
             }
         });
         loadingButton.showNormal("确 定");
+        loadingButton.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
+            @Override
+            public void onSuccessResult() {
+                finish();
+            }
+
+            @Override
+            public void onFailureResult() {
+                loadingButton.showNormal("确 定");
+            }
+        });
         try {
             getQustionRequest();
         } catch (JSONException e) {

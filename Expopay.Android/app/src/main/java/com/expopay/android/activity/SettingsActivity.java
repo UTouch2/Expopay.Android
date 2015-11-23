@@ -22,6 +22,7 @@ public class SettingsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusColor();
+        setTitle("通用设置");
         setContentView(R.layout.activity_settings);
         personNameText = (TextView) findViewById(R.id.settings_personname);
         userNameText = (TextView) findViewById(R.id.settings_username);

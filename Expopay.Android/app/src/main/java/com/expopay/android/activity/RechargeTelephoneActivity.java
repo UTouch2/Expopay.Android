@@ -50,6 +50,17 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
         charge500 = (Button) findViewById(R.id.charge500);
         btnRecharge = (CustormLoadingButton) findViewById(R.id.btnRecharge);
         btnRecharge.showNormal("充值");
+        btnRecharge.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
+            @Override
+            public void onSuccessResult() {
+                finish();
+            }
+
+            @Override
+            public void onFailureResult() {
+                btnRecharge.showNormal("充值");
+            }
+        });
         imgContacts.setOnClickListener(this);
         charge10.setOnClickListener(this);
         charge20.setOnClickListener(this);

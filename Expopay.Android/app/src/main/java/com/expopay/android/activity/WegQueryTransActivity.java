@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
 import com.expopay.android.application.MyApplication;
-import com.expopay.android.model.CardEntity;
 import com.expopay.android.model.CompanyEntity;
 import com.expopay.android.request.WegRequest;
 import com.expopay.android.view.CustormLoadingButton;
@@ -46,6 +45,17 @@ public class WegQueryTransActivity extends BaseActivity {
         barcodeText = (EditText) findViewById(R.id.weg_barcode_edit);
 
         loadingButton.showNormal("查  询");
+        loadingButton.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
+            @Override
+            public void onSuccessResult() {
+                finish();
+            }
+
+            @Override
+            public void onFailureResult() {
+                loadingButton.showNormal("查  询");
+            }
+        });
         loadingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
