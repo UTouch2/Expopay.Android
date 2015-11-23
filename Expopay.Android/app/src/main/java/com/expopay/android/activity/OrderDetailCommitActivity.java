@@ -35,7 +35,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
     private CheckBox checkBox;
     private CustormLoadingButton btnSubmit;
 
-    private void initViews() {
+    protected void initView() {
         llAddress = (LinearLayout) findViewById(R.id.llAddress);
         orderDetailCommitReceiver = (TextView) findViewById(R.id.orderDetailCommit_receiver);
         orderDetailCommitReceiverMobile = (TextView) findViewById(R.id.orderDetailCommit_receiverMobile);
@@ -61,11 +61,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
         setTitle("订单详情");
         setContentView(R.layout.activity_order_detail_commit);
 
-<<<<<<< HEAD
-        assignViews();
-=======
-        initViews();
->>>>>>> ef6271e49d51a1acb6a2236a8e7bfe02540b56cf
+        initView();
         llAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,7 +72,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
     }
 
 
-    public void submitOnclick(View view){
+    public void submitOnclick(View view) {
         if (checkBox.isChecked()) {
             try {
                 getOrder(getUser().getOpenId(), "", "", "", "", "", "");
@@ -122,8 +118,4 @@ public class OrderDetailCommitActivity extends BaseActivity {
         request.execute();
         cancelRequest(request);
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> ef6271e49d51a1acb6a2236a8e7bfe02540b56cf
 }
