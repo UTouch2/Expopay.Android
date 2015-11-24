@@ -20,10 +20,17 @@ public abstract class BaseFragment extends AbsFragment {
         getAbsActivity().cancelRequest(request);
     }
 
-    public UserEntity getUser() {
-        if(getActivity() instanceof BaseActivity){
-            return ((BaseActivity)getActivity()).getUser();
+    public BaseActivity getBaseActivity() {
+        if (getActivity() instanceof BaseActivity) {
+            return ((BaseActivity) getActivity());
         }
-        return  new UserEntity();
+        return null;
+    }
+
+    public UserEntity getUser() {
+        if (getBaseActivity() != null) {
+            return getBaseActivity().getUser();
+        }
+        return new UserEntity();
     }
 }
