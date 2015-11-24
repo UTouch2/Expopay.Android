@@ -113,6 +113,7 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/nbkcardpay_cardpwd_group"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:gravity="center_vertical"
@@ -127,14 +128,37 @@
             android:textSize="14sp" />
 
         <EditText
-            android:id="@+id/nbkcardpay_password_text"
-            android:layout_width="wrap_content"
+            android:id="@+id/nbkcardpay_paypwd_text"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
+            android:inputType="numberPassword"
             android:textColor="#4F4F4F"
             android:textSize="14sp" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="密码："
+            android:textColor="#4F4F4F"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/nbkcardpay_cardpwd_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:inputType="numberPassword"
+            android:textColor="#4F4F4F"
+            android:textSize="14sp" />
+    </LinearLayout>
     <com.expopay.android.view.CustormLoadingButton
         android:id="@+id/nbkcardpay_okbtn"
         android:layout_width="match_parent"
