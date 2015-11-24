@@ -24,6 +24,8 @@
                 android:layout_centerVertical="true"
                 android:gravity="center_vertical"
                 android:padding="5dp"
+                android:textColor="#A1A1A1"
+                android:textSize="13sp"
                 android:text="新手机:" />
 
             <Button
@@ -48,6 +50,7 @@
                 android:background="#00000000"
                 android:inputType="number"
                 android:lines="1"
+                android:textSize="13sp"
                 android:maxLength="11"
                 android:singleLine="true" />
         </RelativeLayout>
@@ -65,6 +68,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:padding="5dp"
+                android:textColor="#A1A1A1"
+                android:textSize="13sp"
                 android:text="验证码:" />
 
             <TextView
@@ -75,6 +80,8 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:gravity="center"
+                android:textColor="#AEAEAE"
+                android:textSize="13sp"
                 android:text="60秒"></TextView>
 
             <EditText
@@ -87,6 +94,7 @@
                 android:background="#00000000"
                 android:inputType="number"
                 android:lines="1"
+                android:textSize="13sp"
                 android:maxLength="6"
                 android:singleLine="true" />
         </RelativeLayout>
