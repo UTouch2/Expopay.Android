@@ -47,6 +47,9 @@
             android:name=".activity.AddressDetailsActivity"
             android:label="南博卡"></activity>
         <activity
+            android:name=".activity.AddPayPasswordActivity"
+            android:label="南博卡"></activity>
+        <activity
             android:name=".activity.AddCardActivity"
             android:label="南博卡"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
