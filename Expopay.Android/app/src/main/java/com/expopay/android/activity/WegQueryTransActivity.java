@@ -38,6 +38,7 @@ public class WegQueryTransActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusColor();
+        setTitle("缴纳水电费");
         setContentView(R.layout.activity_weg_querytransaction);
         companyText = (TextView) findViewById(R.id.weg_company_text);
         loadingView = (CustormLoadingView) findViewById(R.id.weg_loadingview);

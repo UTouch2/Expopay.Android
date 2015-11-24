@@ -37,17 +37,6 @@ public class ChangePasswordActivity extends BaseActivity {
         newLoginPwdText = (EditText) findViewById(R.id.changepassword_newpsd);
         showPsdImageView = (ImageView) findViewById(R.id.changepassword_showpsd_btn);
         okBtn.showNormal("确定修改");
-        okBtn.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
-            @Override
-            public void onSuccessResult() {
-                finish();
-            }
-
-            @Override
-            public void onFailureResult() {
-                okBtn.showNormal("确定修改");
-            }
-        });
         okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +57,7 @@ public class ChangePasswordActivity extends BaseActivity {
 
             @Override
             public void onFailureResult() {
-                okBtn.showNormal("12345");
+                okBtn.showNormal("确定修改");
                 okBtn.setBackgroundResource(R.drawable._button);
             }
         });
