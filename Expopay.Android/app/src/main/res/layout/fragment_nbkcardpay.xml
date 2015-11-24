@@ -128,7 +128,7 @@
             android:textSize="14sp" />
 
         <EditText
-            android:id="@+id/nbkcardpay_paypwd_text"
+            android:id="@+id/nbkcardpay_password_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"

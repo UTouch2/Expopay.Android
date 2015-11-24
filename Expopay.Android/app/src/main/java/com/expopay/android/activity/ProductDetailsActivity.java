@@ -45,7 +45,7 @@ public class ProductDetailsActivity extends BaseActivity {
     //内存和颜色等属性规格
     private List<ProductPropertyEntity> colors, memorys;
     private ProductPropertyEntity color, memory;
-    //分期书，和选择的分期书
+    //分期数，和选择的分期书
     private List<ProductPeroidEntity> peroids;
     private ProductPeroidEntity peroid;
 
@@ -90,6 +90,8 @@ public class ProductDetailsActivity extends BaseActivity {
 
     public void chooseColorOnclick(View v) {
         Intent intent = new Intent(this, ChoosePropertiesActivity.class);
+        intent.putExtra("detailProductName",productNameText.getText().toString().trim());
+        intent.putExtra("detailAmount",productPriceText.getText().toString().trim());
         intent.putExtra("colors", (Serializable) colors);
         intent.putExtra("memorys", (Serializable) memorys);
         startActivityForResult(intent, 0);
@@ -97,8 +99,14 @@ public class ProductDetailsActivity extends BaseActivity {
 
     public void chooseMemoryOnclick(View v) {
         Intent intent = new Intent(this, ChoosePeriodActivity.class);
+        intent.putExtra("detailProductName",productNameText.getText().toString().trim());
+        intent.putExtra("detailAmount",productPriceText.getText().toString().trim());
         intent.putExtra("peroids", (Serializable) peroids);
         startActivityForResult(intent, 1);
+    }
+
+    public void commitOrderOnclick(View view){
+
     }
 
     @Override
@@ -243,7 +251,7 @@ public class ProductDetailsActivity extends BaseActivity {
     }
 
     /**
-     * 根据舒心找到对应的商品
+     * 根据属性找到对应的商品
      *
      * @param data
      * @param color

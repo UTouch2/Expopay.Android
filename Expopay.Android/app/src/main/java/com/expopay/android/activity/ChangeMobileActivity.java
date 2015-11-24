@@ -30,6 +30,7 @@ public class ChangeMobileActivity extends BaseActivity {
     private EditText phoneNumEditText, vercodeEditText;
     private CustormLoadingButton okBtn;
     private TextView timeoutText;
+    private TextView bindphone;
     private Button getVercodeBtn;
 
     private int time;
@@ -41,6 +42,8 @@ public class ChangeMobileActivity extends BaseActivity {
         setTitle("更改手机");
         setContentView(R.layout.activity_changemobile);
         timeoutText = (TextView) findViewById(R.id.changemobile_timeout_btn);
+        bindphone = (TextView) findViewById(R.id.changemobile_bindphone);
+        bindphone.setText(getUser().getUserName());
         getVercodeBtn = (Button) findViewById(R.id.changemobile_vercode_btn);
         phoneNumEditText = (EditText) findViewById(R.id.changemobile_phonenum);
         vercodeEditText = (EditText) findViewById(R.id.changemobile_vercode);
