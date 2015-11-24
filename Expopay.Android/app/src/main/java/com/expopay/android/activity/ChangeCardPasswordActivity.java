@@ -37,12 +37,25 @@ public class ChangeCardPasswordActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusColor();
+        setTitle("更改卡密码");
         setContentView(R.layout.activity_changecardpassword);
         cardNumberText = (TextView) findViewById(R.id.changecardpassword_cardnumber);
         oldPwdtext = (EditText) findViewById(R.id.changecardpassword_oldpsd);
         newPwdText = (EditText) findViewById(R.id.changecardpassword_newpsd);
         loadingView = (CustormLoadingView) findViewById(R.id.changecardpassword_loadingview);
         okBtn = (CustormLoadingButton) findViewById(R.id.changecardpassword_ok);
+        okBtn.showNormal("更改");
+        okBtn.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
+            @Override
+            public void onSuccessResult() {
+                finish();
+            }
+
+            @Override
+            public void onFailureResult() {
+                okBtn.showNormal("更改");
+            }
+        });
         okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

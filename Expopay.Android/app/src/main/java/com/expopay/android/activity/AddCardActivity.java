@@ -1,18 +1,14 @@
 package com.expopay.android.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
 import com.expopay.android.application.MyApplication;
-import com.expopay.android.model.UserEntity;
 import com.expopay.android.request.CardRequest;
 import com.expopay.android.view.CustormLoadingButton;
-import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,6 +39,17 @@ public class AddCardActivity extends BaseActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+            }
+        });
+        loadingButton.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
+            @Override
+            public void onSuccessResult() {
+                finish();
+            }
+
+            @Override
+            public void onFailureResult() {
+                loadingButton.showNormal("绑定");
             }
         });
         loadingButton.showNormal("绑定");

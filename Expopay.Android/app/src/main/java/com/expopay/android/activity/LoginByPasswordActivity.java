@@ -65,6 +65,17 @@ public class LoginByPasswordActivity extends BaseActivity {
             }
         }.start();
         loginButton.showNormal("登 录");
+        loginButton.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
+            @Override
+            public void onSuccessResult() {
+                finish();
+            }
+
+            @Override
+            public void onFailureResult() {
+                loginButton.showNormal("登 录");
+            }
+        });
         loginButton.setEnabled(false);
         loginButton.setBackgroundResource(R.drawable._button_down);
         login_phonenum.addTextChangedListener(new AbsTextWatcher() {

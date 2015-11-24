@@ -128,6 +128,17 @@ public class LoginByVerifycodeActivity extends BaseActivity {
                 }
             }
         });
+        loginBtn.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
+            @Override
+            public void onSuccessResult() {
+                finish();
+            }
+
+            @Override
+            public void onFailureResult() {
+                loginBtn.showNormal("登录");
+            }
+        });
         loginBtn.showNormal("登录");
     }
 
@@ -268,7 +279,6 @@ public class LoginByVerifycodeActivity extends BaseActivity {
                         user.setOpenId(json.getJSONObject("body").getString("openId"));
                         saveUser(user);
                         loginBtn.showResult("登录成功", true);
-                        finish();
                     } else {
                         loginBtn.showResult("", false);
                     }

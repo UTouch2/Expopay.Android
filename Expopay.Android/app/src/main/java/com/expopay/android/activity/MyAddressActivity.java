@@ -10,7 +10,6 @@ import com.expopay.android.R;
 import com.expopay.android.adapter.listview.MyAddressListAdapter;
 import com.expopay.android.application.MyApplication;
 import com.expopay.android.model.AddressEntity;
-import com.expopay.android.model.CardEntity;
 import com.expopay.android.request.AddressRequest;
 import com.expopay.android.view.CustormLoadingView;
 import com.google.gson.Gson;
@@ -34,6 +33,7 @@ public class MyAddressActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusColor();
+        setTitle("收货信息");
         setContentView(R.layout.activity_myaddress);
         listView = (ListView) findViewById(R.id.myaddress_listview);
         loadingView = (CustormLoadingView) findViewById(R.id.myaddress_loadingview);

@@ -49,6 +49,18 @@ public class OrderDetailCommitActivity extends BaseActivity {
         periodAmountText = (TextView) findViewById(R.id.orderDetailCommit_periodAmount);
         checkBox = (CheckBox) findViewById(R.id.orderDetailCommit_checkBox);
         btnSubmit = (CustormLoadingButton) findViewById(R.id.orderDetailCommit_submitBtn);
+        btnSubmit.showNormal("提交订单");
+        btnSubmit.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
+            @Override
+            public void onSuccessResult() {
+                finish();
+            }
+
+            @Override
+            public void onFailureResult() {
+                btnSubmit.showNormal("提交订单");
+            }
+        });
     }
 
 

@@ -28,6 +28,17 @@ public class CardLossApplyActivity extends BaseActivity {
         lossCardReason = (EditText) findViewById(R.id.cardLossApply_lossCardReason);
 
         btnSubmitOnClick = (CustormLoadingButton) findViewById(R.id.btnSubmitOnClick);
+        btnSubmitOnClick.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
+            @Override
+            public void onSuccessResult() {
+                finish();
+            }
+
+            @Override
+            public void onFailureResult() {
+                btnSubmitOnClick.showNormal("提交");
+            }
+        });
         btnSubmitOnClick.showNormal("提交");
         btnSubmitOnClick.setOnClickListener(new View.OnClickListener() {
             @Override
