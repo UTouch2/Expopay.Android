@@ -14,11 +14,39 @@ import java.util.Map;
  * Created by misxu012 on 2015/10/21.
  */
 public class PasswordRequest extends Request {
-    public PasswordRequest(String url){
+    public PasswordRequest(String url) {
         setRequestMethod(RequestMethod.POST);
         setOutTime(10 * 1000);
         setUrl(url);
     }
+
+    public Map<String, String> createSetPayPasswordParams(String openId,
+                                                          String secuQuestionId,
+                                                          String secuAnswer,
+                                                          String payPwd
+    )
+            throws JSONException {
+        JSONObject data = new JSONObject();
+        JSONObject header = new JSONObject();
+        header.put("openId", openId);
+        header.put("action", "");
+        header.put("machineNumber", "android");
+        JSONObject body = new JSONObject();
+        body.put("secuQuestionId", secuQuestionId);
+        body.put("secuAnswer", secuAnswer);
+        body.put("payPwd", payPwd);
+
+        String signHead = MD5Util.GetMD5Code(body.toString());
+        String signTail = MD5Util.getTail(openId);
+        header.put("sign", signHead + signTail);
+
+        data.put("header", header);
+        data.put("body", body);
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("data", data.toString());
+        return map;
+    }
+
     /**
      * 获取密保问题
      *
@@ -47,7 +75,8 @@ public class PasswordRequest extends Request {
     }
 
     /**
-     *忘记密码
+     * 忘记密码
+     *
      * @param openId
      * @param userName
      * @param mobile
@@ -58,21 +87,21 @@ public class PasswordRequest extends Request {
      * @throws JSONException
      */
     public Map<String, String> createForgetPasswordParams(String openId, String userName,
-                                                             String mobile,
-                                                             String secuQuestionId,
-                                                             String secuAnswer,
-                                                             String newLoginPwd) throws JSONException {
+                                                          String mobile,
+                                                          String secuQuestionId,
+                                                          String secuAnswer,
+                                                          String newLoginPwd) throws JSONException {
         JSONObject data = new JSONObject();
         JSONObject header = new JSONObject();
         header.put("openId", openId);
         header.put("action", "");
         header.put("machineNumber", "android");
         JSONObject body = new JSONObject();
-        body.put("userName",userName);
-        body.put("mobile",mobile);
-        body.put("secuQuestionId",secuQuestionId);
-        body.put("secuAnswer",secuAnswer);
-        body.put("newLoginPwd",newLoginPwd);
+        body.put("userName", userName);
+        body.put("mobile", mobile);
+        body.put("secuQuestionId", secuQuestionId);
+        body.put("secuAnswer", secuAnswer);
+        body.put("newLoginPwd", newLoginPwd);
 
         String signHead = MD5Util.GetMD5Code(body.toString());
         String signTail = MD5Util.getTail(openId);
@@ -86,7 +115,6 @@ public class PasswordRequest extends Request {
     }
 
     /**
-     *
      * @param openId
      * @param loginPwd
      * @param newLoginPwd
@@ -94,15 +122,15 @@ public class PasswordRequest extends Request {
      * @throws JSONException
      */
     public Map<String, String> createChangePasswordParams(String openId, String loginPwd,
-                                                                  String newLoginPwd) throws JSONException {
+                                                          String newLoginPwd) throws JSONException {
         JSONObject data = new JSONObject();
         JSONObject header = new JSONObject();
         header.put("openId", openId);
         header.put("action", "");
         header.put("machineNumber", "android");
         JSONObject body = new JSONObject();
-        body.put("loginPwd",loginPwd);
-        body.put("newLoginPwd",newLoginPwd);
+        body.put("loginPwd", loginPwd);
+        body.put("newLoginPwd", newLoginPwd);
 
         String signHead = MD5Util.GetMD5Code(body.toString());
         String signTail = MD5Util.getTail(openId);
@@ -116,7 +144,6 @@ public class PasswordRequest extends Request {
     }
 
     /**
-     *
      * @param openId
      * @param payPwd
      * @param newPayPwd
@@ -124,27 +151,6 @@ public class PasswordRequest extends Request {
      * @throws JSONException
      */
     public Map<String, String> createChangePayPasswordParams(String openId, String payPwd,
-                                                          String newPayPwd) throws JSONException {
-        JSONObject data = new JSONObject();
-        JSONObject header = new JSONObject();
-        header.put("openId", openId);
-        header.put("action", "");
-        header.put("machineNumber", "android");
-        JSONObject body = new JSONObject();
-        body.put("payPwd",payPwd);
-        body.put("newPayPwd",newPayPwd);
-
-        String signHead = MD5Util.GetMD5Code(body.toString());
-        String signTail = MD5Util.getTail(openId);
-        header.put("sign", signHead + signTail);
-
-        data.put("header", header);
-        data.put("body", body);
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("data", data.toString());
-        return map;
-    }
-    public Map<String, String> createChangeCardPasswordParams(String openId, String cardNumber,String payPwd,
                                                              String newPayPwd) throws JSONException {
         JSONObject data = new JSONObject();
         JSONObject header = new JSONObject();
@@ -152,9 +158,8 @@ public class PasswordRequest extends Request {
         header.put("action", "");
         header.put("machineNumber", "android");
         JSONObject body = new JSONObject();
-        body.put("oldPwd",payPwd);
-        body.put("newPwd",newPayPwd);
-        body.put("cardNumber",cardNumber);
+        body.put("payPwd", payPwd);
+        body.put("newPayPwd", newPayPwd);
 
         String signHead = MD5Util.GetMD5Code(body.toString());
         String signTail = MD5Util.getTail(openId);
@@ -166,10 +171,34 @@ public class PasswordRequest extends Request {
         map.put("data", data.toString());
         return map;
     }
+
+    public Map<String, String> createChangeCardPasswordParams(String openId, String cardNumber, String payPwd,
+                                                              String newPayPwd) throws JSONException {
+        JSONObject data = new JSONObject();
+        JSONObject header = new JSONObject();
+        header.put("openId", openId);
+        header.put("action", "");
+        header.put("machineNumber", "android");
+        JSONObject body = new JSONObject();
+        body.put("oldPwd", payPwd);
+        body.put("newPwd", newPayPwd);
+        body.put("cardNumber", cardNumber);
+
+        String signHead = MD5Util.GetMD5Code(body.toString());
+        String signTail = MD5Util.getTail(openId);
+        header.put("sign", signHead + signTail);
+
+        data.put("header", header);
+        data.put("body", body);
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("data", data.toString());
+        return map;
+    }
+
     /**
      * 修改密保问题
+     *
      * @param openId
-     * @param userName
      * @param secuQuestionId
      * @param secuAnswer
      * @param newSecuQuestionId
@@ -178,19 +207,19 @@ public class PasswordRequest extends Request {
      * @throws JSONException
      */
     public Map<String, String> createChangePasswordQuestionParams(String openId,
-                                                          String secuQuestionId,
-                                                          String secuAnswer,
-                                                          String newSecuQuestionId, String newSecuAnswer) throws JSONException {
+                                                                  String secuQuestionId,
+                                                                  String secuAnswer,
+                                                                  String newSecuQuestionId, String newSecuAnswer) throws JSONException {
         JSONObject data = new JSONObject();
         JSONObject header = new JSONObject();
         header.put("openId", openId);
         header.put("action", "");
         header.put("machineNumber", "android");
         JSONObject body = new JSONObject();
-        body.put("secuQuestionId",secuQuestionId);
-        body.put("secuAnswer",secuAnswer);
-        body.put("newSecuQuestionId",newSecuQuestionId);
-        body.put("newSecuAnswer",newSecuAnswer);
+        body.put("secuQuestionId", secuQuestionId);
+        body.put("secuAnswer", secuAnswer);
+        body.put("newSecuQuestionId", newSecuQuestionId);
+        body.put("newSecuAnswer", newSecuAnswer);
 
         String signHead = MD5Util.GetMD5Code(body.toString());
         String signTail = MD5Util.getTail(openId);
