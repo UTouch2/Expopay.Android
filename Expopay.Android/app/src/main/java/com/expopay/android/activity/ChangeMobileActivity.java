@@ -43,7 +43,7 @@ public class ChangeMobileActivity extends BaseActivity {
         setContentView(R.layout.activity_changemobile);
         timeoutText = (TextView) findViewById(R.id.changemobile_timeout_btn);
         bindphone = (TextView) findViewById(R.id.changemobile_bindphone);
-        bindphone.setText(getUser().getUserName());
+        bindphone.setText(getUser().getMobile());
         getVercodeBtn = (Button) findViewById(R.id.changemobile_vercode_btn);
         phoneNumEditText = (EditText) findViewById(R.id.changemobile_phonenum);
         vercodeEditText = (EditText) findViewById(R.id.changemobile_vercode);
@@ -52,7 +52,7 @@ public class ChangeMobileActivity extends BaseActivity {
         getVercodeBtn.setEnabled(false);
         okBtn.setEnabled(false);
         okBtn.setBackgroundResource(R.drawable._button_down);
-        okBtn.showNormal("确定修改");
+        okBtn.showNormal("确定更改");
         okBtn.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
             @Override
             public void onSuccessResult() {
@@ -61,7 +61,7 @@ public class ChangeMobileActivity extends BaseActivity {
 
             @Override
             public void onFailureResult() {
-                okBtn.showNormal("确定修改");
+                okBtn.showNormal("确定更改");
             }
         });
 
