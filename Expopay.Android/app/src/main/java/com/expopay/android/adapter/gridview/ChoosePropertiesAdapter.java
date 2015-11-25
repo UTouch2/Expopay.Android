@@ -9,7 +9,6 @@ import android.widget.Button;
 
 import com.expopay.android.R;
 import com.expopay.android.model.ProductPropertyEntity;
-import com.expopay.android.model.PropertiesEntity;
 
 import java.util.HashMap;
 import java.util.List;
@@ -53,24 +52,22 @@ public class ChoosePropertiesAdapter extends BaseAdapter {
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.view_button_item, null);
             holder.button = (Button) convertView.findViewById(R.id.buttonItem);
-            holder.button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    setPosition(position);
-                    vg.setTag(entity);
-                }
-            });
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-
         holder.button.setText(entity.getPropertyValue());
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setPosition(position);
+                vg.setTag(entity);
+            }
+        });
         if (!map.containsKey(position)) {
             map.put(position, false);
         }
         setChecked(holder.button, map.get(position));
-
         return convertView;
     }
 
