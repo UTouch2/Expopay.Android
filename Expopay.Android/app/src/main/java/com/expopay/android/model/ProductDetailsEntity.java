@@ -20,6 +20,7 @@ public class ProductDetailsEntity implements Serializable {
     private String propertyName2;
     private String propertyValue1;
     private String propertyValue2;
+    private String quantity;
 
     private List<ProductPeroidEntity> productPeriods;
 
@@ -136,5 +137,13 @@ public class ProductDetailsEntity implements Serializable {
 
     public void setProductAd(String productAd) {
         this.productAd = productAd;
+    }
+
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
     }
 }
