@@ -40,10 +40,10 @@
                 android:typeface="serif" />
 
             <TextView
+                android:id="@+id/payresult_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="2dp"
-                android:text="100.00元"
                 android:textColor="#0092D7"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -63,6 +63,7 @@
             android:padding="10dp">
 
             <TextView
+                android:id="@+id/payresult_ordersource"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="商        品："
@@ -105,36 +106,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="交易时间："
-                android:textColor="#7F7F7F"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#7F7F7F"
-                android:textSize="14sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="支付方式："
                 android:textColor="#7F7F7F"
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/payresult_paymethod"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#7F7F7F"
                 android:textSize="14sp" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -160,9 +141,10 @@
     <Button
         android:id="@+id/nbkcardpay_result_ok"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:text="充 值"
+        android:background="@drawable/_button"
+        android:text="确  定"
         android:textColor="#fff"
         android:textSize="14sp" />
 </LinearLayout>

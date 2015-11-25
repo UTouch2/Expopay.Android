@@ -31,8 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentBottom="true"
-                android:background="@drawable/_button"
-                android:onClick="okOnclick" />
+                android:background="@drawable/_button"  />
 
             <RelativeLayout
                 android:id="@+id/wegtransaction_top"

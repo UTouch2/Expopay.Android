@@ -41,7 +41,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/nbkcardpay_amount_text"
+            android:id="@+id/nbkcardcreditpay_amount_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#4F4F4F"
@@ -49,7 +49,7 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/nbkcardpay_choosecard"
+        android:id="@+id/nbkcardcreditpay_choosecard"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="#f9f9f9"
@@ -58,22 +58,13 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/nbkcardpay_cardnumber_label"
+            android:id="@+id/nbkcardcreditpay_cardnumber_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="支付方式："
             android:textColor="#4F4F4F"
             android:textSize="14sp" />
-
-        <ImageView
-            android:id="@+id/nbkcardpay_cardnumber_arraw"
-            android:layout_width="13sp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:adjustViewBounds="true"
-            android:src="@mipmap/account_right_arrow" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -88,27 +79,15 @@
                 android:adjustViewBounds="true"
                 android:src="@mipmap/nbkcardpay_icon" />
 
-            <LinearLayout
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_margin="5dp"
+                android:text="信用额度支付"
+                android:textColor="#4F4F4F"
+                android:textSize="12sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="卡号："
-                    android:textColor="#4F4F4F"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/nbkcardpay_cardnumber_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:textColor="#4F4F4F"
-                    android:textSize="12sp" />
-            </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
 
@@ -128,31 +107,7 @@
             android:textSize="14sp" />
 
         <EditText
-            android:id="@+id/nbkcardpay_paypwd_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:inputType="numberPassword"
-            android:textColor="#4F4F4F"
-            android:textSize="14sp" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/nbkcardpay_cardpwd_group"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="卡  密  码："
-            android:textColor="#4F4F4F"
-            android:textSize="14sp" />
-
-        <EditText
-            android:id="@+id/nbkcardpay_cardpwd_text"
+            android:id="@+id/nbkcardcreditpay_paypwd_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
@@ -161,7 +116,7 @@
             android:textSize="14sp" />
     </LinearLayout>
     <com.expopay.android.view.CustormLoadingButton
-        android:id="@+id/nbkcardpay_okbtn"
+        android:id="@+id/nbkcardcreditpay_okbtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
