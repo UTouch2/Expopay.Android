@@ -167,7 +167,6 @@
             android:layout_marginTop="100dp"
             android:background="@drawable/_button"
             android:text="立即下单"
-            android:onClick="commitOrderOnclick"
             android:onClick="okOnckick"
             android:textColor="#fff"></Button>
 
