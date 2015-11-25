@@ -11,7 +11,6 @@ import android.widget.Toast;
 import com.expopay.android.R;
 import com.expopay.android.adapter.gridview.ChoosePropertiesAdapter;
 import com.expopay.android.model.ProductPropertyEntity;
-import com.expopay.android.model.PropertiesEntity;
 
 import java.util.List;
 
@@ -48,11 +47,6 @@ public class ChoosePropertiesActivity extends BaseActivity {
         contentGridView.setAdapter(adapterContent);
     }
 
-    @Override
-    public void onBackPressed() {
-        finish();
-    }
-
     public void propertiesBlankOnClick(View view) {
         finish();
     }
@@ -63,8 +57,8 @@ public class ChoosePropertiesActivity extends BaseActivity {
 
     public void okPropertiesOnclick(View view) {
         Intent intent = new Intent();
-        PropertiesEntity color = (PropertiesEntity) colourGridView.getTag();
-        PropertiesEntity memory = (PropertiesEntity) contentGridView.getTag();
+        ProductPropertyEntity color = (ProductPropertyEntity) colourGridView.getTag();
+        ProductPropertyEntity memory = (ProductPropertyEntity) contentGridView.getTag();
         if (null == color) {
             Toast.makeText(this, "请选择颜色 ", Toast.LENGTH_SHORT).show();
             return;

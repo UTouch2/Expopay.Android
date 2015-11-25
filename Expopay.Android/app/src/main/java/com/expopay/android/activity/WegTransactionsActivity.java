@@ -34,7 +34,8 @@ public class WegTransactionsActivity extends BaseActivity {
         wegtransactionOk.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
             @Override
             public void onSuccessResult() {
-                finish();
+                NBKCardPayUtil.nbkCardPay(WegTransactionsActivity.this, orderNumber, orderSource, orderAmount);
+                wegtransactionOk.showNormal("缴费");
             }
 
             @Override
@@ -43,18 +44,21 @@ public class WegTransactionsActivity extends BaseActivity {
             }
         });
 
+        wegtransactionOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    createOrderRequest(getUser().getOpenId(), orderSource, "4", "0.01", companyEntity.getCompanyId(), companyEntity.getPublicParamName(), companyEntity.getPublicParamValue(), companyEntity.getPublicParamText());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         companyEntity = (CompanyEntity) getIntent().getSerializableExtra("company");
         orderSource = "1";
         orderAmount = getIntent().getStringExtra("amount");
     }
 
-    public void okOnclick(View v) {
-        try {
-            createOrderRequest(getUser().getOpenId(), orderSource, "4", orderAmount, companyEntity.getCompanyId(), companyEntity.getPublicParamName(), companyEntity.getPublicParamValue(), companyEntity.getPublicParamText());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
 
     public void closeOnclick(View v) {
         finish();
@@ -72,6 +76,7 @@ public class WegTransactionsActivity extends BaseActivity {
                                     String paymentMethod, final String orderAmount,
                                     String publicCompanyID, String publicParamName,
                                     String publicParamValue, String publicParamText) throws JSONException {
+        wegtransactionOk.showLoading("正在加载中···");
         OrderRequest request = new OrderRequest(MyApplication.HOST + "/order/createorder");
         request.setEntity(request.createCreateOrderParms(openId, orderSource, paymentMethod, orderAmount, publicCompanyID, publicParamName, publicParamValue, publicParamText));
         request.setIRequestListener(new JsonRequestListener() {
@@ -87,11 +92,12 @@ public class WegTransactionsActivity extends BaseActivity {
                     if (json.getJSONObject("header").getString("code")
                             .equals("0000")) {
                         orderNumber = json.getJSONObject("body").getString("orderNumber");
-                        NBKCardPayUtil.nbkCardPay(WegTransactionsActivity.this, orderNumber, orderSource, orderAmount);
+                        wegtransactionOk.showResult("", true);
                     }
                 } catch (JSONException e) {
                 }
             }
+
             @Override
             public void onProgressUpdate(int i, int i1) {
 

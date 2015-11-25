@@ -33,25 +33,32 @@ public class WegQueryTransActivity extends BaseActivity {
     TextView companyText;
     EditText barcodeText;
     CompanyEntity current;
+    TextView paramTextText;
+    String type;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusColor();
-        setTitle("缴纳水电费");
         setContentView(R.layout.activity_weg_querytransaction);
+        type = getIntent().getStringExtra("type");
+        if ("0".equals(type)) {
+            setTitle("缴纳水费");
+        } else if ("1".equals(type)) {
+            setTitle("缴纳电费");
+        }
         companyText = (TextView) findViewById(R.id.weg_company_text);
         loadingView = (CustormLoadingView) findViewById(R.id.weg_loadingview);
         loadingButton = (CustormLoadingButton) findViewById(R.id.weg_loadingbutton);
         barcodeText = (EditText) findViewById(R.id.weg_barcode_edit);
-
+        paramTextText = (TextView) findViewById(R.id.weg_barcode_lable);
         loadingButton.showNormal("查  询");
         loadingButton.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
             @Override
             public void onSuccessResult() {
                 finish();
             }
-
             @Override
             public void onFailureResult() {
                 loadingButton.showNormal("查  询");
@@ -68,7 +75,7 @@ public class WegQueryTransActivity extends BaseActivity {
             }
         });
         try {
-            getCompanyList(getUser().getOpenId(), "0", "530000", "530100");
+            getCompanyList(getUser().getOpenId(), type, "530000", "530100");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -87,6 +94,7 @@ public class WegQueryTransActivity extends BaseActivity {
         if (resultCode == RESULT_OK) {
             current = (CompanyEntity) data.getSerializableExtra("CompanyEntity");
             companyText.setText(current.getCompanyName());
+            paramTextText.setText(current.getPublicParamText());
         }
     }
 
@@ -112,6 +120,7 @@ public class WegQueryTransActivity extends BaseActivity {
                         }.getType());
                         current = list.get(0);
                         companyText.setText(current.getCompanyName());
+                        paramTextText.setText(current.getPublicParamText());
                         loadingView.dismiss();
                     }
                 } catch (JSONException e) {

@@ -1,5 +1,6 @@
 package com.expopay.android.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
@@ -49,6 +50,22 @@ public class ProductDetailsActivity extends BaseActivity {
     private List<ProductPeroidEntity> peroids;
     private ProductPeroidEntity peroid;
 
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setStatusColor();
+        setTitle("商品详情");
+        setContentView(R.layout.activity_produte_details);
+        initView();
+        MallProductEntity entity = (MallProductEntity) getIntent().getSerializableExtra("entity");
+        try {
+            getProductDetailsRequest(entity.getProductId());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
     protected void initView() {
         productNameText = (TextView) findViewById(R.id.productdetails_productname);
         productPriceText = (TextView) findViewById(R.id.productdetails_productprice);
@@ -73,19 +90,11 @@ public class ProductDetailsActivity extends BaseActivity {
         footView.setSelectedIndex(createViews().length, viewPager.getCurrentItem() % createViews().length);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setStatusColor();
-        setTitle("商品详情");
-        setContentView(R.layout.activity_produte_details);
-        initView();
-        MallProductEntity entity = (MallProductEntity) getIntent().getSerializableExtra("entity");
-        try {
-            getProductDetailsRequest(entity.getProductId());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+    public void okOnckick(View v) {
+        Intent intent = new Intent(this, OrderDetailCommitActivity.class);
+        intent.putExtra("product", productEntity);
+        intent.putExtra("peroid", peroid);
+        startActivity(intent);
     }
 
     public void chooseColorOnclick(View v) {
@@ -104,30 +113,24 @@ public class ProductDetailsActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //可以根据多个请求代码来作相应的操作
-        switch (requestCode) {
-            case 0:
-                if (resultCode == RESULT_OK) {
-                    color = ((ProductPropertyEntity) data.getExtras().getSerializable("color"));
-                    memory = ((ProductPropertyEntity) data.getExtras().getSerializable("memory"));
-                    getProductByProperties(productDetails, color, memory);
-                    peroids = productEntity.getProductPeriods();
-                    peroid = peroids.get(0);
-                    propertisText.setText(color.getPropertyValue() + "  " + memory.getPropertyValue());
-                    periodText.setText(peroid.getPeriod());
-                    productNameText.setText(productEntity.getProductName());
-                    productPriceText.setText(productEntity.getProductPrice());
-                }
-                break;
-            case 1:
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+                color = ((ProductPropertyEntity) data.getExtras().getSerializable("color"));
+                memory = ((ProductPropertyEntity) data.getExtras().getSerializable("memory"));
+                getProductByProperties(productDetails, color, memory);
+                propertisText.setText(color.getPropertyValue() + "  " + memory.getPropertyValue());
+                periodText.setText(peroid.getPeriod());
+                productNameText.setText(productEntity.getProductName());
+                productPriceText.setText(productEntity.getProductPrice());
+            }
+            if (requestCode == 1) {
                 if (resultCode == RESULT_OK) {
                     peroid = ((ProductPeroidEntity) data.getExtras().getSerializable("periods"));
                     periodText.setText(peroid.getPeriod());
                 }
-                break;
-            default:
+            }
         }
     }
-
 
     private View[] createViews() {
         View[] views = new View[3];
@@ -161,7 +164,6 @@ public class ProductDetailsActivity extends BaseActivity {
                 System.out.print(e);
             }
 
-
             @Override
             public void onSuccess(Object o) {
                 JSONObject json = (JSONObject) o;
@@ -175,8 +177,6 @@ public class ProductDetailsActivity extends BaseActivity {
                         color = colors.get(0);
                         memory = memorys.get(0);
                         getProductByProperties(productDetails, color, memory);
-                        peroids = productEntity.getProductPeriods();
-                        peroid = peroids.get(0);
                         propertisText.setText(color.getPropertyValue() + "  " + memory.getPropertyValue());
                         periodText.setText(peroid.getPeriod());
                         productNameText.setText(productEntity.getProductName());
@@ -258,6 +258,10 @@ public class ProductDetailsActivity extends BaseActivity {
             if (entity.getPropertyId2().equals(color.getPropertyId()) && entity.getPropertyId1().equals(memory.getPropertyId())) {
                 productEntity = entity;
             }
+        }
+        peroids = productEntity.getProductPeriods();
+        if (peroids.size() > 0) {
+            peroid = peroids.get(0);
         }
     }
 }

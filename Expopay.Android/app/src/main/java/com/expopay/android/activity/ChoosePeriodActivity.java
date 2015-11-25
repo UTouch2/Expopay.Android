@@ -37,16 +37,12 @@ public class ChoosePeriodActivity extends BaseActivity {
         productname.setText(getIntent().getStringExtra("detailProductName"));
         productamount.setText(getIntent().getStringExtra("detailAmount"));
 
-        List<ProductPeroidEntity> periods = (List<ProductPeroidEntity>) getIntent().getSerializableExtra("periods");
+        List<ProductPeroidEntity> periods = (List<ProductPeroidEntity>) getIntent().getSerializableExtra("peroids");
         myGridView = (GridView) findViewById(R.id.buttonGridView);
         adapter = new ChoosePeriodAdapter(this, periods);
         myGridView.setAdapter(adapter);
     }
 
-    @Override
-    public void onBackPressed() {
-        finish();
-    }
 
     public void blankOnClick(View view) {
         finish();
@@ -58,7 +54,7 @@ public class ChoosePeriodActivity extends BaseActivity {
 
     public void periodOkOnclick(View view) {
         Intent intent = new Intent();
-        ProductPropertyEntity periods = (ProductPropertyEntity) myGridView.getTag();
+        ProductPeroidEntity periods = (ProductPeroidEntity) myGridView.getTag();
         if (null == periods) {
             Toast.makeText(this, "请选择期数", Toast.LENGTH_SHORT).show();
         } else {
