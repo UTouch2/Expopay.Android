@@ -2,8 +2,10 @@ package com.expopay.android.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
@@ -29,6 +31,7 @@ import java.util.List;
 public class ChangeCardPasswordActivity extends BaseActivity {
     CustormLoadingButton okBtn;
     TextView cardNumberText;
+    ImageView showPsdImageView;
     EditText oldPwdtext, newPwdText;
     CustormLoadingView loadingView;
     List<CardEntity> cards;
@@ -43,6 +46,23 @@ public class ChangeCardPasswordActivity extends BaseActivity {
         oldPwdtext = (EditText) findViewById(R.id.changecardpassword_oldpsd);
         newPwdText = (EditText) findViewById(R.id.changecardpassword_newpsd);
         loadingView = (CustormLoadingView) findViewById(R.id.changecardpassword_loadingview);
+        showPsdImageView = (ImageView) findViewById(R.id.changecardpassword_timeout_btn);
+        showPsdImageView.setOnClickListener(new View.OnClickListener() {
+            boolean flag = true;
+
+            @Override
+            public void onClick(View v) {
+                if (flag) {
+                    newPwdText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+                    showPsdImageView.setImageResource(R.mipmap.changepassword_icon);
+                } else {
+                    newPwdText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_NORMAL);
+                    showPsdImageView.setImageResource(R.mipmap.changepassword_icon);
+                }
+                flag = !flag;
+            }
+        });
+
         okBtn = (CustormLoadingButton) findViewById(R.id.changecardpassword_ok);
         okBtn.showNormal("更改");
         okBtn.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {

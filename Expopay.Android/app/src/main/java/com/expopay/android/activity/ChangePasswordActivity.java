@@ -68,8 +68,10 @@ public class ChangePasswordActivity extends BaseActivity {
             public void onClick(View v) {
                 if (flag) {
                     newLoginPwdText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+                    showPsdImageView.setImageResource(R.mipmap.changepassword_icon);
                 } else {
                     newLoginPwdText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_NORMAL);
+                    showPsdImageView.setImageResource(R.mipmap.changepassword_icon);
                 }
                 flag = !flag;
             }

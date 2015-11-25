@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
@@ -32,6 +31,7 @@ public class AddressDetailsActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusColor();
+        setTitle("添加收货信息");
         setContentView(R.layout.activity_addressdetails);
         addressText = (EditText) findViewById(R.id.address_address_text);
         zipcodeText = (EditText) findViewById(R.id.address_zipcode_text);

@@ -24,16 +24,20 @@
                 android:layout_centerVertical="true"
                 android:gravity="center_vertical"
                 android:padding="5dp"
+                android:textColor="#A1A1A1"
+                android:textSize="13sp"
                 android:text="新手机:" />
 
             <Button
                 android:id="@+id/changemobile_vercode_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:background="@drawable/_button_recharge"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:text="发送验证码"
+                android:textSize="13sp"
                 android:textColor="#23A4F7" />
 
             <EditText
@@ -46,6 +50,7 @@
                 android:background="#00000000"
                 android:inputType="number"
                 android:lines="1"
+                android:textSize="13sp"
                 android:maxLength="11"
                 android:singleLine="true" />
         </RelativeLayout>
@@ -63,15 +68,20 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:padding="5dp"
+                android:textColor="#A1A1A1"
+                android:textSize="13sp"
                 android:text="验证码:" />
 
             <TextView
                 android:id="@+id/changemobile_timeout_btn"
+                android:background="@drawable/_button_verifycode_normal"
                 android:layout_width="80dp"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:gravity="center"
+                android:textColor="#AEAEAE"
+                android:textSize="13sp"
                 android:text="60秒"></TextView>
 
             <EditText
@@ -84,6 +94,7 @@
                 android:background="#00000000"
                 android:inputType="number"
                 android:lines="1"
+                android:textSize="13sp"
                 android:maxLength="6"
                 android:singleLine="true" />
         </RelativeLayout>
@@ -104,10 +115,11 @@
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/changemobile_bindphone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="18888888888"
+                android:text=""
                 android:textColor="#EF8261"
                 android:textSize="14sp" />
         </LinearLayout>
