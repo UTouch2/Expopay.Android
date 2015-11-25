@@ -3,7 +3,9 @@ package com.expopay.android.request;
 import com.android.kechong.lib.http.Request;
 import com.android.kechong.lib.http.RequestMethod;
 import com.android.kechong.lib.util.MD5Util;
+import com.expopay.android.model.ProductDetailsEntity;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -127,7 +129,7 @@ public class OrderRequest extends Request {
                                                       String orderSource,
                                                       String paymentMethod,
                                                       String orderAmount,
-                                                      String productId,
+                                                      ProductDetailsEntity[] products,
                                                       String periodId,
                                                       String addressId
     ) throws JSONException {
@@ -140,7 +142,18 @@ public class OrderRequest extends Request {
         body.put("paymentMethod", paymentMethod);
         body.put("orderSource", orderSource);
         body.put("orderAmount", orderAmount);
-        body.put("productId", productId);
+        JSONArray jsonArray = new JSONArray();
+        for (ProductDetailsEntity product : products) {
+            JSONObject obj = new JSONObject();
+            obj.put("productId", product.getProductId());
+            obj.put("propertyName1", product.getPropertyName1());
+            obj.put("propertyName2", product.getPropertyName2());
+            obj.put("propertyValue1", product.getPropertyValue1());
+            obj.put("propertyValue2", product.getPropertyValue2());
+            obj.put("quantity", product.getQuantity());
+            jsonArray.put(obj);
+        }
+        body.put("products", jsonArray);
         body.put("periodId", periodId);
         body.put("addressId", addressId);
 
