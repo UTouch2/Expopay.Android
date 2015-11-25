@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import com.expopay.android.activity.AddPayPasswordActivity;
 import com.expopay.android.activity.BaseActivity;
 import com.expopay.android.activity.NBCardPayActivity;
+import com.expopay.android.activity.NBKCardCreditPayActivity;
 
 /**
  * Created by misxu012 on 2015/11/4.
@@ -23,7 +25,8 @@ public class NBKCardPayUtil {
         String payStatus = ((BaseActivity) activity).getUser().getPayStatus();
         // 设置支付密码页面
         if ("0".equals(payStatus)) {
-
+            Intent intent = new Intent(activity, AddPayPasswordActivity.class);
+            activity.startActivity(intent);
         } else if ("1".equals(payStatus)) {
             Intent intent = new Intent(activity, NBCardPayActivity.class);
             intent.putExtra("orderNumber", orderNumer);
@@ -31,6 +34,19 @@ public class NBKCardPayUtil {
             intent.putExtra("orderAmount", orderAmount);
             activity.startActivityForResult(intent, PAY_REQUEST_CODE);
         }
-
+    }
+    public static void nbkCardCreditPay(Activity activity, String orderNumer, String orderSource, String orderAmount) {
+        String payStatus = ((BaseActivity) activity).getUser().getPayStatus();
+        // 设置支付密码页面
+        if ("0".equals(payStatus)) {
+            Intent intent = new Intent(activity, AddPayPasswordActivity.class);
+            activity.startActivity(intent);
+        } else if ("1".equals(payStatus)) {
+            Intent intent = new Intent(activity, NBKCardCreditPayActivity.class);
+            intent.putExtra("orderNumber", orderNumer);
+            intent.putExtra("orderSource", orderSource);
+            intent.putExtra("orderAmount", orderAmount);
+            activity.startActivityForResult(intent, PAY_REQUEST_CODE);
+        }
     }
 }
