@@ -38,7 +38,6 @@ public class AddressDetailsActivity extends BaseActivity {
         nameText = (EditText) findViewById(R.id.address_name_text);
         mobileText = (EditText) findViewById(R.id.address_mobile_text);
         cityText = (TextView) findViewById(R.id.address_city_text);
-
         okbtn = (CustormLoadingButton) findViewById(R.id.address_ok);
 
         if (getIntent().getSerializableExtra("address") != null) {

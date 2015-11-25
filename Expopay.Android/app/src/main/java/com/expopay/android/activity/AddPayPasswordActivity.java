@@ -10,6 +10,7 @@ import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
 import com.expopay.android.application.MyApplication;
 import com.expopay.android.model.PasswordQuestionEntity;
+import com.expopay.android.model.UserEntity;
 import com.expopay.android.request.PasswordRequest;
 import com.expopay.android.view.CustormLoadingButton;
 import com.expopay.android.view.CustormLoadingView;
@@ -44,6 +45,18 @@ public class AddPayPasswordActivity extends BaseActivity {
         pwdQuestionText = (TextView) findViewById(R.id.addpaypassword_psdquestion);
         loadingButton = (CustormLoadingButton) findViewById(R.id.addpaypassword_ok);
         loadingView = (CustormLoadingView) findViewById(R.id.addpaypassword_loadingview);
+
+        loadingButton.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
+            @Override
+            public void onSuccessResult() {
+                finish();
+            }
+
+            @Override
+            public void onFailureResult() {
+                loadingButton.showNormal("确定");
+            }
+        });
         loadingView.setRetryOnclickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,8 +98,10 @@ public class AddPayPasswordActivity extends BaseActivity {
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
-
+                loadingView.showRetry();
+                loadingView.setRetryMessage("网络请求失败");
             }
+
             @Override
             public void onSuccess(Object o) {
                 JSONObject json = (JSONObject) o;
@@ -129,7 +144,7 @@ public class AddPayPasswordActivity extends BaseActivity {
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
-                loadingButton.showResult("网络请求失败", true);
+                loadingButton.showResult("网络请求失败", false);
             }
 
             @Override
@@ -138,9 +153,12 @@ public class AddPayPasswordActivity extends BaseActivity {
                 try {
                     if (json.getJSONObject("header").getString("code")
                             .equals("0000")) {
-                        loadingButton.showResult("", true);
+                        UserEntity user = getUser();
+                        user.setPayStatus("1");
+                        saveUser(user);
+                        loadingButton.showResult("设置成功", true);
                     } else {
-                        loadingButton.showResult(json.getJSONObject("header").getString("desc"),false);
+                        loadingButton.showResult(json.getJSONObject("header").getString("desc"), false);
                     }
                 } catch (JSONException e) {
                     // 数据解析异常

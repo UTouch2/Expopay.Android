@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -52,6 +53,21 @@ public class BaseActivity extends AbsFragmentActivity {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         }
+    }
+
+    @Override
+    public void repleaceFragment(int root, Fragment f) {
+        super.repleaceFragment(root, f);
+    }
+
+    @Override
+    public void addFragment(int root, Fragment f) {
+        super.addFragment(root, f);
+    }
+
+    @Override
+    public void removeFragment(Fragment f) {
+        super.removeFragment(f);
     }
 
     protected void setStatusColor() {
