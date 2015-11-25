@@ -138,6 +138,11 @@
             android:theme="@style/ActvTheme"
             android:windowSoftInputMode="adjustResize"></activity>
         <activity
+            android:name=".activity.NBKCardCreditPayActivity"
+            android:label="南博卡"
+            android:theme="@style/ActvTheme"
+            android:windowSoftInputMode="adjustResize"></activity>
+        <activity
             android:name=".activity.OrderDetailActivity"
             android:label="南博卡"></activity>
         <activity
