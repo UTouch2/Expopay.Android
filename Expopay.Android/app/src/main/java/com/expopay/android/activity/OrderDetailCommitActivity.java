@@ -88,6 +88,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
         repaymentPeriodText = (TextView) findViewById(R.id.orderDetailCommit_repaymentPeriod);
         periodAmountText = (TextView) findViewById(R.id.orderDetailCommit_periodAmount);
         checkBox = (CheckBox) findViewById(R.id.orderDetailCommit_checkBox);
+        loadingView = (CustormLoadingView) findViewById(R.id.orderDetailCommit_loadingview);
         btnSubmit = (CustormLoadingButton) findViewById(R.id.orderDetailCommit_submitBtn);
         btnSubmit.showNormal("提交订单");
         btnSubmit.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
@@ -126,17 +127,34 @@ public class OrderDetailCommitActivity extends BaseActivity {
                 }
             }
         });
+        loadingView.setAddOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(OrderDetailCommitActivity.this, AddressDetailsActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        addressEntity = (AddressEntity) data.getSerializableExtra("");
-        setAddressText(addressEntity);
+        switch (requestCode) {
+            case 0:
+                if (resultCode == RESULT_OK) {
+                    addressEntity = (AddressEntity) data.getSerializableExtra("");
+                    setAddressText(addressEntity);
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     private void setAddressText(AddressEntity addressEntity) {
-
+        receiverText.setText(addressEntity.getPersonName());
+        receiverMobileText.setText(addressEntity.getMobile());
+        receiverAddressText.setText(addressEntity.getAddress());
     }
 
     private void getOrder(String openId, final String orderSource, String paymentMethod, final String orerAmount,
@@ -178,15 +196,15 @@ public class OrderDetailCommitActivity extends BaseActivity {
 
 
     private void getAddress(String openId) throws JSONException {
-//        loadingView.show();
-//        loadingView.showLoading();
+        loadingView.show();
+        loadingView.showLoading();
         AddressRequest request = new AddressRequest(MyApplication.HOST + "/customer/addresses");
         request.setEntity(request.createGetAddressesParams(openId));
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
-//                loadingView.showRetry();
-//                loadingView.setRetryMessage("网络请求失败");
+                loadingView.showRetry();
+                loadingView.setRetryMessage("网络请求失败");
             }
 
             @Override
@@ -199,20 +217,21 @@ public class OrderDetailCommitActivity extends BaseActivity {
                                 new TypeToken<List<AddressEntity>>() {
                                 }.getType());
                         if (list.size() == 0) {
-//                            loadingView.showAdd();
-//                            loadingView.setAddMessage("当前还没有添加收货地址");
+                            loadingView.showAdd();
+                            loadingView.setAddMessage("当前还没有添加收货地址");
+
                         } else {
-                            // loadingView.dismiss();
+                             loadingView.dismiss();
                             addressEntity = getDefaultAddress(list);
                             setAddressText(addressEntity);
                         }
                     } else {
-//                        loadingView.showRetry();
-//                        loadingView.setRetryMessage(json.getJSONObject("header").getString("desc"));
+                        loadingView.showRetry();
+                        loadingView.setRetryMessage(json.getJSONObject("header").getString("desc"));
                     }
                 } catch (JSONException e) {
-//                    loadingView.showRetry();
-//                    loadingView.setRetryMessage("参数解析错误");
+                    loadingView.showRetry();
+                    loadingView.setRetryMessage("参数解析错误");
                 }
             }
 

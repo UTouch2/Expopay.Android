@@ -277,6 +277,12 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/_button"></com.expopay.android.view.CustormLoadingButton>
+        android:background="@drawable/_button">
+    </com.expopay.android.view.CustormLoadingButton>
+    <com.expopay.android.view.CustormLoadingView
+        android:id="@+id/orderDetailCommit_loadingview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.expopay.android.view.CustormLoadingView>
 
 </RelativeLayout>

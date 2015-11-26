@@ -1,6 +1,5 @@
 package com.expopay.android.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
@@ -112,10 +111,6 @@ public class ProductDetailsActivity extends BaseActivity {
         intent.putExtra("detailAmount",productPriceText.getText().toString().trim());
         intent.putExtra("peroids", (Serializable) peroids);
         startActivityForResult(intent, 1);
-    }
-
-    public void commitOrderOnclick(View view){
-
     }
 
     @Override

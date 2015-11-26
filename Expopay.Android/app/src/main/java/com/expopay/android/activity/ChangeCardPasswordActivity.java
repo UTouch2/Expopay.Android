@@ -164,6 +164,12 @@ public class ChangeCardPasswordActivity extends BaseActivity {
                         if (list.size() == 0) {
                             loadingView.setAddMessage("你还没有添加卡");
                             loadingView.showAdd();
+                            loadingView.setAddOnclickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    startActivity(new Intent(ChangeCardPasswordActivity.this,AddCardActivity.class));
+                                }
+                            });
                         } else {
                             cards = list;
                             CardEntity card = list.get(0);
