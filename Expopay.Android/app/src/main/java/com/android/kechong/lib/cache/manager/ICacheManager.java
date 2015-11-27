@@ -2,6 +2,7 @@ package com.android.kechong.lib.cache.manager;
 
 public interface ICacheManager {
 
+	final static int m = 1024 * 1024;
 	/**
 	 * 加载缓存数据
 	 * 
