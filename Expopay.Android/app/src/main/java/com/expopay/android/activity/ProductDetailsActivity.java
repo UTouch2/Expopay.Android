@@ -1,12 +1,16 @@
 package com.expopay.android.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.kechong.lib.http.Request;
+import com.android.kechong.lib.http.RequestMethod;
+import com.android.kechong.lib.http.listener.BitmapRequestListener;
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.android.kechong.lib.listener.AbsOnPageChangeListener;
 import com.expopay.android.R;
@@ -14,6 +18,7 @@ import com.expopay.android.adapter.pager.BannerPagerAdapter;
 import com.expopay.android.application.MyApplication;
 import com.expopay.android.model.MallProductEntity;
 import com.expopay.android.model.ProductDetailsEntity;
+import com.expopay.android.model.ProductImageEntity;
 import com.expopay.android.model.ProductPeroidEntity;
 import com.expopay.android.model.ProductPropertyEntity;
 import com.expopay.android.request.ProductRequest;
@@ -49,6 +54,9 @@ public class ProductDetailsActivity extends BaseActivity {
     private List<ProductPeroidEntity> peroids;
     private ProductPeroidEntity peroid;
 
+    private List<View> bannerViews;
+
+    private BannerPagerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +65,7 @@ public class ProductDetailsActivity extends BaseActivity {
         setTitle("商品详情");
         setContentView(R.layout.activity_produte_details);
         initView();
+        bannerViews = new ArrayList<>();
         MallProductEntity entity = (MallProductEntity) getIntent().getSerializableExtra("entity");
         try {
             getProductDetailsRequest(entity.getProductId());
@@ -75,18 +84,17 @@ public class ProductDetailsActivity extends BaseActivity {
         imgblowe = (ImageView) findViewById(R.id.imgblowe);
 
         viewPager = (CustormViewPager) findViewById(R.id.product_bannerpager);
-        viewPager.setAdapter(new BannerPagerAdapter(createViews()));
+        adapter = new BannerPagerAdapter(new View[]{new ImageView(getApplicationContext())});
+        viewPager.setAdapter(adapter);
         viewPager.setCurrentItem(100);
 
         footView = (BannerFootView) findViewById(R.id.product_bannerpager_footview);
-        viewPager.setAdapter(new BannerPagerAdapter(createViews()));
         viewPager.setOnPageChangeListener(new AbsOnPageChangeListener() {
             @Override
             public void onPageSelected(int i) {
-                footView.setSelectedIndex(createViews().length, i % createViews().length);
+                footView.setSelectedIndex(bannerViews.size(), i % bannerViews.size());
             }
         });
-        footView.setSelectedIndex(createViews().length, viewPager.getCurrentItem() % createViews().length);
     }
 
     public void okOnckick(View v) {
@@ -98,8 +106,8 @@ public class ProductDetailsActivity extends BaseActivity {
 
     public void chooseColorOnclick(View v) {
         Intent intent = new Intent(this, ChoosePropertiesActivity.class);
-        intent.putExtra("detailProductName",productNameText.getText().toString().trim());
-        intent.putExtra("detailAmount",productPriceText.getText().toString().trim());
+        intent.putExtra("detailProductName", productNameText.getText().toString().trim());
+        intent.putExtra("detailAmount", productPriceText.getText().toString().trim());
         intent.putExtra("colors", (Serializable) colors);
         intent.putExtra("memorys", (Serializable) memorys);
         startActivityForResult(intent, 0);
@@ -107,8 +115,8 @@ public class ProductDetailsActivity extends BaseActivity {
 
     public void chooseMemoryOnclick(View v) {
         Intent intent = new Intent(this, ChoosePeriodActivity.class);
-        intent.putExtra("detailProductName",productNameText.getText().toString().trim());
-        intent.putExtra("detailAmount",productPriceText.getText().toString().trim());
+        intent.putExtra("detailProductName", productNameText.getText().toString().trim());
+        intent.putExtra("detailAmount", productPriceText.getText().toString().trim());
         intent.putExtra("peroids", (Serializable) peroids);
         startActivityForResult(intent, 1);
     }
@@ -133,20 +141,6 @@ public class ProductDetailsActivity extends BaseActivity {
                 }
             }
         }
-    }
-
-    private View[] createViews() {
-        View[] views = new View[3];
-        ImageView view = new ImageView(this);
-        views[0] = view;
-        views[0].setBackgroundResource(R.mipmap.mall_banner01);
-        view = new ImageView(this);
-        views[1] = view;
-        views[1].setBackgroundResource(R.mipmap.mall_banner02);
-        view = new ImageView(this);
-        views[2] = view;
-        views[2].setBackgroundResource(R.mipmap.mall_banner03);
-        return views;
     }
 
     android.os.Handler handler = new android.os.Handler() {
@@ -266,5 +260,47 @@ public class ProductDetailsActivity extends BaseActivity {
         if (peroids.size() > 0) {
             peroid = peroids.get(0);
         }
+        List<ProductImageEntity> images = productEntity.getProductImgs();
+        bannerViews.clear();
+        for (ProductImageEntity image : images) {
+            String url = image.getImgUrl();
+            getProductImage(url);
+        }
+
+    }
+
+    private void getProductImage(final String url) {
+        if (MyApplication.cache.getBitmapFromMemCache(url) != null) {
+            ImageView view = new ImageView(getApplicationContext());
+            view.setImageBitmap(MyApplication.cache.getBitmapFromMemCache(url));
+            bannerViews.add(view);
+            viewPager.setAdapter(new BannerPagerAdapter(bannerViews));
+            footView.setSelectedIndex(bannerViews.size(), viewPager.getCurrentItem() % bannerViews.size());
+            return;
+        }
+        Request request = new Request(url, RequestMethod.GET);
+        request.setIRequestListener(new BitmapRequestListener() {
+            @Override
+            public void onFilure(Exception result) {
+                System.out.print(result);
+            }
+
+            @Override
+            public void onSuccess(Object result) {
+                Bitmap map = (Bitmap) result;
+                ImageView view = new ImageView(getApplicationContext());
+                view.setImageBitmap(map);
+                bannerViews.add(view);
+                MyApplication.cache.addBitmapToMemoryCache(url, map);
+                viewPager.setAdapter(new BannerPagerAdapter(bannerViews));
+                footView.setSelectedIndex(bannerViews.size(), viewPager.getCurrentItem() % bannerViews.size());
+            }
+
+            @Override
+            public void onProgressUpdate(int progress, int status) {
+
+            }
+        });
+        request.execute();
     }
 }
