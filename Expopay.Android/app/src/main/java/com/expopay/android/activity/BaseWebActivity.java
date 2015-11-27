@@ -12,88 +12,89 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.expopay.android.R;
+import com.expopay.android.view.CustormLoadingView;
 
 
 public class BaseWebActivity extends BaseActivity {
-	protected WebView webView;
-	private ProgressBar progressBar;
-	private String url, title;
+    protected WebView webView;
+    private String url, title;
+    private CustormLoadingView loadingView;
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_web);
+        Intent intent = getIntent();
+        url = intent.getStringExtra("url");
+        title = intent.getStringExtra("title");
+        webView = (WebView) findViewById(R.id.webview);
+        loadingView = (CustormLoadingView) findViewById(R.id.web_loadingview);
+        // 添加一个监听，去处理url的分打开方式
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                super.onProgressChanged(view, newProgress);
+                if (newProgress == 100) {
+                    loadingView.dismiss();
+                }
+            }
+        });
+        loadingView.setRetryOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                webView.loadUrl(url);
+            }
+        });
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String newUrl) {
+                if (newUrl.indexOf("tel:") < 0) {
+                    view.loadUrl(newUrl);
+                }
+                return true;
+            }
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_web);
-		Intent intent = getIntent();
-		url = intent.getStringExtra("url");
-		title = intent.getStringExtra("title");
-		progressBar = (ProgressBar) findViewById(R.id.webview_progressbar);
-		webView = (WebView) findViewById(R.id.webview);
-		// 添加一个监听，去处理url的分打开方式
-		webView.setWebChromeClient(new WebChromeClient() {
-			@Override
-			public void onProgressChanged(WebView view, int newProgress) {
-				super.onProgressChanged(view, newProgress);
-				progressBar.setProgress(newProgress);
-				if (newProgress == 100) {
-					progressBar.setVisibility(View.GONE);
-				}else{
-					progressBar.setVisibility(View.VISIBLE);
-				}
-			}
-		});
-		webView.setWebViewClient(new WebViewClient() {
-			@Override
-			public boolean shouldOverrideUrlLoading(WebView view, String newUrl) {
-				if (newUrl.indexOf("tel:") < 0) {
-					view.loadUrl(newUrl);
-				}
-				return true;
-			}
+            @Override
+            public void onReceivedError(WebView view, int errorCode,
+                                        String description, String failingUrl) {
+                loadingView.setRetryMessage("网络请求失败");
+                loadingView.showRetry();
+            }
+        });
+    }
 
-			@Override
-			public void onReceivedError(WebView view, int errorCode,
-					String description, String failingUrl) {
-				String data = "Page NO FOUND！";
-				view.loadUrl("javascript:document.body.innerHTML=\"" + data
-						+ "\"");
-			}
-		});
-		progressBar.setVisibility(View.VISIBLE);
-	}
+    public final void addJavascriptInterface(Object object) {
+        //webView.addJavascriptInterface(object, "android");
+        webView.loadUrl(url);
+    }
 
-	public final void addJavascriptInterface(Object object) {
-		//webView.addJavascriptInterface(object, "android");
-		webView.loadUrl(url);
-	}
+    public final void returnResult(String jsName, String... params) {
+        String str = "javascript:" + jsName + "(";
+        for (int i = 0; i < params.length; i++) {
+            str += "'" + params[i] + "'";
+            if (i < params.length - 1) {
+                str += ",";
+            }
+        }
+        str += ")";
+        webView.loadUrl(str);
+    }
 
-	public final void returnResult(String jsName, String... params) {
-		String str = "javascript:" + jsName + "(";
-		for (int i = 0; i < params.length; i++) {
-			str += "'"+params[i]+"'";
-			if (i < params.length - 1) {
-				str += ",";
-			}
-		}
-		str += ")";
-		webView.loadUrl(str);
-	}
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+    }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		return true;
-	}
+    public void closeOnclick(View v) {
+        finish();
+    }
 
-	public void closeOnclick(View v) {
-		finish();
-	}
-
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
-			webView.goBack();
-			return true;
-		}
-		return super.onKeyDown(keyCode, event);
-	}
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
+            webView.goBack();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }
