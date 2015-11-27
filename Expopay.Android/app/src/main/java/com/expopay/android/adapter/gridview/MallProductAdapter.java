@@ -18,6 +18,7 @@ import com.android.kechong.lib.http.RequestMethod;
 import com.android.kechong.lib.http.listener.BitmapRequestListener;
 import com.expopay.android.R;
 import com.expopay.android.activity.ProductDetailsActivity;
+import com.expopay.android.application.MyApplication;
 import com.expopay.android.model.MallProductEntity;
 
 import java.io.ByteArrayOutputStream;
@@ -77,24 +78,30 @@ public class MallProductAdapter extends BaseAdapter {
         }
         holder.productName.setText(entity.getProductName());
         holder.orderAmount.setText(entity.getProductPrice());
-        Request request = new Request(entity.getProductImg(), RequestMethod.GET);
-        request.setIRequestListener(new BitmapRequestListener() {
-            @Override
-            public void onFilure(Exception e) {
+        if (MyApplication.cache.getBitmapFromMemCache(entity.getProductImg()) != null) {
+            holder.productImg.setImageBitmap(MyApplication.cache.getBitmapFromMemCache(entity.getProductImg()));
+        } else {
+            Request request = new Request(entity.getProductImg(), RequestMethod.GET);
+            request.setIRequestListener(new BitmapRequestListener() {
+                @Override
+                public void onFilure(Exception e) {
 
-            }
+                }
 
-            @Override
-            public void onSuccess(Object o) {
-                holder.productImg.setImageBitmap((Bitmap) o);
-            }
+                @Override
+                public void onSuccess(Object o) {
+                    holder.productImg.setImageBitmap((Bitmap) o);
+                    MyApplication.cache.addBitmapToMemoryCache(entity.getProductImg(), (Bitmap) o);
+                }
 
-            @Override
-            public void onProgressUpdate(int i, int i1) {
+                @Override
+                public void onProgressUpdate(int i, int i1) {
 
-            }
-        });
-        request.execute();
+                }
+            });
+            request.execute();
+        }
+
         return convertView;
     }
 
