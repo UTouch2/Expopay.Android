@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.expopay.android.R;
 import com.expopay.android.adapter.gridview.ChoosePeriodAdapter;
 import com.expopay.android.adapter.gridview.ChoosePropertiesAdapter;
+import com.expopay.android.application.MyApplication;
+import com.expopay.android.model.MallProductEntity;
 import com.expopay.android.model.ProductPeroidEntity;
 import com.expopay.android.model.ProductPropertyEntity;
 
@@ -41,6 +43,9 @@ public class ChoosePeriodActivity extends BaseActivity {
         myGridView = (GridView) findViewById(R.id.buttonGridView);
         adapter = new ChoosePeriodAdapter(this, periods);
         myGridView.setAdapter(adapter);
+
+        MallProductEntity entity = (MallProductEntity) getIntent().getSerializableExtra("product");
+        img.setImageBitmap(MyApplication.cache.getBitmapFromMemCache(entity.getProductImg()));
     }
 
 

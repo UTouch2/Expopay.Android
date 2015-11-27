@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import com.expopay.android.R;
 import com.expopay.android.adapter.gridview.ChoosePropertiesAdapter;
+import com.expopay.android.application.MyApplication;
+import com.expopay.android.model.MallProductEntity;
+import com.expopay.android.model.ProductDetailsEntity;
 import com.expopay.android.model.ProductPropertyEntity;
 
 import java.util.List;
@@ -45,6 +48,8 @@ public class ChoosePropertiesActivity extends BaseActivity {
         contentGridView = (GridView) findViewById(R.id.contentGridView);
         adapterContent = new ChoosePropertiesAdapter(this, memorys);
         contentGridView.setAdapter(adapterContent);
+        MallProductEntity entity = (MallProductEntity) data.getSerializableExtra("product");
+        img.setImageBitmap(MyApplication.cache.getBitmapFromMemCache(entity.getProductImg()));
     }
 
     public void propertiesBlankOnClick(View view) {
