@@ -23,6 +23,7 @@ import com.expopay.android.model.ProductPeroidEntity;
 import com.expopay.android.model.ProductPropertyEntity;
 import com.expopay.android.request.ProductRequest;
 import com.expopay.android.view.BannerFootView;
+import com.expopay.android.view.CustormLoadingView;
 import com.expopay.android.view.CustormViewPager;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -41,6 +42,7 @@ public class ProductDetailsActivity extends BaseActivity {
     private TextView propertisText;
     private TextView periodText;
     private ImageView imgblowe;
+    private CustormLoadingView loadingView;
     private CustormViewPager viewPager;
     BannerFootView footView;
     //商品组所有的商品
@@ -81,8 +83,7 @@ public class ProductDetailsActivity extends BaseActivity {
 
         propertisText = (TextView) findViewById(R.id.productdetails_productproperties);
         periodText = (TextView) findViewById(R.id.productdetails_productperoids);
-
-        imgblowe = (ImageView) findViewById(R.id.imgblowe);
+        loadingView = (CustormLoadingView) findViewById(R.id.orderDetail_loadingview);
 
         viewPager = (CustormViewPager) findViewById(R.id.product_bannerpager);
         adapter = new BannerPagerAdapter(new View[]{new ImageView(getApplicationContext())});
@@ -156,12 +157,15 @@ public class ProductDetailsActivity extends BaseActivity {
     };
 
     private void getProductDetailsRequest(String productId) throws JSONException {
+        loadingView.show();
+        loadingView.showLoading();
         ProductRequest request = new ProductRequest(MyApplication.HOST + "/product/productdetail");
         request.setEntity(request.createProductDetailsParams(productId));
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
-                System.out.print(e);
+                loadingView.showRetry();
+                loadingView.setRetryMessage("网络请求失败");
             }
 
             @Override
@@ -173,6 +177,7 @@ public class ProductDetailsActivity extends BaseActivity {
                         productDetails = gson.fromJson(json.getJSONObject("body").getJSONArray("records").toString(),
                                 new TypeToken<List<ProductDetailsEntity>>() {
                                 }.getType());
+                        loadingView.dismiss();
                         parseData(productDetails);
                         color = colors.get(0);
                         memory = memorys.get(0);
@@ -183,7 +188,8 @@ public class ProductDetailsActivity extends BaseActivity {
                         productPriceText.setText(productEntity.getProductPrice());
                     }
                 } catch (Exception e) {
-                    System.out.print(e);
+                    loadingView.showRetry();
+                    loadingView.setRetryMessage("参数解析错误");
                 }
             }
 

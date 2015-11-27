@@ -52,7 +52,7 @@ public class AddressDetailsActivity extends BaseActivity {
         zipcodeText.setText(address.getZipCode());
         nameText.setText(address.getPersonName());
         mobileText.setText(address.getMobile());
-        okbtn.showNormal("确 定");
+        okbtn.showNormal("删 除");
         okbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
