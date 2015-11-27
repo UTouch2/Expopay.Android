@@ -212,11 +212,10 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
-            case 1:
+            case 0:
                 if (resultCode == RESULT_OK) {
                     Uri contactData = data.getData();
-                    Cursor cursor = managedQuery(contactData, null, null, null,
-                            null);
+                    Cursor cursor = managedQuery(contactData, null, null, null, null);
                     cursor.moveToFirst();
                     String num = this.getContactPhone(cursor);
                     contacts.setText(num);
@@ -252,14 +251,14 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
                     int phone_type = phone.getInt(typeindex);
                     String phoneNumber = phone.getString(index);
                     result = phoneNumber;
-//                  switch (phone_type) {//此处请看下方注释
-//                  case 2:
-//                      result = phoneNumber;
-//                      break;
-//
-//                  default:
-//                      break;
-//                  }
+                  switch (phone_type) {//此处请看下方注释
+                  case 2:
+                      result = phoneNumber;
+                      break;
+
+                  default:
+                      break;
+                  }
                 }
                 if (!phone.isClosed()) {
                     phone.close();
@@ -282,7 +281,7 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
-                btnRecharge.showResult("网络请求成功", false);
+                btnRecharge.showResult("网络请求失败", false);
             }
 
             @Override

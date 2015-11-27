@@ -113,10 +113,6 @@ public class ProductDetailsActivity extends BaseActivity {
         startActivityForResult(intent, 1);
     }
 
-    public void commitOrderOnclick(View view){
-
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //可以根据多个请求代码来作相应的操作
