@@ -10,17 +10,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by misxu012 on 2015/10/20.
  */
 public class BannerPagerAdapter extends PagerAdapter {
-    View[] views;
+    List<View> views;
 
     public BannerPagerAdapter(View[] views) {
         super();
-        this.views = views;
+        this.views =new ArrayList();
+        for (int i = 0; i < views.length; i++) {
+            this.views.add(views[i]);
+        }
     }
 
+    public BannerPagerAdapter(List<View> views) {
+
+        this.views = views;
+    }
 
     /**
      * 获取当前页面数
@@ -40,15 +50,18 @@ public class BannerPagerAdapter extends PagerAdapter {
      */
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        position = position % views.length;
-        View v = views[position];
-        if (v.getParent() == null) {
-            container.addView(v, 0);
-        } else {
-            ((ViewGroup) v.getParent()).removeView(v);
-            container.addView(v);
+        position = position % views.size();
+        if (position < views.size()) {
+            View v = views.get(position);
+            if (v.getParent() == null) {
+                container.addView(v, 0);
+            } else {
+                ((ViewGroup) v.getParent()).removeView(v);
+                container.addView(v);
+            }
+            return v;
         }
-        return v;
+        return null;
     }
 
     /**
@@ -58,5 +71,20 @@ public class BannerPagerAdapter extends PagerAdapter {
     public void destroyItem(ViewGroup container, int position, Object object) {
 //        position = position % views.length;
 //        container.removeView(views[position]);
+    }
+
+    public List<View> getViews() {
+        return views;
+    }
+
+    public void setViews(View[] views) {
+        this.views =new ArrayList();
+        for (int i = 0; i < views.length; i++) {
+            this.views.add(views[i]);
+        }
+    }
+
+    public void setViews(List<View> views) {
+        this.views = views;
     }
 }
