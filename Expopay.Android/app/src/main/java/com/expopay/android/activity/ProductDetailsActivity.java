@@ -57,6 +57,7 @@ public class ProductDetailsActivity extends BaseActivity {
     private List<View> bannerViews;
 
     private BannerPagerAdapter adapter;
+    private MallProductEntity entity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +67,7 @@ public class ProductDetailsActivity extends BaseActivity {
         setContentView(R.layout.activity_produte_details);
         initView();
         bannerViews = new ArrayList<>();
-        MallProductEntity entity = (MallProductEntity) getIntent().getSerializableExtra("entity");
+        entity = (MallProductEntity) getIntent().getSerializableExtra("entity");
         try {
             getProductDetailsRequest(entity.getProductId());
         } catch (JSONException e) {
@@ -110,6 +111,7 @@ public class ProductDetailsActivity extends BaseActivity {
         intent.putExtra("detailAmount", productPriceText.getText().toString().trim());
         intent.putExtra("colors", (Serializable) colors);
         intent.putExtra("memorys", (Serializable) memorys);
+        intent.putExtra("product", entity);
         startActivityForResult(intent, 0);
     }
 
@@ -118,6 +120,7 @@ public class ProductDetailsActivity extends BaseActivity {
         intent.putExtra("detailProductName", productNameText.getText().toString().trim());
         intent.putExtra("detailAmount", productPriceText.getText().toString().trim());
         intent.putExtra("peroids", (Serializable) peroids);
+        intent.putExtra("product", entity);
         startActivityForResult(intent, 1);
     }
 
