@@ -42,7 +42,7 @@ public class DownLoadService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        AppRequest request = new AppRequest(MyApplication.HOST+"/install/pay.apk");
+        AppRequest request = new AppRequest(MyApplication.HOST+"/install/ExpoPay.Android.apk");
         request.setRequestMethod(RequestMethod.GET);
         request.setIRequestListener(new FileLoadRequestListener(mSavePath) {
             @Override
