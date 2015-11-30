@@ -21,7 +21,7 @@ public class NBKCardpayResultFragment extends BaseFragment {
         orderAmountText = (TextView) v.findViewById(R.id.payresult_amount);
         orderSourceText = (TextView) v.findViewById(R.id.payresult_ordersource);
         payMethodTextt = (TextView) v.findViewById(R.id.payresult_paymethod);
-        findViewById(R.id.nbkcardpay_result_ok).setOnClickListener(new View.OnClickListener() {
+        v.findViewById(R.id.nbkcardpay_result_ok).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().finish();
