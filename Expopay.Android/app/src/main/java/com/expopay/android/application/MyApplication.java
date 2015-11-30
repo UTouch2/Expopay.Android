@@ -9,7 +9,7 @@ import com.android.kechong.lib.cache.MyCache;
  * Created by misxu012 on 2015/10/20.
  */
 public class MyApplication extends BaseApplication {
-    public final static String HOST = "http://10.66.4.75:5391/";
+    public final static String HOST = "http://10.66.2.31/";
     public static final String PHONE = "400-022-7299";
     public static final String EMAIL = "service@expopay.cn";
     public static final String NET = "http://www.expopay.cn";
