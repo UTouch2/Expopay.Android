@@ -1,6 +1,7 @@
 package com.expopay.android.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import java.io.IOException;
  */
 public class StartActivity extends BaseActivity {
     View contentView;
+    Bitmap bgBnp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +71,16 @@ public class StartActivity extends BaseActivity {
     protected void initView() {
         super.initView();
         contentView = findViewById(R.id.start_bg);
-        contentView.setBackgroundDrawable(new BitmapDrawable(BitmapUtil.readBitMap(getApplicationContext(), R.mipmap.start_bg)));
+        bgBnp = BitmapUtil.readBitMap(getApplicationContext(), R.mipmap.start_bg);
+        contentView.setBackgroundDrawable(new BitmapDrawable(bgBnp));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (bgBnp != null) {
+            bgBnp.recycle();
+            bgBnp = null;
+        }
     }
 }
