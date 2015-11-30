@@ -1,13 +1,16 @@
 package com.expopay.android.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
+import com.expopay.android.activity.OrderDetailItemActivity;
 import com.expopay.android.adapter.listview.PeriodOrderAdapter;
 import com.expopay.android.application.MyApplication;
 import com.expopay.android.model.PeriodOrderEntity;
@@ -27,8 +30,8 @@ public class PeriodOrderFragment extends BaseFragment {
     private ListView lvPeriodOrder;
     private CustormLoadingView periodOrder_loading;
     private PeriodOrderAdapter adapter;
-
     private int pageIndex = 0, pageSize = 10;
+    List<PeriodOrderEntity> periodOrderList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,6 +46,24 @@ public class PeriodOrderFragment extends BaseFragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        periodOrder_loading.setRetryOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    getPeriodOrder(getUser().getOpenId(), "2", pageIndex + "", pageSize + "");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        lvPeriodOrder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), OrderDetailItemActivity.class);
+                intent.putExtra("periodOrderData", periodOrderList.get(position));
+                getActivity().startActivity(intent);
+            }
+        });
 
         return view;
     }
@@ -50,6 +71,7 @@ public class PeriodOrderFragment extends BaseFragment {
     private void getPeriodOrder(String openId, String orderSource, String pageIndex,
                                 String pageSize) throws JSONException {
         periodOrder_loading.show();
+        periodOrder_loading.showLoading();
         OrderRequest request = new OrderRequest(MyApplication.HOST + "/order/orderlist");
         request.setEntity(request.createGetOrdersParms(openId, orderSource, pageIndex, pageSize));
         request.setOutTime(10 * 1000);
@@ -62,9 +84,9 @@ public class PeriodOrderFragment extends BaseFragment {
                             .equals("0000")) {
                         // 成功
                         Gson gson = new Gson();
-                        List<PeriodOrderEntity> list = gson.fromJson(json.getJSONObject("body").getJSONArray("records").toString(), new TypeToken<List<PeriodOrderEntity>>() {
+                        periodOrderList = gson.fromJson(json.getJSONObject("body").getJSONArray("records").toString(), new TypeToken<List<PeriodOrderEntity>>() {
                         }.getType());
-                        adapter.setData(list);
+                        adapter.setData(periodOrderList);
                         adapter.notifyDataSetChanged();
                         periodOrder_loading.dismiss();
                     } else {
@@ -87,9 +109,8 @@ public class PeriodOrderFragment extends BaseFragment {
 
             @Override
             public void onFilure(Exception result) {
-                System.out.println(result);
                 periodOrder_loading.showRetry();
-                periodOrder_loading.setRetryMessage("请求失败");
+                periodOrder_loading.setRetryMessage("网络请求失败");
             }
         });
         request.execute();

@@ -62,6 +62,16 @@ public class ChangePasswordQuestionAcitivy extends BaseActivity {
 
         oldAnswerText = (EditText) findViewById(R.id.changepasswordquestion_oldpsda);
         newAnswerText = (EditText) findViewById(R.id.changepasswordquestion_newpsda);
+        loadingView.setRetryOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    getQustionRequest();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         try {
             getQustionRequest();
         } catch (JSONException e) {

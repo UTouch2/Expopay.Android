@@ -6,6 +6,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.expopay.android.R;
+import com.expopay.android.model.PaymentOrderEntity;
+import com.expopay.android.model.PeriodOrderEntity;
 
 public class OrderDetailItemActivity extends BaseActivity {
 
@@ -34,6 +36,20 @@ public class OrderDetailItemActivity extends BaseActivity {
         statusBarCoverActivity();
         setContentView(R.layout.activity_order_detail_item);
         initViews();
+
+        PaymentOrderEntity paymentOrderEntity = (PaymentOrderEntity) getIntent().getSerializableExtra("paymentOrderData");
+        PeriodOrderEntity periodOrderEntity = (PeriodOrderEntity) getIntent().getSerializableExtra("periodOrderData");
+        if(paymentOrderEntity!=null){
+            orderNumber.setText(paymentOrderEntity.getOrderNumber());
+
+            orderTime.setText(paymentOrderEntity.getOrderTime());
+            orderStatus.setText(paymentOrderEntity.getOrderStatus());
+        }else if(periodOrderEntity!=null){
+            orderNumber.setText(periodOrderEntity.getOrderNumber());
+
+            orderTime.setText(periodOrderEntity.getOrderTime());
+            orderStatus.setText(periodOrderEntity.getOrderStatus());
+        }
     }
 
     public void cancelOrderItemOnclick(View view){

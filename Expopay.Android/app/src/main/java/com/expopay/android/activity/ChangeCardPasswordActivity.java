@@ -94,6 +94,16 @@ public class ChangeCardPasswordActivity extends BaseActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        loadingView.setRetryOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    getMyCards(getUser().getOpenId());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public void chooseCardOnclick(View v) {

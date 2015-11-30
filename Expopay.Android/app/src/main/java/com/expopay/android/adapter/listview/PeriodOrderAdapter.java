@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.expopay.android.R;
 import com.expopay.android.model.PeriodOrderEntity;
@@ -78,15 +77,6 @@ public class PeriodOrderAdapter extends BaseAdapter {
         holder.orderTime.setText(entity.getOrderTime());
         holder.orderStatus.setText(entity.getOrderStatus());
 
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(context, OrderDetailItemActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                context.startActivity(intent);
-                Toast.makeText(context, "分期订单", Toast.LENGTH_SHORT).show();
-            }
-        });
         if (position % 2 == 0) {
             convertView.setBackgroundColor(Color.parseColor("#ffffff"));
         } else {

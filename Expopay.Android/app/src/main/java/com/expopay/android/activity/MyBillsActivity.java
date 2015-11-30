@@ -13,8 +13,8 @@ import com.android.kechong.lib.listener.AbsOnPageChangeListener;
 import com.expopay.android.R;
 import com.expopay.android.adapter.pager.MainPagerAdepter;
 import com.expopay.android.application.MyApplication;
-import com.expopay.android.fragment.RepaymentedFragment;
 import com.expopay.android.fragment.RepaymentFragment;
+import com.expopay.android.fragment.RepaymentedFragment;
 import com.expopay.android.model.BillEntity;
 import com.expopay.android.request.OrderRequest;
 import com.google.gson.Gson;
@@ -22,8 +22,6 @@ import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.Serializable;
 
 public class MyBillsActivity extends BaseActivity {
 
@@ -40,12 +38,12 @@ public class MyBillsActivity extends BaseActivity {
         setTitle("我的账单");
         setContentView(R.layout.activity_my_bills);
         initView();
-        setTabSelection(0);
         try {
             getBillsRequest(getUser().getOpenId());
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        setTabSelection(0);
     }
 
     protected void initView() {
@@ -76,6 +74,8 @@ public class MyBillsActivity extends BaseActivity {
                 setTabSelection(1);
             }
         });
+        viewPager.setAdapter(new MainPagerAdepter(getSupportFragmentManager(),
+                new Fragment[]{new RepaymentedFragment(), new RepaymentFragment()}));
     }
 
     private void setTabSelection(int index) {
@@ -131,14 +131,14 @@ public class MyBillsActivity extends BaseActivity {
         creditAmountText.setText(entity.getCreditLimitAmt());
         billAmountText.setText(entity.getBillAmount());
         repaymentAmountText.setText(entity.getRepaymentAmt());
-        RepaymentFragment a = new RepaymentFragment();
-        Bundle ab = new Bundle();
-        ab.putSerializable("records", (Serializable) entity.getRepaymentBills());
-        a.setArguments(ab);
-        RepaymentedFragment b = new RepaymentedFragment();
-        Bundle bb = new Bundle();
-        bb.putSerializable("records", (Serializable) entity.getRepaymentedBills());
-        a.setArguments(bb);
-        viewPager.setAdapter(new MainPagerAdepter(getSupportFragmentManager(), new Fragment[]{a, b}));
+//        RepaymentFragment a = new RepaymentFragment();
+//        Bundle ab = new Bundle();
+//        ab.putSerializable("records", (Serializable) entity.getRepaymentBills());
+//        a.setArguments(ab);
+//        RepaymentedFragment b = new RepaymentedFragment();
+//        Bundle bb = new Bundle();
+//        bb.putSerializable("records", (Serializable) entity.getRepaymentedBills());
+//        a.setArguments(bb);
+//        viewPager.setAdapter(new MainPagerAdepter(getSupportFragmentManager(), new Fragment[]{a, b}));
     }
 }

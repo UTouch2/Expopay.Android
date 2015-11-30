@@ -26,6 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class OrderDetailCommitActivity extends BaseActivity {
@@ -49,6 +50,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
     private AddressEntity addressEntity;
     private ProductPeroidEntity peroidEntity;
     private CustormLoadingView loadingView;
+    List<AddressEntity> addressList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +107,9 @@ public class OrderDetailCommitActivity extends BaseActivity {
         chooseAddressView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(OrderDetailCommitActivity.this, ChooseAddressActivity.class);
+                intent.putExtra("address", (Serializable) addressList);
+                startActivityForResult(intent, 1);
             }
         });
         btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -143,6 +147,11 @@ public class OrderDetailCommitActivity extends BaseActivity {
             case 0:
                 if (resultCode == RESULT_OK) {
                     addressEntity = (AddressEntity) data.getSerializableExtra("");
+                    setAddressText(addressEntity);
+                }
+            case 1:
+                if (resultCode == RESULT_OK) {
+                    addressEntity = (AddressEntity) data.getSerializableExtra("entity");
                     setAddressText(addressEntity);
                 }
                 break;
@@ -213,16 +222,16 @@ public class OrderDetailCommitActivity extends BaseActivity {
                 try {
                     if (json.getJSONObject("header").getString("code").equals("0000")) {
                         Gson gson = new Gson();
-                        List<AddressEntity> list = gson.fromJson(json.getJSONObject("body").getJSONArray("records").toString(),
+                        addressList = gson.fromJson(json.getJSONObject("body").getJSONArray("records").toString(),
                                 new TypeToken<List<AddressEntity>>() {
                                 }.getType());
-                        if (list.size() == 0) {
+                        if (addressList.size() == 0) {
                             loadingView.showAdd();
                             loadingView.setAddMessage("当前还没有添加收货地址");
 
                         } else {
                              loadingView.dismiss();
-                            addressEntity = getDefaultAddress(list);
+                            addressEntity = getDefaultAddress(addressList);
                             setAddressText(addressEntity);
                         }
                     } else {

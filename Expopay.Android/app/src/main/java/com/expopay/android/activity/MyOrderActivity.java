@@ -56,7 +56,8 @@ public class MyOrderActivity extends BaseActivity {
                 setTabSelection(1);
             }
         });
-        viewPager.setAdapter(new MainPagerAdepter(getSupportFragmentManager(), new Fragment[]{new PeriodOrderFragment(), new PaymentOrderFragment()}));
+        viewPager.setAdapter(new MainPagerAdepter(getSupportFragmentManager(),
+                new Fragment[]{new PeriodOrderFragment(), new PaymentOrderFragment()}));
     }
 
 

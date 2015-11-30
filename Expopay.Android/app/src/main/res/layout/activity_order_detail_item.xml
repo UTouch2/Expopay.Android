@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/relativeLayout2"
+        android:background="#FFFFFF"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:padding="10dp">
@@ -31,8 +32,8 @@
             android:textSize="13sp"/>
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:background="#FFFFFF"

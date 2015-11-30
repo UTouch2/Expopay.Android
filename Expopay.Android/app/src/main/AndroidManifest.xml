@@ -111,6 +111,7 @@
             android:name=".activity.ChooseCardActivity"
             android:label="南博卡"
             android:theme="@style/ActvTheme"></activity>
+        <activity android:name=".activity.ChooseAddressActivity"/>
         <activity
             android:name=".activity.LoginByPasswordActivity"
             android:label="南博卡"

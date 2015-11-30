@@ -38,11 +38,21 @@ public class RepaymentedFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_repaymented, container, false);
         lvRepayment = (ListView) view.findViewById(R.id.lvRepayment);
-        billRepayment_loading = (CustormLoadingView) view.findViewById(R.id.billRepayment_loading);
-        adapter = new RepaymentedBillAdapter(getActivity().getApplicationContext(), testData());
+        billRepayment_loading = (CustormLoadingView) view.findViewById(R.id.billRepaymented_loading);
+        billRepayment_loading.setRetryOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    getBillRepayment(getUser().getOpenId());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        adapter = new RepaymentedBillAdapter(getActivity().getApplicationContext(), new ArrayList<RepaymentedBillEntity>());
         lvRepayment.setAdapter(adapter);
         try {
-            getBillRepayment(getUser().getOpenId(), "", "", "", "", "");
+            getBillRepayment(getUser().getOpenId());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -50,15 +60,11 @@ public class RepaymentedFragment extends BaseFragment {
         return view;
     }
 
-    private void getBillRepayment(String openId,
-                                  String orderSource,
-                                  String paymentMethod,
-                                  String orerAmount,
-                                  String publicUtilityType,
-                                  String publicUtilityNum) throws JSONException {
+    private void getBillRepayment(String openId) throws JSONException {
         billRepayment_loading.show();
+        billRepayment_loading.showLoading();
         OrderRequest request = new OrderRequest(MyApplication.HOST + "");
-        //  request.setEntity(request.createCreateOrderParms(openId, orderSource, paymentMethod, orerAmount, publicUtilityType, publicUtilityNum));
+        request.setEntity(request.createGetBillsParams(openId));
         request.setOutTime(10 * 1000);
         request.setIRequestListener(new JsonRequestListener() {
             @Override
@@ -94,29 +100,11 @@ public class RepaymentedFragment extends BaseFragment {
 
             @Override
             public void onFilure(Exception result) {
-                System.out.println(result);
                 billRepayment_loading.showRetry();
                 billRepayment_loading.setRetryMessage("请求失败");
             }
         });
         request.execute();
         cancelRequest(request);
-    }
-
-    private List<RepaymentedBillEntity> testData() {
-        List<RepaymentedBillEntity> list = new ArrayList<RepaymentedBillEntity>();
-        for (int i = 0; i < 20; i++) {
-            RepaymentedBillEntity br = new RepaymentedBillEntity();
-            br.setRemainingDays("10月16日");
-            br.setProductName("iPHone");
-            //br.setPro("金粉色32G");
-            br.setOverdueAmount("440+30");
-            br.setRepaymentTime("2020年10月30日");
-            br.setOrderTime("2018年10月30日");
-            br.setRepaymentPeriod("剩余8期");
-            //br.setOverdueDays("逾期5天");
-            list.add(br);
-        }
-        return list;
     }
 }

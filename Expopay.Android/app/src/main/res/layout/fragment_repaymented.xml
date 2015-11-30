@@ -13,7 +13,7 @@
     </ListView>
 
     <com.expopay.android.view.CustormLoadingView
-        android:id="@+id/billRepayment_loading"
+        android:id="@+id/billRepaymented_loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </com.expopay.android.view.CustormLoadingView>

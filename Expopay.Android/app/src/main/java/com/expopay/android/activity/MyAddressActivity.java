@@ -119,22 +119,4 @@ public class MyAddressActivity extends BaseActivity {
         cancelRequest(request);
     }
 
-
-    private List<AddressEntity> testDate() {
-        List<AddressEntity> list = new ArrayList<AddressEntity>();
-        for (int i = 0; i < 10; i++) {
-            AddressEntity e = new AddressEntity();
-            e.setIsDefault("0");
-            e.setAddress("海源中路1088号和成国际A座25楼");
-            e.setAddressId("" + i);
-            e.setCityName("昆明市");
-            e.setDistrictName("五华区");
-            e.setMobile("13245678901");
-            e.setPersonName("克里斯");
-            e.setProvinceName("云南省");
-            e.setZipCode("234567890");
-            list.add(e);
-        }
-        return list;
-    }
 }
