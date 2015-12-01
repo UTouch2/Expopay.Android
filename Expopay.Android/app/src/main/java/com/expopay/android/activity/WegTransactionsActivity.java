@@ -7,14 +7,19 @@ import android.widget.ListView;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
+import com.expopay.android.adapter.listview.ChooseWegTransAdapter;
 import com.expopay.android.application.MyApplication;
 import com.expopay.android.model.CompanyEntity;
+import com.expopay.android.model.WegTransactionEntity;
 import com.expopay.android.request.OrderRequest;
 import com.expopay.android.utils.NBKCardPayUtil;
 import com.expopay.android.view.CustormLoadingButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by misxu012 on 2015/10/20.
@@ -25,16 +30,36 @@ public class WegTransactionsActivity extends BaseActivity {
     private CompanyEntity companyEntity;
     private CustormLoadingButton wegtransactionOk;
     private ListView listView;
+    private List<WegTransactionEntity> data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         statusBarCoverActivity();
+        initPerp();
+        initView();
+    }
+
+    @Override
+    protected void initPerp() {
+        data = new ArrayList<>();
+        Intent intent = getIntent();
+        CompanyEntity company = (CompanyEntity) intent.getSerializableExtra("company");
+        String amount = intent.getStringExtra("amount");
+        WegTransactionEntity entity = new WegTransactionEntity();
+        entity.setAmount(amount);
+        entity.setPublicParamValue(company.getPublicParamValue());
+        entity.setPublicParamText(entity.getPublicParamText());
+        data.add(entity);
+    }
+
+    @Override
+    protected void initView() {
         setContentView(R.layout.activity_wegtransaction);
         wegtransactionOk = (CustormLoadingButton) findViewById(R.id.wegtransaction_ok);
         wegtransactionOk.showNormal("缴费");
         listView = (ListView) findViewById(R.id.wegtransaction_listview);
-        listView.setAdapter(null);
+        listView.setAdapter(new ChooseWegTransAdapter(this, data));
         wegtransactionOk.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
             @Override
             public void onSuccessResult() {
@@ -47,7 +72,6 @@ public class WegTransactionsActivity extends BaseActivity {
                 wegtransactionOk.showNormal("缴费");
             }
         });
-
         wegtransactionOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +86,6 @@ public class WegTransactionsActivity extends BaseActivity {
         orderSource = "1";
         orderAmount = getIntent().getStringExtra("amount");
     }
-
 
     public void closeOnclick(View v) {
         finish();
