@@ -17,11 +17,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#FFFFFF"
-            android:gravity="center">
+            android:gravity="center"
+            android:visibility="gone">
             <Button
                 android:id="@+id/myaccount_buttonup"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
                 android:background="@drawable/_button_deletecard"
                 android:text="登录"
                 android:textSize="13sp"
