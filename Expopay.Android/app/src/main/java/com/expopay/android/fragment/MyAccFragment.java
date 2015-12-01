@@ -32,8 +32,10 @@ public class MyAccFragment extends  BaseFragment {
 
         if (!"".equals(getUser().getOpenId())) {
             view.findViewById(R.id.myaccount_buttonlable).setVisibility(View.INVISIBLE);
+            view.findViewById(R.id.myaccount_buttonup).setVisibility(View.INVISIBLE);
         }else {
             view.findViewById(R.id.myaccount_buttonlable).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.myaccount_buttonup).setVisibility(View.VISIBLE);
             view.findViewById(R.id.myaccount_buttonup).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
