@@ -108,7 +108,6 @@ public class WegQueryTransActivity extends BaseActivity {
             public void onFilure(Exception e) {
 
             }
-
             @Override
             public void onSuccess(Object result) {
                 JSONObject json = (JSONObject) result;
@@ -124,9 +123,9 @@ public class WegQueryTransActivity extends BaseActivity {
                         loadingView.dismiss();
                     }
                 } catch (JSONException e) {
+
                 }
             }
-
             @Override
             public void onProgressUpdate(int i, int i1) {
 
@@ -146,8 +145,6 @@ public class WegQueryTransActivity extends BaseActivity {
             @Override
             public void onFilure(Exception e) {
                 loadingButton.showResult("请求失败", false);
-                Intent intent = new Intent(getApplicationContext(), WegTransactionsActivity.class);
-                startActivity(intent);
             }
 
             @Override
@@ -166,7 +163,6 @@ public class WegQueryTransActivity extends BaseActivity {
                 } catch (JSONException e) {
                 }
             }
-
             @Override
             public void onProgressUpdate(int i, int i1) {
 
@@ -174,14 +170,5 @@ public class WegQueryTransActivity extends BaseActivity {
         });
         request.execute();
         cancelRequest(request);
-    }
-
-    private void testData() {
-        list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            CompanyEntity e = new CompanyEntity();
-            e.setCompanyName("强娃儿推哦");
-            list.add(e);
-        }
     }
 }
