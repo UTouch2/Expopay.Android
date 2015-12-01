@@ -99,10 +99,17 @@ public class ProductDetailsActivity extends BaseActivity {
     }
 
     public void okOnckick(View v) {
-        Intent intent = new Intent(this, OrderDetailCommitActivity.class);
-        intent.putExtra("product", productEntity);
-        intent.putExtra("peroid", peroid);
-        startActivity(intent);
+        if (!"".equals(getUser().getOpenId())){
+            Intent intent = new Intent(this, OrderDetailCommitActivity.class);
+            intent.putExtra("product", productEntity);
+            intent.putExtra("peroid", peroid);
+            startActivity(intent);
+            return;
+        }else{
+            Intent intent = new Intent(ProductDetailsActivity.this, LoginByPasswordActivity.class);
+            startActivity(intent);
+        }
+
     }
 
     public void chooseColorOnclick(View v) {

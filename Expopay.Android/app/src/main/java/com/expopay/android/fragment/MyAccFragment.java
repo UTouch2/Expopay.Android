@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.android.kechong.lib.http.RequestMethod;
 import com.android.kechong.lib.http.listener.JsonRequestListener;
@@ -32,11 +31,10 @@ public class MyAccFragment extends  BaseFragment {
         View view =inflater.inflate(R.layout.fragment_myaccount,container,false);
 
         if (!"".equals(getUser().getOpenId())) {
-            view.findViewById(R.id.myaccount_buttonup).setVisibility(View.INVISIBLE);
+            view.findViewById(R.id.myaccount_buttonlable).setVisibility(View.INVISIBLE);
         }else {
-            Button buttonup = (Button) view.findViewById(R.id.myaccount_buttonup);
-            buttonup.setVisibility(View.VISIBLE);
-            buttonup.setOnClickListener(new View.OnClickListener() {
+            view.findViewById(R.id.myaccount_buttonlable).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.myaccount_buttonup).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), LoginByPasswordActivity.class);

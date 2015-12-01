@@ -12,13 +12,21 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/myaccount_buttonup"
+        <RelativeLayout
+            android:id="@+id/myaccount_buttonlable"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/_button"
-            android:text="请先登录"
-            android:visibility="gone"/>
+            android:background="#FFFFFF"
+            android:gravity="center">
+            <Button
+                android:id="@+id/myaccount_buttonup"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/_button_deletecard"
+                android:text="登录"
+                android:textSize="13sp"
+                android:textColor="#646464"/>
+        </RelativeLayout>
 
         <TextView
             android:layout_width="match_parent"
