@@ -62,6 +62,7 @@ public class MyAccFragment extends  BaseFragment {
                 if (!"".equals(getUser().getOpenId())){
                     Intent intent =new Intent(getActivity(), SettingsActivity.class);
                     startActivity(intent);
+                    return;
                 }
                 Intent intent = new Intent(getActivity(), LoginByPasswordActivity.class);
                 startActivity(intent);
@@ -81,6 +82,7 @@ public class MyAccFragment extends  BaseFragment {
                 if (!"".equals(getUser().getOpenId())) {
                     Intent intent = new Intent(getActivity(), MyBillsActivity.class);
                     startActivity(intent);
+                    return;
                 }
                 Intent intent = new Intent(getActivity(), LoginByPasswordActivity.class);
                 startActivity(intent);
@@ -92,6 +94,7 @@ public class MyAccFragment extends  BaseFragment {
                 if (!"".equals(getUser().getOpenId())){
                     Intent intent =new Intent(getActivity(), MyOrderActivity.class);
                     startActivity(intent);
+                    return;
                 }
                 Intent intent = new Intent(getActivity(), LoginByPasswordActivity.class);
                 startActivity(intent);

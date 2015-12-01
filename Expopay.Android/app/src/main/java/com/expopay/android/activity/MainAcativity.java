@@ -12,6 +12,7 @@ import com.android.kechong.lib.http.RequestMethod;
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.android.kechong.lib.listener.AbsOnPageChangeListener;
 import com.android.kechong.lib.util.ApkUtil;
+import com.android.kechong.lib.util.SharedRefUtil;
 import com.expopay.android.dialog.DialogFactory;
 import com.expopay.android.dialog.MyDialog;
 import com.expopay.android.R;
@@ -50,7 +51,6 @@ public class MainAcativity extends BaseActivity {
 
     private ImageView mainImg, mallImg, myaccImg;
     private ImageView mainBgImg, mallBgImg, myaccBgImg;
-    private Fragment cardFragment, discoveryFragment, myAccountFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +60,10 @@ public class MainAcativity extends BaseActivity {
         setContentView(R.layout.activity_mainact);
         initPerp();
         initView();
+        firstLogin();
         try {
             getNewVersionCode();
-            getMessagesRequest(getUser().getOpenId(),"0","10");
+            getMessagesRequest(getUser().getOpenId(), "0", "10");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -88,6 +89,16 @@ public class MainAcativity extends BaseActivity {
         };
         mainPagerAdapter = new MainPagerAdepter(getSupportFragmentManager(),
                 frags);
+    }
+
+    private void firstLogin() {
+        String first = SharedRefUtil.getSharedPreference(this, "version", "");
+        if ("".equals(first)) {
+            SharedRefUtil.setSharedPreference(this, "version", ApkUtil.findVersionCodeByName(
+                    getApplicationContext(),
+                    "com.expopay.android") + "");
+            startActivity(new Intent(this, WelcomeActivity.class));
+        }
     }
 
     protected void initView() {
@@ -254,7 +265,7 @@ public class MainAcativity extends BaseActivity {
                         Gson gson = new Gson();
                         UserEntity userEntity = gson.fromJson(json.getJSONObject("body").toString(), UserEntity.class);
                         saveUser(userEntity);
-                        if (!userEntity.getOpenId().equals("") && userEntity.getUserName().equals("")) {
+                        if (!userEntity.getOpenId().equals("") && (userEntity.getUserName() == null || "".equals(userEntity.getUserName()))) {
                             Intent intent = new Intent(getApplicationContext(), PerfectAccountActivity.class);
                             startActivity(intent);
                         }
@@ -288,6 +299,7 @@ public class MainAcativity extends BaseActivity {
             public void onFilure(Exception e) {
 
             }
+
             @Override
             public void onSuccess(Object o) {
                 JSONObject json = (JSONObject) o;

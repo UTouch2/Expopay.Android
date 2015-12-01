@@ -3,6 +3,7 @@ package com.expopay.android.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
@@ -23,6 +24,7 @@ public class WegTransactionsActivity extends BaseActivity {
 
     private CompanyEntity companyEntity;
     private CustormLoadingButton wegtransactionOk;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,8 @@ public class WegTransactionsActivity extends BaseActivity {
         setContentView(R.layout.activity_wegtransaction);
         wegtransactionOk = (CustormLoadingButton) findViewById(R.id.wegtransaction_ok);
         wegtransactionOk.showNormal("缴费");
+        listView = (ListView) findViewById(R.id.wegtransaction_listview);
+        listView.setAdapter(null);
         wegtransactionOk.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
             @Override
             public void onSuccessResult() {

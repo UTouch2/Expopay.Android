@@ -11,7 +11,6 @@ public class WebActivity extends BaseWebActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStatusColor();
-        setTitle("便民服务");
         addJavascriptInterface(new MyJavascriptInterace());
     }
 

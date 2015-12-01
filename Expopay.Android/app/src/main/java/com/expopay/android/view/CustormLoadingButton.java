@@ -32,6 +32,8 @@ public class CustormLoadingButton extends FrameLayout {
     private String normalText;
     private OnLoadingButtonListener onLoadingButtonListener;
 
+    private View topView;
+
     public CustormLoadingButton(Context context) {
         super(context);
         init();
@@ -63,7 +65,8 @@ public class CustormLoadingButton extends FrameLayout {
         viewPager.setAdapter(adapter);
         LayoutParams p = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         view.setLayoutParams(p);
-        view.findViewById(R.id.loadingbutton_top).setOnClickListener(new OnClickListener() {
+        topView = view.findViewById(R.id.loadingbutton_top);
+        topView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onClickListener != null) {
@@ -144,6 +147,11 @@ public class CustormLoadingButton extends FrameLayout {
 
     public void setOnLoadingButtonListener(OnLoadingButtonListener onLoadingButtonListener) {
         this.onLoadingButtonListener = onLoadingButtonListener;
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        topView.setEnabled(enabled);
     }
 
     public static interface OnLoadingButtonListener {

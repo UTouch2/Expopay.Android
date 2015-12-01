@@ -42,7 +42,7 @@ public class DownLoadService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        AppRequest request = new AppRequest(MyApplication.HOST+"/install/ExpoPay.Android.apk");
+        AppRequest request = new AppRequest(MyApplication.HOST + "/install/ExpoPay.Android.apk");
         request.setRequestMethod(RequestMethod.GET);
         request.setIRequestListener(new FileLoadRequestListener(mSavePath) {
             @Override
@@ -88,6 +88,7 @@ public class DownLoadService extends Service {
             return DownLoadService.this;
         }
     }
+
     public void showCustomizeNotification() {
         notification.icon = R.drawable.icon;// 图标
         notification.tickerText = "南博卡更新";

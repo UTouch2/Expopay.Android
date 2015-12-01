@@ -188,4 +188,18 @@ public class BaseActivity extends AbsFragmentActivity {
             SharedRefUtil.setSharedPreference(this, "payStatus", payStatus);
         }
     }
+    public void removeUser() {
+        SharedRefUtil.removeSharedPreference(this, "openId");
+        SharedRefUtil.removeSharedPreference(this, "userName");
+        SharedRefUtil.removeSharedPreference(this, "password");
+        SharedRefUtil.removeSharedPreference(this, "mobile");
+        SharedRefUtil.removeSharedPreference(this, "userType");
+        SharedRefUtil.removeSharedPreference(this, "nickname");
+        SharedRefUtil.removeSharedPreference(this, "certificationStatus");
+        SharedRefUtil.removeSharedPreference(this, "personName");
+        SharedRefUtil.removeSharedPreference(this, "personId");
+        SharedRefUtil.removeSharedPreference(this, "defCardNumber");
+        SharedRefUtil.removeSharedPreference(this, "companyName");
+        SharedRefUtil.removeSharedPreference(this, "payStatus");
+    }
 }

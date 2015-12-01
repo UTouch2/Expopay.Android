@@ -74,7 +74,7 @@ public class SettingsActivity extends BaseActivity {
         dialog.setOkOnclickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                removeUser();
             }
         });
         dialog.show();

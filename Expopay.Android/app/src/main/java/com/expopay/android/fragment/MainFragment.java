@@ -2,6 +2,7 @@ package com.expopay.android.fragment;
 
 import android.content.Intent;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import com.expopay.android.activity.RechargeTelephoneActivity;
 import com.expopay.android.activity.WebActivity;
 import com.expopay.android.activity.WegQueryTransActivity;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
+import com.expopay.android.application.MyApplication;
 import com.expopay.android.view.BannerFootView;
 
 /**
@@ -115,7 +117,9 @@ public class MainFragment extends BaseFragment {
         view.findViewById(R.id.main_callme).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + MyApplication.PHONE));
+                startActivity(intent);
             }
         });
         final ViewPager pager = (ViewPager) view.findViewById(R.id.main_bannerpager);

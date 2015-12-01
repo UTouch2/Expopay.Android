@@ -2,6 +2,7 @@ package com.expopay.android.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -91,6 +92,14 @@ public class PerfectAccountActivity extends BaseActivity {
         startActivityForResult(intent, 0);
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
     private void perfectAccountRequest(String openId, final String userName, final String loginPwd, String secuQuestionId, String secuAnswer) throws JSONException {
         loadingButton.showLoading("正在加载···");
         CustomerRequest request = new CustomerRequest(MyApplication.HOST + "/customer/accountSetting");
@@ -100,6 +109,7 @@ public class PerfectAccountActivity extends BaseActivity {
             public void onFilure(Exception e) {
 
             }
+
             @Override
             public void onSuccess(Object o) {
                 JSONObject json = (JSONObject) o;
