@@ -17,6 +17,7 @@ import com.expopay.android.activity.MyOrderActivity;
 import com.expopay.android.activity.SettingsActivity;
 import com.expopay.android.application.MyApplication;
 import com.expopay.android.request.AppRequest;
+import com.expopay.android.request.CustomerRequest;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -125,10 +126,12 @@ public class MyAccFragment extends  BaseFragment {
                     // 数据解析异常
                 }
             }
+
             @Override
             public void onProgressUpdate(int i, int j) {
 
             }
+
             @Override
             public void onFilure(Exception result) {
                 System.out.println(result);
@@ -136,5 +139,9 @@ public class MyAccFragment extends  BaseFragment {
         });
         request.execute();
         cancelRequest(request);
+    }
+
+    private void getCompositeinfoRequest(String openId) throws JSONException{
+        CustomerRequest request = new CustomerRequest(MyApplication.HOST+"/customer/compositeinfo");
     }
 }
