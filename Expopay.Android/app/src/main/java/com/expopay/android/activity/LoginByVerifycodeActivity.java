@@ -153,12 +153,6 @@ public class LoginByVerifycodeActivity extends BaseActivity {
         finish();
     }
 
-    public void forgetPasswordOnclick(View view) {
-        Intent intent = new Intent(this, LoginByPasswordActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
