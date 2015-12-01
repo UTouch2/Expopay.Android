@@ -6,6 +6,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.expopay.android.R;
+import com.expopay.android.application.MyApplication;
+import com.expopay.android.model.MallProductEntity;
+import com.expopay.android.model.OrderItemEntity;
 import com.expopay.android.model.PaymentOrderEntity;
 import com.expopay.android.model.PeriodOrderEntity;
 
@@ -40,15 +43,27 @@ public class OrderDetailItemActivity extends BaseActivity {
         PaymentOrderEntity paymentOrderEntity = (PaymentOrderEntity) getIntent().getSerializableExtra("paymentOrderData");
         PeriodOrderEntity periodOrderEntity = (PeriodOrderEntity) getIntent().getSerializableExtra("periodOrderData");
         if(paymentOrderEntity!=null){
+            MallProductEntity entity = (MallProductEntity) getIntent().getSerializableExtra("product");
+            productImg.setImageBitmap(MyApplication.cache.getBitmapFromMemCache(entity.getProductImg()));
             orderNumber.setText(paymentOrderEntity.getOrderNumber());
-
             orderTime.setText(paymentOrderEntity.getOrderTime());
-            orderStatus.setText(paymentOrderEntity.getOrderStatus());
+            if ("0".equals(paymentOrderEntity.getOrderStatus())){
+                orderStatus.setText("未完成");
+            }
+            if ("1".equals(paymentOrderEntity.getOrderStatus())){
+                orderStatus.setText("已完成");
+            }
         }else if(periodOrderEntity!=null){
+            productImg.setImageBitmap(MyApplication.cache.getBitmapFromMemCache(
+                    ((OrderItemEntity) periodOrderEntity.getOrderItems()).getProductImg()));
             orderNumber.setText(periodOrderEntity.getOrderNumber());
-
             orderTime.setText(periodOrderEntity.getOrderTime());
-            orderStatus.setText(periodOrderEntity.getOrderStatus());
+            if ("0".equals(periodOrderEntity.getOrderStatus())){
+                orderStatus.setText("未完成");
+            }
+            if ("1".equals(periodOrderEntity.getOrderStatus())){
+                orderStatus.setText("已完成");
+            }
         }
     }
 

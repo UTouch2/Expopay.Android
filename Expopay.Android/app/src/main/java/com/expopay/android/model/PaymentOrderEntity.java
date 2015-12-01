@@ -1,5 +1,7 @@
 package com.expopay.android.model;
 
+import java.util.List;
+
 /**
  * Created by NB-MIS-100002 on 2015/10/22.
  */
@@ -8,8 +10,17 @@ public class PaymentOrderEntity extends OrderEntity {
     private String publicParamName;
     private String publicParamValue;
     private String publicParamText;
+    private List<OrderItemEntity> orderItems;
 
     public PaymentOrderEntity() {
+    }
+
+    public List<OrderItemEntity> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItemEntity> orderItems) {
+        this.orderItems = orderItems;
     }
 
     public String getPublicType() {

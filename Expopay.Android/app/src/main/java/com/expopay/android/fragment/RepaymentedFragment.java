@@ -63,7 +63,7 @@ public class RepaymentedFragment extends BaseFragment {
     private void getBillRepayment(String openId) throws JSONException {
         billRepayment_loading.show();
         billRepayment_loading.showLoading();
-        OrderRequest request = new OrderRequest(MyApplication.HOST + "");
+        OrderRequest request = new OrderRequest(MyApplication.HOST + "/credit/bills");
         request.setEntity(request.createGetBillsParams(openId));
         request.setOutTime(10 * 1000);
         request.setIRequestListener(new JsonRequestListener() {
