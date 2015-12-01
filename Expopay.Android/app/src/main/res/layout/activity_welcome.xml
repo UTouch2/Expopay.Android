@@ -1,22 +1,43 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"  >
+    android:layout_height="match_parent">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/welcome_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </android.support.v4.view.ViewPager>
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
 
     <LinearLayout
-         android:id="@+id/welcome_indexes"
+        android:id="@+id/welcome_indexes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
-        android:orientation="horizontal" >
-    </LinearLayout>
+        android:orientation="horizontal">
 
+        <ImageView
+            android:id="@+id/welcome_pointone"
+            android:layout_width="7dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:adjustViewBounds="true"
+            android:src="@mipmap/welcome_oneselceted" />
+
+        <ImageView
+            android:id="@+id/welcome_pointtwo"
+            android:layout_width="7dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:adjustViewBounds="true"
+            android:src="@mipmap/welcome_twonormal" />
+
+        <ImageView
+            android:id="@+id/welcome_pointthree"
+            android:layout_width="7dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:adjustViewBounds="true"
+            android:src="@mipmap/welcome_threenormal" />
+    </LinearLayout>
 </RelativeLayout>
