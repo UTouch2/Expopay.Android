@@ -106,7 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/produtedetails_select"
         android:background="@drawable/_rectangle_bg2"
-        android:onClick="chooseMemoryOnclick"
+        android:onClick="choosePeriodOnclick"
         android:orientation="horizontal"
         android:padding="20dp">
 

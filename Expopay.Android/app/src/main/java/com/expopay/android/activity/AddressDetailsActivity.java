@@ -111,7 +111,7 @@ public class AddressDetailsActivity extends BaseActivity {
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
-                okbtn.showResult("网络异常", false);
+//                okbtn.showResult("网络异常", false);
             }
 
             @Override
@@ -153,10 +153,9 @@ public class AddressDetailsActivity extends BaseActivity {
             public void onSuccess(Object o) {
                 JSONObject json = (JSONObject) o;
                 try {
-                    if (json.getJSONObject("header").getString("code")
-                            .equals("0000")) {
+                    if (json.getJSONObject("header").getString("code").equals("0000")) {
                         // 成功
-                        okbtn.showResult("", true);
+                        okbtn.showResult("删除成功", true);
                     } else {
                         okbtn.showResult(json.getJSONObject("header").getString("desc"), false);
                     }

@@ -1,6 +1,7 @@
 package com.expopay.android.adapter.listview;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.kechong.lib.http.Request;
+import com.android.kechong.lib.http.RequestMethod;
+import com.android.kechong.lib.http.listener.BitmapRequestListener;
 import com.expopay.android.R;
+import com.expopay.android.application.MyApplication;
+import com.expopay.android.model.OrderItemEntity;
 import com.expopay.android.model.PeriodOrderEntity;
 
 import java.util.List;
@@ -51,6 +57,7 @@ public class PeriodOrderAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final PeriodOrderEntity entity = data.get(position);
+        final OrderItemEntity itemEntity = (OrderItemEntity) entity.getOrderItems();
         ViewHolder holder = null;
         //如果缓存convertView为空，则需要创建View
         if (convertView == null) {
@@ -69,13 +76,35 @@ public class PeriodOrderAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        //holder.productImg.setBackgroundResource((Integer) data);
-        //  holder.productName.setText(entity.getProductName());
+          holder.productName.setText(itemEntity.getProductName());
         holder.orderAmount.setText(entity.getOrderAmount());
-        // holder.properties.setText(entity.getProperties());
         holder.repaymentPeriod.setText(entity.getRepaymentPeriod());
         holder.orderTime.setText(entity.getOrderTime());
         holder.orderStatus.setText(entity.getOrderStatus());
+        if (MyApplication.cache.getBitmapFromMemCache(itemEntity.getProductImg()) != null) {
+            holder.productImg.setImageBitmap(MyApplication.cache.getBitmapFromMemCache(itemEntity.getProductImg()));
+        } else {
+            Request request = new Request(itemEntity.getProductImg(), RequestMethod.GET);
+            final ViewHolder finalHolder = holder;
+            request.setIRequestListener(new BitmapRequestListener() {
+                @Override
+                public void onFilure(Exception e) {
+
+                }
+
+                @Override
+                public void onSuccess(Object o) {
+                    finalHolder.productImg.setImageBitmap((Bitmap) o);
+                    MyApplication.cache.addBitmapToMemoryCache(itemEntity.getProductImg(), (Bitmap) o);
+                }
+
+                @Override
+                public void onProgressUpdate(int i, int i1) {
+
+                }
+            });
+            request.execute();
+        }
 
         if (position % 2 == 0) {
             convertView.setBackgroundColor(Color.parseColor("#ffffff"));

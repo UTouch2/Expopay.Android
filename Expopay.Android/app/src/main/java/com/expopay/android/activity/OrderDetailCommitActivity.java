@@ -138,6 +138,16 @@ public class OrderDetailCommitActivity extends BaseActivity {
                 startActivityForResult(intent, 0);
             }
         });
+        loadingView.setRetryOnclickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    getAddress(getUser().getOpenId());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     @Override

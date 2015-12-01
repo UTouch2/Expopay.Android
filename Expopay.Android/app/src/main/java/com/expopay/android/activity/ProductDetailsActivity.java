@@ -41,7 +41,6 @@ public class ProductDetailsActivity extends BaseActivity {
     private TextView productPriceText;
     private TextView propertisText;
     private TextView periodText;
-    private ImageView imgblowe;
     private CustormLoadingView loadingView;
     private CustormViewPager viewPager;
     BannerFootView footView;
@@ -100,10 +99,17 @@ public class ProductDetailsActivity extends BaseActivity {
     }
 
     public void okOnckick(View v) {
-        Intent intent = new Intent(this, OrderDetailCommitActivity.class);
-        intent.putExtra("product", productEntity);
-        intent.putExtra("peroid", peroid);
-        startActivity(intent);
+        if (!"".equals(getUser().getOpenId())){
+            Intent intent = new Intent(this, OrderDetailCommitActivity.class);
+            intent.putExtra("product", productEntity);
+            intent.putExtra("peroid", peroid);
+            startActivity(intent);
+            return;
+        }else{
+            Intent intent = new Intent(ProductDetailsActivity.this, LoginByPasswordActivity.class);
+            startActivity(intent);
+        }
+
     }
 
     public void chooseColorOnclick(View v) {
@@ -116,7 +122,7 @@ public class ProductDetailsActivity extends BaseActivity {
         startActivityForResult(intent, 0);
     }
 
-    public void chooseMemoryOnclick(View v) {
+    public void choosePeriodOnclick(View v) {
         Intent intent = new Intent(this, ChoosePeriodActivity.class);
         intent.putExtra("detailProductName", productNameText.getText().toString().trim());
         intent.putExtra("detailAmount", productPriceText.getText().toString().trim());
@@ -134,7 +140,6 @@ public class ProductDetailsActivity extends BaseActivity {
                 memory = ((ProductPropertyEntity) data.getExtras().getSerializable("memory"));
                 getProductByProperties(productDetails, color, memory);
                 propertisText.setText(color.getPropertyValue() + "  " + memory.getPropertyValue());
-                periodText.setText(peroid.getPeriod());
                 productNameText.setText(productEntity.getProductName());
                 productPriceText.setText(productEntity.getProductPrice());
             }
