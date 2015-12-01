@@ -27,6 +27,7 @@ public class BaseWebActivity extends BaseActivity {
         Intent intent = getIntent();
         url = intent.getStringExtra("url");
         title = intent.getStringExtra("title");
+        setTitle(title);
         webView = (WebView) findViewById(R.id.webview);
         loadingView = (CustormLoadingView) findViewById(R.id.web_loadingview);
         // 添加一个监听，去处理url的分打开方式
