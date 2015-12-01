@@ -65,6 +65,8 @@ public class LoginByPasswordActivity extends BaseActivity {
             }
         }.start();
         loginButton.showNormal("登 录");
+        loginButton.setEnabled(false);
+        loginButton.setBackgroundResource(R.drawable._button_down);
         loginButton.setOnLoadingButtonListener(new CustormLoadingButton.OnLoadingButtonListener() {
             @Override
             public void onSuccessResult() {
@@ -76,20 +78,16 @@ public class LoginByPasswordActivity extends BaseActivity {
                 loginButton.showNormal("登 录");
             }
         });
-        loginButton.setEnabled(false);
-        loginButton.setBackgroundResource(R.drawable._button_down);
         login_phonenum.addTextChangedListener(new AbsTextWatcher() {
             @Override
             public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
                 super.onTextChanged(arg0, arg1, arg2, arg3);
                 String phonenum = login_phonenum.getText().toString().trim();
                 String pwd = login_pwd.getText().toString().trim();
-                if (0 == pwd.length() && 11 == phonenum.length()) {
+                if (0 < pwd.length() && 11 == phonenum.length()) {
                     loginButton.setEnabled(true);
-                    loginButton.setBackgroundResource(R.drawable._button);
                 } else {
                     loginButton.setEnabled(false);
-                    loginButton.setBackgroundResource(R.drawable._button_normal);
                 }
             }
         });
@@ -99,9 +97,9 @@ public class LoginByPasswordActivity extends BaseActivity {
                 super.onTextChanged(arg0, arg1, arg2, arg3);
                 String phonenum = login_phonenum.getText().toString().trim();
                 String pwd = login_pwd.getText().toString().trim();
-                if (6 == pwd.length() && 11 == phonenum.length()) {
+                if (0 < pwd.length() && 11 == phonenum.length()) {
                     loginButton.setEnabled(true);
-                    loginButton.setBackgroundResource(R.drawable._button_down);
+                    loginButton.setBackgroundResource(R.drawable._button);
                 } else {
                     loginButton.setEnabled(false);
                     loginButton.setBackgroundResource(R.drawable._button_down);
@@ -140,6 +138,7 @@ public class LoginByPasswordActivity extends BaseActivity {
     public void forgetPasswordOnclick(View v) {
         Intent intent = new Intent(this, LoginByVerifycodeActivity.class);
         startActivity(intent);
+        finish();
     }
 
     Handler handler = new Handler() {

@@ -77,6 +77,7 @@ public class LoginByVerifycodeActivity extends BaseActivity {
             }
         }.start();
         loginBtn.setEnabled(false);
+        loginBtn.setBackgroundResource(R.drawable._button_down);
         mobileText.addTextChangedListener(new AbsTextWatcher() {
             @Override
             public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
@@ -153,6 +154,8 @@ public class LoginByVerifycodeActivity extends BaseActivity {
     }
 
     public void forgetPasswordOnclick(View view) {
+        Intent intent = new Intent(this, LoginByPasswordActivity.class);
+        startActivity(intent);
         finish();
     }
 
