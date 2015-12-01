@@ -36,7 +36,6 @@ public class WegQueryTransActivity extends BaseActivity {
     TextView paramTextText;
     String type;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
