@@ -10,6 +10,8 @@ public class PatternUtil {
 
 	public static final String MOBILE_PATTERN = "^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$";
 	public static final String USER_ID = "";
+	public static final String LOGIN_USERNAME = "^[a-zA-Z][a-zA-Z0-9_]{1,11}$";
+	public static final String LOGIN_PWD = "^[a-zA-Z0-9]{6,16}$";
 
 	static public boolean pattern(String patternStr, String sourceStr) {
 		Pattern pattern = Pattern.compile(patternStr);
@@ -20,11 +22,20 @@ public class PatternUtil {
 	static public boolean isMobile(String sourceStr) {
 		return pattern(MOBILE_PATTERN, sourceStr);
 	}
-	/**
-	 * 返回一个map,map的key为 “t”，“f”，t为正确,map的value为描述
-	 * @param userId 身份证号
-	 * @return
-	 */
+
+	static public boolean checkUserName(String usernameStr) {
+		return pattern(LOGIN_USERNAME, usernameStr);
+	}
+
+	static public boolean checkPwd(String pwdStr) {
+		return pattern(LOGIN_PWD, pwdStr);
+	}
+
+		/**
+         * 返回一个map,map的key为 “t”，“f”，t为正确,map的value为描述
+         * @param userId 身份证号
+         * @return
+         */
 	static public Map<String, String> isUserId(String userId) {
 		IdCard idCard = new IdCard(userId);
 		Map<String, String > map =new HashMap<String, String>();

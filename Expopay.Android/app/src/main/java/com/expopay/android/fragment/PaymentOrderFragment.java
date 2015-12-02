@@ -65,6 +65,7 @@ public class PaymentOrderFragment extends BaseFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), OrderDetailItemActivity.class);
                 intent.putExtra("paymentOrderData", paymentOrderList.get(position));
+                intent.putExtra("paymentposition",position);
                 getActivity().startActivity(intent);
             }
         });

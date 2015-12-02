@@ -7,7 +7,6 @@ import android.widget.TextView;
 
 import com.expopay.android.R;
 import com.expopay.android.application.MyApplication;
-import com.expopay.android.model.MallProductEntity;
 import com.expopay.android.model.OrderItemEntity;
 import com.expopay.android.model.PaymentOrderEntity;
 import com.expopay.android.model.PeriodOrderEntity;
@@ -43,8 +42,10 @@ public class OrderDetailItemActivity extends BaseActivity {
         PaymentOrderEntity paymentOrderEntity = (PaymentOrderEntity) getIntent().getSerializableExtra("paymentOrderData");
         PeriodOrderEntity periodOrderEntity = (PeriodOrderEntity) getIntent().getSerializableExtra("periodOrderData");
         if(paymentOrderEntity!=null){
-            MallProductEntity entity = (MallProductEntity) getIntent().getSerializableExtra("product");
-            productImg.setImageBitmap(MyApplication.cache.getBitmapFromMemCache(entity.getProductImg()));
+            int paymentPosition = getIntent().getIntExtra("paymentposition",0);
+            OrderItemEntity paymentItemEntity = paymentOrderEntity.getOrderItems().get(paymentPosition);
+            productImg.setImageBitmap(MyApplication.cache.getBitmapFromMemCache(paymentItemEntity.getProductImg()));
+            productName.setText("缴费订单");
             orderNumber.setText(paymentOrderEntity.getOrderNumber());
             orderTime.setText(paymentOrderEntity.getOrderTime());
             if ("0".equals(paymentOrderEntity.getOrderStatus())){
@@ -54,8 +55,10 @@ public class OrderDetailItemActivity extends BaseActivity {
                 orderStatus.setText("已完成");
             }
         }else if(periodOrderEntity!=null){
-            productImg.setImageBitmap(MyApplication.cache.getBitmapFromMemCache(
-                    ((OrderItemEntity) periodOrderEntity.getOrderItems()).getProductImg()));
+            int periodPosition = getIntent().getIntExtra("periodposition", 0);
+            OrderItemEntity periodItemEntity = periodOrderEntity.getOrderItems().get(periodPosition);
+            productImg.setImageBitmap(MyApplication.cache.getBitmapFromMemCache(periodItemEntity.getProductImg()));
+            productName.setText("分期订单");
             orderNumber.setText(periodOrderEntity.getOrderNumber());
             orderTime.setText(periodOrderEntity.getOrderTime());
             if ("0".equals(periodOrderEntity.getOrderStatus())){

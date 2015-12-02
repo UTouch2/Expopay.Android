@@ -8,6 +8,7 @@ import android.os.Message;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.android.kechong.lib.listener.AbsTextWatcher;
@@ -22,6 +23,10 @@ import com.expopay.android.view.CustormViewPager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import static com.android.kechong.lib.util.PatternUtil.checkPwd;
+import static com.android.kechong.lib.util.PatternUtil.checkUserName;
+import static com.android.kechong.lib.util.PatternUtil.isMobile;
 
 /**
  * Created by misxu012 on 2015/10/20.
@@ -86,8 +91,10 @@ public class LoginByPasswordActivity extends BaseActivity {
                 String pwd = login_pwd.getText().toString().trim();
                 if (0 < pwd.length() && 11 == phonenum.length()) {
                     loginButton.setEnabled(true);
+                    loginButton.setBackgroundResource(R.drawable._button);
                 } else {
                     loginButton.setEnabled(false);
+                    loginButton.setBackgroundResource(R.drawable._button_down);
                 }
             }
         });
@@ -111,10 +118,18 @@ public class LoginByPasswordActivity extends BaseActivity {
             public void onClick(View view) {
                 userName = login_phonenum.getText().toString().trim();
                 password = login_pwd.getText().toString().trim();
-                try {
-                    loginRequest("", "", userName, password);
-                } catch (Exception e) {
+                if (!checkPwd(password)) {
+                    Toast.makeText(LoginByPasswordActivity.this, "请输入合法的密码", Toast.LENGTH_SHORT).show();
+                }
+                if (!checkUserName(userName) || !isMobile(userName)) {
+                    Toast.makeText(LoginByPasswordActivity.this, "请输入正确的用户名", Toast.LENGTH_SHORT).show();
+                }
+                if (checkUserName(userName) || checkPwd(password)){
+                    try {
+                        loginRequest("", "", userName, password);
+                    } catch (Exception e) {
 
+                    }
                 }
             }
         });
@@ -133,6 +148,10 @@ public class LoginByPasswordActivity extends BaseActivity {
         Intent intent = new Intent(this, LoginByVerifycodeActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    public void forgetPwdOnclick(View view){
+
     }
 
     Handler handler = new Handler() {

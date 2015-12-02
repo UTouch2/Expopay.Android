@@ -61,6 +61,7 @@ public class PeriodOrderFragment extends BaseFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), OrderDetailItemActivity.class);
                 intent.putExtra("periodOrderData", periodOrderList.get(position));
+                intent.putExtra("periodposition",position);
                 getActivity().startActivity(intent);
             }
         });
