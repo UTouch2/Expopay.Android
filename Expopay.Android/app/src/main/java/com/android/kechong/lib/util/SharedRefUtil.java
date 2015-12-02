@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class SharedRefUtil {
-	private static final String SHARE_NAME = "cuoyibang";
+	private static final String SHARE_NAME = "expopay";
 	/**
 	 * @param key
 	 * @param value
