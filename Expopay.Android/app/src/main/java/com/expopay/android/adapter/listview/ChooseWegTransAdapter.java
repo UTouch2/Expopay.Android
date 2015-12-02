@@ -53,8 +53,8 @@ public class ChooseWegTransAdapter extends BaseAdapter {
         final View view = LayoutInflater.from(context).inflate(R.layout.view_choosewegtrans_item, null);
         final RadioButton radio = (RadioButton) view.findViewById(R.id.chooseweg_item_radio);
         final TextView paramText = (TextView) view.findViewById(R.id.chooseweg_item_paramtext);
-        final TextView paramValue = (TextView) view.findViewById(R.id.chooseweg_item_paramtext);
-        final TextView amount = (TextView) view.findViewById(R.id.chooseweg_item_paramtext);
+        final TextView paramValue = (TextView) view.findViewById(R.id.chooseweg_item_paramvalue);
+        final TextView amount = (TextView) view.findViewById(R.id.chooseweg_item_amount);
 
         radio.setOnClickListener(new View.OnClickListener() {
             @Override
