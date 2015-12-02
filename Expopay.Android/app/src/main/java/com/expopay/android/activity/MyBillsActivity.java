@@ -23,6 +23,8 @@ import com.google.gson.reflect.TypeToken;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 public class MyBillsActivity extends BaseActivity {
 
     private Button repaymentBtn;
@@ -74,8 +76,6 @@ public class MyBillsActivity extends BaseActivity {
                 setTabSelection(1);
             }
         });
-        viewPager.setAdapter(new MainPagerAdepter(getSupportFragmentManager(),
-                new Fragment[]{new RepaymentedFragment(), new RepaymentFragment()}));
     }
 
     private void setTabSelection(int index) {
@@ -131,14 +131,14 @@ public class MyBillsActivity extends BaseActivity {
         creditAmountText.setText(entity.getCreditLimitAmt());
         billAmountText.setText(entity.getBillAmount());
         repaymentAmountText.setText(entity.getRepaymentAmt());
-//        RepaymentFragment a = new RepaymentFragment();
-//        Bundle ab = new Bundle();
-//        ab.putSerializable("records", (Serializable) entity.getRepaymentBills());
-//        a.setArguments(ab);
-//        RepaymentedFragment b = new RepaymentedFragment();
-//        Bundle bb = new Bundle();
-//        bb.putSerializable("records", (Serializable) entity.getRepaymentedBills());
-//        a.setArguments(bb);
-//        viewPager.setAdapter(new MainPagerAdepter(getSupportFragmentManager(), new Fragment[]{a, b}));
+        RepaymentFragment a = new RepaymentFragment();
+        Bundle ab = new Bundle();
+        ab.putSerializable("records", (Serializable) entity.getRepaymentBills());
+        a.setArguments(ab);
+        RepaymentedFragment b = new RepaymentedFragment();
+        Bundle bb = new Bundle();
+        bb.putSerializable("records", (Serializable) entity.getRepaymentedBills());
+        a.setArguments(bb);
+        viewPager.setAdapter(new MainPagerAdepter(getSupportFragmentManager(), new Fragment[]{a, b}));
     }
 }

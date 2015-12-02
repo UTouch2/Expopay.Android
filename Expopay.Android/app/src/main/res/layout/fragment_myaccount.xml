@@ -5,15 +5,14 @@
     android:background="#FFFFFF"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:background="#F7F7F7"
         android:gravity="center_horizontal"
         android:orientation="vertical">
-
         <RelativeLayout
-            android:id="@+id/myaccount_buttonlable"
+            android:id="@+id/myaccount_loginGroupView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#FFFFFF"
@@ -29,105 +28,117 @@
                 android:textColor="#646464"
                 android:textSize="13sp" />
         </RelativeLayout>
-
-        <TextView
+        <RelativeLayout
+            android:id="@+id/myaccount_accountGroupView"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="1000.00"
-            android:textColor="#EA6A40"
-            android:textSize="30dp" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:orientation="horizontal">
-
+            android:layout_height="match_parent">
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="距离下期还款还有"
-                android:textColor="#646464"
-                android:textSize="13sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="20"
+                android:id="@+id/myaccount_cardbalance"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="1000.00"
                 android:textColor="#EA6A40"
-                android:textSize="13sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="天"
-                android:textColor="#646464"
-                android:textSize="13sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="#D2D2D2"
-            android:orientation="horizontal"
-            android:paddingBottom="1dp"
-            android:paddingTop="1dp">
+                android:textSize="30dp" />
 
             <LinearLayout
+                android:id="@+id/myaccount_remainingdaysLable"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#FCFCFC"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="10dp"
-                    android:layout_gravity="center"
-                    android:adjustViewBounds="true" />
+                android:layout_height="30dp"
+                android:layout_below="@id/myaccount_cardbalance"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="克里斯" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="10dp"
-                    android:layout_gravity="center"
-                    android:adjustViewBounds="true" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.8"
-                android:background="#FCFCFC"
-                android:orientation="horizontal"
-                android:paddingRight="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="默认卡："
+                    android:text="距离下期还款还有"
                     android:textColor="#646464"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/myaccount_remainingdays"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20"
+                    android:textColor="#EA6A40"
                     android:textSize="13sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:singleLine="true"
-                    android:text="88888888888888888888888"
+                    android:text="天"
                     android:textColor="#646464"
                     android:textSize="13sp" />
             </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/myaccount_remainingdaysLable"
+                android:background="#D2D2D2"
+                android:orientation="horizontal"
+                android:paddingBottom="1dp"
+                android:paddingTop="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="#FCFCFC"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true" />
+
+                    <TextView
+                        android:id="@+id/myaccount_personname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="克里斯" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.8"
+                    android:background="#FCFCFC"
+                    android:orientation="horizontal"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="默认卡："
+                        android:textColor="#646464"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/myaccount_defCardNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:singleLine="true"
+                        android:text="88888888888888888888888"
+                        android:textColor="#646464"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -147,6 +158,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/myaccount_cardQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
@@ -171,6 +183,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/myaccount_creditLimitAmt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
@@ -193,6 +206,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/myaccount_billAmount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"

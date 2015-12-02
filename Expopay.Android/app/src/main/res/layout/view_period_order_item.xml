@@ -14,8 +14,7 @@
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:layout_marginLeft="20dp"
-            android:layout_gravity="center_vertical"
-            android:src="@mipmap/mall_mobile" />
+            android:layout_gravity="center_vertical"/>
 
         <LinearLayout
             android:layout_width="wrap_content"

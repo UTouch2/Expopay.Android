@@ -75,8 +75,9 @@ public class RepaymentedFragment extends BaseFragment {
                             .equals("0000")) {
                         // 成功
                         Gson gson = new Gson();
-                        List<RepaymentedBillEntity> list = gson.fromJson(json.getJSONObject("").toString(), new TypeToken<List<RepaymentedBillEntity>>() {
-                        }.getType());
+                        List<RepaymentedBillEntity> list = gson.fromJson(json.getJSONObject("body").getJSONArray("repaymentedBills").toString(),
+                                new TypeToken<List<RepaymentedBillEntity>>() {
+                                }.getType());
                         adapter.setData(list);
                         adapter.notifyDataSetChanged();
                         billRepayment_loading.dismiss();

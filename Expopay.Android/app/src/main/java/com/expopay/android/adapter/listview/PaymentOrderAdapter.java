@@ -57,7 +57,8 @@ public class PaymentOrderAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final PaymentOrderEntity entity = data.get(position);
-        final OrderItemEntity itemEntity = (OrderItemEntity) entity.getOrderItems();
+        List<OrderItemEntity> itemEntityList = entity.getOrderItems();
+        final OrderItemEntity itemEntity = itemEntityList.get(position);
         ViewHolder holder = null;
         //如果缓存convertView为空，则需要创建View
         if (convertView == null) {
