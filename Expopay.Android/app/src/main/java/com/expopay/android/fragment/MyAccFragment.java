@@ -26,30 +26,15 @@ import org.json.JSONObject;
 /**
  * Created by misxu012 on 2015/10/20.
  */
-public class MyAccFragment extends  BaseFragment {
+public class MyAccFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.fragment_myaccount,container,false);
-
-        if (!"".equals(getUser().getOpenId())) {
-            view.findViewById(R.id.myaccount_buttonlable).setVisibility(View.INVISIBLE);
-            view.findViewById(R.id.myaccount_buttonup).setVisibility(View.INVISIBLE);
-        }else {
-            view.findViewById(R.id.myaccount_buttonlable).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.myaccount_buttonup).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.myaccount_buttonup).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getActivity(), LoginByPasswordActivity.class);
-                    startActivity(intent);
-                }
-            });
-        }
+        View view = inflater.inflate(R.layout.fragment_myaccount, container, false);
         view.findViewById(R.id.myaccount_mycards).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!"".equals(getUser().getOpenId())) {
-                    Intent intent =new Intent(getActivity(), MyCardsActivity.class);
+                    Intent intent = new Intent(getActivity(), MyCardsActivity.class);
                     startActivity(intent);
                     return;
                 }
@@ -60,8 +45,8 @@ public class MyAccFragment extends  BaseFragment {
         view.findViewById(R.id.myaccount_settings).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!"".equals(getUser().getOpenId())){
-                    Intent intent =new Intent(getActivity(), SettingsActivity.class);
+                if (!"".equals(getUser().getOpenId())) {
+                    Intent intent = new Intent(getActivity(), SettingsActivity.class);
                     startActivity(intent);
                     return;
                 }
@@ -73,7 +58,7 @@ public class MyAccFragment extends  BaseFragment {
         view.findViewById(R.id.account_aboutme).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(getActivity(), AboutActivity.class);
+                Intent intent = new Intent(getActivity(), AboutActivity.class);
                 startActivity(intent);
             }
         });
@@ -92,8 +77,8 @@ public class MyAccFragment extends  BaseFragment {
         view.findViewById(R.id.account_order).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!"".equals(getUser().getOpenId())){
-                    Intent intent =new Intent(getActivity(), MyOrderActivity.class);
+                if (!"".equals(getUser().getOpenId())) {
+                    Intent intent = new Intent(getActivity(), MyOrderActivity.class);
                     startActivity(intent);
                     return;
                 }
@@ -102,6 +87,26 @@ public class MyAccFragment extends  BaseFragment {
             }
         });
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        View view = getView();
+        if (!"".equals(getUser().getOpenId())) {
+            view.findViewById(R.id.myaccount_buttonlable).setVisibility(View.INVISIBLE);
+            view.findViewById(R.id.myaccount_buttonup).setVisibility(View.INVISIBLE);
+        } else {
+            view.findViewById(R.id.myaccount_buttonlable).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.myaccount_buttonup).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.myaccount_buttonup).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), LoginByPasswordActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     private void getNewVersionCode() throws JSONException {
@@ -141,7 +146,7 @@ public class MyAccFragment extends  BaseFragment {
         cancelRequest(request);
     }
 
-    private void getCompositeinfoRequest(String openId) throws JSONException{
-        CustomerRequest request = new CustomerRequest(MyApplication.HOST+"/customer/compositeinfo");
+    private void getCompositeinfoRequest(String openId) throws JSONException {
+        CustomerRequest request = new CustomerRequest(MyApplication.HOST + "/customer/compositeinfo");
     }
 }
