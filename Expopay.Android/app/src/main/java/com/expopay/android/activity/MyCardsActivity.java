@@ -64,6 +64,11 @@ public class MyCardsActivity extends BaseActivity {
                 startActivity(intent);
             }
         });
+        try {
+            getMyCards(getUser().getOpenId());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void lossOnclick(View v) {
@@ -74,11 +79,6 @@ public class MyCardsActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        try {
-            getMyCards(getUser().getOpenId());
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 
     private void getMyCards(String openId) throws JSONException {

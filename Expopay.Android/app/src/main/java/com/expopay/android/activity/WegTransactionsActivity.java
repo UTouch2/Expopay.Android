@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
@@ -49,7 +50,7 @@ public class WegTransactionsActivity extends BaseActivity {
         WegTransactionEntity entity = new WegTransactionEntity();
         entity.setAmount(amount);
         entity.setPublicParamValue(company.getPublicParamValue());
-        entity.setPublicParamText(entity.getPublicParamText());
+        entity.setPublicParamText(company.getPublicParamText());
         data.add(entity);
     }
 
@@ -76,6 +77,12 @@ public class WegTransactionsActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 try {
+                    if (listView.getTag() == null) {
+                        Toast.makeText(getApplicationContext(), "", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    //TODO
+                    WegTransactionEntity transactionEntity = (WegTransactionEntity) listView.getTag();
                     createOrderRequest(getUser().getOpenId(), orderSource, "4", "0.01", companyEntity.getCompanyId(), companyEntity.getPublicParamName(), companyEntity.getPublicParamValue(), companyEntity.getPublicParamText());
                 } catch (JSONException e) {
                     e.printStackTrace();
