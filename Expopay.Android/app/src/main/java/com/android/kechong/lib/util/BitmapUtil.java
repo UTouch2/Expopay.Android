@@ -12,7 +12,7 @@ import android.graphics.BitmapFactory;
 
 public class BitmapUtil {
 	/**
-	 * 
+	 *
 	 * @param context
 	 * @param resId
 	 * @return
@@ -22,13 +22,13 @@ public class BitmapUtil {
 		Bitmap bitmap =readBitMap(is);
 		try {
 			is.close();
-		} catch (IOException e) { 
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return bitmap;
 	}
 	/**
-	 * 
+	 *
 	 * @param resId
 	 * @return
 	 */
