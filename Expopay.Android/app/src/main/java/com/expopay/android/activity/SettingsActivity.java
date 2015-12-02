@@ -75,6 +75,7 @@ public class SettingsActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 removeUser();
+                finish();
             }
         });
         dialog.show();

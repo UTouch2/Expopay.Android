@@ -182,13 +182,13 @@ public class LoginByVerifycodeActivity extends BaseActivity {
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
-                if (time <= 0) {
-                    Message msg = handler.obtainMessage();
+                if (time < 0) {
+                    Message msg = timeoutHandler.obtainMessage();
                     msg.what = 1;
                     timeoutHandler.sendMessage(msg);
                     timer.cancel();
                 } else {
-                    Message msg = handler.obtainMessage();
+                    Message msg = timeoutHandler.obtainMessage();
                     msg.what = 0;
                     msg.arg1 = time;
                     timeoutHandler.sendMessage(msg);

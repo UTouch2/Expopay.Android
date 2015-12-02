@@ -106,7 +106,6 @@ public class MyCardsActivity extends BaseActivity {
                             adapter.notifyDataSetChanged();
                             loadingView.dismiss();
                         }
-
                     } else {
                         // 失败
                         loadingView.showRetry();
@@ -114,17 +113,15 @@ public class MyCardsActivity extends BaseActivity {
                     }
                 } catch (JSONException e) {
                     // 数据解析异常
-                    // 失败
+                    // 失败 63248663035
                     loadingView.showRetry();
                     loadingView.setRetryMessage("数据解析异常");
                 }
             }
-
             @Override
             public void onProgressUpdate(int i, int j) {
 
             }
-
             @Override
             public void onFilure(Exception result) {
                 System.out.println(result);

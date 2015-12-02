@@ -107,7 +107,7 @@ public class PerfectAccountActivity extends BaseActivity {
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
-
+                loadingButton.showResult("网络请求失败", false);
             }
 
             @Override
@@ -124,9 +124,11 @@ public class PerfectAccountActivity extends BaseActivity {
                         finish();
                     } else {
                         // 失败
+                        loadingButton.showResult(json.getJSONObject("header").getString("desc"), false);
                     }
                 } catch (JSONException e) {
                     // 数据解析异常
+                    loadingButton.showResult("参数解析异常", false);
                 }
             }
 

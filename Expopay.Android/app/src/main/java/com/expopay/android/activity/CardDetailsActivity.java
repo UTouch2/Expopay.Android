@@ -45,9 +45,9 @@ public class CardDetailsActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setStatusColor();
         setTitle("卡片详情");
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carddetails);
         loadingView = (CustormLoadingView) findViewById(R.id.carddetails_loadingview);
         incomeBtn = (Button) findViewById(R.id.carddetails_incomebtn);
