@@ -15,14 +15,14 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:gravity="center"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/chooseweg_item_paramtext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:padding="3dp"
             android:text="户号："
             android:textSize="14sp" />
 
@@ -30,15 +30,15 @@
             android:id="@+id/chooseweg_item_paramvalue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:layout_toRightOf="@id/chooseweg_item_paramtext"
+            android:padding="3dp"
             android:textSize="14sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/chooseweg_item_paramtext"
-            android:layout_margin="5dp"
+            android:padding="3dp"
             android:text="金额："
             android:textSize="14sp" />
 
@@ -47,8 +47,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/chooseweg_item_paramtext"
-            android:layout_margin="5dp"
             android:layout_toRightOf="@id/chooseweg_item_paramtext"
+            android:padding="3dp"
             android:textSize="14sp" />
     </RelativeLayout>
 

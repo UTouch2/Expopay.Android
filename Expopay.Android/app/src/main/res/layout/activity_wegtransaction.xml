@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentBottom="true"
-                android:background="@drawable/_button"  />
+                android:background="@drawable/_button" />
 
             <RelativeLayout
                 android:id="@+id/wegtransaction_top"
@@ -59,7 +59,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_above="@id/wegtransaction_ok"
-                android:layout_below="@id/wegtransaction_top"></ListView>
+                android:layout_below="@id/wegtransaction_top"
+                android:divider="#00000000"></ListView>
         </RelativeLayout>
     </LinearLayout>
 </ScrollView>
