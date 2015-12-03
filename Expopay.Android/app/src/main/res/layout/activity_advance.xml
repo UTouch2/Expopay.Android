@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,15 +18,18 @@
             android:text="问题描述" />
 
         <EditText
+            android:id="@+id/advance_content"
             android:layout_width="match_parent"
             android:layout_height="280dp"
             android:background="#f9f9f9"
             android:gravity="top|left"
-            android:padding="15dp" />
+            android:hint="请输入对产品的意见，我们将不断优化体验"
+            android:padding="15dp"
+            android:textSize="13sp" />
     </LinearLayout>
 
     <com.expopay.android.view.CustormLoadingButton
-        android:id="@+id/changecardpassword_ok"
+        android:id="@+id/advance_ok"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
