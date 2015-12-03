@@ -117,6 +117,10 @@
             android:label="南博卡"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
         <activity
+            android:name=".activity.ForgetPasswordActivity"
+            android:label="南博卡"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
+        <activity
             android:name=".activity.LoginByVerifycodeActivity"
             android:label="南博卡"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar"></activity>
