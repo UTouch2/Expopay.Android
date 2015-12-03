@@ -40,7 +40,7 @@ public class MainFragment extends BaseFragment {
                 double lng = -1.0;
                 Location location = LocationUtil.getLocation(getActivity());
                 Intent intent = new Intent(getActivity(), WebActivity.class);
-                intent.putExtra("title", "生活服务");
+                intent.putExtra("title", "便民服务");
                 if (location != null) {
                     lat = location.getLatitude();
                     lng = location.getLongitude();
