@@ -112,8 +112,8 @@ public class ForgetPasswordActivity extends BaseActivity {
 
     private void changePasswordRequest(String openId, final String userName, final String loginPwd, String secuQuestionId, String secuAnswer) throws JSONException {
         loadingButton.showLoading("正在加载···");
-        CustomerRequest request = new CustomerRequest(MyApplication.HOST + "/customer/accountSetting");
-        request.setEntity(request.createPerfectAccountParams(openId, userName, loginPwd, secuQuestionId, secuAnswer));
+        CustomerRequest request = new CustomerRequest(MyApplication.HOST + "/customer/forgetLoginPwd");
+        request.setEntity(request.createForgetPasswordParams(openId, userName, loginPwd, secuQuestionId, secuAnswer));
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
