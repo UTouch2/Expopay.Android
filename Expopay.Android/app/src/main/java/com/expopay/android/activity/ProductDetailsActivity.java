@@ -99,13 +99,13 @@ public class ProductDetailsActivity extends BaseActivity {
     }
 
     public void okOnckick(View v) {
-        if (!"".equals(getUser().getOpenId())){
+        if (!"".equals(getUser().getOpenId())) {
             Intent intent = new Intent(this, OrderDetailCommitActivity.class);
             intent.putExtra("product", productEntity);
             intent.putExtra("peroid", peroid);
             startActivity(intent);
             return;
-        }else{
+        } else {
             Intent intent = new Intent(ProductDetailsActivity.this, LoginByPasswordActivity.class);
             startActivity(intent);
         }
@@ -143,11 +143,11 @@ public class ProductDetailsActivity extends BaseActivity {
                 productNameText.setText(productEntity.getProductName());
                 productPriceText.setText(productEntity.getProductPrice());
             }
-            if (requestCode == 1) {
-                if (resultCode == RESULT_OK) {
-                    peroid = ((ProductPeroidEntity) data.getExtras().getSerializable("periods"));
-                    periodText.setText(peroid.getPeriod());
-                }
+        }
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                peroid = ((ProductPeroidEntity) data.getExtras().getSerializable("periods"));
+                periodText.setText(peroid.getPeriod());
             }
         }
     }
