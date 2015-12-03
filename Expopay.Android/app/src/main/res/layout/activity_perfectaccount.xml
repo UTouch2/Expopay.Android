@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
             android:background="#00000000"
-            android:hint="请输入您的用户名（2·11位，首个必须位字母）"
+            android:hint="请输入您的用户名（2-11位，首个必须位字母）"
             android:lines="1"
             android:maxLength="11"
             android:singleLine="true"
