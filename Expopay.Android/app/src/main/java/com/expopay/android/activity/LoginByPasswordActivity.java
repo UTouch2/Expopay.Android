@@ -5,6 +5,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -35,6 +36,7 @@ public class LoginByPasswordActivity extends BaseActivity {
     private CustormViewPager viewPager;
     private EditText login_phonenum;
     private EditText login_pwd;
+    private ImageView showPsdImageView;
     private CustormLoadingButton loginButton;
     private String userName, password;
 
@@ -52,6 +54,7 @@ public class LoginByPasswordActivity extends BaseActivity {
         contentView.setBackgroundDrawable(new BitmapDrawable(BitmapUtil.readBitMap(getApplicationContext(), R.drawable.about_bg)));
         login_phonenum = (EditText) findViewById(R.id.login_phonenum);
         login_pwd = (EditText) findViewById(R.id.login_pwd);
+        showPsdImageView = (ImageView) findViewById(R.id.loginbypassword_showpsd_btn);
         viewPager = (CustormViewPager) findViewById(R.id.login_viewpager);
         loginButton = (CustormLoadingButton) findViewById(R.id.login_ok);
         viewPager.setAdapter(new BannerPagerAdapter(createViews()));
@@ -80,6 +83,21 @@ public class LoginByPasswordActivity extends BaseActivity {
             @Override
             public void onFailureResult() {
                 loginButton.showNormal("登 录");
+            }
+        });
+
+        showPsdImageView.setOnClickListener(new View.OnClickListener() {
+            boolean flag = true;
+            @Override
+            public void onClick(View v) {
+                if (flag) {
+                    login_pwd.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+                    showPsdImageView.setImageResource(R.mipmap.changepassword_icon);
+                } else {
+                    login_pwd.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_NORMAL);
+                    showPsdImageView.setImageResource(R.mipmap.changepassword_icon);
+                }
+                flag = !flag;
             }
         });
         login_phonenum.addTextChangedListener(new AbsTextWatcher() {

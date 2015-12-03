@@ -10,7 +10,7 @@ public class PatternUtil {
 
 	public static final String MOBILE_PATTERN = "^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$";
 	public static final String USER_ID = "";
-	public static final String LOGIN_USERNAME = "^[a-zA-Z][a-zA-Z0-9_]{1,11}$";
+	public static final String LOGIN_USERNAME = "^[a-zA-Z][a-zA-Z0-9_]{1,10}$";
 	public static final String LOGIN_PWD = "^[a-zA-Z0-9]{6,16}$";
 
 	static public boolean pattern(String patternStr, String sourceStr) {

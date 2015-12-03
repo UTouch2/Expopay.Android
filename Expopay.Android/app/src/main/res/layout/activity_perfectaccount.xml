@@ -82,22 +82,26 @@
                 android:id="@+id/perfectaccount_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/perfectaccount_showpsd_btn"
                 android:layout_centerVertical="true"
                 android:background="#00000000"
                 android:hint="请输入登录密码"
-                android:inputType="number"
+                android:inputType="textPassword"
                 android:lines="1"
-                android:maxLength="6"
                 android:singleLine="true"
                 android:textColor="#999999"
                 android:textSize="14sp" />
 
             <ImageView
+                android:id="@+id/perfectaccount_showpsd_btn"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
+                android:padding="5dp"
                 android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:adjustViewBounds="true"
-                android:padding="5dp" />
+                android:gravity="center"
+                android:src="@mipmap/changepassword_icon"/>
         </RelativeLayout>
 
 
@@ -148,7 +152,6 @@
             android:layout_height="wrap_content"
             android:background="#00000000"
             android:hint="请输入密保答案"
-            android:inputType="number"
             android:lines="1"
             android:maxLength="11"
             android:singleLine="true"

@@ -2,10 +2,13 @@ package com.expopay.android.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
@@ -23,6 +26,9 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.util.List;
 
+import static com.android.kechong.lib.util.PatternUtil.checkPwd;
+import static com.android.kechong.lib.util.PatternUtil.checkUserName;
+
 /**
  * Created by misxu012 on 2015/11/9.
  */
@@ -30,6 +36,7 @@ public class PerfectAccountActivity extends BaseActivity {
     private EditText usernameText, passwordText, answerText;
     private TextView questionText;
     private CustormLoadingButton loadingButton;
+    private ImageView showPsdImageView;
 
     private PasswordQuestionEntity passwordQuestionEntity;
     private List<PasswordQuestionEntity> passwordQuestionEntities;
@@ -44,6 +51,21 @@ public class PerfectAccountActivity extends BaseActivity {
         answerText = (EditText) findViewById(R.id.perfectaccount_answer);
         questionText = (TextView) findViewById(R.id.perfectaccount_question);
         loadingButton = (CustormLoadingButton) findViewById(R.id.perfectaccount_ok);
+        showPsdImageView = (ImageView) findViewById(R.id.perfectaccount_showpsd_btn);
+        showPsdImageView.setOnClickListener(new View.OnClickListener() {
+            boolean flag = true;
+            @Override
+            public void onClick(View v) {
+                if (flag) {
+                    passwordText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_PASSWORD);
+                    showPsdImageView.setImageResource(R.mipmap.changepassword_icon);
+                } else {
+                    passwordText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_VARIATION_NORMAL);
+                    showPsdImageView.setImageResource(R.mipmap.changepassword_icon);
+                }
+                flag = !flag;
+            }
+        });
         loadingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,6 +73,18 @@ public class PerfectAccountActivity extends BaseActivity {
                 String password = passwordText.getText().toString().trim();
                 String questionId = passwordQuestionEntity.getSecuQuestionId();
                 String answer = answerText.getText().toString().trim();
+                if ((2 > userName.length()) || (11 < userName.length()) || (!checkUserName(userName))) {
+                    Toast.makeText(PerfectAccountActivity.this, "请输入正确的用户名", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (6>password.length() || 16<password.length()) {
+                   Toast.makeText(PerfectAccountActivity.this, "密码长度在6-16位", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!checkPwd(password)) {
+                    Toast.makeText(PerfectAccountActivity.this, "密码只能是数字和字母组合", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 try {
                     perfectAccountRequest(getUser().getOpenId(), userName, password, questionId, answer);
                 } catch (JSONException e) {

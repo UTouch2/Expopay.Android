@@ -175,6 +175,7 @@ public class LoginByVerifycodeActivity extends BaseActivity {
                 int time = msg.arg1;
                 getVercodeBtn.setEnabled(false);
                 timeoutText.setText(time + "秒");
+                getVercodeBtn.setText("已 发 送");
             } else {
                 getVercodeBtn.setEnabled(true);
                 getVercodeBtn.setText("重 新 获 取");
