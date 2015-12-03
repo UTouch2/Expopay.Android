@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.android.kechong.lib.listener.AbsTextWatcher;
 import com.android.kechong.lib.util.BitmapUtil;
+import com.android.kechong.lib.util.PatternUtil;
 import com.expopay.android.R;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
 import com.expopay.android.application.MyApplication;
@@ -24,9 +25,6 @@ import com.expopay.android.view.CustormViewPager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import static com.android.kechong.lib.util.PatternUtil.checkUserName;
-import static com.android.kechong.lib.util.PatternUtil.isMobile;
 
 /**
  * Created by misxu012 on 2015/10/20.
@@ -88,6 +86,7 @@ public class LoginByPasswordActivity extends BaseActivity {
 
         showPsdImageView.setOnClickListener(new View.OnClickListener() {
             boolean flag = true;
+
             @Override
             public void onClick(View v) {
                 if (flag) {
@@ -135,13 +134,13 @@ public class LoginByPasswordActivity extends BaseActivity {
             public void onClick(View view) {
                 userName = login_phonenum.getText().toString().trim();
                 password = login_pwd.getText().toString().trim();
-                if (checkUserName(userName) || isMobile(userName)){
+                if (PatternUtil.checkUserName(userName) || PatternUtil.isMobile(userName)) {
                     try {
                         loginRequest("", "", userName, password);
                     } catch (Exception e) {
 
                     }
-                }else {
+                } else {
                     Toast.makeText(LoginByPasswordActivity.this, "用户名不正确", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -163,7 +162,7 @@ public class LoginByPasswordActivity extends BaseActivity {
         finish();
     }
 
-    public void forgetPwdOnclick(View view){
+    public void forgetPwdOnclick(View view) {
 
     }
 

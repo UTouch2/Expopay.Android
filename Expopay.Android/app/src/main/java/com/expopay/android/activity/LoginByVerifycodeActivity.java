@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.android.kechong.lib.listener.AbsTextWatcher;
 import com.android.kechong.lib.util.BitmapUtil;
+import com.android.kechong.lib.util.PatternUtil;
 import com.expopay.android.R;
 import com.expopay.android.adapter.pager.BannerPagerAdapter;
 import com.expopay.android.application.MyApplication;
@@ -28,8 +29,6 @@ import org.json.JSONObject;
 
 import java.util.Timer;
 import java.util.TimerTask;
-
-import static com.android.kechong.lib.util.PatternUtil.isMobile;
 
 /**
  * Created by misxu012 on 2015/10/20.
@@ -112,13 +111,13 @@ public class LoginByVerifycodeActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 mobile = mobileText.getText().toString().trim();
-                if(isMobile(mobile)) {
+                if (PatternUtil.isMobile(mobile)) {
                     try {
                         sendVercode(mobile);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                }else {
+                } else {
                     Toast.makeText(LoginByVerifycodeActivity.this, "请输入正确的电话号码", Toast.LENGTH_SHORT).show();
                 }
             }
