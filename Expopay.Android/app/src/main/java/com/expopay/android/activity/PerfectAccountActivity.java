@@ -74,15 +74,11 @@ public class PerfectAccountActivity extends BaseActivity {
                 String questionId = passwordQuestionEntity.getSecuQuestionId();
                 String answer = answerText.getText().toString().trim();
                 if ((2 > userName.length()) || (11 < userName.length()) || (!checkUserName(userName))) {
-                    Toast.makeText(PerfectAccountActivity.this, "请输入正确的用户名", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PerfectAccountActivity.this, "请输入正确的电话号码或用户名", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (6>password.length() || 16<password.length()) {
-                   Toast.makeText(PerfectAccountActivity.this, "密码长度在6-16位", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if (!checkPwd(password)) {
-                    Toast.makeText(PerfectAccountActivity.this, "密码只能是数字和字母组合", Toast.LENGTH_SHORT).show();
+                if (6>password.length() || 16<password.length() || (!checkPwd(password))) {
+                   Toast.makeText(PerfectAccountActivity.this, "密码长度在6-16位,并且只能是数字和字母组合", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 try {
