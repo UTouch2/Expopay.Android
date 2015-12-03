@@ -160,6 +160,31 @@ public class CustomerRequest extends Request {
         return map;
     }
 
+
+    public Map<String, String> createForgetPasswordParams(String openId, String userName, String loginPwd, String secuQuestionId, String secuAnswer)
+            throws JSONException {
+        JSONObject data = new JSONObject();
+        JSONObject header = new JSONObject();
+        header.put("openId", openId);
+        header.put("action", "");
+        header.put("machineNumber", "android");
+        JSONObject body = new JSONObject();
+        body.put("userName", userName);
+        body.put("newLoginPwd", loginPwd);
+        body.put("secuQuestionId", secuQuestionId);
+        body.put("secuAnswer", secuAnswer);
+        String signHead = MD5Util.GetMD5Code(body.toString());
+        String signTail = MD5Util.getTail(openId);
+        header.put("sign", signHead + signTail);
+
+        data.put("header", header);
+        data.put("body", body);
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("data", data.toString());
+        return map;
+    }
+
+
     public Map<String, String> createGetQustionParams()
             throws JSONException {
         JSONObject data = new JSONObject();
