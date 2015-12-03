@@ -29,6 +29,8 @@ import org.json.JSONObject;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static com.android.kechong.lib.util.PatternUtil.isMobile;
+
 /**
  * Created by misxu012 on 2015/10/20.
  */
@@ -110,10 +112,14 @@ public class LoginByVerifycodeActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 mobile = mobileText.getText().toString().trim();
-                try {
-                    sendVercode(mobile);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                if(isMobile(mobile)) {
+                    try {
+                        sendVercode(mobile);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }else {
+                    Toast.makeText(LoginByVerifycodeActivity.this, "请输入正确的电话号码", Toast.LENGTH_SHORT).show();
                 }
             }
         });

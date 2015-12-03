@@ -24,7 +24,6 @@ import com.expopay.android.view.CustormViewPager;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static com.android.kechong.lib.util.PatternUtil.checkPwd;
 import static com.android.kechong.lib.util.PatternUtil.checkUserName;
 import static com.android.kechong.lib.util.PatternUtil.isMobile;
 
@@ -89,7 +88,7 @@ public class LoginByPasswordActivity extends BaseActivity {
                 super.onTextChanged(arg0, arg1, arg2, arg3);
                 String phonenum = login_phonenum.getText().toString().trim();
                 String pwd = login_pwd.getText().toString().trim();
-                if (0 < pwd.length() && 11 == phonenum.length()) {
+                if (6 == pwd.length() && (2 <= phonenum.length()) && (11 >= phonenum.length())) {
                     loginButton.setEnabled(true);
                     loginButton.setBackgroundResource(R.drawable._button);
                 } else {
@@ -104,7 +103,7 @@ public class LoginByPasswordActivity extends BaseActivity {
                 super.onTextChanged(arg0, arg1, arg2, arg3);
                 String phonenum = login_phonenum.getText().toString().trim();
                 String pwd = login_pwd.getText().toString().trim();
-                if (0 < pwd.length() && 11 == phonenum.length()) {
+                if (6 == pwd.length() && (2 <= phonenum.length()) && (11 >= phonenum.length())) {
                     loginButton.setEnabled(true);
                     loginButton.setBackgroundResource(R.drawable._button);
                 } else {
@@ -118,18 +117,14 @@ public class LoginByPasswordActivity extends BaseActivity {
             public void onClick(View view) {
                 userName = login_phonenum.getText().toString().trim();
                 password = login_pwd.getText().toString().trim();
-                if (!checkPwd(password)) {
-                    Toast.makeText(LoginByPasswordActivity.this, "请输入合法的密码", Toast.LENGTH_SHORT).show();
-                }
-                if (!checkUserName(userName) || !isMobile(userName)) {
-                    Toast.makeText(LoginByPasswordActivity.this, "请输入正确的用户名", Toast.LENGTH_SHORT).show();
-                }
-                if (checkUserName(userName) || checkPwd(password)){
+                if (checkUserName(userName) || isMobile(userName)){
                     try {
                         loginRequest("", "", userName, password);
                     } catch (Exception e) {
 
                     }
+                }else {
+                    Toast.makeText(LoginByPasswordActivity.this, "用户名不正确", Toast.LENGTH_SHORT).show();
                 }
             }
         });
