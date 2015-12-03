@@ -148,6 +148,10 @@ public class LoginByVerifycodeActivity extends BaseActivity {
         loginBtn.showNormal("登录");
     }
 
+    public void forgetPassworldOnclick(View view){
+
+    }
+
     public void passwordLoginOnclick(View view) {
         Intent intent = new Intent(this, LoginByPasswordActivity.class);
         startActivity(intent);

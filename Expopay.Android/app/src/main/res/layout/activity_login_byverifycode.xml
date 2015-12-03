@@ -146,6 +146,17 @@
                 android:textSize="13sp"
                 android:textStyle="italic" />
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="#0000"
+                android:onClick="forgetPassworldOnclick"
+                android:padding="10dp"
+                android:text="忘记密码"
+                android:textColor="#999999"
+                android:textSize="13sp" />
+
         </RelativeLayout>
     </LinearLayout>
 
