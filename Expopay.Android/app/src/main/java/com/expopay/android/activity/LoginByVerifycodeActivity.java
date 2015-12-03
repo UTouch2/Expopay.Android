@@ -149,7 +149,7 @@ public class LoginByVerifycodeActivity extends BaseActivity {
     }
 
     public void forgetPassworldOnclick(View view){
-
+        startActivity(new Intent(LoginByVerifycodeActivity.this,ForgetPasswordActivity.class));
     }
 
     public void passwordLoginOnclick(View view) {
