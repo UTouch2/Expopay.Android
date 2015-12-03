@@ -134,15 +134,25 @@ public class LoginByPasswordActivity extends BaseActivity {
             public void onClick(View view) {
                 userName = login_phonenum.getText().toString().trim();
                 password = login_pwd.getText().toString().trim();
-                if (PatternUtil.checkUserName(userName) || PatternUtil.isMobile(userName)) {
-                    try {
-                        loginRequest("", "", userName, password);
-                    } catch (Exception e) {
-
-                    }
-                } else {
-                    Toast.makeText(LoginByPasswordActivity.this, "用户名不正确", Toast.LENGTH_SHORT).show();
+                if ((2 > userName.length()) || (11 < userName.length())) {
+                    Toast.makeText(LoginByPasswordActivity.this, "请输入正确的用户名或电话号码", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+                if (!PatternUtil.checkUserName(userName) && !PatternUtil.isMobile(userName)) {
+                    Toast.makeText(LoginByPasswordActivity.this, "请输入正确的用户名或电话号码", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (6>password.length() || 16<password.length() || (!PatternUtil.checkPwd(password))) {
+                    Toast.makeText(LoginByPasswordActivity.this, "密码长度在6-16位,并且只能是数字和字母组合", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                try {
+                    loginRequest("", "", userName, password);
+                } catch (Exception e) {
+
+                }
+
             }
         });
     }
@@ -163,7 +173,7 @@ public class LoginByPasswordActivity extends BaseActivity {
     }
 
     public void forgetPwdOnclick(View view) {
-
+        startActivity(new Intent(LoginByPasswordActivity.this,ForgetPasswordActivity.class));
     }
 
     Handler handler = new Handler() {
