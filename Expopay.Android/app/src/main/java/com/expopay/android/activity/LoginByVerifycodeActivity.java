@@ -283,7 +283,7 @@ public class LoginByVerifycodeActivity extends BaseActivity {
                         saveUser(user);
                         loginBtn.showResult("登录成功", true);
                     } else {
-                        loginBtn.showResult("", false);
+                        loginBtn.showResult(json.getJSONObject("header").getString("desc"), false);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

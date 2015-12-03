@@ -85,10 +85,13 @@ public class CustormLoadingButton extends FrameLayout {
             super.handleMessage(msg);
             if (msg.what == 0) {
                 if (onLoadingButtonListener != null) {
+                    setBackgroundColor(Color.parseColor("#23A4F7"));
                     onLoadingButtonListener.onSuccessResult();
+
                 }
             } else {
                 if (onLoadingButtonListener != null) {
+                    setBackgroundColor(Color.parseColor("#F62332"));
                     onLoadingButtonListener.onFailureResult();
                 }
             }

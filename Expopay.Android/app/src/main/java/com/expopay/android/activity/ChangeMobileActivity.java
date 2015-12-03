@@ -120,7 +120,7 @@ public class ChangeMobileActivity extends BaseActivity {
         TimerTask tt = new TimerTask() {
             @Override
             public void run() {
-                if (time <= 0) {
+                if (time < 0) {
                     Message msg = handler.obtainMessage();
                     msg.what = 1;
                     handler.sendMessage(msg);
@@ -152,13 +152,13 @@ public class ChangeMobileActivity extends BaseActivity {
     };
 
     private void changeMobileRequest(String openId, String mobile, String code) throws JSONException {
-        okBtn.showLoading("");
+        okBtn.showLoading("正在更改···");
         CustomerRequest request = new CustomerRequest(MyApplication.HOST + "/customer/resetmobile");
         request.setEntity(request.createChangeMobileParams(openId, mobile, code));
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
-                okBtn.showResult("", false);
+                okBtn.showResult("网络请求失败", false);
             }
             @Override
             public void onSuccess(Object o) {
@@ -166,9 +166,12 @@ public class ChangeMobileActivity extends BaseActivity {
                 try {
                     if (json.getJSONObject("header").getString("code")
                             .equals("0000")) {
+                        okBtn.showResult("更改成功",true);
+                    }else{
+                        okBtn.showResult(json.getJSONObject("header").getString("code"),false);
                     }
                 } catch (JSONException e) {
-                    okBtn.showLoading("");
+                    okBtn.showResult("参数解析错误",false);
                 }
             }
 
