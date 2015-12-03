@@ -72,8 +72,11 @@ public class PerfectAccountActivity extends BaseActivity {
                 String password = passwordText.getText().toString().trim();
                 String questionId = passwordQuestionEntity.getSecuQuestionId();
                 String answer = answerText.getText().toString().trim();
-                if ((2 > userName.length()) || (11 < userName.length()) ||
-                        !(PatternUtil.checkUserName(userName)) || (!(PatternUtil.isMobile(userName)))) {
+                if ((2 > userName.length()) || (11 < userName.length())) {
+                    Toast.makeText(PerfectAccountActivity.this, "请输入正确的用户名或电话号码", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!PatternUtil.checkUserName(userName) && !PatternUtil.isMobile(userName)) {
                     Toast.makeText(PerfectAccountActivity.this, "请输入正确的用户名或电话号码", Toast.LENGTH_SHORT).show();
                     return;
                 }
