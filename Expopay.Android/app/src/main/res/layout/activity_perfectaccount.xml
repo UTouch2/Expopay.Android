@@ -3,6 +3,7 @@
     android:id="@+id/login_contentview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/about_bg"
     android:fitsSystemWindows="true">
 
     <LinearLayout
@@ -104,21 +105,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/login_pwd"
-            android:layout_marginBottom="20dp"
+
             android:src="@mipmap/login_line" />
 
         <RelativeLayout
-            android:onClick="chooseQuestionOnclick"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="50dp"
+            android:onClick="chooseQuestionOnclick"
+            android:paddingTop="20dp">
 
             <TextView
                 android:id="@+id/perfectaccount_question"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:gravity="center_vertical"
+               android:layout_alignParentBottom="true"
                 android:inputType="number"
+                android:paddingBottom="5dp"
                 android:text="请选择密保问题"
                 android:textColor="#999999"
                 android:textSize="14sp" />
@@ -128,8 +130,8 @@
                 android:layout_height="30dp"
                 android:layout_alignParentRight="true"
                 android:adjustViewBounds="true"
-                android:src="@mipmap/account_right_arrow"
-                android:padding="5dp" />
+                android:padding="5dp"
+                android:src="@mipmap/account_right_arrow" />
         </RelativeLayout>
 
 
