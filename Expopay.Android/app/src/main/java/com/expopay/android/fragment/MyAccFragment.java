@@ -38,6 +38,7 @@ public class MyAccFragment extends  BaseFragment {
     private TextView creditLimitAmt;
     private TextView billAmount;
     View accountGroupView,loginGroupView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_myaccount,container,false);
@@ -125,15 +126,14 @@ public class MyAccFragment extends  BaseFragment {
         if (!"".equals(getUser().getOpenId())) {
             loginGroupView.setVisibility(View.GONE);
             accountGroupView.setVisibility(View.VISIBLE);
+            try {
+                getCompositeinfoRequest(getUser().getOpenId());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         } else {
             loginGroupView.setVisibility(View.VISIBLE);
             accountGroupView.setVisibility(View.GONE);
-        }
-
-        try {
-            getCompositeinfoRequest(getUser().getOpenId());
-        } catch (JSONException e) {
-            e.printStackTrace();
         }
     }
 
@@ -190,16 +190,15 @@ public class MyAccFragment extends  BaseFragment {
                     if (json.getJSONObject("header").getString("code").equals("0000")) {
                         Gson gson = new Gson();
                         CustomerCompositeInfoEntity entity = gson.fromJson(json.getJSONObject("body").
-                                        getJSONArray("records").toString(),
-                                new TypeToken<CustomerCompositeInfoEntity>() {
+                                       toString(), new TypeToken<CustomerCompositeInfoEntity>() {
                                 }.getType());
-                        cardBalance.setText((int) entity.getCardBalance());
+                        cardBalance.setText(entity.getCardBalance());
                         remainingDays.setText(entity.getRemainingDays());
                         defCardNumber.setText(entity.getDefCardNumber());
                         personName.setText(entity.getPersonName());
                         cardQuantity.setText(entity.getCardQuantity());
-                        creditLimitAmt.setText((int) entity.getCreditLimitAmt());
-                        billAmount.setText((int) entity.getBillAmount());
+                        creditLimitAmt.setText( entity.getCreditLimitAmt());
+                        billAmount.setText(entity.getBillAmount());
                     }
                 } catch (Exception e) {
 

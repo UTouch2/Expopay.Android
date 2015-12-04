@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
@@ -56,7 +57,6 @@ public class ChangePasswordQuestionAcitivy extends BaseActivity {
                 okBtn.showNormal("确认修改");
             }
         });
-
         oldQuestionText = (TextView) findViewById(R.id.changepasswordquestion_oldpsdq);
         newQuestionText = (TextView) findViewById(R.id.changepasswordquestion_newpsdq);
 
@@ -69,6 +69,15 @@ public class ChangePasswordQuestionAcitivy extends BaseActivity {
                     getQustionRequest();
                 } catch (JSONException e) {
                     e.printStackTrace();
+                }
+            }
+        });
+        okBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if ("".equals(oldAnswerText.getText().toString().trim()) ||
+                        "".equals(newAnswerText.getText().toString().trim())) {
+                    Toast.makeText(ChangePasswordQuestionAcitivy.this, "密保答案不能为空", Toast.LENGTH_SHORT).show();
                 }
             }
         });

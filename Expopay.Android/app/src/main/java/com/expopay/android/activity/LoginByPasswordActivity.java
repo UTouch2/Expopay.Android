@@ -104,8 +104,7 @@ public class LoginByPasswordActivity extends BaseActivity {
             public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
                 super.onTextChanged(arg0, arg1, arg2, arg3);
                 String phonenum = login_phonenum.getText().toString().trim();
-                String pwd = login_pwd.getText().toString().trim();
-                if (6 == pwd.length() && (2 <= phonenum.length()) && (11 >= phonenum.length())) {
+                if ((2 <= phonenum.length()) && (11 >= phonenum.length())) {
                     loginButton.setEnabled(true);
                     loginButton.setBackgroundResource(R.drawable._button);
                 } else {
@@ -118,9 +117,8 @@ public class LoginByPasswordActivity extends BaseActivity {
             @Override
             public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
                 super.onTextChanged(arg0, arg1, arg2, arg3);
-                String phonenum = login_phonenum.getText().toString().trim();
                 String pwd = login_pwd.getText().toString().trim();
-                if (6 == pwd.length() && (2 <= phonenum.length()) && (11 >= phonenum.length())) {
+                if ((6<=pwd.length()) && (pwd.length()<=16)) {
                     loginButton.setEnabled(true);
                     loginButton.setBackgroundResource(R.drawable._button);
                 } else {
@@ -134,25 +132,21 @@ public class LoginByPasswordActivity extends BaseActivity {
             public void onClick(View view) {
                 userName = login_phonenum.getText().toString().trim();
                 password = login_pwd.getText().toString().trim();
-                if ((2 > userName.length()) || (11 < userName.length())) {
-                    Toast.makeText(LoginByPasswordActivity.this, "请输入正确的用户名或电话号码", Toast.LENGTH_SHORT).show();
+                PatternUtil.UserName name = new PatternUtil.UserName(userName);
+                PatternUtil.PassWord pwd = new PatternUtil.PassWord(password);
+                if(!PatternUtil.isMobile(userName) && !name.isvalid()){
+                    Toast.makeText(getApplicationContext(),name.getErrMsg(),Toast.LENGTH_LONG).show();
                     return;
                 }
-                if (!PatternUtil.checkUserName(userName) && !PatternUtil.isMobile(userName)) {
-                    Toast.makeText(LoginByPasswordActivity.this, "请输入正确的用户名或电话号码", Toast.LENGTH_SHORT).show();
+                if (!pwd.isvalid()) {
+                    Toast.makeText(getApplicationContext(), pwd.getErrMsg(), Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (6>password.length() || 16<password.length() || (!PatternUtil.checkPwd(password))) {
-                    Toast.makeText(LoginByPasswordActivity.this, "密码长度在6-16位,并且只能是数字和字母组合", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
                 try {
                     loginRequest("", "", userName, password);
                 } catch (Exception e) {
 
                 }
-
             }
         });
     }

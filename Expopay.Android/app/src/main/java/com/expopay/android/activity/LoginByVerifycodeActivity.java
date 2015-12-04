@@ -87,8 +87,10 @@ public class LoginByVerifycodeActivity extends BaseActivity {
                 vercode = loginVercode.getText().toString().trim();
                 if (11 == mobile.length() && 6 == vercode.length()) {
                     loginBtn.setEnabled(true);
+                    loginBtn.setBackgroundResource(R.drawable._button);
                 } else {
                     loginBtn.setEnabled(false);
+                    loginBtn.setBackgroundResource(R.drawable._button_down);
                 }
             }
         });

@@ -7,8 +7,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
+import com.android.kechong.lib.util.PatternUtil;
 import com.expopay.android.R;
 import com.expopay.android.application.MyApplication;
 import com.expopay.android.model.CardEntity;
@@ -82,6 +84,16 @@ public class ChangeCardPasswordActivity extends BaseActivity {
                 String cardNumber = cardNumberText.getText().toString().trim();
                 String oldpwd = oldPwdtext.getText().toString().trim();
                 String newpwd = newPwdText.getText().toString().trim();
+                PatternUtil.PassWord oldPwd = new PatternUtil.PassWord(oldpwd);
+                PatternUtil.PassWord newPwd = new PatternUtil.PassWord(newpwd);
+                if (!oldPwd.isvalid()) {
+                    Toast.makeText(ChangeCardPasswordActivity.this, oldPwd.getErrMsg(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!newPwd.isvalid()) {
+                    Toast.makeText(ChangeCardPasswordActivity.this, newPwd.getErrMsg(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 try {
                     changePasswoedRequest(getUser().getOpenId(), cardNumber, oldpwd, newpwd);
                 } catch (JSONException e) {

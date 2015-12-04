@@ -72,16 +72,18 @@ public class PerfectAccountActivity extends BaseActivity {
                 String password = passwordText.getText().toString().trim();
                 String questionId = passwordQuestionEntity.getSecuQuestionId();
                 String answer = answerText.getText().toString().trim();
-                if ((2 > userName.length()) || (11 < userName.length())) {
-                    Toast.makeText(PerfectAccountActivity.this, "请输入正确的用户名或电话号码", Toast.LENGTH_SHORT).show();
+                PatternUtil.UserName name = new PatternUtil.UserName(userName);
+                if(!name.isvalid()){
+                    Toast.makeText(getApplicationContext(),name.getErrMsg(),Toast.LENGTH_LONG).show();
                     return;
                 }
-                if (!PatternUtil.checkUserName(userName) && !PatternUtil.isMobile(userName)) {
-                    Toast.makeText(PerfectAccountActivity.this, "请输入正确的用户名或电话号码", Toast.LENGTH_SHORT).show();
+                PatternUtil.PassWord pwd = new PatternUtil.PassWord(password);
+                if (!pwd.isvalid()) {
+                    Toast.makeText(getApplicationContext(), pwd.getErrMsg(), Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (6>password.length() || 16<password.length() || (!PatternUtil.checkPwd(password))) {
-                   Toast.makeText(PerfectAccountActivity.this, "密码长度在6-16位,并且只能是数字和字母组合", Toast.LENGTH_SHORT).show();
+                if ("".equals(answer)) {
+                    Toast.makeText(getApplicationContext(), "密保问题不能为空", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 try {
