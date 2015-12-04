@@ -13,6 +13,7 @@ import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.android.kechong.lib.listener.AbsTextWatcher;
 import com.expopay.android.R;
 import com.expopay.android.application.MyApplication;
+import com.expopay.android.model.UserEntity;
 import com.expopay.android.request.CustomerRequest;
 import com.expopay.android.view.CustormLoadingButton;
 
@@ -26,7 +27,7 @@ import java.util.TimerTask;
  * Created by misxu012 on 2015/10/23.
  */
 public class ChangeMobileActivity extends BaseActivity {
-    private String openId, mobile, code;
+    private String mobile, code;
     private EditText phoneNumEditText, vercodeEditText;
     private CustormLoadingButton okBtn;
     private TextView timeoutText;
@@ -64,7 +65,6 @@ public class ChangeMobileActivity extends BaseActivity {
                 okBtn.showNormal("确定更改");
             }
         });
-
         phoneNumEditText.addTextChangedListener(new AbsTextWatcher() {
             @Override
             public void onTextChanged(CharSequence str, int arg1, int arg2,
@@ -151,7 +151,7 @@ public class ChangeMobileActivity extends BaseActivity {
         }
     };
 
-    private void changeMobileRequest(String openId, String mobile, String code) throws JSONException {
+    private void changeMobileRequest(String openId, final String mobile, String code) throws JSONException {
         okBtn.showLoading("正在更改···");
         CustomerRequest request = new CustomerRequest(MyApplication.HOST + "/customer/resetmobile");
         request.setEntity(request.createChangeMobileParams(openId, mobile, code));
@@ -160,18 +160,23 @@ public class ChangeMobileActivity extends BaseActivity {
             public void onFilure(Exception e) {
                 okBtn.showResult("网络请求失败", false);
             }
+
             @Override
             public void onSuccess(Object o) {
                 JSONObject json = (JSONObject) o;
                 try {
                     if (json.getJSONObject("header").getString("code")
                             .equals("0000")) {
-                        okBtn.showResult("更改成功",true);
-                    }else{
-                        okBtn.showResult(json.getJSONObject("header").getString("code"),false);
+                        UserEntity user = getUser();
+                        user.setMobile(mobile);
+                        saveUser(user);
+                        bindphone.setText(mobile);
+                        okBtn.showResult("更改成功", true);
+                    } else {
+                        okBtn.showResult(json.getJSONObject("header").getString("code"), false);
                     }
                 } catch (JSONException e) {
-                    okBtn.showResult("参数解析错误",false);
+                    okBtn.showResult("参数解析错误", false);
                 }
             }
 
