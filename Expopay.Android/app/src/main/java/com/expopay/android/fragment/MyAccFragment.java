@@ -29,7 +29,7 @@ import org.json.JSONObject;
 /**
  * Created by misxu012 on 2015/10/20.
  */
-public class MyAccFragment extends  BaseFragment {
+public class MyAccFragment extends BaseFragment {
     private TextView cardBalance;
     private TextView remainingDays;
     private TextView defCardNumber;
@@ -37,11 +37,11 @@ public class MyAccFragment extends  BaseFragment {
     private TextView cardQuantity;
     private TextView creditLimitAmt;
     private TextView billAmount;
-    View accountGroupView,loginGroupView;
+    View accountGroupView, loginGroupView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.fragment_myaccount,container,false);
+        View view = inflater.inflate(R.layout.fragment_myaccount, container, false);
 
         cardBalance = (TextView) view.findViewById(R.id.myaccount_cardbalance);
         remainingDays = (TextView) view.findViewById(R.id.myaccount_remainingdays);
@@ -57,7 +57,7 @@ public class MyAccFragment extends  BaseFragment {
             @Override
             public void onClick(View v) {
                 if (!"".equals(getUser().getOpenId())) {
-                    Intent intent =new Intent(getActivity(), MyCardsActivity.class);
+                    Intent intent = new Intent(getActivity(), MyCardsActivity.class);
                     startActivity(intent);
                     return;
                 }
@@ -68,8 +68,8 @@ public class MyAccFragment extends  BaseFragment {
         view.findViewById(R.id.myaccount_settings).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!"".equals(getUser().getOpenId())){
-                    Intent intent =new Intent(getActivity(), SettingsActivity.class);
+                if (!"".equals(getUser().getOpenId())) {
+                    Intent intent = new Intent(getActivity(), SettingsActivity.class);
                     startActivity(intent);
                     return;
                 }
@@ -81,7 +81,7 @@ public class MyAccFragment extends  BaseFragment {
         view.findViewById(R.id.account_aboutme).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(getActivity(), AboutActivity.class);
+                Intent intent = new Intent(getActivity(), AboutActivity.class);
                 startActivity(intent);
             }
         });
@@ -100,8 +100,8 @@ public class MyAccFragment extends  BaseFragment {
         view.findViewById(R.id.account_order).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!"".equals(getUser().getOpenId())){
-                    Intent intent =new Intent(getActivity(), MyOrderActivity.class);
+                if (!"".equals(getUser().getOpenId())) {
+                    Intent intent = new Intent(getActivity(), MyOrderActivity.class);
                     startActivity(intent);
                     return;
                 }
@@ -174,8 +174,8 @@ public class MyAccFragment extends  BaseFragment {
         cancelRequest(request);
     }
 
-    private void getCompositeinfoRequest(String openId) throws JSONException{
-        CustomerRequest request = new CustomerRequest(MyApplication.HOST+"/customer/compositeinfo");
+    private void getCompositeinfoRequest(String openId) throws JSONException {
+        CustomerRequest request = new CustomerRequest(MyApplication.HOST + "/customer/compositeinfo");
         request.setEntity(request.createGetCustormerParams(openId));
         request.setIRequestListener(new JsonRequestListener() {
             @Override
@@ -190,14 +190,14 @@ public class MyAccFragment extends  BaseFragment {
                     if (json.getJSONObject("header").getString("code").equals("0000")) {
                         Gson gson = new Gson();
                         CustomerCompositeInfoEntity entity = gson.fromJson(json.getJSONObject("body").
-                                       toString(), new TypeToken<CustomerCompositeInfoEntity>() {
-                                }.getType());
+                                toString(), new TypeToken<CustomerCompositeInfoEntity>() {
+                        }.getType());
                         cardBalance.setText(entity.getCardBalance());
                         remainingDays.setText(entity.getRemainingDays());
                         defCardNumber.setText(entity.getDefCardNumber());
                         personName.setText(entity.getPersonName());
                         cardQuantity.setText(entity.getCardQuantity());
-                        creditLimitAmt.setText( entity.getCreditLimitAmt());
+                        creditLimitAmt.setText(entity.getCreditLimitAmt());
                         billAmount.setText(entity.getBillAmount());
                     }
                 } catch (Exception e) {
@@ -210,5 +210,7 @@ public class MyAccFragment extends  BaseFragment {
 
             }
         });
+        request.execute();
+        cancelRequest(request);
     }
 }
