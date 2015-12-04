@@ -69,7 +69,7 @@ public class WegQueryTransActivity extends BaseActivity {
             public void onClick(View v) {
                 String barcode = barcodeText.getText().toString().trim();
                 if ("".equals(barcode)) {
-                    Toast.makeText(WegQueryTransActivity.this, "请输入查询账号", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(WegQueryTransActivity.this, "请输入"+current.getPublicParamText(), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 try {
