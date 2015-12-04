@@ -87,27 +87,16 @@ public class ChangePasswordQuestionAcitivy extends BaseActivity {
         }
     }
 
-    public void chooseOldQuestionOnclick(View v) {
-        Intent intent = new Intent(this, ChooseQuestionActivity.class);
-        intent.putExtra("questions", (Serializable) passwordQuestionEntities);
-        startActivityForResult(intent, 0);
-    }
-
     public void chooseNewQuestionOnclick(View v) {
         Intent intent = new Intent(this, ChooseQuestionActivity.class);
         intent.putExtra("questions", (Serializable) passwordQuestionEntities);
-        startActivityForResult(intent, 1);
+        startActivityForResult(intent, 0);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0) {
-            if (resultCode == RESULT_OK) {
-                oldQuestion = (PasswordQuestionEntity) data.getSerializableExtra("question");
-                oldQuestionText.setText(oldQuestion.getSecuQuestion());
-            }
-        } else if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
                 newQuestion = (PasswordQuestionEntity) data.getSerializableExtra("question");
                 newQuestionText.setText(newQuestion.getSecuQuestion());
@@ -184,13 +173,9 @@ public class ChangePasswordQuestionAcitivy extends BaseActivity {
                         passwordQuestionEntities = gson.fromJson(json.getJSONObject("body").getJSONArray("records").toString(),
                                 new TypeToken<List<PasswordQuestionEntity>>() {
                                 }.getType());
-                        if (passwordQuestionEntities.size() > 0) {
-                            oldQuestion = passwordQuestionEntities.get(0);
-                            newQuestion = passwordQuestionEntities.get(0);
-                            oldQuestionText.setText(oldQuestion.getSecuQuestion());
-                            newQuestionText.setText(newQuestion.getSecuQuestion());
-                            loadingView.dismiss();
-                        }
+                        newQuestion = passwordQuestionEntities.get(0);
+                        newQuestionText.setText(newQuestion.getSecuQuestion());
+                        loadingView.dismiss();
                     } else {
                         loadingView.showRetry();
                         loadingView.setRetryMessage(json.getJSONObject("header").getString("desc"));
