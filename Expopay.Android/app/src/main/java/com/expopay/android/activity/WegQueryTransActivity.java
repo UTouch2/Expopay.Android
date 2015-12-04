@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
@@ -58,6 +59,7 @@ public class WegQueryTransActivity extends BaseActivity {
             public void onSuccessResult() {
                 finish();
             }
+
             @Override
             public void onFailureResult() {
                 loadingButton.showNormal("查  询");
@@ -66,8 +68,13 @@ public class WegQueryTransActivity extends BaseActivity {
         loadingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String barcode = barcodeText.getText().toString().trim();
+                if ("".equals(barcode)) {
+                    Toast.makeText(getApplicationContext(), "请输入" + current.getPublicParamText(), Toast.LENGTH_LONG).show();
+                    return;
+                }
                 try {
-                    QueryAmount(getUser().getOpenId(), current.getCompanyId(), current.getPublicParamName(), barcodeText.getText().toString().trim());
+                    QueryAmount(getUser().getOpenId(), current.getCompanyId(), current.getPublicParamName(), barcode);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -107,6 +114,7 @@ public class WegQueryTransActivity extends BaseActivity {
             public void onFilure(Exception e) {
 
             }
+
             @Override
             public void onSuccess(Object result) {
                 JSONObject json = (JSONObject) result;
@@ -125,6 +133,7 @@ public class WegQueryTransActivity extends BaseActivity {
 
                 }
             }
+
             @Override
             public void onProgressUpdate(int i, int i1) {
 
@@ -162,6 +171,7 @@ public class WegQueryTransActivity extends BaseActivity {
                 } catch (JSONException e) {
                 }
             }
+
             @Override
             public void onProgressUpdate(int i, int i1) {
 
