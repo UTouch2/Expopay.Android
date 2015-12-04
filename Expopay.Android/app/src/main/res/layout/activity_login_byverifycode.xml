@@ -71,12 +71,12 @@
                 android:textSize="14sp" />
         </RelativeLayout>
 
-        <ImageView
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0.5dp"
+            android:background="#B4B4B4"
             android:layout_below="@+id/login_phonenum"
-            android:layout_marginBottom="20dp"
-            android:src="@mipmap/login_line" />
+            android:layout_marginBottom="20dp" />
 
         <RelativeLayout
             android:id="@+id/login_vercode_group"
@@ -112,12 +112,12 @@
                 android:textSize="14sp" />
         </RelativeLayout>
 
-        <ImageView
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0.5dp"
+            android:background="#B4B4B4"
             android:layout_below="@+id/login_phonenum"
-            android:layout_marginBottom="20dp"
-            android:src="@mipmap/login_line" />
+            android:layout_marginBottom="20dp"/>
 
         <RelativeLayout
             android:layout_width="match_parent"

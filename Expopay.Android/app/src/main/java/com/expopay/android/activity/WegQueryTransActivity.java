@@ -21,7 +21,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -70,7 +69,7 @@ public class WegQueryTransActivity extends BaseActivity {
             public void onClick(View v) {
                 String barcode = barcodeText.getText().toString().trim();
                 if ("".equals(barcode)) {
-                    Toast.makeText(getApplicationContext(), "请输入" + current.getPublicParamText(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(WegQueryTransActivity.this, "请输入查询账号", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 try {
@@ -133,7 +132,6 @@ public class WegQueryTransActivity extends BaseActivity {
 
                 }
             }
-
             @Override
             public void onProgressUpdate(int i, int i1) {
 

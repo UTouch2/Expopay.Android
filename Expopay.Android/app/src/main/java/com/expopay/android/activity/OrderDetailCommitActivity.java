@@ -67,7 +67,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
         propertyMemoryText.setText(productDetailsEntity.getPropertyValue2());
         orderAmountText.setText(productDetailsEntity.getProductPrice());
         repaymentPeriodText.setText(peroidEntity.getPeriod());
-        periodAmountText.setText(String.format("本期应还款%s元", Double.parseDouble(peroidEntity.getPeriodAmount()) + Double.parseDouble(peroidEntity.getServiceAmount())));
+        periodAmountText.setText(String.format("每期应还款%s元", Double.parseDouble(peroidEntity.getPeriodAmount()) + Double.parseDouble(peroidEntity.getServiceAmount())));
 
         try {
             getAddress(getUser().getOpenId());

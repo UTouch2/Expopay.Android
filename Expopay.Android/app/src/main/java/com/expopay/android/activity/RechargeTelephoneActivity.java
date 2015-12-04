@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
+import com.android.kechong.lib.util.PatternUtil;
 import com.expopay.android.R;
 import com.expopay.android.request.OrderRequest;
 import com.expopay.android.view.CustormLoadingButton;
@@ -87,7 +88,8 @@ public class RechargeTelephoneActivity extends BaseActivity implements View.OnCl
         btnRecharge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(11 == contacts.length()) {
+                String contact = contacts.getText().toString().trim();
+                if(PatternUtil.isMobile(contact)) {
                     String amount = rechange.getText().toString().trim();
                     try {
                         getOrder("123","1","","","","");
