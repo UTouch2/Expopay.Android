@@ -6,27 +6,30 @@ import java.io.Serializable;
  * Created by NB-MIS-100002 on 2015/12/2.
  */
 public class CustomerCompositeInfoEntity implements Serializable {
-    private double cardBalance;
-    private int remainingDays;
+    private String cardBalance;
+    private String remainingDays;
     private String defCardNumber;
     private String personName;
-    private int cardQuantity;
-    private double billAmount;
-    private double creditLimitAmt;
+    private String cardQuantity;
+    private String billAmount;
+    private String creditLimitAmt;
 
-    public double getCardBalance() {
+    public CustomerCompositeInfoEntity() {
+    }
+
+    public String getCardBalance() {
         return cardBalance;
     }
 
-    public void setCardBalance(double cardBalance) {
+    public void setCardBalance(String cardBalance) {
         this.cardBalance = cardBalance;
     }
 
-    public int getRemainingDays() {
+    public String getRemainingDays() {
         return remainingDays;
     }
 
-    public void setRemainingDays(int remainingDays) {
+    public void setRemainingDays(String remainingDays) {
         this.remainingDays = remainingDays;
     }
 
@@ -46,27 +49,29 @@ public class CustomerCompositeInfoEntity implements Serializable {
         this.personName = personName;
     }
 
-    public int getCardQuantity() {
+    public String getCardQuantity() {
         return cardQuantity;
     }
 
-    public void setCardQuantity(int cardQuantity) {
+    public void setCardQuantity(String cardQuantity) {
         this.cardQuantity = cardQuantity;
     }
 
-    public double getCreditLimitAmt() {
-        return creditLimitAmt;
-    }
-
-    public void setCreditLimitAmt(double creditLimitAmt) {
-        this.creditLimitAmt = creditLimitAmt;
-    }
-
-    public double getBillAmount() {
+    public String getBillAmount() {
         return billAmount;
     }
 
-    public void setBillAmount(double billAmount) {
+    public void setBillAmount(String billAmount) {
         this.billAmount = billAmount;
     }
+
+    public String getCreditLimitAmt() {
+        return creditLimitAmt;
+    }
+
+    public void setCreditLimitAmt(String creditLimitAmt) {
+        this.creditLimitAmt = creditLimitAmt;
+    }
 }
+
+

@@ -6,8 +6,10 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
+import com.android.kechong.lib.util.PatternUtil;
 import com.expopay.android.R;
 import com.expopay.android.application.MyApplication;
 import com.expopay.android.request.PasswordRequest;
@@ -40,8 +42,18 @@ public class ChangePasswordActivity extends BaseActivity {
         okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                newLoginPwd = newLoginPwdText.getText().toString().trim();
                 loginPwd = loginPwdText.getText().toString().trim();
+                newLoginPwd = newLoginPwdText.getText().toString().trim();
+                PatternUtil.PassWord oldPwd = new PatternUtil.PassWord(loginPwd);
+                PatternUtil.PassWord newPwd = new PatternUtil.PassWord(newLoginPwd);
+                if (!oldPwd.isvalid()) {
+                    Toast.makeText(ChangePasswordActivity.this, oldPwd.getErrMsg(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!newPwd.isvalid()) {
+                    Toast.makeText(ChangePasswordActivity.this, newPwd.getErrMsg(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 try {
                     changePasswoedRequest(getUser().getOpenId(), loginPwd, newLoginPwd);
                 } catch (JSONException e) {

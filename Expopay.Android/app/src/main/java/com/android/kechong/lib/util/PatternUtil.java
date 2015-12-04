@@ -9,9 +9,9 @@ public class PatternUtil {
 
 
     public static final String MOBILE_PATTERN = "^((13[0-9])|(15[^4,\\D])|(18[0,3,5-9]))\\d{8}$";
+    public static final String CHINESE = "^[\\u4E00-\\u9FA5\\uF900-\\uFA2D]+$";
     public static final String USER_ID = "";
     public static final String LOGIN_USERNAME = "^[a-zA-Z][a-zA-Z0-9_]{1,10}$";
-    public static final String LOGIN_PWD = "^[a-zA-Z0-9]{6,16}$";
 
     static public boolean pattern(String patternStr, String sourceStr) {
         Pattern pattern = Pattern.compile(patternStr);
@@ -23,12 +23,113 @@ public class PatternUtil {
         return pattern(MOBILE_PATTERN, sourceStr);
     }
 
+    static public boolean isChinese(String chineseStr) {
+        return pattern(CHINESE, chineseStr);
+    }
+
     static public boolean checkUserName(String usernameStr) {
         return pattern(LOGIN_USERNAME, usernameStr);
     }
 
-    static public boolean checkPwd(String pwdStr) {
-        return pattern(LOGIN_PWD, pwdStr);
+    public static class UserName{
+        private String userName = null;
+        private String errMsg;
+        private boolean isvalid;
+        public UserName(String userName) {
+            this.userName = userName.trim();
+            if(userName.length() <2){
+                errMsg = "用户名为2-12位";
+                isvalid = false;
+                return;
+            }else if(userName.length() >12){
+                errMsg = "用户名为2-12位";
+                isvalid = false;
+                return;
+            }else if(isChinese(userName)){
+                errMsg = "用户名不能有汉字";
+                isvalid = false;
+                return;
+            }else if(!checkUserName(userName)){
+                errMsg = "用户名必须是字母、数字、英文下划线_,首个必须为字母";
+                isvalid = false;
+                return;
+            }
+            errMsg = "";
+            isvalid = true;
+        }
+
+        public String getUserName() {
+            return userName;
+        }
+
+        public void setUserName(String userName) {
+            this.userName = userName;
+        }
+
+        public String getErrMsg() {
+            return errMsg;
+        }
+
+        public void setErrMsg(String errMsg) {
+            this.errMsg = errMsg;
+        }
+
+        public boolean isvalid() {
+            return isvalid;
+        }
+
+        public void setIsvalid(boolean isvalid) {
+            this.isvalid = isvalid;
+        }
+    }
+
+    public static class PassWord{
+        private String password = null;
+        private String errMsg;
+        private boolean isvalid;
+
+        public PassWord(String password) {
+            this.password = password.trim();
+            if(password.length() <6){
+                errMsg = "密码为6-16位";
+                isvalid = false;
+                return;
+            }else if(password.length() >16){
+                errMsg = "密码为2-12位";
+                isvalid = false;
+                return;
+//            }else if(isChinese(password)){
+//                errMsg = "密码不能有汉字";
+//                isvalid = false;
+//                return;
+            }
+            errMsg = "";
+            isvalid = true;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        public boolean isvalid() {
+            return isvalid;
+        }
+
+        public void setIsvalid(boolean isvalid) {
+            this.isvalid = isvalid;
+        }
+
+        public String getErrMsg() {
+            return errMsg;
+        }
+
+        public void setErrMsg(String errMsg) {
+            this.errMsg = errMsg;
+        }
     }
 
     /**

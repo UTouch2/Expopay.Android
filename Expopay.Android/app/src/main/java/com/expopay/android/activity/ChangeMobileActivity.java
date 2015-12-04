@@ -11,9 +11,9 @@ import android.widget.Toast;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.android.kechong.lib.listener.AbsTextWatcher;
+import com.android.kechong.lib.util.PatternUtil;
 import com.expopay.android.R;
 import com.expopay.android.application.MyApplication;
-import com.expopay.android.model.UserEntity;
 import com.expopay.android.request.CustomerRequest;
 import com.expopay.android.view.CustormLoadingButton;
 
@@ -27,7 +27,7 @@ import java.util.TimerTask;
  * Created by misxu012 on 2015/10/23.
  */
 public class ChangeMobileActivity extends BaseActivity {
-    private String mobile, code;
+    private String openId, mobile, code;
     private EditText phoneNumEditText, vercodeEditText;
     private CustormLoadingButton okBtn;
     private TextView timeoutText;
@@ -65,6 +65,7 @@ public class ChangeMobileActivity extends BaseActivity {
                 okBtn.showNormal("确定更改");
             }
         });
+
         phoneNumEditText.addTextChangedListener(new AbsTextWatcher() {
             @Override
             public void onTextChanged(CharSequence str, int arg1, int arg2,
@@ -72,8 +73,10 @@ public class ChangeMobileActivity extends BaseActivity {
                 // 如果输入等于11位获取按钮可用
                 if (str.toString().trim().length() == 11) {
                     getVercodeBtn.setEnabled(true);
+                    okBtn.setBackgroundResource(R.drawable._button);
                 } else {
                     getVercodeBtn.setEnabled(false);
+                    okBtn.setBackgroundResource(R.drawable._button_down);
                 }
             }
         });
@@ -95,6 +98,10 @@ public class ChangeMobileActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 mobile = phoneNumEditText.getText().toString().trim();
+                if (!PatternUtil.isMobile(mobile)) {
+                    Toast.makeText(ChangeMobileActivity.this, "请输入正确的电话号码", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 try {
                     sendVercode(mobile);
                 } catch (JSONException e) {
@@ -105,9 +112,9 @@ public class ChangeMobileActivity extends BaseActivity {
     }
 
     public void changeMobileOnclick(View view) {
+        mobile = phoneNumEditText.getText().toString().trim();
+        code = vercodeEditText.getText().toString().trim();
         try {
-            mobile = phoneNumEditText.getText().toString().trim();
-            code = vercodeEditText.getText().toString().trim();
             changeMobileRequest(getUser().getOpenId(), mobile, code);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -143,6 +150,7 @@ public class ChangeMobileActivity extends BaseActivity {
             if (msg.what == 0) {
                 int time = msg.arg1;
                 getVercodeBtn.setEnabled(false);
+                getVercodeBtn.setText("已 发 送");
                 timeoutText.setText(time + "秒");
             } else {
                 getVercodeBtn.setEnabled(true);
@@ -151,7 +159,7 @@ public class ChangeMobileActivity extends BaseActivity {
         }
     };
 
-    private void changeMobileRequest(String openId, final String mobile, String code) throws JSONException {
+    private void changeMobileRequest(String openId, String mobile, String code) throws JSONException {
         okBtn.showLoading("正在更改···");
         CustomerRequest request = new CustomerRequest(MyApplication.HOST + "/customer/resetmobile");
         request.setEntity(request.createChangeMobileParams(openId, mobile, code));
@@ -160,23 +168,18 @@ public class ChangeMobileActivity extends BaseActivity {
             public void onFilure(Exception e) {
                 okBtn.showResult("网络请求失败", false);
             }
-
             @Override
             public void onSuccess(Object o) {
                 JSONObject json = (JSONObject) o;
                 try {
                     if (json.getJSONObject("header").getString("code")
                             .equals("0000")) {
-                        UserEntity user = getUser();
-                        user.setMobile(mobile);
-                        saveUser(user);
-                        bindphone.setText(mobile);
-                        okBtn.showResult("更改成功", true);
-                    } else {
-                        okBtn.showResult(json.getJSONObject("header").getString("code"), false);
+                        okBtn.showResult("更改成功",true);
+                    }else{
+                        okBtn.showResult(json.getJSONObject("header").getString("code"),false);
                     }
                 } catch (JSONException e) {
-                    okBtn.showResult("参数解析错误", false);
+                    okBtn.showResult("参数解析错误",false);
                 }
             }
 
