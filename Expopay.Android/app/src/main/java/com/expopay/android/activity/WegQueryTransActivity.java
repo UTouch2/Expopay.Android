@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.kechong.lib.http.listener.JsonRequestListener;
 import com.expopay.android.R;
@@ -20,7 +21,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -66,8 +66,13 @@ public class WegQueryTransActivity extends BaseActivity {
         loadingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String barcode = barcodeText.getText().toString().trim();
+                if ("".equals(barcode)) {
+                    Toast.makeText(WegQueryTransActivity.this, "请输入查询账号", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 try {
-                    QueryAmount(getUser().getOpenId(), current.getCompanyId(), current.getPublicParamName(), barcodeText.getText().toString().trim());
+                    QueryAmount(getUser().getOpenId(), current.getCompanyId(), current.getPublicParamName(), barcode);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
