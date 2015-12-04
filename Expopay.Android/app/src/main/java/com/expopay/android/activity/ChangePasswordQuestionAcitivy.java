@@ -30,7 +30,6 @@ public class ChangePasswordQuestionAcitivy extends BaseActivity {
 
     private List<PasswordQuestionEntity> passwordQuestionEntities;
     private PasswordQuestionEntity oldQuestion, newQuestion;
-
     private CustormLoadingView loadingView;
     private CustormLoadingButton okBtn;
     private TextView newQuestionText, oldQuestionText;
@@ -107,6 +106,59 @@ public class ChangePasswordQuestionAcitivy extends BaseActivity {
         }
     }
 
+    /**
+     * 获取预设密保问题
+     *
+     * @throws JSONException
+     */
+    private void getMyQuestionRequest(String openId) throws JSONException {
+        loadingView.showLoading();
+        PasswordRequest request = new PasswordRequest(MyApplication.HOST + "/customer/customerquestion");
+        request.setEntity(request.createPasswordQuestionsParams(openId));
+        request.setIRequestListener(new JsonRequestListener() {
+            @Override
+            public void onFilure(Exception e) {
+                loadingView.showRetry();
+                loadingView.setRetryMessage("网络请求失败");
+            }
+
+            @Override
+            public void onSuccess(Object o) {
+                JSONObject json = (JSONObject) o;
+                try {
+                    if (json.getJSONObject("header").getString("code")
+                            .equals("0000")) {
+                        Gson gson = new Gson();
+                        oldQuestion = gson.fromJson(json.getJSONObject("body").toString(),
+                                new TypeToken<PasswordQuestionEntity>() {
+                                }.getType());
+                        oldQuestionText.setText(oldQuestion.getSecuQuestion());
+                        loadingView.dismiss();
+                    } else {
+                        loadingView.showRetry();
+                        loadingView.setRetryMessage(json.getJSONObject("header").getString("desc"));
+                    }
+                } catch (JSONException e) {
+                    // 数据解析异常
+                    loadingView.showRetry();
+                    loadingView.setRetryMessage("数据解析异常");
+                }
+            }
+
+            @Override
+            public void onProgressUpdate(int i, int i1) {
+
+            }
+        });
+        request.execute();
+        cancelRequest(request);
+    }
+
+    /**
+     * 获取所有密保问题
+     *
+     * @throws JSONException
+     */
     private void getQustionRequest() throws JSONException {
         loadingView.show();
         loadingView.showLoading();
