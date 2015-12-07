@@ -90,6 +90,7 @@ public class ChangePasswordQuestionAcitivy extends BaseActivity {
         });
         try {
             getQustionRequest();
+            getMyQuestionRequest(getUser().getOpenId());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -214,7 +215,8 @@ public class ChangePasswordQuestionAcitivy extends BaseActivity {
                                        String secuQuestionId,
                                        String secuAnswer,
                                        String newSecuQuestionId, String newSecuAnswer) throws JSONException {
-        PasswordRequest request = new PasswordRequest(MyApplication.HOST + "");
+        okBtn.showLoading("正在努力加载中···");
+        PasswordRequest request = new PasswordRequest(MyApplication.HOST + "/customer/resetsecuquest");
         request.setEntity(request.createChangePasswordQuestionParams(openId, secuQuestionId, secuAnswer, newSecuQuestionId, newSecuAnswer));
         request.setIRequestListener(new JsonRequestListener() {
             @Override
@@ -237,7 +239,6 @@ public class ChangePasswordQuestionAcitivy extends BaseActivity {
                     e.printStackTrace();
                     okBtn.showResult("参数解析异常", false);
                     okBtn.setBackgroundColor(Color.parseColor("#EC4545"));
-
                 }
             }
 
