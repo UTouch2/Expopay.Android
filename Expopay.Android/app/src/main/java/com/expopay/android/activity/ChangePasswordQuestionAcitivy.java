@@ -1,6 +1,7 @@
 package com.expopay.android.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -74,9 +75,16 @@ public class ChangePasswordQuestionAcitivy extends BaseActivity {
         okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ("".equals(oldAnswerText.getText().toString().trim()) ||
-                        "".equals(newAnswerText.getText().toString().trim())) {
+                String oldAnswer = oldAnswerText.getText().toString().trim();
+                String newAnswer = newAnswerText.getText().toString().trim();
+                if ("".equals(oldAnswer) || "".equals(newAnswer)) {
                     Toast.makeText(ChangePasswordQuestionAcitivy.this, "密保答案不能为空", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                try {
+                    changeQuestionRequest(getUser().getOpenId(), oldQuestion.getSecuQuestionId(), oldAnswer, newQuestion.getSecuQuestionId(), newAnswer);
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -211,12 +219,26 @@ public class ChangePasswordQuestionAcitivy extends BaseActivity {
         request.setIRequestListener(new JsonRequestListener() {
             @Override
             public void onFilure(Exception e) {
-
+                okBtn.showResult("网络请求失败", false);
+                okBtn.setBackgroundColor(Color.parseColor("#EC4545"));
             }
 
             @Override
             public void onSuccess(Object o) {
+                JSONObject json = (JSONObject) o;
+                try {
+                    if (json.getJSONObject("header").getString("code").equals("0000")) {
+                        okBtn.showResult("修改成功", true);
+                    } else {
+                        okBtn.showResult(json.getJSONObject("header").getString("desc"), false);
+                        okBtn.setBackgroundColor(Color.parseColor("#EC4545"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    okBtn.showResult("参数解析异常", false);
+                    okBtn.setBackgroundColor(Color.parseColor("#EC4545"));
 
+                }
             }
 
             @Override

@@ -99,7 +99,7 @@ public class ChangePasswordActivity extends BaseActivity {
             @Override
             public void onFilure(Exception e) {
                 okBtn.showResult("网络请求失败", false);
-                okBtn.setBackgroundColor(Color.parseColor("#ff0000"));
+                okBtn.setBackgroundColor(Color.parseColor("#EC4545"));
             }
 
             @Override
@@ -111,11 +111,11 @@ public class ChangePasswordActivity extends BaseActivity {
                         okBtn.showResult("修改成功", true);
                     } else {
                         okBtn.showResult(json.getJSONObject("header").getString("desc"), false);
-                        okBtn.setBackgroundColor(Color.parseColor("#ff0000"));
+                        okBtn.setBackgroundColor(Color.parseColor("#EC4545"));
                     }
                 } catch (JSONException e) {
                     okBtn.showResult("参数解析错误", false);
-                    okBtn.setBackgroundColor(Color.parseColor("#ff0000"));
+                    okBtn.setBackgroundColor(Color.parseColor("#EC4545"));
                 }
             }
 
