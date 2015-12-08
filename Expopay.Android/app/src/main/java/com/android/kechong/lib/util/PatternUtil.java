@@ -9,7 +9,8 @@ public class PatternUtil {
 
 
     public static final String MOBILE_PATTERN = "^((13[0-9])|(15[^4,\\D])|(18[0,3,5-9]))\\d{8}$";
-    public static final String CHINESE = "^[\\u4E00-\\u9FA5\\uF900-\\uFA2D]+$";
+//    public static final String CHINESE2 = "^[\\u4E00-\\u9FA5\\uF900-\\uFA2D]+$";
+    public static final String CHINESE = "^[(u4e00-u9fa5)]{1,20}$";
     public static final String USER_ID = "";
     public static final String LOGIN_USERNAME = "^[a-zA-Z][a-zA-Z0-9_]{1,10}$";
 
@@ -24,7 +25,12 @@ public class PatternUtil {
     }
 
     static public boolean isChinese(String chineseStr) {
-        return pattern(CHINESE, chineseStr);
+        for (int i = 0; i < chineseStr.length(); i++) {
+            if (pattern(CHINESE, String.valueOf(chineseStr.charAt(i)))){
+                return false;
+            }
+        }
+        return true;
     }
 
     static public boolean checkUserName(String usernameStr) {
@@ -38,19 +44,19 @@ public class PatternUtil {
         public UserName(String userName) {
             this.userName = userName.trim();
             if(userName.length() <2){
-                errMsg = "用户名为2-12位";
+                errMsg = "用户名为2-11位";
                 isvalid = false;
                 return;
-            }else if(userName.length() >12){
-                errMsg = "用户名为2-12位";
+            }else if(userName.length() >11){
+                errMsg = "用户名为2-11位";
                 isvalid = false;
                 return;
             }else if(isChinese(userName)){
                 errMsg = "用户名不能有汉字";
                 isvalid = false;
                 return;
-            }else if(!checkUserName(userName)){
-                errMsg = "用户名必须是字母、数字、英文下划线_,首个必须为字母";
+            }else if(!checkUserName(userName) && !isMobile(userName)){
+                errMsg = "用户名必须是字母、数字、英文下划线_,首个必须为字母，或请输入正确的电话号码";
                 isvalid = false;
                 return;
             }
@@ -95,13 +101,13 @@ public class PatternUtil {
                 isvalid = false;
                 return;
             }else if(password.length() >16){
-                errMsg = "密码为2-12位";
+                errMsg = "密码为6-16位";
                 isvalid = false;
                 return;
-//            }else if(isChinese(password)){
-//                errMsg = "密码不能有汉字";
-//                isvalid = false;
-//                return;
+            }else if(isChinese(password)){
+                errMsg = "密码不能有汉字";
+                isvalid = false;
+                return;
             }
             errMsg = "";
             isvalid = true;

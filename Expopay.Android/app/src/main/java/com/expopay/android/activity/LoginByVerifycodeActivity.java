@@ -1,6 +1,7 @@
 package com.expopay.android.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -145,6 +146,7 @@ public class LoginByVerifycodeActivity extends BaseActivity {
             @Override
             public void onFailureResult() {
                 loginBtn.showNormal("登录");
+                loginBtn.setBackgroundResource(R.drawable._button);
             }
         });
         loginBtn.showNormal("登录");
@@ -277,6 +279,7 @@ public class LoginByVerifycodeActivity extends BaseActivity {
             @Override
             public void onFilure(Exception e) {
                 loginBtn.showResult("网络请求失败", false);
+                loginBtn.setBackgroundColor(Color.parseColor("#ED4545"));
             }
 
             @Override
@@ -288,8 +291,10 @@ public class LoginByVerifycodeActivity extends BaseActivity {
                         user.setOpenId(json.getJSONObject("body").getString("openId"));
                         saveUser(user);
                         loginBtn.showResult("登录成功", true);
+                        loginBtn.setBackgroundResource(R.drawable._button);
                     } else {
                         loginBtn.showResult(json.getJSONObject("header").getString("desc"), false);
+                        loginBtn.setBackgroundColor(Color.parseColor("#ED4545"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

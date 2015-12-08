@@ -1,6 +1,7 @@
 package com.expopay.android.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.KeyEvent;
@@ -72,9 +73,8 @@ public class PerfectAccountActivity extends BaseActivity {
                 String password = passwordText.getText().toString().trim();
                 String questionId = passwordQuestionEntity.getSecuQuestionId();
                 String answer = answerText.getText().toString().trim();
-                PatternUtil.UserName name = new PatternUtil.UserName(userName);
-                if(!name.isvalid()){
-                    Toast.makeText(getApplicationContext(),name.getErrMsg(),Toast.LENGTH_LONG).show();
+                if(userName.length()>12 || userName.length()<2 || !PatternUtil.checkUserName(userName)){
+                    Toast.makeText(getApplicationContext(),"用户名为2-11位，必须是字母、数字、下划线组成,首个必须为字母",Toast.LENGTH_LONG).show();
                     return;
                 }
                 PatternUtil.PassWord pwd = new PatternUtil.PassWord(password);
@@ -103,6 +103,7 @@ public class PerfectAccountActivity extends BaseActivity {
             @Override
             public void onFailureResult() {
                 loadingButton.showNormal("确 定");
+                loadingButton.setBackgroundResource(R.drawable._button);
             }
         });
         try {
@@ -143,6 +144,7 @@ public class PerfectAccountActivity extends BaseActivity {
             @Override
             public void onFilure(Exception e) {
                 loadingButton.showResult("网络请求失败", false);
+                loadingButton.setBackgroundColor(Color.parseColor("#ED4545"));
             }
 
             @Override
@@ -160,10 +162,12 @@ public class PerfectAccountActivity extends BaseActivity {
                     } else {
                         // 失败
                         loadingButton.showResult(json.getJSONObject("header").getString("desc"), false);
+                        loadingButton.setBackgroundColor(Color.parseColor("#ED4545"));
                     }
                 } catch (JSONException e) {
                     // 数据解析异常
                     loadingButton.showResult("参数解析异常", false);
+                    loadingButton.setBackgroundColor(Color.parseColor("#ED4545"));
                 }
             }
 

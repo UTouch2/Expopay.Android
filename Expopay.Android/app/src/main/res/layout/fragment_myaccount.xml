@@ -61,7 +61,7 @@
                     android:id="@+id/myaccount_remainingdays"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="20"
+                    android:text="   "
                     android:textColor="#EA6A40"
                     android:textSize="13sp" />
 
@@ -132,7 +132,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:singleLine="true"
-                        android:text="88888888888888888888888"
+                        android:text="   "
                         android:textColor="#646464"
                         android:textSize="13sp" />
                 </LinearLayout>

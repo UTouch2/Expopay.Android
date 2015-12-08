@@ -1,6 +1,7 @@
 package com.expopay.android.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -81,6 +82,7 @@ public class LoginByPasswordActivity extends BaseActivity {
             @Override
             public void onFailureResult() {
                 loginButton.showNormal("登 录");
+                loginButton.setBackgroundResource(R.drawable._button);
             }
         });
 
@@ -134,7 +136,7 @@ public class LoginByPasswordActivity extends BaseActivity {
                 password = login_pwd.getText().toString().trim();
                 PatternUtil.UserName name = new PatternUtil.UserName(userName);
                 PatternUtil.PassWord pwd = new PatternUtil.PassWord(password);
-                if(!PatternUtil.isMobile(userName) && !name.isvalid()){
+                if(!name.isvalid()){
                     Toast.makeText(getApplicationContext(),name.getErrMsg(),Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -221,12 +223,15 @@ public class LoginByPasswordActivity extends BaseActivity {
                         user.setPassword(password);
                         saveUser(user);
                         loginButton.showResult("登录成功", true);
+                        loginButton.setBackgroundResource(R.drawable._button);
                     } else {
                         loginButton.showResult(json.getJSONObject("header").getString("desc"), false);
+                        loginButton.setBackgroundColor(Color.parseColor("#ED4545"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                     loginButton.showResult("数据解析异常", false);
+                    loginButton.setBackgroundColor(Color.parseColor("#ED4545"));
                 }
             }
 
@@ -238,6 +243,7 @@ public class LoginByPasswordActivity extends BaseActivity {
             @Override
             public void onFilure(Exception e) {
                 loginButton.showResult("网络请求失败", false);
+                loginButton.setBackgroundColor(Color.parseColor("#ED4545"));
             }
         });
         re.execute();

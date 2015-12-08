@@ -1,6 +1,7 @@
 package com.expopay.android.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -66,7 +67,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
         propertyColorText.setText(productDetailsEntity.getPropertyValue1());
         propertyMemoryText.setText(productDetailsEntity.getPropertyValue2());
         orderAmountText.setText(productDetailsEntity.getProductPrice());
-        repaymentPeriodText.setText(peroidEntity.getPeriod());
+        repaymentPeriodText.setText(String.format("%s期", peroidEntity.getPeriod()));
         periodAmountText.setText(String.format("每期应还款%s元", Double.parseDouble(peroidEntity.getPeriodAmount()) + Double.parseDouble(peroidEntity.getServiceAmount())));
 
         try {
@@ -97,11 +98,13 @@ public class OrderDetailCommitActivity extends BaseActivity {
             @Override
             public void onSuccessResult() {
                 btnSubmit.showNormal("提交订单");
+                btnSubmit.setBackgroundResource(R.drawable._button);
             }
 
             @Override
             public void onFailureResult() {
                 btnSubmit.showNormal("提交订单");
+                btnSubmit.setBackgroundResource(R.drawable._button);
             }
         });
         chooseAddressView.setOnClickListener(new View.OnClickListener() {
@@ -186,6 +189,7 @@ public class OrderDetailCommitActivity extends BaseActivity {
             @Override
             public void onFilure(Exception e) {
                 btnSubmit.showResult("网络请求失败", false);
+                btnSubmit.setBackgroundColor(Color.parseColor("#ED4545"));
             }
 
             @Override
@@ -195,9 +199,11 @@ public class OrderDetailCommitActivity extends BaseActivity {
                     if (json.getJSONObject("header").getString("code").equals("0000")) {
                         String orderNumber = json.getJSONObject("body").getString("orderNumber");
                         btnSubmit.showResult("", true);
+                        btnSubmit.setBackgroundResource(R.drawable._button);
                         NBKCardPayUtil.nbkCardCreditPay(OrderDetailCommitActivity.this, orderNumber, orderSource, orerAmount);
                     } else {
                         btnSubmit.showResult(json.getJSONObject("header").getString("desc"), false);
+                        btnSubmit.setBackgroundColor(Color.parseColor("#ED4545"));
                     }
                 } catch (JSONException e) {
 

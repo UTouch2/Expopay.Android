@@ -32,8 +32,8 @@ public class AddressDetailsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setStatusColor();
         setTitle("添加收货信息");
-        rightButtton.setImageResource(R.mipmap.addressdetails_save);
         setContentView(R.layout.activity_addressdetails);
+        rightButtton.setImageResource(R.mipmap.addressdetails_save);
         addressText = (EditText) findViewById(R.id.address_address_text);
         zipcodeText = (EditText) findViewById(R.id.address_zipcode_text);
         nameText = (EditText) findViewById(R.id.address_name_text);

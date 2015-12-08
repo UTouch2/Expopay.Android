@@ -79,7 +79,6 @@
                     android:layout_toRightOf="@id/address_address_label"
                     android:background="#00000000"
                     android:lines="1"
-                    android:maxLength="11"
                     android:singleLine="true"
                     android:textColor="#EF8261"
                     android:textSize="14sp" />
@@ -110,7 +109,7 @@
                     android:background="#00000000"
                     android:inputType="number"
                     android:lines="1"
-                    android:maxLength="11"
+                    android:maxLength="6"
                     android:singleLine="true"
                     android:textColor="#EF8261"
                     android:textSize="14sp" />
